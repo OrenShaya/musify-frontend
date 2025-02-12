@@ -7,16 +7,18 @@
     "dev": "vite",
     "dev:remote": "npm run dev",
     "dev:remote:mac": "npm run dev",
-    
     "dev:local": "set VITE_LOCAL=true&&vite",
     "dev:local:mac": "export VITE_LOCAL=true && vite",
-    
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "sass-dev": "sass --watch scss:css --style expanded",
+    "sass-prod": "sass scss:css --style compressed --no-source-map"
   },
   "dependencies": {
+    "animate.css": "^4.1.1",
     "axios": "^1.5.0",
+    "dotenv": "^16.4.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.1.2",
