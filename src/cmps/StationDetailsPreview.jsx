@@ -6,11 +6,8 @@ import { Link } from 'react-router-dom'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 import { loadStation, addStationMsg } from '../store/actions/station.actions'
-import { StationDetailsHeader } from '../cmps/StationDetailsHeader'
-import { StationDetailsList } from '../cmps/StationDetailsList'
-import { StationDetailsActionBtns } from '../cmps/StationDetailsContentActionBtns'
 
-export function StationDetails() {
+export function StationDetailsPreview() {
   const { stationId } = useParams()
   const station = useSelector((storeState) => storeState.stationModule.station)
 
@@ -18,11 +15,17 @@ export function StationDetails() {
     loadStation(stationId)
   }, [stationId])
 
+  async function onAddStationMsg(stationId) {
+    try {
+      await addStationMsg(stationId, 'bla bla ' + parseInt(Math.random() * 10))
+      showSuccessMsg(`Station msg added`)
+    } catch (err) {
+      showErrorMsg('Cannot add station msg')
+    }
+  }
+
   return (
-    <section className='station-details'>
-      <StationDetailsHeader />
-      <StationDetailsActionBtns />
-      <StationDetailsList />
+    <section className='station-details-preview'>
       <pre> {JSON.stringify(station, null, 2)} </pre>
     </section>
   )
