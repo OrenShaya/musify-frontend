@@ -2,51 +2,36 @@ import { storageService } from '../async-storage.service'
 import { makeId } from '../util.service'
 import { userService } from '../user'
 
-const STORAGE_KEY = 'station'
+const STORAGE_KEY = 'station_db'
 
 export const stationService = {
   query,
   getById,
   save,
   remove,
-  addStationMsg,
+  addStationSong,
+  removeStationSong,
 }
-window.cs = stationService
 
-async function query(filterBy = { txt: '', price: 0 }) {
-  var stations = await storageService.query(STORAGE_KEY)
-  // eslint-disable-next-line no-unused-vars
-  const { txt, minSpeed, maxPrice, sortField, sortDir } = filterBy
+async function query(filterBy = { name: '', tags: [] }) {
+  let stations = await storageService.query(STORAGE_KEY)
+  const { name, tags, sortField, sortDir } = filterBy
 
-  if (txt) {
-    const regex = new RegExp(filterBy.txt, 'i')
-    stations = stations.filter(
-      (station) => regex.test(station.vendor) || regex.test(station.description)
-    )
+  if (name) {
+    const regex = new RegExp(name, 'i')
+    stations = stations.filter((station) => regex.test(station.name))
   }
-  if (minSpeed) {
-    stations = stations.filter((station) => station.speed >= minSpeed)
-  }
-  if (sortField === 'vendor' || sortField === 'owner') {
-    stations.sort(
-      (station1, station2) =>
-        station1[sortField].localeCompare(station2[sortField]) * +sortDir
-    )
-  }
-  if (sortField === 'price' || sortField === 'speed') {
-    stations.sort(
-      (station1, station2) =>
-        (station1[sortField] - station2[sortField]) * +sortDir
+
+  if (Array.isArray(tags) && tags.length) {
+    stations = stations.filter((station) =>
+      tags.every((tag) => station.tags.includes(tag))
     )
   }
 
-  stations = stations.map(({ _id, vendor, price, speed, owner }) => ({
-    _id,
-    vendor,
-    price,
-    speed,
-    owner,
-  }))
+  if (sortField === 'name' && sortDir) {
+    stations.sort((a, b) => a.name.localeCompare(b.name) * +sortDir)
+  }
+
   return stations
 }
 
@@ -60,39 +45,93 @@ async function remove(stationId) {
 }
 
 async function save(station) {
-  var savedStation
+  let savedStation
   if (station._id) {
     const stationToSave = {
       _id: station._id,
-      price: station.price,
-      speed: station.speed,
+      name: station.name,
+      tags: station.tags,
+      createdBy: {
+        _id: station.createdBy._id,
+        fullname: station.createdBy.fullname,
+        imgUrl: station.createdBy.imgUrl,
+        createdAt: station.createdBy.createdAt,
+        updatedAt: Date.now(),
+      },
+      likedByUsers: station.likedByUsers,
+      songs: station.songs,
+      msgs: station.msgs,
     }
     savedStation = await storageService.put(STORAGE_KEY, stationToSave)
   } else {
+    const activeUser = userService.getLoggedinUser()
+    if (!activeUser) throw new Error('No user logged in')
+
     const stationToSave = {
-      vendor: station.vendor,
-      price: station.price,
-      speed: station.speed,
-      // Later, owner is set by the backend
-      owner: userService.getLoggedinUser(),
-      msgs: [],
+      _id: makeId(7),
+      name: station.name,
+      tags: station.tags,
+      createdBy: {
+        _id: activeUser._id,
+        fullname: activeUser.fullname,
+        imgUrl:
+          station.createdBy.imgUrl ||
+          'https://cdn.pixabay.com/photo/2022/02/09/08/47/technology-7002906_960_720.png',
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
+      },
+      likedByUsers: station.likedByUsers || [],
+      songs: station.songs || [],
+      msgs: station.msgs || [],
     }
     savedStation = await storageService.post(STORAGE_KEY, stationToSave)
   }
   return savedStation
 }
 
-async function addStationMsg(stationId, txt) {
-  // Later, this is all done by the backend
-  const station = await getById(stationId)
-
-  const msg = {
-    id: makeId(),
-    by: userService.getLoggedinUser(),
-    txt,
+async function addStationSong(stationId, song) {
+  if (!stationId || !song) {
+    throw new Error('Not valid stationId or song in addStationSong')
   }
-  station.msgs.push(msg)
+
+  const station = await getById(stationId)
+  if (!station) {
+    throw new Error('No valid stationId, no station found')
+  }
+
+  const miniSong = {
+    _id: song._id,
+    title: song.title,
+    url: song.url,
+    imgUrl: song.imgUrl,
+    lengthInSeconds: song.lengthInSeconds,
+    addedBy: song.addedBy,
+    likedBy: song.likedBy,
+    createdAt: song.createdAt,
+  }
+
+  station.songs.push(miniSong)
   await storageService.put(STORAGE_KEY, station)
 
-  return msg
+  return miniSong
 }
+
+async function removeStationSong(stationId, songId) {
+  if (!stationId || !songId) {
+    throw new Error('Not valid stationId or songId in removeStationSong')
+  }
+
+  const station = await getById(stationId)
+  if (!station) {
+    throw new Error('No valid stationId, no station found')
+  }
+  const filteredStationSongs = station.songs.filter(
+    (song) => song._id !== songId
+  )
+
+  station.songs = filteredStationSongs
+  await storageService.put(STORAGE_KEY, station)
+}
+
+//For debugging
+//window.stationss = stationService
