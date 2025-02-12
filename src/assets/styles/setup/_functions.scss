@@ -1,10 +1,66 @@
-// REM Functions
+@use 'sass:math';
+
 @function rem($size) {
-    $remSize: calc($size / 16px);
-    @return calc($remSize * 1rem);
+  $remSize: calc($size / 16px);
+  @return ($remSize) * 1rem;
 }
 
-// EM Functions
 @function em($pixels, $context: 16px) {
-    @return calc(($pixels/$context) * 1em);
+  @return calc($pixels/$context) * 1em;
+}
+
+@function lh($pixels, $context: 16px) {
+  @return calc($pixels/$context);
+}
+
+/// Calculates a modular scale value.
+/// Useful for generating typographic scales or spacing values.
+/// @param {Number} $step - The step on the scale (can be negative).
+/// @param {Number} $base - The base value (default: 1rem).
+/// @param {Number} $ratio - The scale ratio (default: 1.25).
+/// @return {Number} - The computed modular scale value.
+@function modular-scale($step, $base: 1rem, $ratio: 1.25) {
+  @return $base * math.pow($ratio, $step);
+}
+
+/// Maps a value from one range to another for fluid calculations such as responsive sizing.
+/// @param {Number} $value - The input value to map.
+/// @param {Number} $in-min - The lower bound of the input range.
+/// @param {Number} $in-max - The upper bound of the input range.
+/// @param {Number} $out-min - The lower bound of the output range.
+/// @param {Number} $out-max - The upper bound of the output range.
+/// @return {Number} - The value mapped into the output range.
+@function map-range($value, $in-min, $in-max, $out-min, $out-max) {
+  @return $out-min +
+    (($value - $in-min) * (($out-max - $out-min) / ($in-max - $in-min)));
+}
+
+/// Returns a contrasting color (either light or dark) for a given background color.
+/// @param {Color} $color - The background color.
+/// @param {Color} $light - The light color to use (default: #fff).
+/// @param {Color} $dark - The dark color to use (default: #000).
+/// @return {Color} - Either $light or $dark based on the lightness of $color.
+@function contrast-color($color, $light: #fff, $dark: #000) {
+  @if (lightness($color) > 50) {
+    @return $dark;
+  } @else {
+    @return $light;
+  }
+}
+
+/// Calculates the aspect ratio as a percentage for responsive containers.
+/// Often used with the “padding-bottom” trick for fluid iframes or images.
+/// @param {Number} $width - The intrinsic width of the element.
+/// @param {Number} $height - The intrinsic height of the element.
+/// @return {Number} - The aspect ratio percentage.
+@function aspect-ratio($width, $height) {
+  @return ($height / $width) * 100%;
+}
+
+/// Generates a spacing value based on a multiplier and a base unit.
+/// @param {Number} $multiplier - The factor to multiply the base spacing unit.
+/// @param {Number} $base - The base spacing unit (default: 1rem).
+/// @return {Number} - The computed spacing value.
+@function spacing($multiplier, $base: 1rem) {
+  @return $multiplier * $base;
 }

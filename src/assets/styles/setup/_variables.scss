@@ -16,3 +16,220 @@ $gray4: #333;
 $mobile-breakpoint: 460px;
 $narrow-breakpoint: 720px;
 $normal-breakpoint: 960px;
+
+@use 'sass:color';
+@use 'functions' as *;
+@use 'sass:map';
+
+// Font name
+$font-opensans-regular: 'OpenSans-Regular';
+$font-opensans-bold: 'OpenSans-Bold';
+$font-serif: 'sans-serif';
+
+// Font weights
+$font-weight: (
+  'thin': 100,
+  'extralight': 200,
+  'light': 300,
+  'regular': 400,
+  'medium': 500,
+  'semibold': 600,
+  'bold': 700,
+  'extrabold': 800,
+  'blackbold': 900,
+);
+
+// Colors //
+$colors: (
+  // Main colors
+  primary:
+    (
+      'red': rgb(222, 95, 87),
+      'red-1': rgb(178, 76, 70),
+      'red-2': rgb(133, 57, 52),
+      'red1': rgb(229, 127, 121),
+      'red2': rgb(235, 159, 154),
+      'red-compl': rgb(87, 214, 222),
+      'red-split': rgb(87, 222, 163),
+      'blue': rgb(83, 131, 253),
+      'blue-1': rgb(66, 105, 202),
+      'blue-2': rgb(50, 79, 152),
+      'blue-3': rgb(25, 39, 76),
+      'blue1': rgb(117, 156, 253),
+      'blue2': rgb(152, 181, 254),
+      'blue3': rgb(203, 218, 254),
+      'blue-compl': rgb(253, 205, 83),
+      'blue-split': rgb(253, 120, 83),
+    ),
+  // Secondary colors
+  // I  Picked this and modified https://www.schemecolor.com/toy-shop.php
+  secondary:
+    (
+      'green': rgb(0, 199, 9),
+      'green-1': rgb(0, 159, 7),
+      'green-2': rgb(0, 119, 5),
+      'green1': rgb(51, 210, 58),
+      'green2': rgb(102, 221, 107),
+      'green-compl': rgb(199, 0, 190),
+      'green-split': rgb(109, 0, 199),
+      'darkblue': rgb(0, 2, 105),
+      'darkblue-1': rgb(0, 2, 84),
+      'darkblue1': rgb(51, 53, 135),
+      'darkblue2': rgb(102, 103, 165),
+      'red': rgb(207, 75, 90),
+      'red-1': rgb(166, 60, 72),
+      'red-2': rgb(124, 45, 54),
+      'red1': rgb(212, 93, 107),
+      'red2': rgb(226, 147, 156),
+      'red-compl': rgb(75, 207, 192),
+      'red-split': rgb(75, 207, 126),
+      'yellow': rgb(243, 221, 36),
+      'yellow-1': rgb(194, 177, 29),
+      'yellow-2': rgb(146, 133, 22),
+      'yellow1': rgb(245, 228, 80),
+      'yellow2': rgb(248, 235, 124),
+      'yellow-compl': rgb(36, 58, 243),
+      'yellow-split': rgb(36, 162, 243),
+      'pink': rgb(246, 108, 216),
+      'pink-1': rgb(197, 86, 173),
+      'pink-2': rgb(148, 65, 130),
+      'pink1': rgb(248, 137, 224),
+      'pink2': rgb(250, 167, 232),
+      'pink-compl': rgb(108, 246, 138),
+      'pink-split': rgb(108, 246, 207),
+    ),
+  // Colors used for gradient
+  gradient: (),
+  // Grayscale/Basic colors
+  neutral:
+    (
+      'black': #000000,
+      'black-1': #2a2a2a,
+      'black-2': #353535,
+      'black-3': #5d5d5d,
+      'black-4': #868686,
+      'gray': #7c7c7c,
+      'gray-1': #969696,
+      'gray-2': #a3a3a3,
+      'gray-3': #d8d8d8,
+      'gray-4': #e0e0e0,
+      'gray-5': #e8e8e8,
+      'gray-6': #f3f3f3,
+      'white': #ffffff,
+    )
+);
+
+// COLOR PALETTE
+// Primary Colors
+$clr-primary-red: map.get($colors, primary, 'red');
+$clr-primary-red-1: map.get($colors, primary, 'red-1');
+$clr-primary-red-2: map.get($colors, primary, 'red-2');
+$clr-primary-red1: map.get($colors, primary, 'red1');
+$clr-primary-red2: map.get($colors, primary, 'red2');
+
+$clr-primary-blue: map.get($colors, primary, 'blue');
+$clr-primary-blue-1: map.get($colors, primary, 'blue-1');
+$clr-primary-blue-2: map.get($colors, primary, 'blue-2');
+$clr-primary-blue-3: map.get($colors, primary, 'blue-3');
+$clr-primary-blue1: map.get($colors, primary, 'blue1');
+$clr-primary-blue2: map.get($colors, primary, 'blue2');
+$clr-primary-blue3: map.get($colors, primary, 'blue3');
+
+// Secondary Colors
+$clr-secondary-green: map.get($colors, secondary, 'green');
+$clr-secondary-green-1: map.get($colors, secondary, 'green-1');
+$clr-secondary-green-2: map.get($colors, secondary, 'green-2');
+$clr-secondary-green1: map.get($colors, secondary, 'green1');
+$clr-secondary-green2: map.get($colors, secondary, 'green2');
+
+$clr-secondary-darkblue: map.get($colors, secondary, 'darkblue');
+$clr-secondary-darkblue-1: map.get($colors, secondary, 'darkblue-1');
+$clr-secondary-darkblue1: map.get($colors, secondary, 'darkblue1');
+$clr-secondary-darkblue2: map.get($colors, secondary, 'darkblue2');
+
+$clr-secondary-red: map.get($colors, secondary, 'red');
+$clr-secondary-red-1: map.get($colors, secondary, 'red-1');
+$clr-secondary-red-2: map.get($colors, secondary, 'red-2');
+$clr-secondary-red1: map.get($colors, secondary, 'red1');
+$clr-secondary-red2: map.get($colors, secondary, 'red2');
+
+$clr-secondary-yellow: map.get($colors, secondary, 'yellow');
+$clr-secondary-yellow-1: map.get($colors, secondary, 'yellow-1');
+$clr-secondary-yellow-2: map.get($colors, secondary, 'yellow-2');
+$clr-secondary-yellow1: map.get($colors, secondary, 'yellow1');
+$clr-secondary-yellow2: map.get($colors, secondary, 'yellow2');
+
+$clr-secondary-pink: map.get($colors, secondary, 'pink');
+$clr-secondary-pink-1: map.get($colors, secondary, 'pink-1');
+$clr-secondary-pink-2: map.get($colors, secondary, 'pink-2');
+$clr-secondary-pink1: map.get($colors, secondary, 'pink1');
+$clr-secondary-pink2: map.get($colors, secondary, 'pink2');
+
+// Neutral Colors
+$clr-neutral-black: map.get($colors, neutral, 'black');
+$clr-neutral-black-1: map.get($colors, neutral, 'black-1');
+$clr-neutral-black-2: map.get($colors, neutral, 'black-2');
+$clr-neutral-black-3: map.get($colors, neutral, 'black-3');
+$clr-neutral-black-4: map.get($colors, neutral, 'black-4');
+
+$clr-neutral-gray: map.get($colors, neutral, 'gray');
+$clr-neutral-gray-1: map.get($colors, neutral, 'gray-1');
+$clr-neutral-gray-2: map.get($colors, neutral, 'gray-2');
+$clr-neutral-gray-3: map.get($colors, neutral, 'gray-3');
+$clr-neutral-gray-4: map.get($colors, neutral, 'gray-4');
+$clr-neutral-gray-5: map.get($colors, neutral, 'gray-5');
+$clr-neutral-gray-6: map.get($colors, neutral, 'gray-6');
+
+$clr-neutral-white: map.get($colors, neutral, 'white');
+
+// COLOR
+$clr1: $clr-secondary-green2;
+$clr2: $clr-secondary-pink-2;
+
+$clr3: $clr-neutral-white;
+$clr4: $clr-neutral-gray-4;
+$clr5: $clr-secondary-darkblue;
+
+// Background;
+$bg-clr-primary: $clr-secondary-yellow2;
+$bg-clr-primary-1: $clr-secondary-yellow2;
+
+$bg-clr-secondary: $clr-primary-blue;
+$bg-clr-secondary-1: $clr-secondary-green2;
+
+// LAYOUT
+$layoutPadding: 12px;
+
+// Device breakpoints (width) //
+$breakpoints: (
+  // Mobile
+  '320': 320px,
+  '360': 360px,
+  '375': 375px,
+  '425': 425px,
+  '600': 600px,
+  // Tablets
+  '768': 768px,
+  '800': 800px,
+  '900': 900px,
+  '1024': 1024px,
+  // Computers (Laptops/Desktops)
+  '1280': 1280px,
+  '1366': 1366px,
+  '1440': 1440px,
+  '1600': 1600px,
+  '1680': 1680px,
+  '1920': 1920px,
+  '2560': 2560px
+);
+
+// LAYOUT BREAKPOINTS
+$break-small: 480px;
+$break-narrow: 640px;
+$break-normal: 860px;
+$break-wide: 1100px;
+
+$padded-break-small: $break-small + $layoutPadding * 2;
+$padded-break-narrow: $break-narrow + $layoutPadding * 2;
+$padded-break-normal: $break-normal + $layoutPadding * 2;
+$padded-break-wide: $break-wide + $layoutPadding * 2;

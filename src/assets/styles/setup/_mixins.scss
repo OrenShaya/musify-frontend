@@ -1,58 +1,483 @@
-/* Breakpoint mixins */
+@use 'sass:color';
+
+/* Media queries Breakpoint mixins */
 
 @mixin for-mobile-layout {
-    @media (max-width: calc($mobile-breakpoint + 40px)) {
-        @content;
-    }
+  @media (max-width: $break-small) {
+    @content;
+  }
 }
 
 @mixin for-narrow-layout {
-    @media (min-width: calc($mobile-breakpoint + 40px)) {
-        @content;
-    }
+  @media (min-width: $break-narrow) {
+    @content;
+  }
 }
 
 @mixin for-normal-layout {
-    @media (min-width: calc($narrow-breakpoint + 40px)) {
-        @content;
-    }
+  @media (min-width: $break-normal) {
+    @content;
+  }
 }
 
 @mixin for-wide-layout {
-    @media (min-width: calc($normal-breakpoint + 40px)) {
-        @content;
-    }
+  @media (min-width: $break-wide) {
+    @content;
+  }
+}
+
+@mixin layoutGTC($max) {
+  grid-template-columns:
+    minmax($layoutPadding, 1fr)
+    minmax(auto, $max)
+    minmax($layoutPadding, 1fr);
 }
 
 /* Media  Mixins */
+
+//aspect ratio mixin
+@mixin aspect-ratio($width: 1, $height: 1) {
+  position: relative;
+  overflow: hidden;
+  &:before {
+    content: '';
+    display: block;
+    width: 100%;
+    padding-top: calc(($height / $width) * 100%);
+  }
+  > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  > img {
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+// Mixin for removing hover efects on iphone screen
+@mixin hover-supported {
+  @media not all and (pointer: coarse) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+// Buttons
+
+@mixin btn(
+  $bg: $clr-primary-blue,
+  $clr: $clr-neutral-white,
+  $padding: em(12px) em(24px),
+  $hover-bg: color.scale($bg, $lightness: -15%),
+  $hover-clr: $clr
+) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: $padding;
+  line-height: 1;
+  font-size: rem(14px);
+  font-variation-settings: 'wght' 430;
+  border: none;
+  cursor: pointer;
+
+  transition: background-color 0.2s ease-in-out, color 0.1 ease-in-out,
+    scale 0.1s linear;
+
+  background-color: $bg;
+  color: $clr;
+
+  &:hover {
+    background-color: $hover-bg;
+    color: $hover-clr;
+  }
+
+  &:active {
+    scale: 0.95;
+  }
+
+  &.active {
+    background-color: $clr$bg;
+    color: $bg;
+
+    &:hover {
+      background-color: $hover-clr;
+      color: $hover-bg$hover-clr;
+    }
+  }
+}
+
+// Type
+
+@mixin type($type: bold) {
+  // type options:
+  // 1.bold
+  // 2.boldCondensed
+  // 3.condensed
+  @if $type == bold {
+    font-variation-settings: 'wght' 430;
+  } @else if $type == boldCondensed {
+    font-variation-settings: 'wght' 430, 'wdth' 80;
+    letter-spacing: em(6.72px);
+  } @else if $type == condensed {
+    font-variation-settings: 'wdth' 80;
+    letter-spacing: em(6.72px);
+  } @else if $type == light {
+    font-variation-settings: 'wght' 200;
+  }
+}
+
+/*
+  https://github.com/KhomsiAdam/SASS-Architecture
+*/
+
+// Button styling
+@mixin button(
+  $width: auto,
+  $height: auto,
+  $bg-color,
+  $font-color,
+  $font-size,
+  $font-weight,
+  $border-radius,
+  $border-size: none,
+  $border-type: none,
+  $border-color: none
+) {
+  width: $width;
+  height: $height;
+  background-color: $bg-color;
+  color: $font-color;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  border-radius: $border-radius;
+  border: $border-size $border-type $border-color;
+  cursor: pointer;
+}
+
+// Background image
+@mixin bg-img($width, $height, $url, $repeat, $size, $position) {
+  width: $width;
+  height: $height;
+  background-image: url($url);
+  background-repeat: $repeat;
+  background-size: $size;
+  background-position: $position;
+}
+
+// Overlay
+@mixin overlay(
+  $z-index: -1,
+  $background: linear-gradient(0deg, rgb(0 0 0 / 0.5), rgb(0 0 0 / 0))
+) {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: $z-index;
+    background: $background;
+  }
+}
+
+// Gradient Shadow
+@mixin gradient-shadow(
+  $deg,
+  $color-1,
+  $color-2,
+  $z-index: -1,
+  $blur-1,
+  $blur-2,
+  $blur-opacity: 0.5
+) {
+  background: linear-gradient($deg, $color-1, $color-2);
+  position: relative;
+  box-shadow: unset;
+  isolation: isolate;
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: $z-index;
+    background: inherit;
+  }
+  &::before {
+    filter: blur($blur-1);
+  }
+  &::after {
+    filter: blur($blur-2);
+    opacity: $blur-opacity;
+  }
+}
+
+// Flex Box
+@mixin flex(
+  $justify-content: center,
+  $align-items: center,
+  $flex-direction: row,
+  $gap: 0,
+  $flex-wrap: nowrap
+) {
+  display: flex;
+  justify-content: $justify-content;
+  align-items: $align-items;
+  flex-direction: $flex-direction;
+  gap: $gap;
+  flex-wrap: $flex-wrap;
+}
+
+// Grid //
+@mixin grid-templte($columns, $rows, $gap: 0) {
+  display: grid;
+  grid-template-columns: $columns;
+  grid-template-rows: $rows;
+  gap: $gap;
+}
+@mixin grid-templte-area($areas, $gap: 0) {
+  display: grid;
+  grid-template-areas: $areas;
+  gap: $gap;
+}
+
+// After & Before pseudo elements //
+
+@mixin pseudo-elem(
+  $location: before,
+  $content: '',
+  $position: relative,
+  $top: 0,
+  $right: 0,
+  $bottom: 0,
+  $left: 0
+) {
+  &:#{$location} {
+    content: $content;
+    position: $position;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+    @content;
+  }
+}
+
+// For checkboxes and radio buttons
+@mixin pseudo-elem-checked(
+  $location: before,
+  $content: '',
+  $position: relative,
+  $top: 0,
+  $right: 0,
+  $bottom: 0,
+  $left: 0
+) {
+  &:checked:#{$location} {
+    content: $content;
+    position: $position;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+    @content;
+  }
+}
+
+// Font Face
+@mixin font-face($font-name, $path, $weight: normal, $style: normal) {
+  @font-face {
+    font-family: quote($font-name);
+    src: url($path + '.eot');
+    src: url($path + '.eot?#iefix') format('embedded-opentype'),
+      url($path + '.woff') format('woff'),
+      url($path + '.ttf') format('truetype'),
+      url($path + '.svg##{$font-name}') format('svg');
+    font-weight: $weight;
+    font-style: $style;
+  }
+}
+
+@mixin cover-background {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+@mixin input-placeholder {
+  &.placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+  &::-webkit-input-placeholder {
+    @content;
+  }
+}
+
+// Label Mixin
+@mixin label(
+  $bg: #fff,
+  $padding: 0.25rem 0.5rem,
+  $border: 1px solid #ccc,
+  $border-radius: 4px,
+  $font-size: 0.8rem,
+  $color: #333
+) {
+  display: inline-block;
+  background-color: $bg;
+  padding: $padding;
+  border: $border;
+  border-radius: $border-radius;
+  font-size: $font-size;
+  color: $color;
+
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: color.adjust($bg, $lightness: -10%);
+  }
+}
+
+// Card Mixin
+@mixin card(
+  $bg: #fff,
+  $padding: 1rem,
+  $border: 1px solid #ccc,
+  $border-radius: 4px,
+  $box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
+  $margin: 1rem 0
+) {
+  display: block;
+  background-color: $bg;
+  padding: $padding;
+  border: $border;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  margin: $margin;
+}
+
+// Box Mixin
+@mixin box(
+  $bg: #fff,
+  $padding: 1rem,
+  $border: 1px solid #ccc,
+  $border-radius: 4px
+) {
+  display: block;
+  background-color: $bg;
+  padding: $padding;
+  border: $border;
+  border-radius: $border-radius;
+}
+
+// Hamburger Button Mixin
+@mixin hamburger-btn(
+  $width: 2rem,
+  $height: 2rem,
+  $line-height: 2px,
+  $line-bg: #333,
+  $border-radius: 2px,
+  $spacing: 2px,
+  $transition: 0.3s ease
+) {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: $width;
+  height: $height;
+  background: transparent;
+  border: none;
+  padding: 0.25rem;
+  cursor: pointer;
+
+  span {
+    display: block;
+    width: 100%;
+    height: $line-height;
+    background: $line-bg;
+    border-radius: $border-radius;
+    transition: all $transition;
+  }
+}
+
+@mixin hamburger-nav(
+  $closed-row: 0,
+  $open-row: repeat(auto-fit, 1fr),
+  $transition-duration: 0.5s,
+  $transition-timing: ease
+) {
+  display: grid;
+  grid-template-rows: 1fr $closed-row;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: fit-content;
+  overflow: hidden;
+  transition: grid-template-rows $transition-duration $transition-timing;
+
+  // Toggle open state via the checkbox (assumes the checkbox precedes the nav container)
+  #nav-toggle:checked ~ & {
+    grid-template-rows: 1fr $open-row;
+  }
+
+  // On larger screens, show the nav fully open.
+  @media (min-width: 768px) {
+    grid-template-rows: 1fr calc(100vh - 1fr);
+  }
+}
+
+// Mobile Navigation (max-width: 860px)
+@mixin for-mobile-nav {
+  @media (max-width: 860px) {
+    @content;
+  }
+}
+
 @mixin aspect-ratio($width, $height) {
-    position: relative;
-    overflow: hidden;
-    &::before {
-      display: block;
-      content: "";
-      width: 100%;
-      padding-top: calc(($height / $width) * 100%);
-    }
-    > * {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-    }
-  
-    > img {
-      height: 100%;
-      object-fit: cover;
+  position: relative;
+  overflow: hidden;
+  &::before {
+    display: block;
+    content: '';
+    width: 100%;
+    padding-top: calc(($height / $width) * 100%);
+  }
+  > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  > img {
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+// Mixin for removing hover efects on iphone screen
+@mixin hover-supported {
+  @media not all and (pointer: coarse) {
+    &:hover {
+      @content;
     }
   }
-  
-  // Mixin for removing hover efects on iphone screen
-  @mixin hover-supported {    
-    @media not all and (pointer: coarse) {
-        &:hover {
-            @content;
-        }
-    }
-  }
+}
