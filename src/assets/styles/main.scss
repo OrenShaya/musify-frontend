@@ -20,6 +20,9 @@
 @import 'pages/TaskDetails';
 @import 'pages/LoginSignup';
 
+@import 'pages/StationIndex';
+@import 'pages/StationDetail';
+
 // Components
 @import 'cmps/list';
 @import 'cmps/preview';
@@ -34,3 +37,8 @@
 @import 'cmps/ReviewPreview';
 // @import "cmps/CarList";
 // @import "cmps/CarPreview";
+
+@import 'cmps/StationDetailHeader';
+@import 'cmps/StationDetailActionBtns';
+@import 'cmps/StationDetailList';
+@import 'cmps/StationDetailPreview';
