@@ -1,21 +1,29 @@
-/* eslint-disable react/prop-types */
-import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 export function StationPreview({ station }) {
-  return (
-    <article className='preview'>
-      <header>
-        <Link to={`/station/${station._id}`}>{station.vendor}</Link>
-      </header>
+  const { name, artists, imgUrl } = station
 
-      <p>
-        Speed: <span>{station.speed.toLocaleString()} Km/h</span>
-      </p>
-      {station.owner && (
-        <p>
-          Owner: <span>{station.owner.fullname}</span>
-        </p>
-      )}
+  const getArtistsDisplay = () => {
+    return artists.join(', ')
+  }
+
+  return (
+    <article className='station-preview'>
+      <div>
+        <img src={imgUrl} alt='' />
+      </div>
+      <div>
+        <span className='artist-name display-block'>{name}</span>
+        <span className='artists-description'>{getArtistsDisplay()}</span>
+      </div>
     </article>
   )
+}
+
+StationPreview.propTypes = {
+  station: PropTypes.exact({
+    name: PropTypes.string.isRequired,
+    artists: PropTypes.arrayOf(PropTypes.string).isRequired,
+    imgUrl: PropTypes.string.isRequired,
+  }).isRequired,
 }

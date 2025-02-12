@@ -1,0 +1,20 @@
+$artistDescClr: #ababab;
+
+article.station-preview {
+  display: grid;
+  place-content: center;
+  height: 330px;
+
+  & img {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+  }
+
+  .artist-name {
+    font-weight: 500;
+  }
+
+  .artists-description {
+    color: $artistDescClr;
+  }
+}
