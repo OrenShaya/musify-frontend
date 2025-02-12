@@ -60,3 +60,15 @@ const user = {
 }
 
 // function isLikedByUser(songId){}
+
+var songArray = [
+  {
+    id: 's1001',
+    title: 'The Meters - Cissy Strut',
+    url: 'youtube/song.mp4',
+    imgUrl: 'https://i.ytimg.com/vi/4_iC0MyIykM/mqdefault.jpg',
+    addedBy: '{minimal-user}',
+    likedBy: ['{minimal-user}'],
+    addedAt: 162521765262,
+  },
+]
