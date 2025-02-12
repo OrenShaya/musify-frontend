@@ -151,3 +151,21 @@ export function getTruthyValues(obj) {
   }
   return newObj
 }
+
+export async function getAverageRGB(src) {
+  /* https://stackoverflow.com/questions/2541481/get-average-color-of-image-via-javascript */
+  return new Promise((resolve, reject) => {
+    let context = document.createElement('canvas').getContext('2d')
+    if (!context) reject('No context')
+    context.imageSmoothingEnabled = true
+
+    let img = new Image()
+    img.src = src
+    img.crossOrigin = ''
+
+    img.onload = () => {
+      context.drawImage(img, 0, 0, 1, 1)
+      resolve(context.getImageData(0, 0, 1, 1).data.slice(0, 3))
+    }
+  })
+}
