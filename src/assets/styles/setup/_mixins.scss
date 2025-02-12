@@ -68,7 +68,13 @@
 }
 
 // Buttons
-
+// @include btn(
+//   $bg: $clr-primary-blue,
+//   $clr: $clr-neutral-white,
+//   $padding: em(12px) em(24px),
+//   $hover-bg: color.scale($bg, $lightness: -15%),
+//   $hover-clr: $clr
+// );
 @mixin btn(
   $bg: $clr-primary-blue,
   $clr: $clr-neutral-white,
@@ -221,6 +227,7 @@
 }
 
 // Flex Box
+// @include flex();
 @mixin flex(
   $justify-content: center,
   $align-items: center,
@@ -447,37 +454,5 @@
 @mixin for-mobile-nav {
   @media (max-width: 860px) {
     @content;
-  }
-}
-
-@mixin aspect-ratio($width, $height) {
-  position: relative;
-  overflow: hidden;
-  &::before {
-    display: block;
-    content: '';
-    width: 100%;
-    padding-top: calc(($height / $width) * 100%);
-  }
-  > * {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  }
-
-  > img {
-    height: 100%;
-    object-fit: cover;
-  }
-}
-
-// Mixin for removing hover efects on iphone screen
-@mixin hover-supported {
-  @media not all and (pointer: coarse) {
-    &:hover {
-      @content;
-    }
   }
 }
