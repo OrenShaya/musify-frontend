@@ -47,20 +47,26 @@ async function remove(stationId) {
 async function save(station) {
   let savedStation
   if (station._id) {
+    const createdBy = station?.createdBy || {
+      _id: '',
+      fullname: 'Unknown',
+      imgUrl: '',
+    }
+
     const stationToSave = {
       _id: station._id,
       name: station.name,
-      tags: station.tags,
+      tags: [...(station.tags ?? [])],
       createdBy: {
-        _id: station.createdBy._id,
-        fullname: station.createdBy.fullname,
-        imgUrl: station.createdBy.imgUrl,
-        createdAt: station.createdBy.createdAt,
+        _id: createdBy._id,
+        fullname: createdBy.fullname,
+        imgUrl: createdBy.imgUrl,
+        createdAt: createdBy.createdAt ?? Date.now(),
         updatedAt: Date.now(),
       },
-      likedByUsers: station.likedByUsers,
-      songs: station.songs,
-      msgs: station.msgs,
+      likedByUsers: [...(station.likedByUsers ?? [])],
+      songs: [...(station.songs ?? [])],
+      msgs: [...(station.msgs ?? [])],
     }
     savedStation = await storageService.put(STORAGE_KEY, stationToSave)
   } else {
@@ -70,19 +76,19 @@ async function save(station) {
     const stationToSave = {
       _id: makeId(7),
       name: station.name,
-      tags: station.tags,
+      tags: [...(station.tags ?? [])],
       createdBy: {
         _id: activeUser._id,
         fullname: activeUser.fullname,
         imgUrl:
-          station.createdBy.imgUrl ||
+          station.createdBy?.imgUrl ||
           'https://cdn.pixabay.com/photo/2022/02/09/08/47/technology-7002906_960_720.png',
         createdAt: Date.now(),
         updatedAt: Date.now(),
       },
-      likedByUsers: station.likedByUsers || [],
-      songs: station.songs || [],
-      msgs: station.msgs || [],
+      likedByUsers: [...(station.likedByUsers ?? [])],
+      songs: [...(station.songs ?? [])],
+      msgs: [...(station.msgs ?? [])],
     }
     savedStation = await storageService.post(STORAGE_KEY, stationToSave)
   }
