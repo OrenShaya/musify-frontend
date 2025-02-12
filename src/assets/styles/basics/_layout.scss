@@ -1,37 +1,49 @@
 .main-container {
-    display: grid;
-    grid-template-columns: 1rem 1fr 1rem;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: em(48px) minmax(1fr, 100%) em(72px);
 
-    > * {
-        grid-column: 2;
+  .main {
+    grid-column: 2;
+    grid-row: 2;
+  }
 
-        &.full {
-            grid-column: 1 / -1;
-        }
-    }
+  aside {
+    grid-column: 1;
+    grid-row: 2;
+  }
 
-    // @include for-narrow-layout {
-    //     grid-template-columns: 
-    //         minmax(20px, 1fr)
-    //         minmax(auto, $mobile-breakpoint)
-    //         minmax(20px, 1fr);
-    // }
-    // @include for-normal-layout {
-    //     grid-template-columns: 
-    //         minmax(20px, 1fr)
-    //         minmax(auto, $narrow-breakpoint)
-    //         minmax(20px, 1fr);
-    // }
-    // @include for-wide-layout {
-    //     grid-template-columns: 
-    //         minmax(20px, 1fr)
-    //         minmax(auto, $normal-breakpoint)
-    //         minmax(20px, 1fr);
-    // }
+  .app-footer {
+    grid-column: 1 / -1;
+    grid-row: 3;
+  }
+
+  .app-header {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+  // @include for-narrow-layout {
+  //     grid-template-columns:
+  //         minmax(20px, 1fr)
+  //         minmax(auto, $mobile-breakpoint)
+  //         minmax(20px, 1fr);
+  // }
+  // @include for-normal-layout {
+  //     grid-template-columns:
+  //         minmax(20px, 1fr)
+  //         minmax(auto, $narrow-breakpoint)
+  //         minmax(20px, 1fr);
+  // }
+  // @include for-wide-layout {
+  //     grid-template-columns:
+  //         minmax(20px, 1fr)
+  //         minmax(auto, $normal-breakpoint)
+  //         minmax(20px, 1fr);
+  // }
 }
 
 .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 20px;
 }

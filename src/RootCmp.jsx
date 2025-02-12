@@ -21,7 +21,7 @@ import { StationDetails } from './pages/StationDetails.jsx'
 
 export function RootCmp() {
   return (
-    <div className='main-container'>
+    <div className='main-container main-layout'>
       <AppHeader />
       <UserMsg />
 
@@ -48,6 +48,7 @@ export function RootCmp() {
           </Route>
         </Routes>
       </main>
+      <aside>{/* Here will be the sidebar */}</aside>
       <AppFooter />
     </div>
   )
