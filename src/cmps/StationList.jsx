@@ -33,19 +33,18 @@ function ScrollRightBtn() {
 
   // Add right button scroller
   useEffect(() => {
-    // TODO: create as custom hook
-
     const elScroll = document.querySelector('.station-list')
     const elBtn = document.querySelector('.btn-scroll-right')
 
-    _toggleRender()
+    // when called before load, elScroll.clientWidth equals elScroll.scrollWidth.
+    setTimeout(() => _toggleRender(), 1500)
 
     // Scroll the station list when the button is clicked
     const clickListener = elBtn.addEventListener('click', () => {
       elScroll.scrollBy({ left: 600, behavior: 'smooth' })
     })
 
-    elScroll.addEventListener('scroll', () => {
+    const scrollListener = elScroll.addEventListener('scroll', () => {
       // Should move button right?
       elBtn.style.transform = `translateX(${elScroll.scrollLeft}px)`
       _toggleRender()
@@ -58,6 +57,9 @@ function ScrollRightBtn() {
 
     return () => {
       elBtn.removeEventListener('click', clickListener)
+      elScroll.removeEventListener('scroll', scrollListener)
+      window.removeEventListener('load', loadHandler)
+      resizeObserver.disconnect()
     }
   }, [])
 
@@ -99,7 +101,7 @@ function ScrollLeftBtn() {
       elScroll.scrollBy({ left: -600, behavior: 'smooth' })
     })
 
-    elScroll.addEventListener('scroll', () => {
+    const scrollListener = elScroll.addEventListener('scroll', () => {
       // Should move button left?
       elBtn.style.transform = `translateX(${elScroll.scrollLeft}px)`
       _toggleRender()
@@ -112,6 +114,8 @@ function ScrollLeftBtn() {
 
     return () => {
       elBtn.removeEventListener('click', clickListener)
+      elScroll.removeEventListener('scroll', scrollListener)
+      resizeObserver.disconnect()
     }
   }, [])
 
