@@ -12,6 +12,11 @@ export function StationList({ stations }) {
             <StationPreview station={station} />
           </li>
         ))}
+        {stations.map((station) => (
+          <li className='station-item' key={station.id}>
+            <StationPreview station={station} />
+          </li>
+        ))}
       </ul>
     </div>
   )

@@ -3,4 +3,8 @@
   grid-auto-flow: column;
   justify-content: start;
   gap: 1em;
+
+  overflow-x: scroll;
+
+  scroll-snap-type: x mandatory;
 }
