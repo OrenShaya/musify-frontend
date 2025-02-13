@@ -1,8 +1,16 @@
 .station-details-header {
   display: flex;
   flex-direction: row;
+  line-height: 1;
   border-radius: 0.5em;
   background-color: $station-header-background-color;
+}
+
+.header-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-top: 4em;
 }
 
 .station-img {
