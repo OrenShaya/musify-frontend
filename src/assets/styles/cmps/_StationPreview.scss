@@ -6,6 +6,7 @@ article.station-preview {
   display: grid;
   grid-template-rows: 1fr auto;
   place-content: center;
+  padding: 1em;
 
   & .station-img {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
@@ -31,13 +32,14 @@ article.station-preview {
   background-color: $itemBgc;
   width: 172px;
   height: 226px;
+  scroll-snap-align: start;
 
   &:hover {
     background-color: $itemHoverBgc;
 
     .play-btn {
       opacity: 1;
-      bottom: 1em;
+      bottom: 0em;
     }
   }
 }
