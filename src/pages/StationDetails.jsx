@@ -23,7 +23,7 @@ export function StationDetails() {
     <section className='station-details'>
       <StationDetailsHeader station={station}/>
       <StationDetailsActionBtns />
-      <StationDetailsList />
+      <StationDetailsList station={station}/>
     </section>
   )
 }
