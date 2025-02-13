@@ -10,7 +10,7 @@ import { loadStation, addStationMsg } from '../store/actions/station.actions'
 export function StationDetailsActionBtns() {
   return (
     <section className='station-details-action-btns'>
-      <div>placeholder</div>
+      <div></div>
     </section>
   )
 }

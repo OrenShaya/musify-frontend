@@ -10,7 +10,7 @@ import { loadStation, addStationMsg } from '../store/actions/station.actions'
 export function StationDetailsList() {
   return (
     <section className='station-details-list'>
-      <div>placeholder</div>
+      <div></div>
     </section>
   )
 }
