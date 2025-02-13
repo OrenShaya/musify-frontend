@@ -16,7 +16,6 @@ export const songService = {
   getById,
   save,
   remove,
-  _createSongs,
 }
 
 async function query(filterBy = { title: '', minLength: '' }) {
@@ -120,36 +119,8 @@ function _createSong(
   return song
 }
 
-//_createSongs()
-function _createSongs() {
-  let songs = loadFromStorage(STORAGE_KEY)
-  if (!songs || !songs.length) {
-    if (!songsDemoData) {
-      songs = []
-      for (let i = 0; i < 15; i++) {
-        const title = makeLorem(3)
-        const url = 'https://youtu.be/lYBUbBu4W08'
-        const imgUrl =
-          'https://cdn.pixabay.com/photo/2013/07/13/12/41/music-160112_1280.png'
-        const addedBy = {
-          _id: 'u101',
-          fullname: 'Puki Ben David',
-        }
-        const lengthInSeconds = getRandomIntInclusive(30, 60 * 20)
-
-        songs.push(
-          _createSong(title, url, imgUrl, addedBy, lengthInSeconds, [])
-        )
-      }
-      saveToStorage(STORAGE_KEY, songs)
-    } else {
-      saveToStorage(STORAGE_KEY, songsDemoData)
-    }
-  }
-}
-
 // For debugging
-window.songss = songService
+//window.songss = songService
 
 // eslint-disable-next-line no-unused-vars
 const songsDemoData = [
@@ -334,3 +305,31 @@ const songsDemoData = [
     _id: 'eD8KAWP',
   },
 ]
+
+_createSongs()
+function _createSongs() {
+  let songs = loadFromStorage(STORAGE_KEY)
+  if (!songs || !songs.length) {
+    if (!songsDemoData) {
+      songs = []
+      for (let i = 0; i < 15; i++) {
+        const title = makeLorem(3)
+        const url = 'https://youtu.be/lYBUbBu4W08'
+        const imgUrl =
+          'https://cdn.pixabay.com/photo/2013/07/13/12/41/music-160112_1280.png'
+        const addedBy = {
+          _id: 'u101',
+          fullname: 'Puki Ben David',
+        }
+        const lengthInSeconds = getRandomIntInclusive(30, 60 * 20)
+
+        songs.push(
+          _createSong(title, url, imgUrl, addedBy, lengthInSeconds, [])
+        )
+      }
+      saveToStorage(STORAGE_KEY, songs)
+    } else {
+      saveToStorage(STORAGE_KEY, songsDemoData)
+    }
+  }
+}
