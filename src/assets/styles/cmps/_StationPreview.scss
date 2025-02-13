@@ -1,11 +1,13 @@
 $artistDescClr: #ababab;
+$itemBgc: #121212;
+$itemHoverBgc: #1f1f1f;
 
 article.station-preview {
   display: grid;
+  grid-template-rows: 1fr auto;
   place-content: center;
-  height: 330px;
 
-  & img {
+  & .station-img {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
     border-radius: 50%;
   }
@@ -16,5 +18,26 @@ article.station-preview {
 
   .artists-description {
     color: $artistDescClr;
+  }
+
+  .img-container {
+    position: relative;
+  }
+}
+
+.station-item {
+  display: grid;
+  justify-content: space-between;
+  background-color: $itemBgc;
+  width: 172px;
+  height: 226px;
+
+  &:hover {
+    background-color: $itemHoverBgc;
+
+    .play-btn {
+      opacity: 1;
+      bottom: 1em;
+    }
   }
 }
