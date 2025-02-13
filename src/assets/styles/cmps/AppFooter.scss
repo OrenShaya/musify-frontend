@@ -1,26 +1,124 @@
-.app-footer{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.app-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
 
-    min-height: 3.5rem;
+  min-height: 3.5rem;
 
-    padding: rem(10px) 1rem;
-    background-color: $clr4;
+  padding: rem(10px) 1rem;
+  background-color: black;
+  //   background-color: #fff;
 
-    p {
-        margin: 0;
+  p {
+    margin: 0;
+  }
+
+  span {
+    font-size: 0.8em;
+
+    &.local-services {
+      color: $clr1;
     }
-    
-    span {
-        font-size: .8em;
-        
-        &.local-services {
-            color: $clr1;
-        }
-        
-        &.remote-services {
-            color: $clr5;
-        }
+
+    &.remote-services {
+      color: $clr5;
     }
+  }
+}
+
+.song-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  input {
+    margin-top: 1rem;
+    width: 100%;
+  }
+}
+
+.song-btns {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.play-btn {
+  background-color: white;
+  border-radius: 50%;
+  padding: 0.5rem;
+  padding-bottom: 0.3em;
+  margin-inline: 0.7em;
+}
+
+.next-song-btn {
+  fill: #b3b3b3;
+  background-color: transparent;
+  padding: 0.5rem;
+}
+
+.previous-song-btn {
+  fill: #b3b3b3;
+  background-color: transparent;
+}
+
+.song-position-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1em;
+  width: 25em;
+
+  input[type='range'] {
+    margin-block: auto;
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    width: 25rem;
+  }
+
+  input[type='range']:focus {
+    outline: none;
+  }
+
+  input[type='range']::-webkit-slider-runnable-track {
+    // background-color: #4d4d4d;
+    // background: linear-gradient(90deg, white 30%, #4d4d4d 30%);
+
+    border-radius: 2rem;
+    height: 0.5rem;
+  }
+  //   input[type='range']:hover::-webkit-slider-runnable-track {
+
+  //   }
+
+  input[type='range']:hover::-moz-range-track {
+    background-color: #4d4d4d;
+    border-radius: 2rem;
+    height: 0.5rem;
+  }
+
+  input[type='range']::-webkit-slider-thumb {
+    opacity: 0;
+  }
+
+  input[type='range']:hover::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    opacity: 1;
+    margin-top: -4px;
+    background-color: white;
+    border-radius: 0.5rem;
+    height: 1rem;
+    width: 1rem;
+  }
+}
+
+.song-duration {
 }
