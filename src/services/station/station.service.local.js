@@ -114,6 +114,7 @@ async function addStationSong(stationId, song) {
     addedBy: song.addedBy,
     likedBy: song.likedBy,
     createdAt: song.createdAt,
+    addedAt: Date.now(),
   }
 
   station.songs.push(miniSong)
@@ -243,6 +244,7 @@ let stationsDemoData = [
         likedBy: [],
         createdAt: 1739398908555,
         updatedAt: 1739398908555,
+        addedAt: 1739398909555,
       },
       {
         _id: 'hmyRh2G',
@@ -255,6 +257,7 @@ let stationsDemoData = [
         likedBy: [],
         createdAt: 1739357362203,
         updatedAt: 1739357362203,
+        addedAt: 1739357372203,
       },
     ],
     msgs: [
@@ -278,6 +281,7 @@ let stationsDemoData = [
         rubyMyDearUrl,
       createdAt: 1739400000000,
       updatedAt: 1739403600000,
+      addedAt: 1739357732203,
     },
     likedByUsers: [
       {
@@ -299,6 +303,7 @@ let stationsDemoData = [
         likedBy: [],
         createdAt: 1739400000000,
         updatedAt: 1739400000000,
+        addedAt: 1739400005000,
       },
       {
         _id: 'song2',
@@ -311,6 +316,7 @@ let stationsDemoData = [
         likedBy: [],
         createdAt: 1739400100000,
         updatedAt: 1739400100000,
+        addedAt: 1739400120000,
       },
     ],
     msgs: [
@@ -354,6 +360,7 @@ let stationsDemoData = [
         likedBy: [],
         createdAt: 1739410000000,
         updatedAt: 1739410000000,
+        addedAt: 1739410000000,
       },
       {
         _id: 'song4',
@@ -366,6 +373,7 @@ let stationsDemoData = [
         likedBy: [],
         createdAt: 1739410100000,
         updatedAt: 1739410100000,
+        addedAt: 1739410105000,
       },
     ],
     msgs: [
@@ -415,6 +423,7 @@ let stationsDemoData = [
         likedBy: [],
         createdAt: 1739420000000,
         updatedAt: 1739420000000,
+        addedAt: 1739420007000,
       },
       {
         _id: 'song6',
@@ -427,6 +436,7 @@ let stationsDemoData = [
         likedBy: [],
         createdAt: 1739420100000,
         updatedAt: 1739420100000,
+        addedAt: 1739420007000,
       },
     ],
     msgs: [
@@ -525,9 +535,13 @@ async function updateLikedSongsStation(user) {
     likedStation = await getById(likedStationId)
   }
 
-  const likedSongsPromises = likedSongIds.map((songId) =>
-    songService.getById(songId).catch(() => null)
-  )
+  const likedSongsPromises = likedSongIds.map((songId) => {
+    const song = songService.getById(songId)
+    if (!song) return null
+    song.addedAt = Date.now()
+    return song
+  })
+
   const likedSongs = (await Promise.all(likedSongsPromises)).filter(Boolean)
   likedStation.songs = likedSongs
   await stationService.save(likedStation)
