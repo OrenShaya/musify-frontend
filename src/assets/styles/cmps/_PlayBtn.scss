@@ -1,0 +1,15 @@
+$btnClr: #1ed760;
+
+.play-btn {
+  height: 48px;
+  width: 48px;
+  padding: 0px;
+  margin: 0px;
+
+  border-radius: 50%;
+  background-color: transparent;
+
+  & img {
+    background-color: $btnClr;
+  }
+}
