@@ -8,7 +8,7 @@ export function StationList({ stations }) {
       <h2>Jump back in</h2>
       <ul className='station-list'>
         {stations.map((station) => (
-          <li key={station.id}>
+          <li className='station-item' key={station.id}>
             <StationPreview station={station} />
           </li>
         ))}

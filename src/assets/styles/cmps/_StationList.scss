@@ -1,5 +1,6 @@
 .station-list {
   display: grid;
   grid-auto-flow: column;
+  justify-content: start;
   gap: 1em;
 }

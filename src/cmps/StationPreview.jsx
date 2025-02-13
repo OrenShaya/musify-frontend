@@ -18,18 +18,18 @@ export function StationPreview({ station }) {
   }
 
   return (
-    <article className='station-preview'>
-      <div>
-        <img className='station-img' src={imgUrl} alt='' />
-      </div>
-      <div>
-        <span className='artist-name display-block'>{name}</span>
-        <span className='artists-description'>{getArtistsDisplay()}</span>
-      </div>
-      <PlayButton />
-      {/* <pre> {JSON.stringify(station, null, 2)} </pre>
-      <Link to={`/station/${station._id}`}>{station.name}</Link> */}
-    </article>
+    <>
+      <article className='station-preview'>
+        <div className='img-container'>
+          <img className='station-img' src={imgUrl} alt='' />
+          <PlayButton />
+        </div>
+        <div>
+          <span className='artist-name display-block'>{name}</span>
+          <span className='artists-description'>{getArtistsDisplay()}</span>
+        </div>
+      </article>
+    </>
   )
 }
 
