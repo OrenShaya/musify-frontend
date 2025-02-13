@@ -34,5 +34,10 @@ article.station-preview {
 
   &:hover {
     background-color: $itemHoverBgc;
+
+    .play-btn {
+      opacity: 1;
+      bottom: 1em;
+    }
   }
 }

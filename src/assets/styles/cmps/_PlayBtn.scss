@@ -2,8 +2,9 @@ $btnClr: #1ed760;
 
 .play-btn {
   position: absolute;
-  bottom: 0em;
+  bottom: -1em;
   right: 0em;
+  opacity: 0;
   height: calc(48px + 16px);
   width: calc(48px + 16px);
   margin: 0px;
