@@ -18,6 +18,7 @@ import { Login } from './pages/Login.jsx'
 import { Signup } from './pages/Signup.jsx'
 import { StationIndex } from './pages/StationIndex.jsx'
 import { StationDetails } from './pages/StationDetails.jsx'
+import { DndDemo } from './cmps/DndDemo.jsx'
 
 export function RootCmp() {
   return (
@@ -46,6 +47,8 @@ export function RootCmp() {
             <Route index element={<Login />} />
             <Route path='signup' element={<Signup />} />
           </Route>
+          {/* TODO: delete dnd-demo path */}
+          <Route path='dnd-demo' element={<DndDemo />} />
         </Routes>
       </main>
       <aside>{/* Here will be the sidebar */}</aside>
