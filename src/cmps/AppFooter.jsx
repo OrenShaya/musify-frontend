@@ -74,7 +74,7 @@ export function AppFooter() {
             </svg>
           </button>
 
-          <button className='play-btn' onClick={togglePlay}>
+          <button className='footer-play-btn' onClick={togglePlay}>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               dataEncoreId='icon'
