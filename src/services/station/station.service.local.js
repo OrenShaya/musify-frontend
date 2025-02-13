@@ -141,17 +141,79 @@ async function removeStationSong(stationId, songId) {
 
 //For debugging
 //window.stationss = stationService
+import ddtUrl from '../../assets/img/station-ddt.jpeg'
+import corpoMenteUrl from '../../assets/img/station-corpo-mente.jpeg'
+import rubyMyDearUrl from '../../assets/img/station-ruby-my-dear.jpeg'
 
-const stationsDemoData = [
+let stationsDemoData = [
   {
+    _id: 'maybe-1',
+    name: 'ДДТ',
+    tags: ['rock', '80s', 'live'], //?
+    createdBy: {
+      _id: 'maybe-u101',
+      fullname: 'Artist',
+      imgUrl: ddtUrl,
+      createdAt: 1739398908555,
+      updatedAt: 1739399900000,
+    },
+    likedByUsers: [
+      {
+        _id: '3S4c4',
+        fullname: 'admin',
+        imgUrl:
+          'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png',
+      },
+      {
+        _id: '3T5yg',
+        fullname: 'kiki',
+        imgUrl:
+          'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png',
+      },
+    ],
+    songs: [
+      {
+        _id: 'k3PgFdv',
+        title: 'Что такое осень',
+        url: 'https://youtu.be/5KC-iscJtsI',
+        imgUrl:
+          'https://i.ytimg.com/vi/_bvx_1B5P38/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLA4WUzmvcL-z7WcNKAgigFSQwuWcw',
+        lengthInSeconds: 462,
+        addedBy: { _id: 'u101', fullname: 'Puki Ben David' },
+        likedBy: [],
+        createdAt: 1739398908555,
+        updatedAt: 1739398908555,
+      },
+      {
+        _id: 'hmyRh2G',
+        title: 'more or less It it',
+        url: 'https://youtu.be/lYBUbBu4W08',
+        imgUrl:
+          'https://cdn.pixabay.com/photo/2013/07/13/12/41/music-160112_1280.png',
+        lengthInSeconds: 699,
+        addedBy: { _id: 'u101', fullname: 'Puki Ben David' },
+        likedBy: [],
+        createdAt: 1739357362203,
+        updatedAt: 1739357362203,
+      },
+    ],
+    msgs: [
+      {
+        _id: 'msg1',
+        from: { _id: '7N2Ai', fullname: 'baba' },
+        txt: 'Welcome to My Rock Station',
+        createdAt: 1739400100000,
+      },
+    ],
+  },{
     _id: 'st12345',
-    name: 'My Rock Station',
+    name: 'Corpo-Mente',
     tags: ['rock', '80s', 'live'],
     createdBy: {
       _id: 'u101',
       fullname: 'Puki Ben David',
       imgUrl:
-        'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png',
+        corpoMenteUrl,
       createdAt: 1739398908555,
       updatedAt: 1739399900000,
     },
@@ -206,13 +268,14 @@ const stationsDemoData = [
   },
   {
     _id: 'st23456',
-    name: 'The Classical Station',
+    name: 'Brame',
+    artists: ['Ruby My Dear'],
     tags: ['classical', 'orchestra', 'instrumental'],
     createdBy: {
       _id: 'u102',
       fullname: 'Alice Maestro',
       imgUrl:
-        'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png',
+        rubyMyDearUrl,
       createdAt: 1739400000000,
       updatedAt: 1739403600000,
     },
@@ -376,6 +439,8 @@ const stationsDemoData = [
     ],
   },
 ]
+
+stationsDemoData = stationsDemoData.concat(stationsDemoData)
 
 _createStations()
 function _createStations() {

@@ -5,6 +5,8 @@ import { StationPreview } from './StationPreview'
 import scrollRightUrl from '../assets/img/scroll-right.svg'
 import scrollLeftUrl from '../assets/img/scroll-left.svg'
 
+const scrollBtnsWidth = 27 * 2
+
 function ScrollRightBtn() {
   function _toggleRender() {
     const elScroll = document.querySelector('.station-list')
@@ -12,17 +14,27 @@ function ScrollRightBtn() {
 
     elScroll.offsetHeight // trigger reflow
 
-    let display = elScroll.scrollWidth > elScroll.clientWidth ? 'grid' : 'none'
+    let display =
+      elScroll.scrollWidth - scrollBtnsWidth > elScroll.clientWidth
+        ? 'grid'
+        : 'none'
 
     // Is scroll to the end?
-    if (elScroll.clientWidth + elScroll.scrollLeft >= elScroll.scrollWidth) {
+    if (
+      elScroll.clientWidth + elScroll.scrollLeft >=
+      elScroll.scrollWidth - scrollBtnsWidth
+    ) {
       display = 'none'
     }
     elBtn.style.display = display
+    console.log('elScroll.clientWidth:', elScroll.clientWidth)
+    console.log('elScroll.scrollWidth:', elScroll.scrollWidth)
   }
 
   // Add right button scroller
   useEffect(() => {
+    // TODO: create as custom hook
+
     const elScroll = document.querySelector('.station-list')
     const elBtn = document.querySelector('.btn-scroll-right')
 
@@ -63,7 +75,10 @@ function ScrollLeftBtn() {
 
     elScroll.offsetHeight // trigger reflow
 
-    let display = elScroll.scrollWidth > elScroll.clientWidth ? 'grid' : 'none'
+    let display =
+      elScroll.scrollWidth - scrollBtnsWidth > elScroll.clientWidth
+        ? 'grid'
+        : 'none'
 
     // Is scroll to the end?
     if (elScroll.scrollLeft === 0) {
@@ -116,7 +131,11 @@ export function StationList({ stations }) {
         <ScrollRightBtn />
         <ScrollLeftBtn />
         {stations.map((station) => (
-          <li className='station-item' key={station.id}>
+          // TODO: remove Math.random when using real data
+          <li
+            className='station-item'
+            key={station._id + Math.random() * 11000}
+          >
             <StationPreview station={station} />
           </li>
         ))}
@@ -127,11 +146,12 @@ export function StationList({ stations }) {
 
 StationList.propTypes = {
   stations: PropTypes.arrayOf(
-    PropTypes.exact({
-      id: PropTypes.string.isRequired,
+    PropTypes.shape({
+      _id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
-      artists: PropTypes.arrayOf(PropTypes.string).isRequired,
-      imgUrl: PropTypes.string.isRequired,
+      createdBy: PropTypes.shape({
+        imgUrl: PropTypes.string.isRequired,
+      }),
     }).isRequired
   ),
 }

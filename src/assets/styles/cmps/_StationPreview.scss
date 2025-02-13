@@ -6,7 +6,7 @@ article.station-preview {
   display: grid;
   grid-template-rows: 1fr auto;
   place-content: center;
-  padding: 1em;
+  padding: em(12px);
 
   & .station-img {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
@@ -14,6 +14,13 @@ article.station-preview {
   }
 
   .artist-name {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 140px;
     font-weight: 500;
   }
 
@@ -24,14 +31,17 @@ article.station-preview {
   .img-container {
     position: relative;
   }
+  .txt-container {
+    margin-block: 0.2em;
+  }
 }
 
 .station-item {
   display: grid;
   justify-content: space-between;
   background-color: $itemBgc;
-  width: 172px;
-  height: 226px;
+  width: 182px;
+  height: em(250px);
   scroll-snap-align: start;
 
   &:hover {
@@ -39,7 +49,7 @@ article.station-preview {
 
     .play-btn {
       opacity: 1;
-      bottom: 0em;
+      bottom: 0.8em;
     }
   }
 }

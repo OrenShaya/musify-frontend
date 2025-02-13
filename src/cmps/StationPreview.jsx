@@ -11,10 +11,11 @@ function PlayButton() {
 }
 
 export function StationPreview({ station }) {
-  const { name, artists, imgUrl } = station
+  const { name, createdBy, artists } = station
+  const imgUrl = createdBy.imgUrl
 
   const getArtistsDisplay = () => {
-    return artists.join(', ')
+    return artists?.join(', ') ?? 'Artist'
   }
 
   return (
@@ -24,7 +25,7 @@ export function StationPreview({ station }) {
           <img className='station-img' src={imgUrl} alt='' />
           <PlayButton />
         </div>
-        <div>
+        <div className='txt-container'>
           <span className='artist-name display-block'>{name}</span>
           <span className='artists-description'>{getArtistsDisplay()}</span>
         </div>
@@ -34,10 +35,12 @@ export function StationPreview({ station }) {
 }
 
 StationPreview.propTypes = {
-  station: PropTypes.exact({
-    id: PropTypes.string.isRequired,
+  station: PropTypes.shape({
+    _id: PropTypes.string,
     name: PropTypes.string.isRequired,
-    artists: PropTypes.arrayOf(PropTypes.string).isRequired,
-    imgUrl: PropTypes.string.isRequired,
+    artists: PropTypes.arrayOf(PropTypes.string),
+    createdBy: PropTypes.shape({
+      imgUrl: PropTypes.string.isRequired,
+    }),
   }).isRequired,
 }
