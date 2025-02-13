@@ -10,20 +10,22 @@ import { StationDetailsHeader } from '../cmps/StationDetailsHeader'
 import { StationDetailsList } from '../cmps/StationDetailsList'
 import { StationDetailsActionBtns } from '../cmps/StationDetailsContentActionBtns'
 
-export function StationDetails() {
+export async function StationDetails() {
   const { stationId } = useParams()
+  
   const station = useSelector((storeState) => storeState.stationModule.station)
+  console.log('from details:',station)
+  
 
   useEffect(() => {
     loadStation(stationId)
-  }, [stationId])
+  }, [station])
 
   return (
     <section className='station-details'>
-      <StationDetailsHeader />
+      <StationDetailsHeader station={station}/>
       <StationDetailsActionBtns />
       <StationDetailsList />
-      <pre> {JSON.stringify(station, null, 2)} </pre>
     </section>
   )
 }

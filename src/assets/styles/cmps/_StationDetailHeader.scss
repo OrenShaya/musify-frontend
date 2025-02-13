@@ -1,1 +1,26 @@
-// placeholder
+.station-details-header {
+  display: flex;
+  flex-direction: row;
+  background-color: $station-header-background-color;
+}
+
+.station-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: em(230px);
+  width: em(230px);
+
+  background-color: $station-img-default-background-color;
+  fill: $station-img-default-fill-color;
+
+  svg {
+    height: 4em;
+    width: 4em;
+  }
+}
+
+.station-name {
+  font-size: em(96px);
+}
