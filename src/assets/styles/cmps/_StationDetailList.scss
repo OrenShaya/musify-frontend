@@ -7,7 +7,7 @@
     minmax(120px, var(--col1, 6fr)) // need to find out
     minmax(120px, var(--col2, 4fr)) // what to place
     minmax(120px, var(--col3, 3fr)) // in those vars
-    minmax(120px, var(--col4, 1fr)); //
+    minmax(120px, var(--col4, 1fr));
   margin: 0 em(24px);
 }
 hr {
