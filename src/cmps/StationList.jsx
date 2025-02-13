@@ -27,8 +27,8 @@ function ScrollRightBtn() {
       display = 'none'
     }
     elBtn.style.display = display
-    console.log('elScroll.clientWidth:', elScroll.clientWidth)
-    console.log('elScroll.scrollWidth:', elScroll.scrollWidth)
+    // console.log('elScroll.clientWidth:', elScroll.clientWidth)
+    // console.log('elScroll.scrollWidth:', elScroll.scrollWidth)
   }
 
   // Add right button scroller
