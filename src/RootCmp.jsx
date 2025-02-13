@@ -19,6 +19,9 @@ import { Signup } from './pages/Signup.jsx'
 import { StationIndex } from './pages/StationIndex.jsx'
 import { StationDetails } from './pages/StationDetails.jsx'
 
+import {} from './services/station'
+import {} from './services/song'
+
 export function RootCmp() {
   return (
     <div className='main-container main-layout'>

@@ -3,7 +3,7 @@ const { DEV, VITE_LOCAL } = import.meta.env
 import { songService as local } from './song.service.local'
 import { songService as remote } from './song.service.remote'
 
-function getEmptySong() {
+export function getEmptySong() {
   return {
     title: '',
     url: '',
