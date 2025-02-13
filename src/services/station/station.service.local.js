@@ -377,7 +377,6 @@ const stationsDemoData = [
   },
 ]
 
-_createStations()
 function _createStations() {
   let stations = loadFromStorage(STORAGE_KEY)
   if (!stations || !stations.length) {
@@ -386,3 +385,141 @@ function _createStations() {
     }
   }
 }
+
+_createStations()
+
+// eslint-disable-next-line no-unused-vars
+async function unitTestStationService() {
+  try {
+    console.log('**** Start station service unit test ****')
+
+    // Query initial stations
+    let stations = await stationService.query()
+    console.log(
+      'initial stations:',
+      stations,
+      'stations count',
+      stations.length
+    )
+    console.log('Expected: array of demo stations from storage')
+
+    const loggedInUser = await userService.login({
+      username: 'admin',
+      password: 'admin',
+    })
+
+    // Add a new station
+    const newStation = {
+      name: 'Test Station',
+      tags: ['test', 'demo'],
+      // For new stations, createdBy, likedByUsers, songs, msgs are left empty;
+      // the service will use the active user for createdBy.
+      likedByUsers: [],
+      songs: [],
+      msgs: [],
+    }
+    const addedStation = await stationService.save(newStation)
+    console.log('Added station:', addedStation)
+    console.log(
+      'Expected: New station object with a generated _id, createdBy set from active user, and current timestamps'
+    )
+
+    // Update the new station (change its name)
+    const updatedStationData = { ...addedStation, name: 'Test Station Updated' }
+    const updatedStation = await stationService.save(updatedStationData)
+    console.log('Updated station:', updatedStation)
+    console.log(
+      'Expected: station  with name updated to "Test Station Updated" and a updated updatedAt timestamp'
+    )
+
+    // Update the new station (change its name)
+    const updatedStationDataLikedUser = {
+      ...updatedStation,
+      likedByUsers: [
+        { _id: loggedInUser._id, fullname: loggedInUser.fullname },
+      ],
+    }
+    const updatedStationLikedUser = await stationService.save(
+      updatedStationDataLikedUser
+    )
+    console.log('updated station:', updatedStationLikedUser)
+    console.log(
+      'Expected: station with likedByUsers updated to loggedInUser and a updated updatedAt timestamp'
+    )
+
+    // Retrieve station by id
+    const fetchedStation = await stationService.getById(updatedStation._id)
+    console.log('fetched station by id:', fetchedStation)
+    console.log('Expected: station matching the updated station')
+
+    // test addStationSong:
+    // new demo song object
+    const newSong = {
+      _id: makeId(7),
+      title: 'Test Song for Station',
+      url: 'https://youtu.be/testsong',
+      imgUrl: 'https://placeholder.com',
+      lengthInSeconds: 300,
+      // The service will use the active user for addedBy in save() if song._id is not provided,
+      // but here we mimic a song with an _id already.
+      addedBy: { _id: loggedInUser._id, fullname: loggedInUser.fullname },
+      likedBy: [],
+      createdAt: Date.now(),
+      updatedAt: Date.now(),
+    }
+    const addedSong = await stationService.addStationSong(
+      updatedStation._id,
+      newSong
+    )
+    console.log('added station song:', addedSong)
+    console.log(
+      "Expected: song object added to the station's songs array (with matching _id and song details)"
+    )
+    // Retrieve station by id to see added song
+    const fetchedStation2 = await stationService.getById(updatedStation._id)
+    console.log('fetched station by id to view added song:', fetchedStation2)
+    console.log(
+      'Expected: station matching the updated station with added song'
+    )
+
+    // Remove station song
+    await stationService.removeStationSong(updatedStation._id, addedSong._id)
+    console.log(`removed station song with id: ${addedSong._id}`)
+    console.log(
+      "Expected: song with the given _id is removed from the station's songs array"
+    )
+
+    // Retrieve station by id to see removed song
+    const fetchedStation3 = await stationService.getById(updatedStation._id)
+    console.log('fetched station by id to view removed song:', fetchedStation3)
+    console.log(
+      'Expected: station matching the updated station with removed song'
+    )
+
+    // Remove station
+    await stationService.remove(updatedStation._id)
+    console.log('removed station with id:', updatedStation._id)
+    console.log(
+      'Expected: station with the provided _id is removed from storage'
+    )
+
+    // Query stations again to confirm removal
+    stations = await stationService.query()
+    console.log(
+      'Stations after removal:',
+      stations,
+      'stations count',
+      stations.length
+    )
+    console.log(
+      'Expected: array of stations should not include removed station'
+    )
+
+    await userService.logout()
+    console.log('**** Station service unit test completed ****')
+  } catch (err) {
+    console.error('Error during station service unit test:', err)
+  }
+}
+
+// unitTestStationService()

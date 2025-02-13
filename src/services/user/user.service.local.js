@@ -199,5 +199,77 @@ async function _createAdmin() {
   console.log('newUser: ', newUser)
 }
 
-//For debugging
-//window.userss = userService
+async function unitTestUserService() {
+  try {
+    console.log('**** Starting User Service Unit Test ****')
+
+    //  Get initial users
+    let users = await userService.getUsers()
+    console.log('initial users:', users)
+    console.log('Expected: demo users array (should contain demo users)')
+
+    // Signup new user
+    const newUserCred = {
+      username: 'testuser',
+      password: 'testuser',
+      fullname: 'Test User',
+    }
+    const signedUpUser = await userService.signup(newUserCred)
+    console.log('signed up user:', signedUpUser)
+    console.log(
+      'Expected: new user object with username "testuser" and no password'
+    )
+
+    // Get users again to verify new user
+    users = await userService.getUsers()
+    console.log('users after signup:', users)
+    console.log('Expected: demo users array include new "testuser"')
+
+    //  Log in loggedInUser with the new user cred
+    const loggedInUser = await userService.login({
+      username: 'testuser',
+      password: 'testuser',
+    })
+    console.log('logged in user:', loggedInUser)
+    console.log('Expected: minimal user object "testuser" from session storage')
+
+    // Update new user's fullname
+    const updatedUser = await userService.update({
+      _id: signedUpUser._id,
+      fullname: 'User Updated',
+    })
+    console.log('updated user:', updatedUser)
+    console.log(
+      'Expected: user object with fullname changed to "Test User Updated"'
+    )
+
+    // Retrieve user by ID
+    const userById = await userService.getById(signedUpUser._id)
+    console.log('User fetched by ID:', userById)
+    console.log('Expected: user object matching the updated user details')
+
+    // Remove user
+    await userService.remove(signedUpUser._id)
+    console.log('removed user id:', signedUpUser._id)
+    console.log(
+      'Expected: user with the provided _id should be removed from storage'
+    )
+
+    // Get users again to confirm removal
+    users = await userService.getUsers()
+    console.log('Users after removal:', users)
+    console.log('Expected: demo users array that does not include "testuser"')
+
+    // Logout
+    await userService.logout()
+    const currentUser = userService.getLoggedinUser()
+    console.log('current logged in user after logout:', currentUser)
+    console.log('Expected: null (session storage cleared)')
+
+    console.log('**** user service unit test completed ****')
+  } catch (err) {
+    console.error('Error user service unit test:', err)
+  }
+}
+
+//unitTestUserService()
