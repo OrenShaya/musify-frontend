@@ -14,6 +14,13 @@ export function StationIndex() {
   return (
     <div className='station-index'>
       <StationList stations={allStations} />
+      <StationList stations={allStations} />
+      <StationList stations={allStations} />
+      <StationList stations={allStations} />
+      <StationList stations={allStations} />
+      <StationList stations={allStations} />
+      <StationList stations={allStations} />
+      <StationList stations={allStations} />
     </div>
   )
 }

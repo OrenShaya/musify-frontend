@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 
 import { StationPreview } from './StationPreview'
@@ -7,10 +7,12 @@ import scrollLeftUrl from '../assets/img/scroll-left.svg'
 
 const scrollBtnsWidth = 27 * 2
 
-function ScrollRightBtn() {
+function ScrollRightBtn({ scrollRef }) {
+  const btnRef = useRef()
+
   function _toggleRender() {
-    const elScroll = document.querySelector('.station-list')
-    const elBtn = document.querySelector('.btn-scroll-right')
+    const elScroll = scrollRef.current
+    const elBtn = btnRef.current
 
     elScroll.offsetHeight // trigger reflow
 
@@ -33,10 +35,10 @@ function ScrollRightBtn() {
 
   // Add right button scroller
   useEffect(() => {
-    const elScroll = document.querySelector('.station-list')
-    const elBtn = document.querySelector('.btn-scroll-right')
+    const elScroll = scrollRef.current
+    const elBtn = btnRef.current
 
-    // when called before load, elScroll.clientWidth equals elScroll.scrollWidth.
+    // why settimeout? when called before load, elScroll.clientWidth equals elScroll.scrollWidth.
     setTimeout(() => _toggleRender(), 1500)
 
     // Scroll the station list when the button is clicked
@@ -58,22 +60,23 @@ function ScrollRightBtn() {
     return () => {
       elBtn.removeEventListener('click', clickListener)
       elScroll.removeEventListener('scroll', scrollListener)
-      window.removeEventListener('load', loadHandler)
       resizeObserver.disconnect()
     }
   }, [])
 
   return (
-    <button className='btn-scroll btn-scroll-right'>
+    <button className='btn-scroll btn-scroll-right' ref={btnRef}>
       <img className='scroll-icon' src={scrollRightUrl} alt='' />
     </button>
   )
 }
 
-function ScrollLeftBtn() {
+function ScrollLeftBtn({ scrollRef }) {
+  const btnRef = useRef()
+
   function _toggleRender() {
-    const elScroll = document.querySelector('.station-list')
-    const elBtn = document.querySelector('.btn-scroll-left')
+    const elScroll = scrollRef.current
+    const elBtn = btnRef.current
 
     elScroll.offsetHeight // trigger reflow
 
@@ -91,8 +94,8 @@ function ScrollLeftBtn() {
 
   // Add left button scroller
   useEffect(() => {
-    const elScroll = document.querySelector('.station-list')
-    const elBtn = document.querySelector('.btn-scroll-left')
+    const elScroll = scrollRef.current
+    const elBtn = btnRef.current
 
     _toggleRender()
 
@@ -120,20 +123,22 @@ function ScrollLeftBtn() {
   }, [])
 
   return (
-    <button className='btn-scroll btn-scroll-left'>
+    <button className='btn-scroll btn-scroll-left' ref={btnRef}>
       <img className='scroll-icon' src={scrollLeftUrl} alt='' />
     </button>
   )
 }
 
 export function StationList({ stations }) {
+  const scrollRef = useRef()
+
   return (
     <div>
       <h2>Jump back in</h2>
 
-      <ul className='station-list'>
-        <ScrollRightBtn />
-        <ScrollLeftBtn />
+      <ul ref={scrollRef} className='station-list'>
+        <ScrollRightBtn scrollRef={scrollRef} />
+        <ScrollLeftBtn scrollRef={scrollRef} />
         {stations.map((station) => (
           // TODO: remove Math.random when using real data
           <li
@@ -158,4 +163,12 @@ StationList.propTypes = {
       }),
     }).isRequired
   ),
+}
+
+ScrollRightBtn.propTypes = {
+  scrollRef: PropTypes.object,
+}
+
+ScrollLeftBtn.propTypes = {
+  scrollRef: PropTypes.object,
 }
