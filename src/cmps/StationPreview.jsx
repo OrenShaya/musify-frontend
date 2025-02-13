@@ -35,6 +35,7 @@ export function StationPreview({ station }) {
 
 StationPreview.propTypes = {
   station: PropTypes.exact({
+    id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     artists: PropTypes.arrayOf(PropTypes.string).isRequired,
     imgUrl: PropTypes.string.isRequired,
