@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { storageService } from '../async-storage.service'
+import { loadFromStorage, saveToStorage } from '../util.service'
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 const STORAGE_KEY_USERS = 'users_db'
@@ -102,6 +103,71 @@ function saveLoggedinUser(user) {
   }
   sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
   return user
+}
+
+_createUsers()
+function _createUsers() {
+  let users = loadFromStorage(STORAGE_KEY_USERS)
+  if (!users || !users.length) {
+    const demoUsers = [
+      {
+        username: 'admin',
+        password: 'admin',
+        fullname: 'admin',
+        isAdmin: true,
+        likedStationIds: [],
+        likedSongIds: [],
+        imgUrl:
+          'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png',
+        _id: '3S4c4',
+      },
+      {
+        username: 'kiki',
+        password: 'kiki',
+        fullname: 'kiki',
+        isAdmin: false,
+        likedStationIds: [],
+        likedSongIds: [],
+        imgUrl:
+          'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png',
+        _id: '3T5yg',
+      },
+      {
+        username: 'muki',
+        password: 'muki',
+        fullname: 'muki',
+        isAdmin: false,
+        likedStationIds: [],
+        likedSongIds: [],
+        imgUrl:
+          'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png',
+        _id: 'NuBkh',
+      },
+      {
+        username: 'shuki',
+        password: 'shuki',
+        fullname: 'shuki',
+        isAdmin: false,
+        likedStationIds: [],
+        likedSongIds: [],
+        imgUrl:
+          'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png',
+        _id: 'Oeiwy',
+      },
+      {
+        username: 'baba',
+        password: 'baba',
+        fullname: 'baba',
+        isAdmin: false,
+        likedStationIds: [],
+        likedSongIds: [],
+        imgUrl:
+          'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png',
+        _id: '7N2Ai',
+      },
+    ]
+    saveToStorage(STORAGE_KEY_USERS, demoUsers)
+  }
 }
 
 // To quickly create an admin user, uncomment the next line
