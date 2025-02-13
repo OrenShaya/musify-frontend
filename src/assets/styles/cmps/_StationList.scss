@@ -44,3 +44,8 @@ $scrollBtnClr: brightness(0) saturate(100%) invert(100%) sepia(96%)
     filter: $scrollBtnClr;
   }
 }
+
+.btn-scroll-left {
+  left: 0;
+  top: 86px; // 172/2=86 (172 is station-item width)
+}
