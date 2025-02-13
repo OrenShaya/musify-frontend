@@ -26,7 +26,7 @@ export function StationDetailsHeader({station}) {
         <div className='station-name'>MyPlaylist#3</div>
         <div className='user-verified'>
           <span className='verified-icon'>❄️</span>
-          <h2 className='artist-title'>{createdBy?.fullname} •</h2>
+          <h2 className='artist-title'>{createdBy?.fullname} • {/* number of songs here */}, {/* songs length here*/}</h2>
           <div className='placeholder'> </div>
         </div>
       </div>
