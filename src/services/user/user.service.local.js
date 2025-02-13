@@ -165,6 +165,17 @@ function _createUsers() {
           'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png',
         _id: '7N2Ai',
       },
+      {
+        username: 'puki',
+        password: 'puki',
+        fullname: 'Puki Ben David',
+        isAdmin: false,
+        likedStationIds: [],
+        likedSongIds: [],
+        imgUrl:
+          'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png',
+        _id: 'u101',
+      },
     ]
     saveToStorage(STORAGE_KEY_USERS, demoUsers)
   }
