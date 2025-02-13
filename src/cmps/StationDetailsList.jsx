@@ -10,7 +10,13 @@ import { loadStation, addStationMsg } from '../store/actions/station.actions'
 export function StationDetailsList(station) {
   return (
     <section className='station-details-list'>
-      <div></div>
+      <div className='station-table'>
+        <div className='song-number'>#</div> 
+        <div className='song-name'>Title</div> 
+        <div className='song-album'>Album</div> 
+        <div className='song-added-date'>Date added</div> 
+      </div>
+      <hr />
     </section>
   )
 }
