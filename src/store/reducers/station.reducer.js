@@ -1,9 +1,12 @@
+/* eslint-disable no-case-declarations */
 export const SET_STATIONS = 'SET_STATIONS'
 export const SET_STATION = 'SET_STATION'
 export const REMOVE_STATION = 'REMOVE_STATION'
 export const ADD_STATION = 'ADD_STATION'
 export const UPDATE_STATION = 'UPDATE_STATION'
 export const ADD_STATION_MSG = 'ADD_STATION_MSG'
+export const ADD_STATION_SONG = 'ADD_STATION_SONG'
+export const REMOVE_STATION_SONG = 'REMOVE_STATION_SONG'
 
 const initialState = {
   stations: [],
@@ -11,8 +14,9 @@ const initialState = {
 }
 
 export function stationReducer(state = initialState, action) {
-  var newState = state
-  var stations
+  let newState = state
+  let stations
+
   switch (action.type) {
     case SET_STATIONS:
       newState = { ...state, stations: action.stations }
@@ -21,7 +25,6 @@ export function stationReducer(state = initialState, action) {
       newState = { ...state, station: action.station }
       break
     case REMOVE_STATION:
-      // eslint-disable-next-line no-case-declarations
       const lastRemovedStation = state.stations.find(
         (station) => station._id === action.stationId
       )
@@ -44,11 +47,32 @@ export function stationReducer(state = initialState, action) {
         ...state,
         station: {
           ...state.station,
-          msgs: [...(state.station.msgs || []), action.msg],
+          msgs: [...(state.station?.msgs || []), action.msg],
+        },
+      }
+      break
+    case ADD_STATION_SONG:
+      newState = {
+        ...state,
+        station: {
+          ...state.station,
+          songs: [...(state.station?.songs || []), action.song],
+        },
+      }
+      break
+    case REMOVE_STATION_SONG:
+      newState = {
+        ...state,
+        station: {
+          ...state.station,
+          songs: (state.station?.songs || []).filter(
+            (song) => song._id !== action.songId
+          ),
         },
       }
       break
     default:
+      break
   }
   return newState
 }

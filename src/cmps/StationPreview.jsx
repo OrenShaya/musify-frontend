@@ -27,6 +27,8 @@ export function StationPreview({ station }) {
         <span className='artists-description'>{getArtistsDisplay()}</span>
       </div>
       <PlayButton />
+      {/* <pre> {JSON.stringify(station, null, 2)} </pre>
+      <Link to={`/station/${station._id}`}>{station.name}</Link> */}
     </article>
   )
 }

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const { DEV, VITE_LOCAL } = import.meta.env
 
 import { getRandomIntInclusive, makeId } from '../util.service'
@@ -7,16 +8,24 @@ import { stationService as remote } from './station.service.remote'
 
 function getEmptyStation() {
   return {
-    vendor: makeId(),
-    speed: getRandomIntInclusive(80, 240),
+    name: '',
+    tags: [],
+    createdBy: {
+      _id: '',
+      fullname: '',
+      imgUrl: '',
+      createdAt: Date.now(),
+    },
+    likedByUsers: [], // '{minimal-user}'
+    songs: [],
     msgs: [],
   }
 }
 
 function getDefaultFilter() {
   return {
-    txt: '',
-    minSpeed: '',
+    name: '',
+    tags: '',
     sortField: '',
     sortDir: '',
   }

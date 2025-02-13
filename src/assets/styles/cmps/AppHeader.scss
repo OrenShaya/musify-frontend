@@ -1,12 +1,15 @@
 .app-header {
     display: flex;
     min-height: 3.5rem;
-
-    background-color: $clr4;
+    justify-content: space-between;
+    align-items: center;
+    
+    background-color: $clr8;
     padding: rem(10px) 1rem;
     
     nav {
         display: flex;
+        justify-content: space-between;
         width: 100%;
         align-items: center;
         gap: 1em;
@@ -59,3 +62,4 @@
         }
     }
 }
+

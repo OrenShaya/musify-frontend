@@ -1,0 +1,57 @@
+.search-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+    padding-inline: 2em;
+    padding-block: 0.2em;
+    background-color: $gray5;
+    border-radius: 3em;
+    outline: 1px solid transparent;
+    transition: outline 0.7s ease;
+}
+
+.search-bar {
+    @include search-bar;
+    background-color: $gray5;
+    width: 25em;
+    text-decoration: none;
+    outline: none;
+    cursor: text
+
+}
+
+
+.search-icon {
+    fill: #b3b3b3;
+    transition: fill 0.7s ease;
+    cursor: pointer;
+}
+
+.search-container:hover{
+    outline: 1px solid rgba(white, 0.5);
+}
+
+.search-container:focus-within {
+    outline: 4px solid rgba(rgb(255, 255, 255), 0.5); // Commenting out the outline
+    
+    .search-icon {
+        fill: white;
+    }
+}
+
+
+.nav-links {
+    display: flex;
+    align-items: center; 
+    gap: 1em;
+}
+
+.home-btn {
+    background-color: $gray5;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 1em 1.2em;
+}

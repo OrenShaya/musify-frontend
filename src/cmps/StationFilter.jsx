@@ -10,25 +10,33 @@ export function StationFilter({ filterBy, setFilterBy }) {
   }, [filterToEdit])
 
   function handleChange(ev) {
-    const type = ev.target.type
     const field = ev.target.name
+    const { type, value: rawValue, checked } = ev.target
     let value
 
     switch (type) {
       case 'text':
-      case 'radio':
-        value = field === 'sortDir' ? +ev.target.value : ev.target.value
-        if (!filterToEdit.sortDir) filterToEdit.sortDir = 1
+        value = rawValue
         break
       case 'number':
-        value = +ev.target.value || ''
+        value = +rawValue || ''
         break
+      case 'radio':
+        value = name === 'sortDir' ? Number(rawValue) : rawValue
+        break
+      case 'checkbox':
+        // For a checkbox, when checked, set sortField to the value, otherwise clear it.
+        value = checked ? rawValue : ''
+        break
+      default:
+        value = rawValue
     }
+
     setFilterToEdit({ ...filterToEdit, [field]: value })
   }
 
   function clearFilter() {
-    setFilterToEdit({ ...filterToEdit, txt: '', minSpeed: '', maxPrice: '' })
+    setFilterToEdit({ ...filterToEdit, name: '' })
   }
 
   function clearSort() {
@@ -40,18 +48,9 @@ export function StationFilter({ filterBy, setFilterBy }) {
       <h3>Filter:</h3>
       <input
         type='text'
-        name='txt'
-        value={filterToEdit.txt}
-        placeholder='Free text'
-        onChange={handleChange}
-        required
-      />
-      <input
-        type='number'
-        min='0'
-        name='minSpeed'
-        value={filterToEdit.minSpeed}
-        placeholder='min. speed'
+        name='name'
+        value={filterToEdit.name}
+        placeholder='Name'
         onChange={handleChange}
         required
       />
@@ -61,16 +60,16 @@ export function StationFilter({ filterBy, setFilterBy }) {
       <h3>Sort:</h3>
       <div className='sort-field'>
         <label>
-          <span>Speed</span>
+          <span>By Name</span>
           <input
-            type='radio'
+            type='checkbox'
             name='sortField'
-            value='speed'
-            checked={filterToEdit.sortField === 'speed'}
+            value='name'
+            checked={filterToEdit.sortField === 'name'}
             onChange={handleChange}
           />
         </label>
-        <label>
+        {/* <label>
           <span>Vendor</span>
           <input
             type='radio'
@@ -89,7 +88,7 @@ export function StationFilter({ filterBy, setFilterBy }) {
             checked={filterToEdit.sortField === 'owner'}
             onChange={handleChange}
           />
-        </label>
+        </label> */}
       </div>
       <div className='sort-dir'>
         <label>
