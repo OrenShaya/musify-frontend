@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { storageService } from '../async-storage.service'
 import { loadFromStorage, saveToStorage } from '../util.service'
+import { stationService } from '../station'
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 const STORAGE_KEY_USERS = 'users_db'
@@ -15,6 +16,10 @@ export const userService = {
   update,
   getLoggedinUser,
   saveLoggedinUser,
+  addLikedSongId,
+  removeLikedSongId,
+  addLikedStationId,
+  removeLikedStationId,
 }
 
 async function getUsers() {
@@ -36,7 +41,6 @@ function remove(userId) {
 async function update(updateInfo) {
   let userToUpdate
   if (updateInfo && updateInfo._id) {
-    // If updateInfo is the entire user object
     userToUpdate = await storageService.get(STORAGE_KEY_USERS, updateInfo._id)
     userToUpdate = { ...userToUpdate, ...updateInfo }
   } else {
@@ -47,7 +51,10 @@ async function update(updateInfo) {
 
   // Update session user if needed
   const loggedinUser = getLoggedinUser()
-  if (loggedinUser && loggedinUser._id === userToUpdate._id) {
+  if (
+    (loggedinUser && loggedinUser._id === userToUpdate._id) ||
+    loggedinUser.isAdmin
+  ) {
     saveLoggedinUser(userToUpdate)
   }
 
@@ -105,6 +112,76 @@ function saveLoggedinUser(user) {
   return user
 }
 
+// add song
+async function addLikedSongId(userId, songId) {
+  if (!userId || !songId) throw new Error('not valid userId or songId')
+
+  const user = await getById(userId)
+  if (!user) throw new Error('user not found')
+
+  user.likedSongIds = user.likedSongIds || []
+
+  if (!user.likedSongIds.includes(songId)) {
+    user.likedSongIds.push(songId)
+  }
+
+  const updatedUser = await update({
+    _id: userId,
+    likedSongIds: user.likedSongIds,
+  })
+  // Update the liked station after updating likedSongIds
+  await stationService.updateLikedSongsStation(updatedUser)
+  return updatedUser
+}
+
+// remove song
+async function removeLikedSongId(userId, songId) {
+  if (!userId || !songId) throw new Error('not valid userId or songId')
+
+  const user = await getById(userId)
+  if (!user) throw new Error('user not found')
+
+  user.likedSongIds = (user.likedSongIds || []).filter((id) => id !== songId)
+
+  const updatedUser = await update({
+    _id: userId,
+    likedSongIds: user.likedSongIds,
+  })
+  await stationService.updateLikedSongsStation(updatedUser)
+  return updatedUser
+}
+
+// add station
+async function addLikedStationId(userId, stationId) {
+  if (!userId || !stationId) throw new Error('not valid userId or stationId')
+
+  const user = await getById(userId)
+  if (!user) throw new Error('user not found')
+
+  user.likedStationIds = user.likedStationIds || []
+
+  if (!user.likedStationIds.includes(stationId)) {
+    user.likedStationIds.push(stationId)
+  }
+  return await update({ _id: userId, likedStationIds: user.likedStationIds })
+}
+
+// remove station
+async function removeLikedStationId(userId, stationId) {
+  if (!userId || !stationId) throw new Error('not valid userId or stationId')
+
+  const user = await getById(userId)
+  if (!user) throw new Error('user not found')
+
+  user.likedStationIds = (user.likedStationIds || []).filter(
+    (id) => id !== stationId
+  )
+  return await update({ _id: userId, likedStationIds: user.likedStationIds })
+}
+
+/************************************************************* */
+
+// next line is used to fill up with demo data
 _createUsers()
 function _createUsers() {
   let users = loadFromStorage(STORAGE_KEY_USERS)
