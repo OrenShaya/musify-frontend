@@ -1,12 +1,13 @@
 import { stationService } from '../../services/station'
 import { store } from '../store'
 import {
-  ADD_STATION,
-  REMOVE_STATION,
   SET_STATIONS,
   SET_STATION,
+  REMOVE_STATION,
+  ADD_STATION,
   UPDATE_STATION,
   ADD_STATION_MSG,
+  ADD_STATION_SONG,
 } from '../reducers/station.reducer'
 
 export async function loadStations(filterBy) {
@@ -72,6 +73,17 @@ export async function addStationMsg(stationId, txt) {
   }
 }
 
+export async function addStationSong(stationId, song) {
+  try {
+    const savedSong = await stationService.addStationSong(stationId, song)
+    store.dispatch(getCmdAddStationSong(savedSong))
+    return savedSong
+  } catch (err) {
+    console.log('Cannot add station song', err)
+    throw err
+  }
+}
+
 // Command Creators:
 function getCmdSetStations(stations) {
   return {
@@ -108,6 +120,10 @@ function getCmdAddStationMsg(msg) {
     type: ADD_STATION_MSG,
     msg,
   }
+}
+
+function getCmdAddStationSong(song) {
+  return { type: ADD_STATION_SONG, song }
 }
 
 // // unitTestActions()
