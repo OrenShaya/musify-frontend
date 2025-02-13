@@ -1,6 +1,7 @@
 .station-details-header {
   display: flex;
   flex-direction: row;
+  border-radius: 0.5em;
   background-color: $station-header-background-color;
 }
 
@@ -8,9 +9,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 2.5em 1.5em;
+  border-radius: 0.5em;
 
-  height: em(230px);
-  width: em(230px);
+  height: 13em;
+  width: 13em;
 
   background-color: $station-img-default-background-color;
   fill: $station-img-default-fill-color;
@@ -19,6 +22,10 @@
     height: 4em;
     width: 4em;
   }
+}
+
+.station-type {
+  font-size: em(14px);
 }
 
 .station-name {
