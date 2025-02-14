@@ -10,19 +10,6 @@ import { formatTimeFromSeconds } from '../services/util.service.js'
 
 export function StationDetailsList({station}) {
   // console.log(station?.songs[0])  
-   
-
-  function formatTime(songLength) {
-    if (!station?.lengthInSeconds) return 'no duration found'
-    return +formatTimeFromSeconds(songLength)
-  }
-
-  useEffect(() => {
-    if (!station) return
-    console.log(station?.songs[0])
-    var songsLength = station.songs.map((song, idx) => {})
-  }, [station])
-  
   
   return (
     <section className='station-details-list'>
@@ -51,7 +38,7 @@ export function StationDetailsList({station}) {
               {song.addedAt}
             </div>
             <div className='song-length'>
-              {formatTime(song.lengthInSeconds) && '0:00'}
+              {formatTimeFromSeconds(song?.lengthInSeconds)}
             </div>
           </div>
         })}
