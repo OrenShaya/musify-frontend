@@ -1,15 +1,28 @@
 /* eslint-disable no-unused-vars */
-// import { useEffect } from 'react'
+import { useEffect } from 'react'
 // import { useParams } from 'react-router-dom'
 // import { useSelector } from 'react-redux'
 // import { Link } from 'react-router-dom'
 
 // import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 // import { loadStation, addStationMsg } from '../store/actions/station.actions'
+import { formatTimeFromSeconds } from '../services/util.service.js'
 
 export function StationDetailsList({station}) {
-  // console.log(station?.songs)  
+  // console.log(station?.songs[0])  
+   
 
+  function formatTime(songLength) {
+    if (!station?.lengthInSeconds) return 'no duration found'
+    return +formatTimeFromSeconds(songLength)
+  }
+
+  useEffect(() => {
+    if (!station) return
+    console.log(station?.songs[0])
+    var songsLength = station.songs.map((song, idx) => {})
+  }, [station])
+  
   
   return (
     <section className='station-details-list'>
@@ -38,7 +51,7 @@ export function StationDetailsList({station}) {
               {song.addedAt}
             </div>
             <div className='song-length'>
-              {song.lengthInSeconds}
+              {formatTime(song.lengthInSeconds) && '0:00'}
             </div>
           </div>
         })}
