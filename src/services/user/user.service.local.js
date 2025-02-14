@@ -99,6 +99,16 @@ function getLoggedinUser() {
   return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
 
+export async function addUserManualy(userCred) {
+  const users = await storageService.query(STORAGE_KEY_USERS)
+  const existingUser = users.find((u) => u.username === userCred.username)
+  if (existingUser) return
+  userCred.likedStationIds = []
+  userCred.likedSongIds = []
+  userCred.isAdmin = false
+  storageService.postWithId(STORAGE_KEY_USERS, userCred)
+}
+
 function saveLoggedinUser(user) {
   user = {
     _id: user._id,
