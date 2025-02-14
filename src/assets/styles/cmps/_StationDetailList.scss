@@ -1,5 +1,6 @@
 .station-table,
 .song-row {
+  font-size: em(14px);
   display: grid;
   grid-auto-flow: column;
   grid-template-columns:
@@ -9,6 +10,7 @@
     minmax(120px, 3fr)
     minmax(120px, 1fr);
   margin: 1em 1.5em 0 1.5em;
+  color: $station-table-header-font-color;
 }
 
 hr {
@@ -26,6 +28,13 @@ $album-img-size: em(40px);
 .album-img {
   height: $album-img-size;
   width: $album-img-size;
+}
+
+.song-title {
+  font-weight: 400;
+  font-size: 1em;
+  font-family: 'Spotifymix-Bold';
+  color: #f0f0f0;
 }
 
 .album-song-artist {
