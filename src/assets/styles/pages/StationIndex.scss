@@ -1,4 +1,9 @@
 .station-index {
+  ul {
+    display: grid;
+    gap: 32px;
+  }
+
   background-color: #121212;
   color: white;
 }
