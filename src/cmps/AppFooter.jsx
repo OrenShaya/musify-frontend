@@ -62,10 +62,10 @@ export function AppFooter() {
           <button className='previous-song-btn'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
-              dataEncoreId='icon'
+              data-encore-id='icon'
               role='img'
-              ariaHidden='true'
-              class='Svg-sc-ytk21e-0 dYnaPI e-9541-icon'
+              aria-hidden='true'
+              className='Svg-sc-ytk21e-0 dYnaPI e-9541-icon'
               viewBox='0 0 16 16'
               height='16px'
               width='16px'
@@ -77,10 +77,10 @@ export function AppFooter() {
           <button className='footer-play-btn' onClick={togglePlay}>
             <svg
               xmlns='http://www.w3.org/2000/svg'
-              dataEncoreId='icon'
+              data-encore-id='icon'
               //   role='img'
-              ariaHidden='true'
-              class='Svg-sc-ytk21e-0 dYnaPI e-9541-icon'
+              aria-hidden='true'
+              className='Svg-sc-ytk21e-0 dYnaPI e-9541-icon'
               viewBox='0 0 16 16'
               height='16px'
               width='16px'
@@ -102,7 +102,7 @@ export function AppFooter() {
               data-encore-id='icon'
               role='img'
               aria-hidden='true'
-              class='Svg-sc-ytk21e-0 dYnaPI e-9541-icon'
+              className='Svg-sc-ytk21e-0 dYnaPI e-9541-icon'
               viewBox='0 0 16 16'
               height='16px'
               width='16px'

@@ -59,10 +59,10 @@ export function AppHeader() {
             <NavLink to='station'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
-                dataEncoreId='icon'
+                data-encore-id='icon'
                 role='img'
-                ariaHidden='true'
-                class='Svg-sc-ytk21e-0 bneLcE e-9541-icon'
+                aria-hidden='true'
+                className='Svg-sc-ytk21e-0 bneLcE e-9541-icon'
                 viewBox='0 0 24 24'
                 width='24'
                 height='24'
@@ -97,10 +97,10 @@ export function AppHeader() {
             <span className='browser-icon'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
-                dataEncoreId='icon'
+                data-encore-id='icon'
                 role='img'
-                ariaHidden='true'
-                class='Svg-sc-ytk21e-0 bneLcE e-9541-icon'
+                aria-hidden='true'
+                className='Svg-sc-ytk21e-0 bneLcE e-9541-icon'
                 viewBox='0 0 24 24'
                 height='24'
                 width='24'
