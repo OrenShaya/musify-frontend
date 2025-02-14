@@ -6,10 +6,19 @@
 
 // import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 // import { loadStation, addStationMsg } from '../store/actions/station.actions'
+import { formatTimeFromSeconds } from '../services/util.service.js'
 
 export function StationDetailsHeader({station}) {  
   const createdBy = station?.createdBy
   const stationImg = getStationImg(createdBy)
+
+  function songsInfo() {
+    const totalSongsLength = station?.songs.reduce((totalSongsLength, song) => {
+      return totalSongsLength + song.lengthInSeconds
+    }, 0)
+    
+    return  formatTimeFromSeconds(totalSongsLength)
+  }
 
   function getStationImg(createdBy) {
     if (createdBy?.imgUrl) return <img src={createdBy.imgUrl} className='station-img' alt='playlist img' />
@@ -26,7 +35,7 @@ export function StationDetailsHeader({station}) {
         <div className='station-name'>{station?.name}</div>
         <div className='user-verified'>
           <span className='verified-icon'>❄️</span>
-          <h2 className='artist-title'>{createdBy?.fullname} • {/* number of songs here */} {false && ','} {/* songs length here*/}</h2>
+          <h2 className='artist-title'>{createdBy?.fullname} • {station?.songs.length + ' song' + ((station?.songs.length > 1) ? 's' : '') + ','} {songsInfo()}</h2>
           <div className='placeholder'> </div>
         </div>
       </div>
