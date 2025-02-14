@@ -280,7 +280,7 @@ function _createUsers() {
 
 // async function unitTestUserService() {
 //   try {
-//     console.log('**** Starting User Service Unit Test ****')
+//     console.log('**** Starting User Service UT ****')
 
 //     //  Get initial users
 //     let users = await userService.getUsers()
@@ -356,7 +356,7 @@ function _createUsers() {
 /****************************************************************************** */
 // async function unitTestUserLikes() {
 //   try {
-//     console.log('****** Start User Likes Unit Test ******')
+//     console.log('****** Start User Likes UT ******')
 
 //     // login as admin
 //     const loggedInUser = await login({ username: 'admin', password: 'admin' })
@@ -407,7 +407,7 @@ function _createUsers() {
 //     console.log('Expected: likedStationIds is empty')
 
 //     await logout()
-//     console.log('****** User Likes Unit Test Completed ******')
+//     console.log('****** User Likes UT Completed ******')
 //   } catch (err) {
 //     console.error('Error during User Likes Unit Test:', err)
 //   }
