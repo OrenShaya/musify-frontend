@@ -169,3 +169,19 @@ export async function getAverageRGB(src) {
     }
   })
 }
+
+export function formatTimeFromSeconds(time) {
+  const minutes = Math.floor(time / 60)
+  const seconds = Math.floor(time % 60)
+  return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
+}
+
+export function formatSecondsFromTime(timeString) {
+  //timeString format:`${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
+  const timeStringArr = timeString.split(':')
+
+  const minutes = parseInt(timeStringArr[0], 10)
+  const seconds = parseInt(timeStringArr[1], 10)
+
+  return minutes * 60 + seconds
+}
