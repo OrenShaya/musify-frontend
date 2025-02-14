@@ -3,12 +3,12 @@
   display: grid;
   grid-auto-flow: column;
   grid-template-columns:
-    em(16px)
+    2em
     minmax(120px, 6fr)
     minmax(120px, 4fr)
     minmax(120px, 3fr)
     minmax(120px, 1fr);
-  margin: 0 em(24px);
+  margin: 1em 1.5em 0 1.5em;
 }
 
 hr {
@@ -20,4 +20,15 @@ $song-length-size: em(16px);
   height: $song-length-size;
   width: $song-length-size;
   fill: $station-img-default-fill-color;
+}
+
+$album-img-size: em(40px);
+.album-img {
+  height: $album-img-size;
+  width: $album-img-size;
+}
+
+.album-song-artist {
+  display: flex;
+  column-gap: 1em;
 }

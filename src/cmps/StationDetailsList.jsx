@@ -1,15 +1,14 @@
-/* eslint-disable no-unused-vars */
-import { useEffect } from 'react'
-// import { useParams } from 'react-router-dom'
-// import { useSelector } from 'react-redux'
-// import { Link } from 'react-router-dom'
-
-// import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
-// import { loadStation, addStationMsg } from '../store/actions/station.actions'
 import { formatTimeFromSeconds } from '../services/util.service.js'
 
 export function StationDetailsList({station}) {
-  // console.log(station?.songs[0])  
+  
+  function formatDate(unixDate) {
+    const date = new Date(unixDate)
+    const options = { year: 'numeric', month: 'short', day: 'numeric' }
+    const formattedDate = date.toLocaleDateString('en-US', options)
+    return formattedDate
+
+  }
   
   return (
     <section className='station-details-list'>
@@ -27,15 +26,24 @@ export function StationDetailsList({station}) {
             <div className='song-index'>
               {idx + 1}
             </div>
-            <div className='song-title-artist'>
-              {song.title}
-              {song.addedBy.fullname}
+            <div className='album-song-artist'>
+              <div className='album-img'>
+                <img src={song?.imgUrl} alt='album image' />
+              </div>
+              <div className='song-title-artist'>
+                <div className='song-title'>
+                  {song.title}
+                </div>
+                <div className='artist'>
+                  {song.addedBy.fullname}
+                </div>
+              </div>
             </div>
             <div className='song-album'>
               {/* {song.album} */ 'Album Name Here'}
             </div>
             <div>
-              {song.addedAt}
+              {formatDate(song.addedAt)}
             </div>
             <div className='song-length'>
               {formatTimeFromSeconds(song?.lengthInSeconds)}
