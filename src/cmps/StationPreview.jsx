@@ -18,11 +18,13 @@ export function StationPreview({ station }) {
     return artists?.join(', ') ?? 'Artist'
   }
 
+  const imgClass = ['', 'square'][Math.floor(Math.random() * 2)]
+  const stationImgClasses = 'index-station-img ' + imgClass
   return (
     <>
       <article className='station-preview'>
         <div className='img-container'>
-          <img className='index-station-img' src={imgUrl} alt='' />
+          <img className={stationImgClasses} src={imgUrl} alt='' />
           <PlayButton />
         </div>
         <div className='txt-container'>
