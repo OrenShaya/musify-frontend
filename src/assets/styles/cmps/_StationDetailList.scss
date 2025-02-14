@@ -1,13 +1,13 @@
-.station-table {
+.station-table,
+.song-row {
   display: grid;
   grid-auto-flow: column;
   grid-template-columns:
-    [index]
-    var(--tracklist-index-column-width, 16px)
-    minmax(120px, var(--col1, 6fr)) // need to find out
-    minmax(120px, var(--col2, 4fr)) // what to place
-    minmax(120px, var(--col3, 3fr)) // in those vars
-    minmax(120px, var(--col4, 1fr));
+    em(16px)
+    minmax(120px, 6fr)
+    minmax(120px, 4fr)
+    minmax(120px, 3fr)
+    minmax(120px, 1fr);
   margin: 0 em(24px);
 }
 hr {
