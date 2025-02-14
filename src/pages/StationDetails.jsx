@@ -12,18 +12,18 @@ import { StationDetailsActionBtns } from '../cmps/StationDetailsContentActionBtn
 
 export function StationDetails() {
   const { stationId } = useParams()
-  
-  const station = useSelector((storeState) => storeState.stationModule.station)  
+
+  const station = useSelector((storeState) => storeState.stationModule.station)
 
   useEffect(() => {
     loadStation(stationId)
-  }, [station])
+  }, [])
 
   return (
     <section className='station-details'>
-      <StationDetailsHeader station={station}/>
+      <StationDetailsHeader station={station} />
       <StationDetailsActionBtns />
-      <StationDetailsList station={station}/>
+      <StationDetailsList station={station} />
     </section>
   )
 }
