@@ -21,6 +21,7 @@ import { StationDetails } from './pages/StationDetails.jsx'
 
 import {} from './services/station'
 import {} from './services/song'
+import {} from './services/youtube-api.service.js'
 import { Sidebar } from './cmps/SideBar.jsx'
 
 export function RootCmp() {
