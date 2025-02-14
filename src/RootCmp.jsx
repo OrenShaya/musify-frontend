@@ -20,6 +20,10 @@ import { StationIndex } from './pages/StationIndex.jsx'
 import { StationDetails } from './pages/StationDetails.jsx'
 import { DndDemo } from './cmps/DndDemo.jsx'
 
+import {} from './services/station'
+import {} from './services/song'
+import { Sidebar } from './cmps/SideBar.jsx'
+
 export function RootCmp() {
   return (
     <div className='main-container main-layout'>
@@ -51,7 +55,9 @@ export function RootCmp() {
           <Route path='dnd-demo' element={<DndDemo />} />
         </Routes>
       </main>
-      <aside>{/* Here will be the sidebar */}</aside>
+      <aside>
+        <Sidebar />
+      </aside>
       <AppFooter />
     </div>
   )

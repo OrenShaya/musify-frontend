@@ -1,1 +1,41 @@
-// placeholder
+.station-details-header {
+  display: flex;
+  flex-direction: row;
+  line-height: 1;
+  border-radius: 0.5em;
+  background-color: $station-header-background-color;
+}
+
+.header-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-top: 4em;
+}
+
+.station-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2.5em 1.5em;
+  border-radius: 0.5em;
+
+  height: 13em;
+  width: 13em;
+
+  background-color: $station-img-default-background-color;
+  fill: $station-img-default-fill-color;
+
+  svg {
+    height: 4em;
+    width: 4em;
+  }
+}
+
+.station-type {
+  font-size: em(14px);
+}
+
+.station-name {
+  font-size: em(96px);
+}
