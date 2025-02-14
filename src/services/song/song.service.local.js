@@ -55,7 +55,6 @@ function getById(songId) {
 }
 
 async function remove(songId) {
-  console.log('remove(songId)', songId)
   // throw new Error('Nope')
   await storageService.remove(STORAGE_KEY, songId)
 }
