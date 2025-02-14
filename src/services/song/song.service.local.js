@@ -8,6 +8,7 @@ import {
 } from '../util.service'
 import { userService } from '../user'
 import { getEmptySong } from './index'
+import { addUserManualy } from '../user/user.service.local'
 
 const STORAGE_KEY = 'song_db'
 
@@ -103,7 +104,9 @@ function _createSong(
   imgUrl = '',
   addedBy = '',
   lengthInSeconds = 0,
-  likedBy = []
+  likedBy = [],
+  createdAt = Date.now(),
+  _id = makeId(7)
 ) {
   const song = getEmptySong()
   song.title = title
@@ -112,9 +115,10 @@ function _createSong(
   song.addedBy = addedBy
   song.likedBy = likedBy
   song.lengthInSeconds = lengthInSeconds
-  song.createdAt = song.updatedAt =
-    Date.now() - getRandomIntInclusive(0, 1000 * 60 * 60 * 24)
-  song._id = makeId(7)
+  song.createdAt =
+    createdAt || Date.now() - getRandomIntInclusive(0, 1000 * 60 * 60 * 24)
+  song.updatedAt = Date.now() - getRandomIntInclusive(0, 1000 * 60 * 60 * 24)
+  song._id = _id || makeId(6)
   return song
 }
 
@@ -329,6 +333,38 @@ function _createSongs() {
       saveToStorage(STORAGE_KEY, songsDemoData)
     }
   }
+}
+
+export async function addSongFromYT(ytSong, artist) {
+  const artistId = artist.id
+  const artistCreatedAt = artist.createdAt
+  const artistImgUrl = artist.imgUrl
+  const artistTitle = artist.artistTitle
+
+  addUserManualy({
+    _id: artistId,
+    username: artistTitle || 'JohnDoe',
+    fullname: artistTitle || 'John Doe',
+    password: artistTitle + 'pass' || 'JohnDoepass',
+    imgUrl: artistImgUrl,
+    createdAt: artistCreatedAt,
+  })
+
+  const { _id, songTitle, songUrl, imgUrl, createdAt } = ytSong
+
+  const newSong = {
+    title: songTitle,
+    url: songUrl,
+    imgUrl: imgUrl,
+    addedBy: { _id: artistId, fullname: artistTitle, imgUrl: artistImgUrl },
+    lengthInSeconds: getRandomIntInclusive(30, 400),
+    likedBy: [],
+    createdAt,
+    updatedAt: Date.now() - getRandomIntInclusive(0, 1000 * 60 * 60 * 24),
+    _id,
+  }
+
+  await storageService.postWithId(STORAGE_KEY, newSong)
 }
 
 /************************************************************************** */
