@@ -10,6 +10,14 @@
     minmax(120px, 1fr);
   margin: 0 em(24px);
 }
+
 hr {
   color: $hr-color;
+}
+
+$song-length-size: em(16px);
+.song-length {
+  height: $song-length-size;
+  width: $song-length-size;
+  fill: $station-img-default-fill-color;
 }
