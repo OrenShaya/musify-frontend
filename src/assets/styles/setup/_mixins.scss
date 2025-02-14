@@ -86,7 +86,7 @@
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  text-transform: uppercase;
+  text-align: center;
   padding: $padding;
   line-height: 1;
   font-size: rem(14px);
@@ -102,8 +102,7 @@
   color: $clr8;
 
   &:hover {
-    background-color: $hover-bg;
-    color: $hover-clr;
+    scale: 1.04;
   }
 
   &:active {
@@ -113,21 +112,16 @@
   &.active {
     background-color: $clr$bg;
     color: $bg;
-
-    &:hover {
-      background-color: $hover-clr;
-      color: $hover-bg$hover-clr;
-    }
   }
 }
 
-@mixin search-bar (
+@mixin search-bar(
   $padding: em(20px) em(30px),
   $border: none,
   $background-color: $clr6,
   $color: $clr8,
-  $cursor: pointer,
-){
+  $cursor: pointer
+) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -138,7 +132,6 @@
   color: $clr8;
   cursor: pointer;
 }
-
 
 // Type
 
