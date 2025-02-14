@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from 'react'
 import LOA7MIX from '../assets/demo-songs/LOA7MIX.wav'
 import emblem2 from '../assets/demo-songs/emblem2.png'
 import { toggleIsPlaying } from '../store/actions/system.actions'
+import { formatTimeFromSeconds } from '../services/util.service'
 
 export function AppFooter() {
   const count = useSelector((storeState) => storeState.userModule.count)
@@ -39,11 +40,7 @@ export function AppFooter() {
     }
   }, [volume])
 
-  const formatTime = (time) => {
-    const minutes = Math.floor(time / 60)
-    const seconds = Math.floor(time % 60)
-    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
-  }
+  const formatTime = (time) => formatTimeFromSeconds(time)
 
   const handleRangeInput = (input) => {
     const VALUE = ((input.value - input.min) / (input.max - input.min)) * 100
