@@ -14,7 +14,10 @@
 }
 
 hr {
-  color: $hr-color;
+  border: none;
+  height: 1px;
+  margin: em(8px) em(24px);
+  background-color: $hr-color;
 }
 
 $song-length-size: em(16px);
