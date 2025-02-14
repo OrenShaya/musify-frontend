@@ -22,7 +22,7 @@ export function StationPreview({ station }) {
     <>
       <article className='station-preview'>
         <div className='img-container'>
-          <img className='station-img' src={imgUrl} alt='' />
+          <img className='index-station-img' src={imgUrl} alt='' />
           <PlayButton />
         </div>
         <div className='txt-container'>
