@@ -2,10 +2,13 @@ import { useSelector } from 'react-redux'
 import { useState, useRef, useEffect } from 'react'
 import LOA7MIX from '../assets/demo-songs/LOA7MIX.wav'
 import emblem2 from '../assets/demo-songs/emblem2.png'
+import { toggleIsPlaying } from '../store/actions/system.actions'
 
 export function AppFooter() {
   const count = useSelector((storeState) => storeState.userModule.count)
-  const [isPlaying, setIsPlaying] = useState(false)
+  const isPlaying = useSelector(
+    (storeState) => storeState.systemModule.isPlaying
+  )
   const [currentTime, setCurrentTime] = useState(0)
   const [volume, setVolume] = useState(1)
   const audioRef = useRef(new Audio(LOA7MIX))
@@ -19,7 +22,7 @@ export function AppFooter() {
     } else {
       audioRef.current.play()
     }
-    setIsPlaying(!isPlaying)
+    toggleIsPlaying()
   }
 
   useEffect(() => {

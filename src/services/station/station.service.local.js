@@ -206,15 +206,15 @@ let stationsDemoData = [
         createdAt: 1739400100000,
       },
     ],
-  },{
+  },
+  {
     _id: 'st12345',
     name: 'Corpo-Mente',
     tags: ['rock', '80s', 'live'],
     createdBy: {
       _id: 'u101',
       fullname: 'Puki Ben David',
-      imgUrl:
-        corpoMenteUrl,
+      imgUrl: corpoMenteUrl,
       createdAt: 1739398908555,
       updatedAt: 1739399900000,
     },
@@ -277,8 +277,7 @@ let stationsDemoData = [
     createdBy: {
       _id: 'u102',
       fullname: 'Alice Maestro',
-      imgUrl:
-        rubyMyDearUrl,
+      imgUrl: rubyMyDearUrl,
       createdAt: 1739400000000,
       updatedAt: 1739403600000,
       addedAt: 1739357732203,
@@ -335,8 +334,7 @@ let stationsDemoData = [
     createdBy: {
       _id: 'u103',
       fullname: 'Bob Rhymes',
-      imgUrl:
-        'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png',
+      imgUrl: '',
       createdAt: 1739410000000,
       updatedAt: 1739413600000,
     },
@@ -392,8 +390,7 @@ let stationsDemoData = [
     createdBy: {
       _id: 'u104',
       fullname: 'Cara Synth',
-      imgUrl:
-        'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png',
+      imgUrl: '',
       createdAt: 1739420000000,
       updatedAt: 1739423600000,
     },
