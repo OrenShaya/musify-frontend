@@ -473,3 +473,11 @@
 .my-search-bar {
   @include search-bar;
 }
+
+@mixin rounded-container {
+  $containerBorder: 10px;
+  border-radius: $containerBorder;
+  & > * {
+    padding: $containerBorder;
+  }
+}
