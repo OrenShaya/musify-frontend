@@ -23,6 +23,11 @@
   outline: none;
   cursor: text;
   color: white;
+
+  &::placeholder {
+    font-size: 16px;
+    color: white;
+  }
 }
 
 .search-icon {

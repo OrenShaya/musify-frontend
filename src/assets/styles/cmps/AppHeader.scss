@@ -26,10 +26,6 @@
       color: $clr1;
     }
 
-    .logo {
-      margin-inline-start: 1.5em;
-    }
-
     .login-link {
       margin-inline-start: auto;
       margin-inline-end: 1em;
@@ -38,6 +34,11 @@
     button {
       margin-inline-end: 0;
       text-align: center;
+    }
+
+    .header-logo-link {
+      display: grid;
+      margin-inline-start: 2em;
     }
   }
 
