@@ -1,4 +1,5 @@
 // Colors
+$clr-spotify-green: #1db552;
 $clr1: #ce2e6c;
 $clr2: #4f3a65;
 $clr3: #574f7d;
@@ -13,8 +14,9 @@ $gray2: #aaa;
 $gray3: #777;
 $gray4: #333;
 $gray5: #1f1f1f;
-
-$clr-spotify-green: #1db552;
+$gray6: #121212;
+$gray7: #b3b3b3;
+$gray8: #1b1b1b;
 
 // Breakpoints
 $mobile-breakpoint: 460px;
@@ -42,6 +44,9 @@ $font-weight: (
   'extrabold': 800,
   'blackbold': 900,
 );
+
+// Sidebar
+$sidebar-width: 18em;
 
 // Colors //
 $colors: (

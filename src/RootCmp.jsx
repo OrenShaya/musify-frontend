@@ -13,6 +13,8 @@ import { UserDetails } from './pages/UserDetails'
 import { AppHeader } from './cmps/AppHeader'
 import { AppFooter } from './cmps/AppFooter'
 import { UserMsg } from './cmps/UserMsg.jsx'
+import { SideBar } from './cmps/SideBar.jsx'
+
 import { LoginSignup } from './pages/LoginSignup.jsx'
 import { Login } from './pages/Login.jsx'
 import { Signup } from './pages/Signup.jsx'
@@ -27,7 +29,6 @@ export function RootCmp() {
     <div className='main-container main-layout'>
       <AppHeader />
       <UserMsg />
-
       <main>
         <Routes>
           <Route path='' element={<HomePage />} />
@@ -51,7 +52,9 @@ export function RootCmp() {
           </Route>
         </Routes>
       </main>
-      <aside>{/* Here will be the sidebar */}</aside>
+      <aside>
+        <SideBar />
+      </aside>
       <AppFooter />
     </div>
   )
