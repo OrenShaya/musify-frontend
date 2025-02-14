@@ -21,6 +21,7 @@ import { StationDetails } from './pages/StationDetails.jsx'
 
 import {} from './services/station'
 import {} from './services/song'
+import { Sidebar } from './cmps/SideBar.jsx'
 
 export function RootCmp() {
   return (
@@ -51,7 +52,9 @@ export function RootCmp() {
           </Route>
         </Routes>
       </main>
-      <aside>{/* Here will be the sidebar */}</aside>
+      <aside>
+        <Sidebar />
+      </aside>
       <AppFooter />
     </div>
   )
