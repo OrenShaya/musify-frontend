@@ -95,6 +95,10 @@ async function save(station) {
   return savedStation
 }
 
+export async function addStationManualy(station) {
+  await storageService.postWithId(STORAGE_KEY, station)
+}
+
 async function addStationSong(stationId, song) {
   if (!stationId || !song) {
     throw new Error('Not valid stationId or song in addStationSong')
