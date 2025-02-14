@@ -1,0 +1,107 @@
+/* eslint-disable no-unused-vars */
+import axios from 'axios'
+import { saveToStorage, loadFromStorage } from './util.service'
+
+const YT_API_KEY = 'AIzaSyB_6u19ZnSR_5zv7HYgTJKw6qkPpnsREcg'
+
+const YT_STORAGE_KEY = 'ytDB'
+const YT_SONG_STORAGE_KEY = 'ytSONG_DB'
+let gSongsMap = loadFromStorage(YT_STORAGE_KEY) || {}
+let gSongs = loadFromStorage(YT_SONG_STORAGE_KEY) || {}
+
+const maxResult = 5
+const ytTop5SongURL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${maxResult}&videoEmbeddable=true&type=video&key=${YT_API_KEY}`
+const ytSongURL = `https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails&id=SONGID&key=${YT_API_KEY}` // the SONGID can be chaged
+const ytArtistURL = `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=CHANNELID&key=${YT_API_KEY}` // the CHANNELID can be chaged
+const ytPlaylistURL = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLAYLISTID&maxResults=50&key=${YT_API_KEY}` // the PLAYLISTID can be chaged
+
+export const ytService = {
+  getSongs,
+  getSong,
+  getKeywords,
+}
+
+// For DEBUGGING
+window.yts = ytService
+
+export async function getSongs(keyword = 'metal') {
+  if (gSongsMap[keyword]) {
+    return Promise.resolve(gSongsMap[keyword])
+  }
+
+  const { data } = await axios.get(`${ytTop5SongURL}&q=${keyword}`)
+  console.log('data from await axios.get(`${ytURL}&q=${keyword}`)', data)
+  gSongsMap[keyword] = data.items.map(_getSongInfo)
+  saveToStorage(YT_STORAGE_KEY, gSongsMap)
+  return gSongsMap[keyword]
+}
+
+export async function getSong(songID) {
+  if (gSongs[songID]) {
+    return Promise.resolve(gSongs[songID])
+  }
+
+  const { data } = await axios.get(_setSongURL(songID))
+  console.log('data from await axios.get(_setSongURL(songID))', data.items[0])
+  console.log(
+    'data from await axios.get(_setSongURL(songID))',
+    _getSongInfo(data.items[0])
+  )
+  // gSongs[songID] = data.map(_getSongInfo)
+  // saveToStorage(YT_SONG_STORAGE_KEY, gSongs)
+  // return gSongs[songID]
+}
+
+function _getSongURL(songID) {
+  if (!songID) return null
+  return `https://www.youtube.com/embed/${songID}`
+}
+
+function _getSongInfo(video) {
+  const { id, snippet } = video
+  const { channelId, channelTitle, publishedAt, title, thumbnails } = snippet
+  const { high, medium } = thumbnails
+
+  const songId = id.videoId
+  const songUrl = _getSongURL(songId)
+
+  const imgUrl = high.url
+  const songTitle = title
+  const artistTitle = channelTitle
+  const artistId = channelId
+  const createdAt = new Date(publishedAt)
+
+  return {
+    id: songId,
+    songTitle,
+    songUrl,
+    imgUrl,
+    artistTitle,
+    artistId,
+    createdAt,
+  }
+}
+
+function getKeywords() {
+  return Object.keys(gSongsMap)
+}
+
+function _setSongURL(songID) {
+  if (!songID) return null
+  const url = ytSongURL.replace('SONGID', songID)
+  return url
+}
+function _setArtistURL(artistID) {
+  if (!artistID) return null
+  const url = ytArtistURL.replace('CHANNELID', artistID)
+  return url
+}
+function _setPlaylistURL(playlistID) {
+  if (!playlistID) return null
+  const url = ytPlaylistURL.replace('PLAYLISTID', playlistID)
+  return url
+}
+
+/******************************************
+ * DATA FROM getSongs
+ */
