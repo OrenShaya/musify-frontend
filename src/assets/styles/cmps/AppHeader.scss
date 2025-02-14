@@ -26,11 +26,6 @@
       color: $clr1;
     }
 
-    .login-link {
-      margin-inline-start: auto;
-      margin-inline-end: 1em;
-    }
-
     button {
       margin-inline-end: 0;
       text-align: center;
@@ -67,5 +62,25 @@
     .btn-link {
       color: $clr2;
     }
+  }
+
+  .btn-header-profile {
+    display: grid;
+    place-content: center;
+    padding: 0;
+    margin: 0;
+    height: 48px;
+    width: 48px;
+
+    margin-inline-end: 1em;
+
+    background-color: #1f1f1f;
+    border-radius: 50%;
+  }
+  .header-profile-icon {
+    width: 32px;
+    height: 32px;
+    filter: invert(62%) sepia(9%) saturate(524%) hue-rotate(357deg)
+      brightness(91%) contrast(86%);
   }
 }
