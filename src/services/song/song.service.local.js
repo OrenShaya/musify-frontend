@@ -84,8 +84,8 @@ async function save(song) {
       imgUrl: song.imgUrl || '',
       addedBy: {
         _id: activeUser._id,
-        fullname: activeUser.fullname,
-        imgUrl: activeUser.imgUrl,
+        fullname: activeUser.fullname || 'Musify',
+        imgUrl: activeUser.imgUrl || '',
       },
       lengthInSeconds: song.lengthInSeconds,
       likedBy: song.likedBy,
