@@ -4,11 +4,13 @@ import PropTypes from 'prop-types'
 import { StationPreview } from './StationPreview'
 import scrollRightUrl from '../assets/img/scroll-right.svg'
 import scrollLeftUrl from '../assets/img/scroll-left.svg'
+import { useHover } from '../customHooks/useHover'
 
 const scrollBtnsWidth = 27 * 2
 
 function ScrollBtn({ scrollRef, isRight = false }) {
   const btnRef = useRef()
+  const isHovered = useHover(scrollRef)
 
   function _toggleRender() {
     const elScroll = scrollRef.current
@@ -28,20 +30,17 @@ function ScrollBtn({ scrollRef, isRight = false }) {
         elScroll.clientWidth + elScroll.scrollLeft >=
         elScroll.scrollWidth - scrollBtnsWidth
     }
-    if (isHidden) {
+    if (isHidden || !isHovered) {
       display = 'none'
     }
     elBtn.style.display = display
   }
 
-  // Add left button scroller
+  // toggle render on hover
   useEffect(() => {
     const elScroll = scrollRef.current
     const elBtn = btnRef.current
 
-    setTimeout(() => _toggleRender(), 1500)
-
-    // NOTE: left: * -1
     // Scroll the station list when the button is clicked
     const clickListener = elBtn.addEventListener('click', () => {
       const direction = isRight ? 1 : -1
@@ -64,7 +63,7 @@ function ScrollBtn({ scrollRef, isRight = false }) {
       elScroll.removeEventListener('scroll', scrollListener)
       resizeObserver.disconnect()
     }
-  }, [])
+  }, [isHovered])
 
   const btnClassName = isRight ? 'btn-scroll-right' : 'btn-scroll-left'
   const scrollUrl = isRight ? scrollRightUrl : scrollLeftUrl
