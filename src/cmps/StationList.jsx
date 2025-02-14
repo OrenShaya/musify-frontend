@@ -20,8 +20,8 @@ function ScrollBtn({ scrollRef, isRight = false }) {
 
     let display =
       elScroll.scrollWidth - scrollBtnsWidth > elScroll.clientWidth
-        ? 'grid'
-        : 'none'
+        ? true
+        : false
 
     // Is scroll to the end?
     let isHidden = elScroll.scrollLeft === 0
@@ -31,9 +31,10 @@ function ScrollBtn({ scrollRef, isRight = false }) {
         elScroll.scrollWidth - scrollBtnsWidth
     }
     if (isHidden || !isHovered) {
-      display = 'none'
+      display = false
     }
-    elBtn.style.display = display
+    if (display) elBtn.classList.add('display')
+    else elBtn.classList.remove('display')
   }
 
   // toggle render on hover
