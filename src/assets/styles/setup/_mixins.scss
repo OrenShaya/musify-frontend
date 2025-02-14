@@ -481,3 +481,7 @@
     padding: $containerBorder;
   }
 }
+
+@mixin short-transition($prop) {
+  transition: #{$prop} 0.15s ease-out;
+}

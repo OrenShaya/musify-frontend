@@ -50,7 +50,11 @@ function ScrollBtn({ scrollRef, isRight = false }) {
 
     const scrollListener = elScroll.addEventListener('scroll', () => {
       // Should move button left?
-      elBtn.style.transform = `translateX(${elScroll.scrollLeft}px)`
+      if (isRight) {
+        elBtn.style.right = `${elScroll.scrollLeft}px`
+      } else {
+        elBtn.style.left = `${elScroll.scrollLeft}px`
+      }
       _toggleRender()
     })
 
