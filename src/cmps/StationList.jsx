@@ -75,12 +75,12 @@ function ScrollBtn({ scrollRef, isRight = false }) {
   )
 }
 
-export function StationList({ stations }) {
+export function StationList({ stations, stationHeader }) {
   const scrollRef = useRef()
 
   return (
     <div>
-      <h2>Jump back in</h2>
+      <h2>{stationHeader}</h2>
 
       <ul ref={scrollRef} className='station-list'>
         <ScrollBtn isRight={true} scrollRef={scrollRef} />
@@ -109,6 +109,7 @@ StationList.propTypes = {
       }),
     }).isRequired
   ),
+  stationHeader: PropTypes.string,
 }
 
 ScrollBtn.propTypes = {
