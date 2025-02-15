@@ -1,11 +1,12 @@
 import { forwardRef, useImperativeHandle, useState, useRef } from 'react'
-import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player/youtube'
 
 // eslint-disable-next-line react-refresh/only-export-components
 function HiddenReactPlayer(props, ref) {
   const [url, setUrl] = useState('')
   const [playing, setPlaying] = useState(false)
   const [volume, setVolume] = useState(1)
+  const [mute, setMute] = useState(true)
   const playerRef = useRef()
 
   //  methods to  parent using the ref
@@ -31,27 +32,39 @@ function HiddenReactPlayer(props, ref) {
 
     setVolume: (vol) => {
       setVolume(vol)
+      setMute(false)
     },
 
     setSource: (newUrl) => {
       setUrl(newUrl)
       // to auto-play on source change
       setPlaying(true)
+      setMute(false)
     },
   }))
 
   return (
-    /* The "hidden" class should apply to hide element from view */
-    <div className='hidden'>
+    /*  "hidden" class  apply to hide element from view */
+    <div className='react-player-container hidden'>
       <ReactPlayer
         ref={playerRef}
         id='hidden-react-player'
         url={url}
         playing={playing}
         volume={volume}
-        width='0'
-        height='0'
-        className='hidden'
+        width='1px'
+        height='1px'
+        onBack
+        config={{
+          youtube: {
+            playerVars: {
+              autoplay: 1,
+              mute: mute ? 1 : 0,
+              origin: window.location.origin,
+            },
+          },
+        }}
+        //className='hidden'
         // adding props if needed.
       />
     </div>
