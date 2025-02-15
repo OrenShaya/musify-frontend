@@ -30,16 +30,15 @@ async function post(entityType, newEntity) {
   return newEntity
 }
 
+// queue the mutex chain
+let mutex = Promise.resolve()
 async function postWithId(entityType, newEntity) {
-  const entities = await query(entityType)
-  const idx = entities.findIndex((entity) => entity._id === newEntity._id)
-  if (idx >= 0) {
-    entities[idx] = newEntity
-  } else {
+  return (mutex = mutex.then(async () => {
+    const entities = await query(entityType)
     entities.push(newEntity)
-  }
-  _save(entityType, entities)
-  return newEntity
+    _save(entityType, entities)
+    return newEntity
+  }))
 }
 
 async function put(entityType, updatedEntity) {
