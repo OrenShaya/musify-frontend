@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useSelector } from 'react-redux'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 // import LOA7MIX from '../assets/demo-songs/LOA7MIX.wav'
 import emblem2 from '../assets/demo-songs/emblem2.png'
 import {
@@ -228,25 +228,18 @@ export function AppFooter({ playerRef }) {
             const newVolume = e.target.value / 100
             setVolume(newVolume)
             //audioRef.current.volume = newVolume
-            const player = audioRef.current?.contentWindow?.audioPlayer
-            if (player) {
-              player.volume = newVolume
+            // const player = audioRef.current?.contentWindow?.audioPlayer
+            // if (player) {
+            //   player.volume = newVolume
+            // }
+            if (playerRef.current) {
+              playerRef.current.setVolume(newVolume)
             }
           }}
           min={0}
           max={100}
         />
       </div>
-
-      {/* hidden iframe, loads the audio player, which instantiates the singleton */}
-      <iframe
-        ref={audioRef}
-        className='hidden'
-        src={
-          currentlyPlaying?.url || 'https://www.youtube.com/embed/hvL1339luv0'
-        }
-        title='Audio Player'
-      ></iframe>
 
       {/* {import.meta.env.VITE_LOCAL ? 
                 <span className="local-services">Local Services</span> : 
