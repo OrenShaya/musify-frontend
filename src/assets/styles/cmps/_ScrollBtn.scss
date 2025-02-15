@@ -13,7 +13,7 @@ $scrollBtnClr: brightness(0) saturate(100%) invert(100%) sepia(96%)
 .btn-scroll-left {
   transform: translateX(-0.5em);
   &.display {
-    transition: opacity 0.15s ease-out, transform 0.15s ease-out;
+    transition: opacity 0.15s ease-out; //, transform 0.15s ease-out;
     transform: translateX(0em);
   }
 }
