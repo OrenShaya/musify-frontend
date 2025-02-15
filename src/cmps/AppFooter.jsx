@@ -88,11 +88,19 @@ export function AppFooter() {
   const handleRangeInput = (input) => {
     const VALUE = ((input.value - input.min) / (input.max - input.min)) * 100
 
-    console.log(VALUE)
+    console.log('handleRangeInput VALUE', VALUE, 'input', input)
 
     input.style.background = `linear-gradient(90deg, ${songInputColor} ${
       VALUE ? VALUE : 0
     }%, #4d4d4d ${VALUE ? VALUE : 0}%)`
+  }
+
+  const handleSlider = (e) => {
+    const player = audioRef.current?.contentWindow?.audioPlayer
+    if (player) {
+      player.currentTime = e.target.value
+      handleRangeInput(e.target)
+    }
   }
 
   return (
