@@ -15,7 +15,7 @@ export function Login() {
     { name: 'Facebook', icon: facebookLogoUrl },
     { name: 'Apple', icon: appleLogoUrl },
   ]
-  console.log('services2fa:', services2fa)
+  // console.log('services2fa:', services2fa)
   return (
     <div className='login-page'>
       {/* Content */}
