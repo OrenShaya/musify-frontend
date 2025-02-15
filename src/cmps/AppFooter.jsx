@@ -217,6 +217,16 @@ export function AppFooter() {
         />
       </div>
 
+      {/* Hidden iframe that loads the audio player, which instantiates the singleton */}
+      <iframe
+        ref={audioRef}
+        className='hidden'
+        src={
+          currentlyPlaying?.url || 'https://www.youtube.com/watch?v=hvL1339luv0'
+        }
+        title='Audio Player'
+      ></iframe>
+
       {/* {import.meta.env.VITE_LOCAL ? 
                 <span className="local-services">Local Services</span> : 
                 <span className="remote-services">Remote Services</span>} */}
