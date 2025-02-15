@@ -86,11 +86,15 @@ export function AppFooter({ playerRef }) {
     //   audioRef.current.removeEventListener('timeupdate', updateCurrentTime)
     // }
 
-    const player = audioRef.current?.contentWindow?.audioPlayer
-    if (player) {
-      player.volume = volume
+    // const player = audioRef.current?.contentWindow?.audioPlayer
+    // if (player) {
+    //   player.volume = volume
+    // }
+
+    if (playerRef.current) {
+      playerRef.current.setVolume(volume)
     }
-  }, [volume])
+  }, [playerRef, volume])
 
   const formatTime = (time) => formatTimeFromSeconds(time)
 
