@@ -19,12 +19,20 @@ export function AppFooter() {
   )
   const [currentTime, setCurrentTime] = useState(0)
   const [volume, setVolume] = useState(1)
-  const audioRef = useRef(new Audio(LOA7MIX))
+
+  // const audioRef = useRef(new Audio(LOA7MIX))
+  const audioRef = useRef(null)
   const [isHovered, setIsHovered] = useState(false)
 
   let songInputColor = 'white'
 
   const togglePlay = () => {
+    const player = audioRef.current?.contentWindow?.audioPlayer
+    if (!player) return
+
+    console.log('player', player)
+    console.log('isPlaying', isPlaying)
+
     if (isPlaying) {
       audioRef.current.pause()
     } else {
