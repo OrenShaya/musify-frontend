@@ -79,8 +79,12 @@ function ScrollBtn({ scrollRef, isRight = false }) {
   )
 }
 
-export function StationList({ stations, stationHeader }) {
+export function StationList({ stations, stationHeader, onMount }) {
   const scrollRef = useRef()
+
+  useEffect(() => {
+    onMount()
+  })
 
   return (
     <div>
@@ -114,6 +118,7 @@ StationList.propTypes = {
     }).isRequired
   ),
   stationHeader: PropTypes.string,
+  onMount: PropTypes.func,
 }
 
 ScrollBtn.propTypes = {
