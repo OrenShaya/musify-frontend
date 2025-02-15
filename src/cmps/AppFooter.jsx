@@ -211,8 +211,11 @@ export function AppFooter({ playerRef }) {
           />
           <span className='song-duration'>
             {/* {formatTime(audioRef.current.duration)} */}
-            {formatTime(
+            {/* {formatTime(
               audioRef.current?.contentWindow?.audioPlayer?.duration || 0
+            )} */}
+            {formatTime(
+              playerRef.current ? playerRef.current.getDuration() : 0
             )}
           </span>
         </div>
