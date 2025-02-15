@@ -19,6 +19,7 @@
     "animate.css": "^4.1.1",
     "axios": "^1.5.0",
     "dotenv": "^16.4.7",
+    "formik": "^2.4.6",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
