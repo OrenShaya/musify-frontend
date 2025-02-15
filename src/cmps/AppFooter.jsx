@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useSelector } from 'react-redux'
 import { useState, useEffect } from 'react'
@@ -95,6 +96,12 @@ export function AppFooter({ playerRef }) {
       playerRef.current.setVolume(volume)
     }
   }, [playerRef, volume])
+
+  useEffect(() => {
+    if (currentlyPlaying && currentlyPlaying.url && playerRef.current) {
+      playerRef.current.setSource(currentlyPlaying.url)
+    }
+  }, [currentlyPlaying])
 
   const formatTime = (time) => formatTimeFromSeconds(time)
 
