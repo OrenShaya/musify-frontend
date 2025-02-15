@@ -3,6 +3,7 @@ export const SET_STATIONS = 'SET_STATIONS'
 export const SET_STATION = 'SET_STATION'
 export const REMOVE_STATION = 'REMOVE_STATION'
 export const ADD_STATION = 'ADD_STATION'
+export const SET_SONGS_QUEUE = 'SET_SONGS_QUEUE'
 export const UPDATE_STATION = 'UPDATE_STATION'
 export const ADD_STATION_MSG = 'ADD_STATION_MSG'
 export const ADD_STATION_SONG = 'ADD_STATION_SONG'
@@ -11,6 +12,7 @@ export const REMOVE_STATION_SONG = 'REMOVE_STATION_SONG'
 const initialState = {
   stations: [],
   station: null,
+  songsQueue: [],
 }
 
 export function stationReducer(state = initialState, action) {
@@ -24,6 +26,11 @@ export function stationReducer(state = initialState, action) {
     case SET_STATION:
       newState = { ...state, station: action.station }
       break
+
+    case SET_SONGS_QUEUE:
+      newState = { ...state, songsQueue: action.songsQueue }
+      break
+
     case REMOVE_STATION:
       const lastRemovedStation = state.stations.find(
         (station) => station._id === action.stationId
