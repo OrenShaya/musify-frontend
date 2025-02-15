@@ -26,12 +26,13 @@ import {} from './services/song'
 import {} from './services/youtube-api.service.js'
 
 import HiddenReactPlayer from './cmps/HiddenReactPlayer'
+import { playerSongEndedEvent } from './store/actions/player.actions.js'
 
 export function RootCmp() {
   const playerRef = useRef(null)
 
   const handleSongEnded = () => {
-    console.log('Song ended – time to move to the next song!')
+    playerSongEndedEvent
   }
   return (
     <div className='main-container main-layout'>
