@@ -1,13 +1,20 @@
 /* eslint-disable no-unused-vars */
 import axios from 'axios'
 import { saveToStorage, loadFromStorage } from './util.service'
+import { addSongFromYT } from './song/song.service.local'
+import { addStationManualy } from './station/station.service.local'
+import { storageService } from './async-storage.service'
 
 const YT_API_KEY = 'AIzaSyB_6u19ZnSR_5zv7HYgTJKw6qkPpnsREcg'
 
 const YT_STORAGE_KEY = 'ytDB'
 const YT_SONG_STORAGE_KEY = 'ytSONG_DB'
+const YT_ARTIST_STORAGE_KEY = 'ytARTIST_DB'
+const YT_PLAYLIST_STORAGE_KEY = 'ytPLAYLIST_DB'
 let gSongsMap = loadFromStorage(YT_STORAGE_KEY) || {}
 let gSongs = loadFromStorage(YT_SONG_STORAGE_KEY) || {}
+let gArtists = loadFromStorage(YT_ARTIST_STORAGE_KEY) || {}
+let gPlaylists = loadFromStorage(YT_PLAYLIST_STORAGE_KEY) || {}
 
 const maxResult = 5
 const ytTop5SongURL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${maxResult}&videoEmbeddable=true&type=video&key=${YT_API_KEY}`
