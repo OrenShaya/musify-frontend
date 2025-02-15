@@ -1,13 +1,14 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react-refresh/only-export-components */
 import { forwardRef, useImperativeHandle, useState, useRef } from 'react'
 import ReactPlayer from 'react-player/youtube'
 
-// eslint-disable-next-line react-refresh/only-export-components
 function HiddenReactPlayer(props, ref) {
   const [url, setUrl] = useState('')
   const [playing, setPlaying] = useState(false)
   const [volume, setVolume] = useState(1)
   const [mute, setMute] = useState(true)
-  const playerRef = useRef()
+  const playerRef = useRef(null)
 
   //  methods to  parent using the ref
 
@@ -54,7 +55,7 @@ function HiddenReactPlayer(props, ref) {
         volume={volume}
         width='1px'
         height='1px'
-        onBack
+        onEnded={props.onEnded}
         config={{
           youtube: {
             playerVars: {
@@ -64,14 +65,13 @@ function HiddenReactPlayer(props, ref) {
             },
           },
         }}
-        //className='hidden'
+
         // adding props if needed.
       />
     </div>
   )
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
 export default forwardRef(HiddenReactPlayer)
 
 // HiddenReactPlayer.propTypes = {}

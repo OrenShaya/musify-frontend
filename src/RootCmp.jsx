@@ -29,6 +29,10 @@ import HiddenReactPlayer from './cmps/HiddenReactPlayer'
 
 export function RootCmp() {
   const playerRef = useRef(null)
+
+  const handleSongEnded = () => {
+    console.log('Song ended – time to move to the next song!')
+  }
   return (
     <div className='main-container main-layout'>
       <AppHeader />
@@ -60,7 +64,7 @@ export function RootCmp() {
       <aside>
         <Sidebar />
       </aside>
-      <HiddenReactPlayer ref={playerRef} />
+      <HiddenReactPlayer ref={playerRef} onEnded={handleSongEnded} />
       <AppFooter playerRef={playerRef} />
     </div>
   )
