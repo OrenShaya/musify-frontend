@@ -32,7 +32,7 @@ export function RootCmp() {
   const playerRef = useRef(null)
 
   const handleSongEnded = () => {
-    playerSongEndedEvent
+    playerSongEndedEvent()
   }
   return (
     <div className='main-container main-layout'>
