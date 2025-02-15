@@ -354,7 +354,8 @@ export async function addSongFromYT(ytSong, artist) {
     createdAt: artistCreatedAt,
   })
 
-  const { _id, songTitle, songUrl, imgUrl, createdAt } = ytSong
+  const { songTitle, songUrl, imgUrl, createdAt } = ytSong
+  const songId = ytSong._id
 
   const newSong = {
     title: songTitle,
@@ -365,10 +366,11 @@ export async function addSongFromYT(ytSong, artist) {
     likedBy: [],
     createdAt,
     updatedAt: Date.now() - getRandomIntInclusive(0, 1000 * 60 * 60 * 24),
-    _id,
+    _id: songId,
   }
 
-  await storageService.postWithId(STORAGE_KEY, newSong)
+  const readySong = storageService.postWithId(STORAGE_KEY, newSong)
+  return readySong
 }
 
 /************************************************************************** */
