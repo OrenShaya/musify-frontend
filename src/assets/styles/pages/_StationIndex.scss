@@ -1,0 +1,13 @@
+.station-index {
+  background-color: #121212;
+  color: white;
+
+  .station-index-item {
+    margin-block: 2em;
+  }
+
+  .all-stations-list {
+    overflow-y: scroll;
+    height: 500px;
+  }
+}
