@@ -122,6 +122,40 @@ function _setSongURL(songID) {
   const url = ytSongURL.replace('SONGID', songID)
   return url
 }
+
+/************************************** ARTIST **************************************/
+export async function getArtist(artistID) {
+  if (!artistID) return null
+  if (gArtists[artistID]) {
+    return Promise.resolve(gArtists[artistID])
+  }
+
+  const { data } = await axios.get(_setArtistURL(artistID))
+  gArtists[artistID] = _getArtistInfo(data.items[0])
+  saveToStorage(YT_ARTIST_STORAGE_KEY, gArtists)
+  return gArtists[artistID]
+}
+
+function _getArtistInfo(video) {
+  const { id, snippet, statistics } = video
+  const { publishedAt, title, thumbnails } = snippet
+  const { high, medium } = thumbnails
+  const { subscriberCount, videoCount, viewCount } = statistics
+
+  const artistId = id
+  const imgUrl = high.url
+  const artistTitle = title
+  const createdAt = new Date(publishedAt).getTime()
+
+  return {
+    id: artistId,
+    imgUrl,
+    artistTitle,
+    createdAt,
+    statistics: { videoCount, viewCount },
+  }
+}
+
 function _setArtistURL(artistID) {
   if (!artistID) return null
   const url = ytArtistURL.replace('CHANNELID', artistID)
