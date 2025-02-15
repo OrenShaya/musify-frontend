@@ -89,19 +89,23 @@ export function AppFooter({ playerRef }) {
 
   return (
     <footer className='app-footer full'>
-      <div className='song-details'>
-        <img
-          height='70px'
-          width='70px'
-          src={currentlyPlaying?.imgUrl || emblem2}
-          alt='song-cover'
-        />
-        <span className='song-name-span capitalise'>
-          {currentlyPlaying?.title}
-        </span>
-        <span className='song-artist-span capitalise'>
-          {currentlyPlaying?.addedby?.fullname}
-        </span>
+      <div className='song-details-container'>
+        <div className='song-details'>
+          <img
+            height='70px'
+            width='70px'
+            src={currentlyPlaying?.imgUrl || emblem2}
+            alt='song-cover'
+          />
+          <div className='song-details-spans'>
+            <span className='song-name-span capitalise'>
+              {currentlyPlaying?.title}
+            </span>
+            <span className='song-artist-span capitalise'>
+              {currentlyPlaying?.addedby?.fullname}
+            </span>
+          </div>
+        </div>
       </div>
       <div className='song-controls'>
         <div className='song-btns'>
