@@ -2,13 +2,20 @@ import { useSelector } from 'react-redux'
 import { useState, useRef, useEffect } from 'react'
 import LOA7MIX from '../assets/demo-songs/LOA7MIX.wav'
 import emblem2 from '../assets/demo-songs/emblem2.png'
-import { toggleIsPlaying } from '../store/actions/system.actions'
+import {
+  toggleIsPlaying,
+  setCurrentlyPlaying,
+  clearCurrentlyPlaying,
+} from '../store/actions/player.actions'
 import { formatTimeFromSeconds } from '../services/util.service'
 
 export function AppFooter() {
   const count = useSelector((storeState) => storeState.userModule.count)
   const isPlaying = useSelector(
-    (storeState) => storeState.systemModule.isPlaying
+    (storeState) => storeState.playerModule.isPlaying
+  )
+  const currentlyPlaying = useSelector(
+    (storeState) => storeState.playerModule.currentlyPlaying
   )
   const [currentTime, setCurrentTime] = useState(0)
   const [volume, setVolume] = useState(1)
