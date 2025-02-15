@@ -22,7 +22,6 @@ export function AppFooter({ playerRef }) {
 
   const togglePlay = () => {
     if (!playerRef.current) return
-    console.log('togglePlay playerRef.current', playerRef.current)
 
     if (isPlaying) {
       playerRef.current.pause()
@@ -41,11 +40,6 @@ export function AppFooter({ playerRef }) {
     // poll the player's current time every second
     const interval = setInterval(() => {
       if (playerRef.current && isPlaying) {
-        console.log(
-          'poll the player useEffect playerRef.current',
-          playerRef.current
-        )
-
         setCurrentTime(playerRef.current.getCurrentTime())
       }
     }, 1000)
@@ -80,8 +74,6 @@ export function AppFooter({ playerRef }) {
 
   const handleRangeInput = (input) => {
     const VALUE = ((input.value - input.min) / (input.max - input.min)) * 100
-
-    console.log('handleRangeInput VALUE', VALUE, 'input', input)
 
     input.style.background = `linear-gradient(90deg, ${songInputColor} ${
       VALUE ? VALUE : 0
