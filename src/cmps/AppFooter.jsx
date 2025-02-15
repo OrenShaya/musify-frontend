@@ -57,7 +57,7 @@ export function AppFooter() {
       }
     }
 
-    //listeners
+    // listeners with cb handleMessage
     window.addEventListener('message', handleMessage)
     return () => {
       window.removeEventListener('message', handleMessage)
@@ -65,16 +65,21 @@ export function AppFooter() {
   }, [])
 
   useEffect(() => {
-    const updateCurrentTime = () => {
-      setCurrentTime(audioRef.current.currentTime)
-    }
+    // const updateCurrentTime = () => {
+    //   setCurrentTime(audioRef.current.currentTime)
+    // }
 
-    audioRef.current.addEventListener('timeupdate', updateCurrentTime)
+    // audioRef.current.addEventListener('timeupdate', updateCurrentTime)
 
-    audioRef.current.volume = volume
+    // audioRef.current.volume = volume
 
-    return () => {
-      audioRef.current.removeEventListener('timeupdate', updateCurrentTime)
+    // return () => {
+    //   audioRef.current.removeEventListener('timeupdate', updateCurrentTime)
+    // }
+
+    const player = audioRef.current?.contentWindow?.audioPlayer
+    if (player) {
+      player.volume = volume
     }
   }, [volume])
 
