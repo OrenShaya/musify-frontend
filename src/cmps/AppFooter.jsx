@@ -43,25 +43,35 @@ export function AppFooter({ playerRef }) {
     toggleIsPlaying()
   }
 
-  useEffect(() => {
-    const handleMessage = (event) => {
-      console.log('useEffect[], handleMessage, event:', event)
-      //singelton listens to this
-      if (event.data?.type === 'timeupdate') {
-        console.log(
-          'useEffect[], type is timeupdate, currentTime:',
-          event.data.currentTime
-        )
-        setCurrentTime(event.data.currentTime)
-      }
-    }
+  // useEffect(() => {
+  //   const handleMessage = (event) => {
+  //     console.log('useEffect[], handleMessage, event:', event)
+  //     //singelton listens to this
+  //     if (event.data?.type === 'timeupdate') {
+  //       console.log(
+  //         'useEffect[], type is timeupdate, currentTime:',
+  //         event.data.currentTime
+  //       )
+  //       setCurrentTime(event.data.currentTime)
+  //     }
+  //   }
 
-    // listeners with cb handleMessage
-    window.addEventListener('message', handleMessage)
-    return () => {
-      window.removeEventListener('message', handleMessage)
-    }
-  }, [])
+  //   // listeners with cb handleMessage
+  //   window.addEventListener('message', handleMessage)
+  //   return () => {
+  //     window.removeEventListener('message', handleMessage)
+  //   }
+  // }, [])
+
+  useEffect(() => {
+    // poll the player's current time every second
+    const interval = setInterval(() => {
+      if (playerRef.current) {
+        setCurrentTime(playerRef.current.getCurrentTime())
+      }
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [playerRef])
 
   useEffect(() => {
     // const updateCurrentTime = () => {
