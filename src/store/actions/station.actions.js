@@ -133,15 +133,3 @@ function getCmdAddStationMsg(msg) {
 function getCmdAddStationSong(song) {
   return { type: ADD_STATION_SONG, song }
 }
-
-// // unitTestActions()
-// async function unitTestActions() {
-//     await loadStations()
-//     await addStation(stationService.getEmptyStation())
-//     await updateStation({
-//         _id: 'm1oC7',
-//         title: 'Station-Good',
-//     })
-//     await removeStation('m1oC7')
-//     // TODO unit test addStationMsg
-// }
