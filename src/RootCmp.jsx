@@ -60,8 +60,8 @@ export function RootCmp() {
       <aside>
         <Sidebar />
       </aside>
-      <AppFooter playerRef={playerRef} />
       <HiddenReactPlayer ref={playerRef} />
+      <AppFooter playerRef={playerRef} />
     </div>
   )
 }
