@@ -6,6 +6,7 @@
 
 // import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 // import { loadStation, addStationMsg } from '../store/actions/station.actions'
+import { Logger } from 'sass'
 import { formatTimeFromSeconds } from '../services/util.service.js'
 
 export function StationDetailsHeader({station}) {  
@@ -13,11 +14,18 @@ export function StationDetailsHeader({station}) {
   const stationImg = getStationImg(createdBy)
 
   function songsInfo() {
-    const totalSongsLength = station?.songs.reduce((totalSongsLength, song) => {
+    let totalSongsLength = station?.songs.reduce((totalSongsLength, song) => {
       return totalSongsLength + song.lengthInSeconds
     }, 0)
+    totalSongsLength = formatTimeFromSeconds(totalSongsLength)
+    let [minutes, seconds] = totalSongsLength.split(':')   
+    let minutesString = `${minutes} min`
+    let secondsString = `${seconds} sec`
+
+    if (+seconds < 10) secondsString = `${seconds.charAt(1)} sec`
+    if (minutes == 0) return secondsString
     
-    return  formatTimeFromSeconds(totalSongsLength)
+    return  `${minutesString} ${secondsString}`
   }
 
   function getStationImg(createdBy) {
