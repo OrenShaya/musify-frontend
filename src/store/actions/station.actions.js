@@ -110,7 +110,7 @@ function getCmdSetStation(station) {
 function getCmdSetSongsQueue(songs) {
   return {
     type: SET_SONGS_QUEUE,
-    songs,
+    songsQueue: songs,
   }
 }
 function getCmdRemoveStation(stationId) {
