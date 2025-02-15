@@ -17,7 +17,7 @@ export function StationDetails() {
 
   useEffect(() => {
     loadStation(stationId)
-  }, [])
+  }, [stationId])
 
   return (
     <section className='station-details'>
