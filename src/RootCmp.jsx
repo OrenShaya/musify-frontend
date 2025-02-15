@@ -18,13 +18,17 @@ import { Login } from './pages/Login.jsx'
 import { Signup } from './pages/Signup.jsx'
 import { StationIndex } from './pages/StationIndex.jsx'
 import { StationDetails } from './pages/StationDetails.jsx'
+import { Sidebar } from './cmps/SideBar.jsx'
 
 import {} from './services/station'
 import {} from './services/song'
 import {} from './services/youtube-api.service.js'
-import { Sidebar } from './cmps/SideBar.jsx'
+
+import HiddenReactPlayer from './cmps/HiddenReactPlayer'
+import { useRef } from 'react'
 
 export function RootCmp() {
+  const playerRef = useRef(null)
   return (
     <div className='main-container main-layout'>
       <AppHeader />
@@ -56,7 +60,8 @@ export function RootCmp() {
       <aside>
         <Sidebar />
       </aside>
-      <AppFooter />
+      <AppFooter playerRef={playerRef} />
+      <HiddenReactPlayer ref={playerRef} />
     </div>
   )
 }
