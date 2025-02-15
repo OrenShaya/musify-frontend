@@ -198,7 +198,11 @@ export function AppFooter() {
           onChange={(e) => {
             const newVolume = e.target.value / 100
             setVolume(newVolume)
-            audioRef.current.volume = newVolume
+            //audioRef.current.volume = newVolume
+            const player = audioRef.current?.contentWindow?.audioPlayer
+            if (player) {
+              player.volume = newVolume
+            }
           }}
           min={0}
           max={100}
