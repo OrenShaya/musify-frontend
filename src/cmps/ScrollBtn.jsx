@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import scrollRightUrl from '../assets/img/scroll-right.svg'
 import scrollLeftUrl from '../assets/img/scroll-left.svg'
@@ -10,20 +10,13 @@ const scrollBtnsWidth = 27 * 2
 export function ScrollBtn({ scrollRef, isRight = false }) {
   const btnRef = useRef()
   const isHovered = useHover(scrollRef)
+  const [isDisplayed, setIsDisplayed] = useState(false)
 
-  const onScroll = () => {
-    if (isRight) {
-      btnRef.current.style.right = `-${scrollRef.current.scrollLeft}px`
-    } else {
-      btnRef.current.style.left = `${scrollRef.current.scrollLeft}px`
-    }
-    _toggleRender()
-  }
-
-  const onClick = () => {
-    const direction = isRight ? 1 : -1
-    scrollRef.current.scrollBy({ left: 600 * direction, behavior: 'smooth' })
-  }
+  useEffect(() => {
+    const elBtn = btnRef.current
+    if (isDisplayed) elBtn.classList.add('display')
+    else elBtn.classList.remove('display')
+  }, [isDisplayed])
 
   // toggle render on hover
   useEffect(() => {
@@ -44,9 +37,21 @@ export function ScrollBtn({ scrollRef, isRight = false }) {
     }
   }, [isHovered])
 
+  const onScroll = () => {
+    const scrollPosition = scrollRef.current.scrollLeft
+    const transformValue = `translateX(${scrollPosition}px)`
+    btnRef.current.style.transform = transformValue
+
+    _toggleRender()
+  }
+
+  const onClick = () => {
+    const direction = isRight ? 1 : -1
+    scrollRef.current.scrollBy({ left: 600 * direction, behavior: 'smooth' })
+  }
+
   function _toggleRender() {
     const elScroll = scrollRef.current
-    const elBtn = btnRef.current
 
     elScroll.offsetHeight // trigger reflow
 
@@ -65,9 +70,9 @@ export function ScrollBtn({ scrollRef, isRight = false }) {
     if (isHidden || !isHovered) {
       display = false
     }
-    if (display) elBtn.classList.add('display')
-    else elBtn.classList.remove('display')
+    setIsDisplayed(display)
   }
+
   const btnClassName = isRight ? 'btn-scroll-right' : 'btn-scroll-left'
   const scrollUrl = isRight ? scrollRightUrl : scrollLeftUrl
   return (
