@@ -1,0 +1,47 @@
+$scrollBtnBgc: #2a2a2a;
+$scrollBtnClr: brightness(0) saturate(100%) invert(100%) sepia(96%)
+  saturate(16%) hue-rotate(219deg) brightness(103%) contrast(100%);
+
+.btn-scroll-right {
+  right: 0;
+  transform: translateX(0.5em);
+  &.display {
+    transform: translateX(0em);
+  }
+}
+
+.btn-scroll-left {
+  transform: translateX(-0.5em);
+  &.display {
+    transition: opacity 0.15s ease-out, transform 0.15s ease-out;
+    transform: translateX(0em);
+  }
+}
+
+.btn-scroll {
+  position: absolute;
+  display: grid;
+  place-content: center;
+  z-index: 1;
+  top: 86px; // 172/2=86 (172 is station-item width)
+
+  border-radius: 50%;
+
+  width: rem(32px);
+  height: rem(32px);
+  padding: 0;
+  margin: 0;
+  background-color: $scrollBtnBgc;
+
+  opacity: 0;
+  @include short-transition(transform, opacity);
+
+  &.display {
+    opacity: 1;
+  }
+  .scroll-icon {
+    width: 1em;
+    height: 1em;
+    filter: $scrollBtnClr;
+  }
+}
