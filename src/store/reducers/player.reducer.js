@@ -7,7 +7,7 @@ const initialState = {
   isPlaying: true,
 }
 
-export function systemReducer(state = initialState, action = {}) {
+export function playerReducer(state = initialState, action = {}) {
   switch (action.type) {
     case SET_CURRENTLY_PLAYING:
       return { ...state, currentlyPlaying: action.currentlyPlaying }
