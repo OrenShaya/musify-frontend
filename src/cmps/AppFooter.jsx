@@ -109,9 +109,13 @@ export function AppFooter({ playerRef }) {
   }
 
   const handleSlider = (e) => {
-    const player = audioRef.current?.contentWindow?.audioPlayer
-    if (player) {
-      player.currentTime = e.target.value
+    // const player = audioRef.current?.contentWindow?.audioPlayer
+    // if (player) {
+    //   player.currentTime = e.target.value
+    //   handleRangeInput(e.target)
+    // }
+    if (playerRef.current) {
+      playerRef.current.slideTo(e.target.value)
       handleRangeInput(e.target)
     }
   }
@@ -202,7 +206,8 @@ export function AppFooter({ playerRef }) {
               handleSlider
             }
             // max={audioRef.current.duration || 0}
-            max={audioRef.current?.contentWindow?.audioPlayer?.duration || 0}
+            // max={audioRef.current?.contentWindow?.audioPlayer?.duration || 0}
+            max={playerRef.current ? playerRef.current.getDuration() : 0}
           />
           <span className='song-duration'>
             {/* {formatTime(audioRef.current.duration)} */}
