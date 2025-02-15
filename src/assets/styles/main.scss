@@ -18,7 +18,9 @@
 @import 'pages/ReviewIndex';
 @import 'pages/UserDetails';
 @import 'pages/TaskDetails';
+
 @import 'pages/LoginSignup';
+@import 'pages/Login';
 
 @import 'pages/StationIndex';
 @import 'pages/StationDetail';
@@ -48,3 +50,4 @@
 @import 'cmps/StationDetailActionBtns';
 @import 'cmps/StationDetailList';
 @import 'cmps/StationDetailPreview';
+@import 'cmps/LoginForm';
