@@ -8,6 +8,7 @@ import {
   UPDATE_STATION,
   ADD_STATION_MSG,
   ADD_STATION_SONG,
+  SET_SONGS_QUEUE,
 } from '../reducers/station.reducer'
 
 export async function loadStations(filterBy) {
@@ -24,6 +25,7 @@ export async function loadStation(stationId) {
   try {
     const station = await stationService.getById(stationId)
     store.dispatch(getCmdSetStation(station))
+    store.dispatch(getCmdSetSongsQueue(station.songs))
   } catch (err) {
     console.log('Cannot load station', err)
     throw err
@@ -95,6 +97,12 @@ function getCmdSetStation(station) {
   return {
     type: SET_STATION,
     station,
+  }
+}
+function getCmdSetSongsQueue(songs) {
+  return {
+    type: SET_SONGS_QUEUE,
+    songs,
   }
 }
 function getCmdRemoveStation(stationId) {
