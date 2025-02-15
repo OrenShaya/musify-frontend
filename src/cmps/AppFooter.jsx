@@ -184,7 +184,10 @@ export function AppFooter() {
             max={audioRef.current?.contentWindow?.audioPlayer?.duration || 0}
           />
           <span className='song-duration'>
-            {formatTime(audioRef.current.duration)}
+            {/* {formatTime(audioRef.current.duration)} */}
+            {formatTime(
+              audioRef.current?.contentWindow?.audioPlayer?.duration || 0
+            )}
           </span>
         </div>
       </div>
