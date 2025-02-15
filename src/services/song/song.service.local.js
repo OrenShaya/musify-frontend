@@ -307,7 +307,11 @@ const songsDemoData = [
 ]
 
 // next line is used to fill up with demo data
-_createSongs()
+var runOnce = false
+if (!runOnce) {
+  _createSongs()
+  runOnce = true
+}
 function _createSongs() {
   let songs = loadFromStorage(STORAGE_KEY)
   if (!songs || !songs.length) {
