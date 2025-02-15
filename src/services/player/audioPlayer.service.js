@@ -78,5 +78,8 @@ class AudioPlayer {
 // instance
 const audioPlayer = AudioPlayer.getInstance()
 
-//export instance to a module
-export default audioPlayer
+// add player on the window - better preformance as global
+window.audioPlayer = audioPlayer
+
+//export instance to a module --
+//export default audioPlayer
