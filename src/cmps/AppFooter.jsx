@@ -106,7 +106,15 @@ export function AppFooter() {
   return (
     <footer className='app-footer full'>
       <div className='song-details'>
-        <img height='70px' width='70px' src={emblem2} alt='song-cover' />
+        <img
+          height='70px'
+          width='70px'
+          src={currentlyPlaying?.imgUrl || emblem2}
+          alt='song-cover'
+        />
+        {/* <span className='song-name-span capitalise'>
+          {currentlyPlaying?.title}
+        </span> */}
       </div>
       <div className='song-controls'>
         <div className='song-btns'>
