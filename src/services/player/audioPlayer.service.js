@@ -76,10 +76,11 @@ class AudioPlayer {
 }
 
 // instance
+// eslint-disable-next-line no-unused-vars
 const audioPlayer = AudioPlayer.getInstance()
 
 // add player on the window - better preformance as global
-window.audioPlayer = audioPlayer
+//window.audioPlayer = audioPlayer
 
 //export instance to a module --
 //export default audioPlayer
