@@ -31,6 +31,14 @@ export async function loadStation(stationId) {
     throw err
   }
 }
+export async function loadSongsQueue(station) {
+  try {
+    store.dispatch(getCmdSetSongsQueue(station.songs))
+  } catch (err) {
+    console.log('Cannot load songs queue', err)
+    throw err
+  }
+}
 
 export async function removeStation(stationId) {
   try {
