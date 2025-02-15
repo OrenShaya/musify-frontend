@@ -96,9 +96,12 @@ export function AppFooter({ playerRef }) {
           src={currentlyPlaying?.imgUrl || emblem2}
           alt='song-cover'
         />
-        {/* <span className='song-name-span capitalise'>
+        <span className='song-name-span capitalise'>
           {currentlyPlaying?.title}
-        </span> */}
+        </span>
+        <span className='song-artist-span capitalise'>
+          {currentlyPlaying?.addedby?.fullname}
+        </span>
       </div>
       <div className='song-controls'>
         <div className='song-btns'>
