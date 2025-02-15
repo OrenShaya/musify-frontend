@@ -5,7 +5,7 @@ import { addSongFromYT } from './song/song.service.local'
 import { addStationManualy } from './station/station.service.local'
 import { storageService } from './async-storage.service'
 
-const YT_API_KEY = 'AIzaSyB_6u19ZnSR_5zv7HYgTJKw6qkPpnsREcg'
+const YT_API_KEY = import.meta.env.VITE_YOUTUBE_API
 
 const YT_STORAGE_KEY = 'ytDB'
 const YT_SONG_STORAGE_KEY = 'ytSONG_DB'
