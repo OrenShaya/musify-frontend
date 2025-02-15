@@ -35,6 +35,14 @@ let mutex = Promise.resolve()
 async function postWithId(entityType, newEntity) {
   return (mutex = mutex.then(async () => {
     const entities = await query(entityType)
+
+    const duplicateIndex = entities.findIndex(
+      (entity) => entity._id === newEntity._id
+    )
+    if (duplicateIndex !== -1) {
+      return entities[duplicateIndex]
+    }
+
     entities.push(newEntity)
     _save(entityType, entities)
     return newEntity
