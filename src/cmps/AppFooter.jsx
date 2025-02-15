@@ -8,6 +8,7 @@ import {
   clearCurrentlyPlaying,
 } from '../store/actions/player.actions'
 import { formatTimeFromSeconds } from '../services/util.service'
+//import audioPlayer from '../services/player/audioPlayer.service'
 
 export function AppFooter() {
   const count = useSelector((storeState) => storeState.userModule.count)
@@ -34,12 +35,34 @@ export function AppFooter() {
     console.log('isPlaying', isPlaying)
 
     if (isPlaying) {
-      audioRef.current.pause()
+      // audioRef.current.pause()
+      player.pause()
     } else {
-      audioRef.current.play()
+      // audioRef.current.play()
+      player.play()
     }
     toggleIsPlaying()
   }
+
+  useEffect(() => {
+    const handleMessage = (event) => {
+      console.log('useEffect[], handleMessage, event:', event)
+      //singelton listens to this
+      if (event.data?.type === 'timeupdate') {
+        console.log(
+          'useEffect[], type is timeupdate, currentTime:',
+          event.data.currentTime
+        )
+        setCurrentTime(event.data.currentTime)
+      }
+    }
+
+    //listeners
+    window.addEventListener('message', handleMessage)
+    return () => {
+      window.removeEventListener('message', handleMessage)
+    }
+  }, [])
 
   useEffect(() => {
     const updateCurrentTime = () => {
