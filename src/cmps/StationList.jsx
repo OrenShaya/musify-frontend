@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import { StationPreview } from './StationPreview'
 import { ScrollBtn } from './ScrollBtn'
+import { Link } from 'react-router-dom'
 
 export function StationList({ stations, stationHeader, onMount }) {
   const scrollRef = useRef()
@@ -20,12 +21,14 @@ export function StationList({ stations, stationHeader, onMount }) {
         <ScrollBtn scrollRef={scrollRef} />
         {stations.map((station) => (
           // TODO: remove Math.random when using real data
-          <li
-            className='station-item'
+          <Link
             key={station._id + Math.random() * 11000}
+            to={'/station/' + station._id}
           >
-            <StationPreview station={station} />
-          </li>
+            <li className='station-item'>
+              <StationPreview station={station} />
+            </li>
+          </Link>
         ))}
       </ul>
     </div>
