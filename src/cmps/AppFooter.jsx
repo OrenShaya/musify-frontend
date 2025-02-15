@@ -173,11 +173,15 @@ export function AppFooter() {
             onInput={(e) => handleRangeInput(e.target)}
             type='range'
             value={currentTime}
-            onChange={(e) => {
-              audioRef.current.currentTime = e.target.value
-              handleRangeInput(e.target)
-            }}
-            max={audioRef.current.duration || 0}
+            onChange={
+              //(e) => {
+              // audioRef.current.currentTime = e.target.value
+              // handleRangeInput(e.target)
+              //}
+              handleSlider
+            }
+            // max={audioRef.current.duration || 0}
+            max={audioRef.current?.contentWindow?.audioPlayer?.duration || 0}
           />
           <span className='song-duration'>
             {formatTime(audioRef.current.duration)}
