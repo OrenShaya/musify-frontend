@@ -25,11 +25,15 @@ const ytPlaylistURL = `https://www.googleapis.com/youtube/v3/playlistItems?part=
 export const ytService = {
   getSongs,
   getSong,
+  getArtist,
+  getPlaylist,
   getKeywords,
 }
 
 // For DEBUGGING
-window.yts = ytService
+//window.yts = ytService
+
+/************************************** SERACH **************************************/
 
 export async function getSongs(keyword = 'metal') {
   if (gSongsMap[keyword]) {
@@ -38,33 +42,12 @@ export async function getSongs(keyword = 'metal') {
 
   const { data } = await axios.get(`${ytTop5SongURL}&q=${keyword}`)
   console.log('data from await axios.get(`${ytURL}&q=${keyword}`)', data)
-  gSongsMap[keyword] = data.items.map(_getSongInfo)
+  gSongsMap[keyword] = data.items.map(_getSongInfoBrowse)
   saveToStorage(YT_STORAGE_KEY, gSongsMap)
   return gSongsMap[keyword]
 }
 
-export async function getSong(songID) {
-  if (gSongs[songID]) {
-    return Promise.resolve(gSongs[songID])
-  }
-
-  const { data } = await axios.get(_setSongURL(songID))
-  console.log('data from await axios.get(_setSongURL(songID))', data.items[0])
-  console.log(
-    'data from await axios.get(_setSongURL(songID))',
-    _getSongInfo(data.items[0])
-  )
-  // gSongs[songID] = data.map(_getSongInfo)
-  // saveToStorage(YT_SONG_STORAGE_KEY, gSongs)
-  // return gSongs[songID]
-}
-
-function _getSongURL(songID) {
-  if (!songID) return null
-  return `https://www.youtube.com/embed/${songID}`
-}
-
-function _getSongInfo(video) {
+function _getSongInfoBrowse(video) {
   const { id, snippet } = video
   const { channelId, channelTitle, publishedAt, title, thumbnails } = snippet
   const { high, medium } = thumbnails
@@ -76,7 +59,7 @@ function _getSongInfo(video) {
   const songTitle = title
   const artistTitle = channelTitle
   const artistId = channelId
-  const createdAt = new Date(publishedAt)
+  const createdAt = new Date(publishedAt).getTime()
 
   return {
     id: songId,
