@@ -45,6 +45,7 @@ function HiddenReactPlayer(props, ref) {
     <div className='hidden'>
       <ReactPlayer
         ref={playerRef}
+        id='hidden-react-player'
         url={url}
         playing={playing}
         volume={volume}
