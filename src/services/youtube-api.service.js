@@ -72,8 +72,49 @@ function _getSongInfoBrowse(video) {
   }
 }
 
-function getKeywords() {
-  return Object.keys(gSongsMap)
+/************************************** SONG **************************************/
+
+export async function getSong(songID) {
+  if (!songID) return null
+  if (gSongs[songID]) {
+    return Promise.resolve(gSongs[songID])
+  }
+
+  const { data } = await axios.get(_setSongURL(songID))
+  const newSong = _getSongInfo(data.items[0])
+  const artistId = newSong.artistId
+  const artist = await getArtist(artistId)
+  const readySong = await addSongFromYT(newSong, artist)
+
+  gSongs[songID] = readySong
+  saveToStorage(YT_SONG_STORAGE_KEY, gSongs)
+
+  return gSongs[songID]
+}
+
+function _getSongInfo(video) {
+  const { id, snippet } = video
+  const { channelId, channelTitle, publishedAt, title, thumbnails } = snippet
+  const { high, medium } = thumbnails
+
+  const songId = id
+  const songUrl = _getSongURL(songId)
+
+  const imgUrl = high.url
+  const songTitle = title
+  const artistTitle = channelTitle
+  const artistId = channelId
+  const createdAt = new Date(publishedAt).getTime()
+
+  return {
+    _id: songId,
+    songTitle,
+    songUrl,
+    imgUrl,
+    artistTitle,
+    artistId,
+    createdAt,
+  }
 }
 
 function _setSongURL(songID) {
