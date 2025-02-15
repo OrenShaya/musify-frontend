@@ -41,7 +41,6 @@ export async function getSongs(keyword = 'metal') {
   }
 
   const { data } = await axios.get(`${ytTop5SongURL}&q=${keyword}`)
-  console.log('data from await axios.get(`${ytURL}&q=${keyword}`)', data)
   gSongsMap[keyword] = data.items.map(_getSongInfoBrowse)
   saveToStorage(YT_STORAGE_KEY, gSongsMap)
   return gSongsMap[keyword]
@@ -161,12 +160,136 @@ function _setArtistURL(artistID) {
   const url = ytArtistURL.replace('CHANNELID', artistID)
   return url
 }
+
+/************************************** Playlist **************************************/
+
+export async function getPlaylist(
+  playlistID = 'PLFs4vir_WsTwEd-nJgVJCZPNL3HALHHpF'
+) {
+  if (!playlistID) return null
+  if (gPlaylists[playlistID]) {
+    return Promise.resolve(gPlaylists[playlistID])
+  }
+
+  const { data } = await axios.get(_setPlaylistURL(playlistID))
+
+  const playlistInfo = _getPlaylistInfo(data.items[0])
+
+  const playListSongs = await _getSongInfoFromPlaylist(data.items)
+
+  const station = {}
+  station.songs = playListSongs
+  station._id = playlistInfo.id
+  station.name = playlistInfo.playlistName
+  const createdById = playlistInfo.playlistOwnerId
+
+  const owner = await getArtist(createdById)
+
+  station.createdBy = {
+    _id: createdById,
+    fullname: owner.artistTitle || 'Mupify',
+    imgUrl: owner.imgUrl || '',
+    createdAt: owner.createdAt || Date.now(),
+    updatedAt: Date.now(),
+  }
+
+  station.msgs = []
+  station.likedByUsers = []
+  station.tags = []
+
+  gPlaylists[playlistID] = station
+  saveToStorage(YT_PLAYLIST_STORAGE_KEY, gPlaylists)
+  await addStationManualy(station)
+  const finalSongs = await storageService.query('song_db')
+  return gPlaylists[playlistID]
+}
+
+function _getPlaylistInfo(video) {
+  const { snippet } = video
+  const {
+    playlistId,
+    videoOwnerChannelTitle,
+    videoOwnerChannelId,
+    publishedAt,
+  } = snippet
+
+  const id = playlistId
+  const playlistName = videoOwnerChannelTitle
+  const playlistOwnerId = videoOwnerChannelId
+  const createdAt = new Date(publishedAt).getTime()
+
+  return {
+    id,
+    playlistName,
+    playlistOwnerId,
+    createdAt,
+  }
+}
+
+async function _getSongInfoFromPlaylist(videos) {
+  try {
+    const songsPromises = videos.map(async (video) => {
+      const { snippet } = video
+      const {
+        channelId,
+        channelTitle,
+        publishedAt,
+        title,
+        thumbnails,
+        resourceId,
+      } = snippet
+      const { high } = thumbnails
+      const songId = resourceId.videoId
+      const songUrl = _getSongURL(songId)
+      const songTitle = title
+
+      const imgUrl = high.url
+      const artistTitle = channelTitle
+      const artistId = channelId
+      const createdAt = new Date(publishedAt).getTime()
+
+      const song = {
+        _id: songId,
+        songTitle,
+        songUrl,
+        imgUrl,
+        artistTitle,
+        artistId,
+        createdAt,
+      }
+
+      const artist = await getArtist(artistId)
+      const readySong = await addSongFromYT(song, artist)
+      gSongs[songId] = readySong
+      saveToStorage(YT_SONG_STORAGE_KEY, gSongs)
+
+      return readySong
+    })
+
+    const songsFromPlaylist = await Promise.all(songsPromises)
+
+    return songsFromPlaylist
+  } catch {
+    // eslint-disable-next-line no-extra-semi
+    ;(err) => {
+      throw new Error('Error while awaiting songsFromPlaylist', err)
+    }
+  }
+}
+
+/************************************** Utils **************************************/
+
+function _getSongURL(songID) {
+  if (!songID) return null
+  return `https://www.youtube.com/embed/${songID}`
+}
+
+function getKeywords() {
+  return Object.keys(gSongsMap)
+}
+
 function _setPlaylistURL(playlistID) {
   if (!playlistID) return null
   const url = ytPlaylistURL.replace('PLAYLISTID', playlistID)
   return url
 }
-
-/******************************************
- * DATA FROM getSongs
- */
