@@ -24,8 +24,11 @@ export function StationDetailsHeader({station}) {
     let hoursString = ``
 
     if (+seconds < 10) secondsString = `${seconds.charAt(1)} sec`
-    if (+minutes > 60) hoursString += `${Math.floor(minutes / 60)}  hr`
     if (minutes == 0) return secondsString
+    if (+minutes > 60) {
+      hoursString += `${Math.floor(minutes / 60)}  hr`
+      minutes = +minutes - 60
+    }
     
     return (hoursString) ? `${hoursString} ${minutesString} ${secondsString}` : `${minutesString} ${secondsString}`
   }
