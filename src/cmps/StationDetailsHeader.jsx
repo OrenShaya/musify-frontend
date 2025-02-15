@@ -21,11 +21,13 @@ export function StationDetailsHeader({station}) {
     let [minutes, seconds] = totalSongsLength.split(':')   
     let minutesString = `${minutes} min`
     let secondsString = `${seconds} sec`
+    let hoursString = ``
 
     if (+seconds < 10) secondsString = `${seconds.charAt(1)} sec`
+    if (+minutes > 60) hoursString += `${Math.floor(minutes / 60)}  hr`
     if (minutes == 0) return secondsString
     
-    return  `${minutesString} ${secondsString}`
+    return (hoursString) ? `${hoursString} ${minutesString} ${secondsString}` : `${minutesString} ${secondsString}`
   }
 
   function getStationImg(createdBy) {
