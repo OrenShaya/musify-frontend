@@ -103,6 +103,15 @@ export function AppFooter({ playerRef }) {
     }
   }, [currentlyPlaying])
 
+  useEffect(() => {
+    if (!playerRef.current) return
+    if (isPlaying) {
+      playerRef.current.play()
+    } else {
+      playerRef.current.pause()
+    }
+  }, [isPlaying])
+
   const formatTime = (time) => formatTimeFromSeconds(time)
 
   const handleRangeInput = (input) => {
