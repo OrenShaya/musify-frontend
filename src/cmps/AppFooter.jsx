@@ -36,6 +36,8 @@ export function AppFooter({ playerRef }) {
     // console.log('isPlaying', isPlaying)
 
     if (!playerRef.current) return
+    console.log('togglePlay playerRef.current', playerRef.current)
+
     if (isPlaying) {
       playerRef.current.pause()
     } else {
@@ -67,12 +69,17 @@ export function AppFooter({ playerRef }) {
   useEffect(() => {
     // poll the player's current time every second
     const interval = setInterval(() => {
-      if (playerRef.current) {
+      if (playerRef.current && isPlaying) {
+        console.log(
+          'poll the player useEffect playerRef.current',
+          playerRef.current
+        )
+
         setCurrentTime(playerRef.current.getCurrentTime())
       }
     }, 1000)
     return () => clearInterval(interval)
-  }, [playerRef])
+  }, [playerRef, isPlaying])
 
   useEffect(() => {
     // const updateCurrentTime = () => {
@@ -93,18 +100,31 @@ export function AppFooter({ playerRef }) {
     // }
 
     if (playerRef.current) {
+      console.log(
+        'playerRef.current.setVolume(volume)',
+        playerRef.current,
+        volume
+      )
+
       playerRef.current.setVolume(volume)
     }
   }, [playerRef, volume])
 
   useEffect(() => {
     if (currentlyPlaying && currentlyPlaying.url && playerRef.current) {
+      console.log('currentlyPlaying', currentlyPlaying)
+      console.log('url', currentlyPlaying.url)
+      console.log('playerRef.current', playerRef.current)
+
       playerRef.current.setSource(currentlyPlaying.url)
     }
   }, [currentlyPlaying])
 
   useEffect(() => {
     if (!playerRef.current) return
+    console.log('useEffect isPlaying: playerRef.current', playerRef.current)
+    console.log('useEffect isPlaying: isPlaying', isPlaying)
+
     if (isPlaying) {
       playerRef.current.play()
     } else {
