@@ -9,10 +9,12 @@ import { songService } from '../../services/song'
 export async function toggleIsPlaying() {
   store.dispatch({ type: TOGGLE_IS_PLAYING })
 }
+
 export async function setCurrentlyPlaying(songId) {
   const song = await songService.getById(songId)
-  store.dispatch({ type: SET_CURRENTLY_PLAYING, song })
+  store.dispatch({ type: SET_CURRENTLY_PLAYING, currentlyPlaying: song })
 }
+
 export async function clearCurrentlyPlaying() {
-  store.dispatch({ type: CLEAR_CURRENTLY_PLAYING })
+  store.dispatch({ type: CLEAR_CURRENTLY_PLAYING, currentlyPlaying: null })
 }
