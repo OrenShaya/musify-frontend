@@ -219,12 +219,12 @@ export function AppFooter() {
         />
       </div>
 
-      {/* Hidden iframe that loads the audio player, which instantiates the singleton */}
+      {/* hidden iframe, loads the audio player, which instantiates the singleton */}
       <iframe
         ref={audioRef}
         className='hidden'
         src={
-          currentlyPlaying?.url || 'https://www.youtube.com/watch?v=hvL1339luv0'
+          currentlyPlaying?.url || 'https://www.youtube.com/embed/hvL1339luv0'
         }
         title='Audio Player'
       ></iframe>
