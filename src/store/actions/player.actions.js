@@ -52,7 +52,7 @@ export async function playerSongEndedEvent() {
   }
 
   const songIdx = currSongsQueue.findIndex(
-    (song) => song.id === currentlyPlayingSong._id
+    (song) => song._id === currentlyPlayingSong._id
   )
   if (songIdx < 0) {
     console.warn('song not in current songs queue - so stoping')
