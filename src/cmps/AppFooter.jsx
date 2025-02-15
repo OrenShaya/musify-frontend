@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useSelector } from 'react-redux'
 import { useState, useRef, useEffect } from 'react'
 // import LOA7MIX from '../assets/demo-songs/LOA7MIX.wav'
@@ -9,10 +10,7 @@ import {
 } from '../store/actions/player.actions'
 import { formatTimeFromSeconds } from '../services/util.service'
 
-// not importing the module because instead its on the window for global accesibility
-//import audioPlayer from '../services/player/audioPlayer.service'
-
-export function AppFooter() {
+export function AppFooter({ playerRef }) {
   //const count = useSelector((storeState) => storeState.userModule.count)
   const isPlaying = useSelector(
     (storeState) => storeState.playerModule.isPlaying
@@ -24,24 +22,23 @@ export function AppFooter() {
   const [volume, setVolume] = useState(1)
 
   // const audioRef = useRef(new Audio(LOA7MIX))
-  const audioRef = useRef(null)
+  //const audioRef = useRef(null)
   //const [isHovered, setIsHovered] = useState(false)
 
   let songInputColor = 'white'
 
   const togglePlay = () => {
-    const player = audioRef.current?.contentWindow?.audioPlayer
-    if (!player) return
+    // const player = audioRef.current?.contentWindow?.audioPlayer
+    // if (!player) return
 
-    console.log('player', player)
-    console.log('isPlaying', isPlaying)
+    // console.log('player', player)
+    // console.log('isPlaying', isPlaying)
 
+    if (!playerRef.current) return
     if (isPlaying) {
-      // audioRef.current.pause()
-      player.pause()
+      playerRef.current.pause()
     } else {
-      // audioRef.current.play()
-      player.play()
+      playerRef.current.play()
     }
     toggleIsPlaying()
   }

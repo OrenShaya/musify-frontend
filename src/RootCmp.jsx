@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import { Routes, Route } from 'react-router'
 
 import { HomePage } from './pages/HomePage'
@@ -25,7 +26,6 @@ import {} from './services/song'
 import {} from './services/youtube-api.service.js'
 
 import HiddenReactPlayer from './cmps/HiddenReactPlayer'
-import { useRef } from 'react'
 
 export function RootCmp() {
   const playerRef = useRef(null)

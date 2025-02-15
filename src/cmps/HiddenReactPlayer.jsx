@@ -1,6 +1,7 @@
 import { forwardRef, useImperativeHandle, useState, useRef } from 'react'
 import ReactPlayer from 'react-player'
 
+// eslint-disable-next-line react-refresh/only-export-components
 function HiddenReactPlayer(props, ref) {
   const [url, setUrl] = useState('')
   const [playing, setPlaying] = useState(false)
@@ -34,7 +35,7 @@ function HiddenReactPlayer(props, ref) {
 
     setSource: (newUrl) => {
       setUrl(newUrl)
-      // to auto-play on source change:
+      // to auto-play on source change
       setPlaying(true)
     },
   }))
@@ -50,12 +51,13 @@ function HiddenReactPlayer(props, ref) {
         width='0'
         height='0'
         className='hidden'
-        // adding props  if needed.
+        // adding props if needed.
       />
     </div>
   )
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export default forwardRef(HiddenReactPlayer)
 
 // HiddenReactPlayer.propTypes = {}
