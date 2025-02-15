@@ -1,17 +1,19 @@
 import { useSelector } from 'react-redux'
 import { useState, useRef, useEffect } from 'react'
-import LOA7MIX from '../assets/demo-songs/LOA7MIX.wav'
+// import LOA7MIX from '../assets/demo-songs/LOA7MIX.wav'
 import emblem2 from '../assets/demo-songs/emblem2.png'
 import {
   toggleIsPlaying,
-  setCurrentlyPlaying,
-  clearCurrentlyPlaying,
+  //setCurrentlyPlaying,
+  //clearCurrentlyPlaying,
 } from '../store/actions/player.actions'
 import { formatTimeFromSeconds } from '../services/util.service'
+
+// not importing the module because instead its on the window for global accesibility
 //import audioPlayer from '../services/player/audioPlayer.service'
 
 export function AppFooter() {
-  const count = useSelector((storeState) => storeState.userModule.count)
+  //const count = useSelector((storeState) => storeState.userModule.count)
   const isPlaying = useSelector(
     (storeState) => storeState.playerModule.isPlaying
   )
@@ -23,7 +25,7 @@ export function AppFooter() {
 
   // const audioRef = useRef(new Audio(LOA7MIX))
   const audioRef = useRef(null)
-  const [isHovered, setIsHovered] = useState(false)
+  //const [isHovered, setIsHovered] = useState(false)
 
   let songInputColor = 'white'
 
