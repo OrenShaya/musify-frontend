@@ -1,18 +1,14 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useSelector } from 'react-redux'
 import { useState, useEffect } from 'react'
-// import LOA7MIX from '../assets/demo-songs/LOA7MIX.wav'
 import emblem2 from '../assets/demo-songs/emblem2.png'
 import {
   toggleIsPlaying,
-  //setCurrentlyPlaying,
-  //clearCurrentlyPlaying,
+  setCurrentlyPlaying,
 } from '../store/actions/player.actions'
 import { formatTimeFromSeconds } from '../services/util.service'
 
 export function AppFooter({ playerRef }) {
-  //const count = useSelector((storeState) => storeState.userModule.count)
   const isPlaying = useSelector(
     (storeState) => storeState.playerModule.isPlaying
   )
@@ -22,19 +18,9 @@ export function AppFooter({ playerRef }) {
   const [currentTime, setCurrentTime] = useState(0)
   const [volume, setVolume] = useState(1)
 
-  // const audioRef = useRef(new Audio(LOA7MIX))
-  //const audioRef = useRef(null)
-  //const [isHovered, setIsHovered] = useState(false)
-
   let songInputColor = 'white'
 
   const togglePlay = () => {
-    // const player = audioRef.current?.contentWindow?.audioPlayer
-    // if (!player) return
-
-    // console.log('player', player)
-    // console.log('isPlaying', isPlaying)
-
     if (!playerRef.current) return
     console.log('togglePlay playerRef.current', playerRef.current)
 
@@ -46,25 +32,10 @@ export function AppFooter({ playerRef }) {
     toggleIsPlaying()
   }
 
-  // useEffect(() => {
-  //   const handleMessage = (event) => {
-  //     console.log('useEffect[], handleMessage, event:', event)
-  //     //singelton listens to this
-  //     if (event.data?.type === 'timeupdate') {
-  //       console.log(
-  //         'useEffect[], type is timeupdate, currentTime:',
-  //         event.data.currentTime
-  //       )
-  //       setCurrentTime(event.data.currentTime)
-  //     }
-  //   }
-
-  //   // listeners with cb handleMessage
-  //   window.addEventListener('message', handleMessage)
-  //   return () => {
-  //     window.removeEventListener('message', handleMessage)
-  //   }
-  // }, [])
+  useEffect(() => {
+    // default song
+    setCurrentlyPlaying('FGBhQbmPwH8')
+  }, [])
 
   useEffect(() => {
     // poll the player's current time every second
@@ -79,58 +50,31 @@ export function AppFooter({ playerRef }) {
       }
     }, 1000)
     return () => clearInterval(interval)
-  }, [playerRef, isPlaying])
+  }, [isPlaying, playerRef])
 
   useEffect(() => {
-    // const updateCurrentTime = () => {
-    //   setCurrentTime(audioRef.current.currentTime)
-    // }
-
-    // audioRef.current.addEventListener('timeupdate', updateCurrentTime)
-
-    // audioRef.current.volume = volume
-
-    // return () => {
-    //   audioRef.current.removeEventListener('timeupdate', updateCurrentTime)
-    // }
-
-    // const player = audioRef.current?.contentWindow?.audioPlayer
-    // if (player) {
-    //   player.volume = volume
-    // }
-
     if (playerRef.current) {
-      console.log(
-        'playerRef.current.setVolume(volume)',
-        playerRef.current,
-        volume
-      )
-
       playerRef.current.setVolume(volume)
     }
   }, [playerRef, volume])
 
   useEffect(() => {
     if (currentlyPlaying && currentlyPlaying.url && playerRef.current) {
-      console.log('currentlyPlaying', currentlyPlaying)
-      console.log('url', currentlyPlaying.url)
-      console.log('playerRef.current', playerRef.current)
-
-      playerRef.current.setSource(currentlyPlaying.url)
+      playerRef.current.setSource(
+        currentlyPlaying?.url || 'https://www.youtube.com/embed/4fDfbMt6icw'
+      )
     }
-  }, [currentlyPlaying])
+  }, [currentlyPlaying, playerRef])
 
   useEffect(() => {
     if (!playerRef.current) return
-    console.log('useEffect isPlaying: playerRef.current', playerRef.current)
-    console.log('useEffect isPlaying: isPlaying', isPlaying)
 
     if (isPlaying) {
       playerRef.current.play()
     } else {
       playerRef.current.pause()
     }
-  }, [isPlaying])
+  }, [isPlaying, playerRef])
 
   const formatTime = (time) => formatTimeFromSeconds(time)
 
@@ -145,11 +89,6 @@ export function AppFooter({ playerRef }) {
   }
 
   const handleSlider = (e) => {
-    // const player = audioRef.current?.contentWindow?.audioPlayer
-    // if (player) {
-    //   player.currentTime = e.target.value
-    //   handleRangeInput(e.target)
-    // }
     if (playerRef.current) {
       playerRef.current.slideTo(e.target.value)
       handleRangeInput(e.target)
@@ -233,23 +172,11 @@ export function AppFooter({ playerRef }) {
             onMouseLeave={() => (songInputColor = 'white')}
             onInput={(e) => handleRangeInput(e.target)}
             type='range'
-            value={currentTime}
-            onChange={
-              //(e) => {
-              // audioRef.current.currentTime = e.target.value
-              // handleRangeInput(e.target)
-              //}
-              handleSlider
-            }
-            // max={audioRef.current.duration || 0}
-            // max={audioRef.current?.contentWindow?.audioPlayer?.duration || 0}
-            max={playerRef.current ? playerRef.current.getDuration() : 0}
+            value={currentTime ?? 0}
+            onChange={handleSlider}
+            max={playerRef.current ? playerRef.current.getDuration() ?? 0 : 0}
           />
           <span className='song-duration'>
-            {/* {formatTime(audioRef.current.duration)} */}
-            {/* {formatTime(
-              audioRef.current?.contentWindow?.audioPlayer?.duration || 0
-            )} */}
             {formatTime(
               playerRef.current ? playerRef.current.getDuration() : 0
             )}
@@ -263,11 +190,6 @@ export function AppFooter({ playerRef }) {
           onChange={(e) => {
             const newVolume = e.target.value / 100
             setVolume(newVolume)
-            //audioRef.current.volume = newVolume
-            // const player = audioRef.current?.contentWindow?.audioPlayer
-            // if (player) {
-            //   player.volume = newVolume
-            // }
             if (playerRef.current) {
               playerRef.current.setVolume(newVolume)
             }
@@ -276,10 +198,6 @@ export function AppFooter({ playerRef }) {
           max={100}
         />
       </div>
-
-      {/* {import.meta.env.VITE_LOCAL ? 
-                <span className="local-services">Local Services</span> : 
-                <span className="remote-services">Remote Services</span>} */}
     </footer>
   )
 }
