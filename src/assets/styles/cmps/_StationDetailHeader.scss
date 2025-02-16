@@ -18,10 +18,14 @@
   justify-content: center;
   align-items: center;
   margin: 2.5em 1.5em;
-  border-radius: 0.5em;
+  border-radius: em(4px);
 
-  height: 13em;
-  width: 13em;
+  width: 100%;
+  max-width: em(232px);
+  max-height: em(232px);
+  min-width: rem(128px);
+  aspect-ratio: 1 / 1;
+  height: auto;
 
   background-color: $station-img-default-background-color;
   fill: $station-img-default-fill-color;
