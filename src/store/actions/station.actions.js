@@ -72,6 +72,10 @@ export async function updateStation(station) {
   }
 }
 
+export async function setStation(station) {
+  store.dispatch(getCmdSetStation(station))
+}
+
 export async function addStationMsg(stationId, txt) {
   try {
     const msg = await stationService.addStationMsg(stationId, txt)
