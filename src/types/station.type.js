@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import { songType } from './song.type'
 
 export const stationType = PropTypes.shape({
   _id: PropTypes.string,
@@ -7,4 +8,5 @@ export const stationType = PropTypes.shape({
   createdBy: PropTypes.shape({
     imgUrl: PropTypes.string.isRequired,
   }),
+  songs: PropTypes.arrayOf(songType),
 }).isRequired
