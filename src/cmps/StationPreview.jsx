@@ -1,18 +1,23 @@
-import PropTypes from 'prop-types'
-
 import playBtnUrl from '../assets/img/btn-play.svg'
 import pauseBtnUrl from '../assets/img/btn-pause.svg'
 import { useToggle } from '../customHooks/useToggle'
+import { stationType } from '../types/station.type'
+import { setStation } from '../store/actions/station.actions'
+import {
+  setCurrentlyPlaying,
+  setIsPlaying,
+} from '../store/actions/player.actions'
 
-function PlayButton() {
-  const [isOn, onToggle] = useToggle()
+function PlayButton({ onPlayBubble, initialIsOn = false }) {
+  const [isOn, onToggle] = useToggle(initialIsOn)
 
   const onPlay = (ev) => {
     ev.stopPropagation()
     onToggle()
+    onPlayBubble(isOn)
   }
 
-  const buttonUrl = isOn ? playBtnUrl : pauseBtnUrl
+  const buttonUrl = isOn ? pauseBtnUrl : playBtnUrl
   return (
     <button onClick={onPlay} className='play-btn'>
       <img src={buttonUrl} alt='' />
@@ -28,6 +33,12 @@ export function StationPreview({ station }) {
     return artists?.join(', ') ?? 'Artist'
   }
 
+  const onPlay = (playState) => {
+    setStation(station)
+    setCurrentlyPlaying(station.songs[0]._id)
+    // setIsPlaying(playState)
+  }
+
   const imgClass = ['', 'square'][Math.floor(Math.random() * 2)]
   const stationImgClasses = 'index-station-img ' + imgClass
   return (
@@ -35,7 +46,7 @@ export function StationPreview({ station }) {
       <article className='station-preview'>
         <div className='img-container'>
           <img className={stationImgClasses} src={imgUrl} alt='' />
-          <PlayButton />
+          <PlayButton onPlayBubble={onPlay} />
         </div>
         <div className='txt-container'>
           <span className='artist-name display-block'>{name}</span>
@@ -47,12 +58,5 @@ export function StationPreview({ station }) {
 }
 
 StationPreview.propTypes = {
-  station: PropTypes.shape({
-    _id: PropTypes.string,
-    name: PropTypes.string.isRequired,
-    artists: PropTypes.arrayOf(PropTypes.string),
-    createdBy: PropTypes.shape({
-      imgUrl: PropTypes.string.isRequired,
-    }),
-  }).isRequired,
+  station: stationType,
 }
