@@ -1704,21 +1704,6 @@ export const stationsDemoData = [
     tags: [],
   },
   {
-    _id: 'PL_3PKTcHZ6KRuxXcPdvdKwt4L2eWad2UM',
-    name: 'pyrojunkie982',
-    createdBy: {
-      _id: 'UCn2GYwECz_MzQ0CUVbPzeqg',
-      fullname: 'pyrojunkie982',
-      imgUrl:
-        'https://yt3.ggpht.com/ytc/AIdro_nNk1yd6Q0dCjC1na7KjtKAKZoegAt9s_iUX5rmDMbYgA=s800-c-k-c0x00ffffff-no-rj',
-      createdAt: 1158984689000,
-      updatedAt: 1739582144217,
-    },
-    msgs: [],
-    likedByUsers: [],
-    tags: [],
-  },
-  {
     songs: [
       {
         title: 'Bruno Mars - It Will Rain (Official Music Video)',
