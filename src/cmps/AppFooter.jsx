@@ -92,7 +92,6 @@ export function AppFooter({ playerRef }) {
   const formatTime = (time) => formatTimeFromSeconds(time)
 
   const handleRangeInput = (input) => {
-    console.log('handleRangeInput input', input)
     const VALUE = ((input.value - input.min) / (input.max - input.min)) * 100
 
     input.style.background = `linear-gradient(90deg, ${songInputColor} ${
@@ -103,8 +102,6 @@ export function AppFooter({ playerRef }) {
   const handleSlider = (e) => {
     if (playerRef.current) {
       playerRef.current.slideTo(e.target.value)
-      console.log('e.target.value', e.target.value)
-      console.log('e.target', e.target)
 
       handleRangeInput(e.target)
     }
