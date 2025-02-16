@@ -16,11 +16,12 @@ import { AppFooter } from './cmps/AppFooter'
 import { UserMsg } from './cmps/UserMsg.jsx'
 import { SideBar } from './cmps/SideBar.jsx'
 
-import { LoginSignup } from './pages/LoginSignup.jsx'
+//import { LoginSignup } from './pages/LoginSignup.jsx'
 import { Login } from './pages/Login.jsx'
 // import { Signup } from './pages/Signup.jsx'
 import { StationIndex } from './pages/StationIndex.jsx'
 import { StationDetails } from './pages/StationDetails.jsx'
+import { StationExplore } from './pages/StationExplore.jsx'
 
 import {} from './services/station'
 import {} from './services/song'
@@ -49,6 +50,7 @@ export function RootCmp() {
 
           <Route path='station' element={<StationIndex />} />
           <Route path='station/:stationId' element={<StationDetails />} />
+          <Route path='explore' element={<StationExplore />} />
 
           {/* <Route path='car' element={<CarIndex />} /> */}
           {/* <Route path='car/:carId' element={<CarDetails />} /> */}
