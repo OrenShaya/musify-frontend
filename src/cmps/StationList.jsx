@@ -3,14 +3,19 @@ import PropTypes from 'prop-types'
 
 import { StationPreview } from './StationPreview'
 import { ScrollBtn } from './ScrollBtn'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 export function StationList({ stations, stationHeader, onMount }) {
   const scrollRef = useRef()
+  const navigate = useNavigate()
 
   useEffect(() => {
     onMount()
   })
+
+  const onNavigate = (stationId) => {
+    navigate('/station/' + stationId)
+  }
 
   return (
     <div>
@@ -21,14 +26,13 @@ export function StationList({ stations, stationHeader, onMount }) {
         <ScrollBtn scrollRef={scrollRef} />
         {stations.map((station) => (
           // TODO: remove Math.random when using real data
-          <Link
+          <li
             key={station._id + Math.random() * 11000}
-            to={'/station/' + station._id}
+            onClick={() => onNavigate(station._id)}
+            className='station-item'
           >
-            <li className='station-item'>
-              <StationPreview station={station} />
-            </li>
-          </Link>
+            <StationPreview station={station} />
+          </li>
         ))}
       </ul>
     </div>

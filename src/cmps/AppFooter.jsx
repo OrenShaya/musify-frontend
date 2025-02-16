@@ -11,6 +11,7 @@ import {
   setIsPlaying,
 } from '../store/actions/player.actions'
 import { formatTimeFromSeconds } from '../services/util.service'
+import { PlayButton } from './PlayBtn'
 
 export function AppFooter({ playerRef }) {
   const isPlaying = useSelector(
@@ -143,29 +144,11 @@ export function AppFooter({ playerRef }) {
               <path d='M3.3 1a.7.7 0 0 1 .7.7v5.15l9.95-5.744a.7.7 0 0 1 1.05.606v12.575a.7.7 0 0 1-1.05.607L4 9.149V14.3a.7.7 0 0 1-.7.7H1.7a.7.7 0 0 1-.7-.7V1.7a.7.7 0 0 1 .7-.7h1.6z' />
             </svg>
           </button>
-
-          <button className='footer-play-btn' onClick={togglePlay}>
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              data-encore-id='icon'
-              //   role='img'
-              aria-hidden='true'
-              className='Svg-sc-ytk21e-0 dYnaPI e-9541-icon'
-              viewBox='0 0 16 16'
-              height='16px'
-              width='16px'
-            >
-              <path
-                d={
-                  isPlaying
-                    ? 'M2.7 1a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7H2.7zm8 0a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7h-2.6z'
-                    : 'M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z'
-                }
-                fill='black'
-              />
-            </svg>
-          </button>
-
+          <PlayButton
+            togglePlay={togglePlay}
+            isPlaying={isPlaying}
+            className='footer-play-btn'
+          />
           <button className='next-song-btn' onClick={moveToNextSong}>
             <svg
               xmlns='http://www.w3.org/2000/svg'

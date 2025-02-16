@@ -47,6 +47,7 @@ article.station-preview {
   width: 182px;
   height: em(250px);
   scroll-snap-align: start;
+  cursor: pointer;
 
   &:hover {
     background-color: $itemHoverBgc;
@@ -55,5 +56,10 @@ article.station-preview {
       opacity: 1;
       bottom: 0.8em;
     }
+  }
+
+  .side-bar-station-container {
+    overflow-y: scroll;
+    height: 100%;
   }
 }

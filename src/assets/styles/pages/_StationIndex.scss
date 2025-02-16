@@ -3,13 +3,15 @@
   color: white;
   padding-inline-start: 40px;
   padding-block-start: 40px;
+  overflow-y: scroll;
+  height: 100vh;
 
   .station-index-item {
     margin-block: 2em;
   }
 
   .all-stations-list {
-    overflow-y: scroll;
+    // overflow-y: scroll;
     height: 500px;
   }
 }

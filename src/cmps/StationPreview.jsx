@@ -1,31 +1,48 @@
-import PropTypes from 'prop-types'
-
-import playBtnUrl from '../assets/img/btn-play.svg'
-
-function PlayButton() {
-  return (
-    <button className='play-btn'>
-      <img src={playBtnUrl} alt='' />
-    </button>
-  )
-}
+import { stationType } from '../types/station.type'
+import { setStation } from '../store/actions/station.actions'
+import {
+  setCurrentlyPlaying,
+  setIsPlaying,
+} from '../store/actions/player.actions'
+import { useSelector } from 'react-redux'
+import { PlayButton } from './PlayBtn'
 
 export function StationPreview({ station }) {
   const { name, createdBy, artists } = station
   const imgUrl = createdBy.imgUrl
+  const selectedStationId = useSelector((s) => s.stationModule.station?._id)
+  const isPlaying = useSelector((s) => s.playerModule.isPlaying)
 
   const getArtistsDisplay = () => {
     return artists?.join(', ') ?? 'Artist'
   }
 
-  const imgClass = ['', 'square'][Math.floor(Math.random() * 2)]
-  const stationImgClasses = 'index-station-img ' + imgClass
+  const isSelectedStation = () => selectedStationId === station._id
+
+  const onTogglePlay = () => {
+    if (!isSelectedStation()) {
+      setStation(station)
+      // TODO: continue playlist, instead of set to first song
+      setCurrentlyPlaying(station.songs[0]._id)
+
+      setIsPlaying(true)
+    } else {
+      setIsPlaying(!isPlaying)
+    }
+  }
+
+  const isCurrentlyPlaying = isPlaying && isSelectedStation()
+  // const imgClass = ['', 'square'][Math.floor(Math.random() * 2)]
+  const stationImgClasses = 'index-station-img '
   return (
     <>
       <article className='station-preview'>
         <div className='img-container'>
           <img className={stationImgClasses} src={imgUrl} alt='' />
-          <PlayButton />
+          <PlayButton
+            togglePlay={onTogglePlay}
+            isPlaying={isCurrentlyPlaying}
+          />
         </div>
         <div className='txt-container'>
           <span className='artist-name display-block'>{name}</span>
@@ -37,12 +54,5 @@ export function StationPreview({ station }) {
 }
 
 StationPreview.propTypes = {
-  station: PropTypes.shape({
-    _id: PropTypes.string,
-    name: PropTypes.string.isRequired,
-    artists: PropTypes.arrayOf(PropTypes.string),
-    createdBy: PropTypes.shape({
-      imgUrl: PropTypes.string.isRequired,
-    }),
-  }).isRequired,
+  station: stationType.isRequired,
 }
