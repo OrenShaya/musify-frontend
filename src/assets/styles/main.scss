@@ -18,7 +18,9 @@
 @import 'pages/ReviewIndex';
 @import 'pages/UserDetails';
 @import 'pages/TaskDetails';
+
 @import 'pages/LoginSignup';
+@import 'pages/Login';
 
 @import 'pages/StationIndex';
 @import 'pages/StationDetail';
@@ -27,12 +29,13 @@
 @import 'cmps/list';
 @import 'cmps/StationPreview';
 @import 'cmps/StationList';
-@import 'cmps/StationIndex';
 @import 'cmps/PlayBtn';
-
+@import 'cmps/Sidebar';
 @import 'cmps/AppHeader';
 @import 'cmps/AppFooter';
 @import 'cmps/UserMsg';
+@import 'cmps/ScrollBtn';
+
 @import 'cmps/SideBar';
 @import 'cmps/CarFilter';
 @import 'cmps/ReviewEdit';
@@ -48,3 +51,4 @@
 @import 'cmps/StationDetailActionBtns';
 @import 'cmps/StationDetailList';
 @import 'cmps/StationDetailPreview';
+@import 'cmps/LoginForm';

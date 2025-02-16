@@ -1,5 +1,6 @@
 .app-footer {
   position: fixed;
+  z-index: 20;
   bottom: 0;
   width: 100%;
   display: flex;
@@ -121,4 +122,58 @@
 }
 
 .song-duration {
+  font-size: 12px;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #b3b3b3;
+}
+
+.elapsed-time {
+  line-height: normal;
+  letter-spacing: normal;
+  color: #b3b3b3;
+}
+
+////////
+.app-footer .song-details-container {
+  @include flex($justify-content: start, $align-items: center, $gap: 0);
+  max-width: 50%;
+
+  .song-details {
+    //@include grid-templte($columns: 1fr 1fr, $rows: 1fr, $gap: em(10px));
+    @include flex(
+      $justify-content: center,
+      $align-items: center,
+      $flex-direction: row,
+      $gap: 8px
+    );
+
+    .song-details-spans {
+      @include flex(
+        $justify-content: center,
+        $align-items: center,
+        $flex-direction: column,
+        $gap: 8px
+      );
+      text-align: left;
+
+      .song-name-span {
+        color: $clr-neutral-white;
+        &:hover {
+          text-decoration: underline $clr-neutral-white;
+          cursor: pointer;
+        }
+      }
+
+      .song-artist-span {
+        color: $clr-neutral-gray-5;
+
+        &:hover {
+          color: $clr-neutral-white;
+          text-decoration: underline $clr-neutral-white;
+          cursor: pointer;
+        }
+      }
+    }
+  }
 }

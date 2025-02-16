@@ -1,1 +1,18 @@
-// placeholder
+$play-button-size: 24px;
+$play-button-circle-size: 56px;
+
+.play-button {
+  height: $play-button-size;
+  width: $play-button-size;
+}
+
+.play-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: em(24px);
+  border-radius: 50%;
+  height: $play-button-circle-size;
+  width: $play-button-circle-size;
+  background-color: $green-button-color;
+}

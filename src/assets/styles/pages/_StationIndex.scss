@@ -1,0 +1,24 @@
+.station-index {
+  background-color: #121212;
+  color: white;
+  padding-inline-start: 40px;
+  padding-block-start: 40px;
+
+  .station-index-item {
+    margin-block: 2em;
+  }
+
+  .all-stations-list {
+    overflow-y: scroll;
+    height: 500px;
+  }
+}
+
+.shadow-container {
+  pointer-events: none;
+  position: absolute;
+  z-index: 10;
+  padding: 40px;
+  top: 0;
+  box-shadow: rgb(18 18 18 / 50%) -40px 0px 13px 0px inset;
+}

@@ -1,48 +1,54 @@
-import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router'
-
-import { userService } from '../services/user'
-import { login } from '../store/actions/user.actions'
+import { useEffect } from 'react'
+import spotifyLogoUrl from '../assets/img/spotify.svg'
+import appleLogoUrl from '../assets/img/apple.svg'
+import facebookLogoUrl from '../assets/img/facebook.svg'
+import googleLogoUrl from '../assets/img/google.svg'
+import { LoginForm } from '../cmps/LoginForm'
 
 export function Login() {
-    const [users, setUsers] = useState([])
-    const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
+  useEffect(() => {
+    document.title = 'Log in - Spotify'
+  }, [])
 
-    const navigate = useNavigate()
+  const services2fa = [
+    { name: 'Google', icon: googleLogoUrl },
+    { name: 'Facebook', icon: facebookLogoUrl },
+    { name: 'Apple', icon: appleLogoUrl },
+  ]
+  // console.log('services2fa:', services2fa)
+  return (
+    <div className='login-page'>
+      {/* Content */}
+      <div className='content-container'>
+        <img src={spotifyLogoUrl} alt='' className='spotify-logo' />
+        <h1>Log in to Spotify</h1>
+        {/* 2FA */}
+        <ul className='list-2fa'>
+          {services2fa.map((service) => (
+            <li key={service.name}>
+              <button className='btn btn-2fa'>
+                {<img src={service.icon} alt='' className='icon' />}
+                <span>Continue with {service.name}</span>
+              </button>
+            </li>
+          ))}
+        </ul>
+        <hr />
 
-    useEffect(() => {
-        loadUsers()
-    }, [])
+        <LoginForm />
 
-    async function loadUsers() {
-        const users = await userService.getUsers()
-        setUsers(users)
-    }
+        {/* Links - forgot password, sign up */}
+        <>
+          {/* TODO: change a to Link */}
+          <a className='forgot-password-link'>Forgot your password?</a>
+          <span className='subdue signup'>
+            Don&#39;t have an account?
+            <a>Sign up for Spotify</a>
+          </span>
+        </>
+      </div>
 
-    async function onLogin(ev = null) {
-        if (ev) ev.preventDefault()
-
-        if (!credentials.username) return
-        await login(credentials)
-        navigate('/')
-    }
-
-    function handleChange(ev) {
-        const field = ev.target.name
-        const value = ev.target.value
-        setCredentials({ ...credentials, [field]: value })
-    }
-    
-    return (
-        <form className="login-form" onSubmit={onLogin}>
-            <select
-                name="username"
-                value={credentials.username}
-                onChange={handleChange}>
-                    <option value="">Select User</option>
-                    {users.map(user => <option key={user._id} value={user.username}>{user.fullname}</option>)}
-            </select>
-            <button>Login</button>
-        </form>
-    )
+      {/* Footer */}
+    </div>
+  )
 }

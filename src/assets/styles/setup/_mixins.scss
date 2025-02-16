@@ -473,3 +473,17 @@
 .my-search-bar {
   @include search-bar;
 }
+
+@mixin rounded-container {
+  $containerBorder: 10px;
+  border-radius: $containerBorder;
+  & > * {
+    padding: $containerBorder;
+  }
+}
+
+@mixin short-transition($props...) {
+  @each $prop in $props {
+    transition: #{$prop} 0.15s ease-out;
+  }
+}

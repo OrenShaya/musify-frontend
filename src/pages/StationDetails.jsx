@@ -12,6 +12,7 @@ import { StationDetailsActionBtns } from '../cmps/StationDetailsContentActionBtn
 
 export function StationDetails() {
   const { stationId } = useParams()
+
   const station = useSelector((storeState) => storeState.stationModule.station)
 
   useEffect(() => {
@@ -20,10 +21,9 @@ export function StationDetails() {
 
   return (
     <section className='station-details'>
-      <StationDetailsHeader />
+      <StationDetailsHeader station={station} />
       <StationDetailsActionBtns />
-      <StationDetailsList />
-      <pre> {JSON.stringify(station, null, 2)} </pre>
+      <StationDetailsList station={station} />
     </section>
   )
 }

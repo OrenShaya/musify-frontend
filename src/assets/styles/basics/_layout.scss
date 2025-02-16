@@ -1,7 +1,9 @@
 .main-container {
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 420px 1fr;
   grid-template-rows: em(48px) minmax(1fr, 100%) em(72px);
+  gap: 8px;
+  padding: 8px;
 
   .main {
     grid-column: 2;
@@ -11,6 +13,7 @@
   aside {
     grid-column: 1;
     grid-row: 2;
+    background-color: $itemBgc;
   }
 
   .app-footer {
@@ -46,4 +49,10 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 20px;
+}
+
+main {
+  @include rounded-container;
+  margin-block-end: 6em;
+  position: relative;
 }
