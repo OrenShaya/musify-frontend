@@ -1,9 +1,13 @@
-import { legacy_createStore as createStore, combineReducers } from 'redux'
-
+import {
+  combineReducers,
+  compose,
+  legacy_createStore as createStore,
+} from 'redux'
 import { carReducer } from './reducers/car.reducer'
 import { stationReducer } from './reducers/station.reducer'
 import { userReducer } from './reducers/user.reducer'
 import { reviewReducer } from './reducers/review.reducer'
+import { playerReducer } from './reducers/player.reducer'
 import { systemReducer } from './reducers/system.reducer'
 
 const rootReducer = combineReducers({
@@ -12,11 +16,13 @@ const rootReducer = combineReducers({
   userModule: userReducer,
   systemModule: systemReducer,
   reviewModule: reviewReducer,
+  playerModule: playerReducer,
 })
 
 const middleware = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
   ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__()
-  : undefined
+  : compose
+// const composeEnhancers = window.REDUX_DEVTOOLS_EXTENSION_COMPOSE || compose
 export const store = createStore(rootReducer, middleware)
 
 // For debug:

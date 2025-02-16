@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router'
 import { useSelector } from 'react-redux'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { logout } from '../store/actions/user.actions'
+import profileUrl from '../assets/img/profile-avatar.svg'
 
 export function AppHeader() {
   const user = useSelector((storeState) => storeState.userModule.user)
@@ -21,7 +22,7 @@ export function AppHeader() {
   return (
     <header className='app-header full'>
       <nav>
-        <NavLink>
+        <NavLink className='header-logo-link'>
           <svg
             className='logo'
             xmlns='http://www.w3.org/2000/svg'
@@ -59,10 +60,10 @@ export function AppHeader() {
             <NavLink to='station'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
-                dataEncoreId='icon'
+                data-encore-id='icon'
                 role='img'
-                ariaHidden='true'
-                class='Svg-sc-ytk21e-0 bneLcE e-9541-icon'
+                aria-hidden='true'
+                className='Svg-sc-ytk21e-0 bneLcE e-9541-icon'
                 viewBox='0 0 24 24'
                 width='24'
                 height='24'
@@ -97,10 +98,10 @@ export function AppHeader() {
             <span className='browser-icon'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
-                dataEncoreId='icon'
+                data-encore-id='icon'
                 role='img'
-                ariaHidden='true'
-                class='Svg-sc-ytk21e-0 bneLcE e-9541-icon'
+                aria-hidden='true'
+                className='Svg-sc-ytk21e-0 bneLcE e-9541-icon'
                 viewBox='0 0 24 24'
                 height='24'
                 width='24'
@@ -114,9 +115,10 @@ export function AppHeader() {
         </div>
 
         {!user && (
-          <button className='btn'>
-            <NavLink to='login' className='login-link'></NavLink>
-            Log in
+          <button className='btn-header-profile'>
+            <NavLink to='login'>
+              <img className='header-profile-icon' src={profileUrl} alt='' />
+            </NavLink>
           </button>
         )}
 

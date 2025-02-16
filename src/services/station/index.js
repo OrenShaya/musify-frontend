@@ -31,6 +31,46 @@ function getDefaultFilter() {
   }
 }
 
+export const tagsList = [
+  'music',
+  'live events',
+  'pop',
+  'hip-hop',
+  'rock',
+  'latin',
+  'mood',
+  'charts',
+  'comedy',
+  'dance',
+  'indie',
+  'workout',
+  'chill',
+  'country',
+  'r&b',
+  'k-pop',
+  'sleep',
+  'party',
+  'metal',
+  'jazz',
+  'anime',
+  'gaming',
+  'soul',
+  'classical',
+  'punk',
+  'blues',
+  'alternative',
+  'funk & disco',
+  'summer',
+  'afro',
+  'instromental',
+  'trending',
+  '60s',
+  '70s',
+  '80s',
+  '90s',
+  '2000s',
+]
+
 const service = VITE_LOCAL === 'true' ? local : remote
 export const stationService = { getEmptyStation, getDefaultFilter, ...service }
 

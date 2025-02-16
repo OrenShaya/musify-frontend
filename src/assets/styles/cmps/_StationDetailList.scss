@@ -1,1 +1,34 @@
-// placeholder
+.station-table,
+.song-row {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns:
+    2em
+    minmax(120px, 6fr)
+    minmax(120px, 4fr)
+    minmax(120px, 3fr)
+    minmax(120px, 1fr);
+  margin: 1em 1.5em 0 1.5em;
+}
+
+hr {
+  color: $hr-color;
+}
+
+$song-length-size: em(16px);
+.song-length {
+  height: $song-length-size;
+  width: $song-length-size;
+  fill: $station-img-default-fill-color;
+}
+
+$album-img-size: em(40px);
+.album-img {
+  height: $album-img-size;
+  width: $album-img-size;
+}
+
+.album-song-artist {
+  display: flex;
+  column-gap: 1em;
+}
