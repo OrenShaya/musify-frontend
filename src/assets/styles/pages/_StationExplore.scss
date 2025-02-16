@@ -1,8 +1,9 @@
 .station-explore {
   background-color: #121212;
   color: white;
+
   padding-inline: 24px;
-  padding-block-start: 50px;
+  padding-block-start: em(67px);
 
   overflow-y: scroll;
   height: 100vh;
