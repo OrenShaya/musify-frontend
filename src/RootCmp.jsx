@@ -52,6 +52,7 @@ export function RootCmp() {
         <SideBar />
       </aside>
       <HiddenReactPlayer ref={playerRef} onEnded={handleSongEnded} />
+      <div className='app-footer'>Hello</div>
       <AppFooter playerRef={playerRef} />
     </div>
   )

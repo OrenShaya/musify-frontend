@@ -17,7 +17,7 @@ export function StationPreview({ station }) {
     return artists?.join(', ') ?? 'Artist'
   }
 
-  const isSelectedStation = () => selectedStationId === station._id
+  const isSelectedStation = () => selectedStationId === station?._id
 
   const onTogglePlay = () => {
     if (!isSelectedStation()) {
@@ -32,8 +32,8 @@ export function StationPreview({ station }) {
   }
 
   const isCurrentlyPlaying = isPlaying && isSelectedStation()
-  // const imgClass = ['', 'square'][Math.floor(Math.random() * 2)]
-  const stationImgClasses = 'index-station-img '
+  const imgClass = ['', 'square'][1]
+  const stationImgClasses = 'index-station-img ' + imgClass
   return (
     <>
       <article className='station-preview'>
