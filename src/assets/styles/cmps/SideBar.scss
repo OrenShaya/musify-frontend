@@ -1,3 +1,7 @@
+.side-bar-container {
+  width: $sidebar-width;
+}
+
 .side-bar {
   height: 100%;
   width: $sidebar-width;
@@ -5,6 +9,8 @@
   background-color: $gray6;
   margin-inline: 0.2em;
   padding: 1.5em;
+  padding-inline: 0.9em;
+  position: sticky;
 
   .library-icon {
     cursor: pointer;
@@ -40,14 +46,53 @@
     }
   }
   .plus-btn {
-    background-color: $gray8;
+    background-color: $gray6;
     height: fit-content;
     fill: white;
     padding: 0.5em;
     border-radius: 50%;
+    display: grid;
+    height: fit-content;
+  }
 
-    span {
-      height: fit-content;
+  .plus-btn:hover {
+    background-color: $gray8;
+    cursor: pointer;
+  }
+
+  .side-bar-sort-container {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+    overflow-x: scroll;
+    margin-top: 1em;
+  }
+
+  .sort-item {
+    font-size: 0.9em;
+    background-color: #2a2a2a;
+    padding: 0.5em 0.8em;
+    border-radius: 2em;
+  }
+
+  .side-bar-sort-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .side-bar-search-container {
+    button {
+      background-color: transparent;
+      display: grid;
+      fill: #b3b3b3;
+      border: none;
+      cursor: pointer;
+      padding: 0.5em;
+      border-radius: 50%;
+    }
+
+    button:hover {
+      background-color: #2a2a2a;
+      cursor: pointer;
     }
   }
 }
