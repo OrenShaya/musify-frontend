@@ -1,13 +1,17 @@
 .station-explore-article {
   position: relative;
+  overflow: hidden;
+
   border-radius: 0.5em;
   padding-bottom: 56.25%;
-  height: 90%;
+  height: 100%;
+  min-height: em(130px);
+  max-height: em(180px);
+  min-width: em(130px);
   width: 100%;
-  overflow: hidden;
   cursor: pointer;
-  transition: all 0.2s ease;
   font-family: Spotifymix-Bold;
+  transition: all 0.2s ease;
 
   .genre-header {
     padding: 16px 16px 0;
@@ -20,15 +24,15 @@
       text-wrap: balance;
     }
   }
+
   .img-container {
     position: absolute;
     right: 0;
     bottom: 0;
-    width: 140px;
-    height: 140px;
+    width: 130px;
+    height: 130px;
     border-radius: 8px;
     transform: rotate(25deg) translate(18%, -2%);
-    //width: 45%;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 
     img {
@@ -37,6 +41,78 @@
       user-select: none;
       display: block;
       max-width: 100%;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &:hover {
+    transform: scale(1.04);
+  }
+
+  //::after
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    transition: background-color 0.3s;
+  }
+
+  &:hover::after {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  // Media Queries
+
+  @media (min-width: 700px) {
+    min-height: em(90px);
+    max-height: em(100px);
+
+    .genre-header {
+      padding: em(16px);
+
+      span {
+        font-size: rem(24px);
+      }
+    }
+
+    .img-container {
+      width: 150px;
+      height: 150px;
+    }
+  }
+
+  @media (min-width: 900px) {
+    min-height: em(90px);
+    max-height: em(200px);
+
+    .img-container {
+      width: 140px;
+      height: 140px;
+    }
+  }
+
+  @media (min-width: 1100px) {
+    min-height: em(90px);
+    max-height: em(180px);
+
+    .img-container {
+      width: 135px;
+      height: 135px;
+    }
+  }
+
+  @media (min-width: 1300px) {
+    max-height: em(140px);
+
+    .img-container {
+      width: 130px;
+      height: 130px;
     }
   }
 }
