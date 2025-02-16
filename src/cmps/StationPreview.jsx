@@ -1,5 +1,3 @@
-import playBtnUrl from '../assets/img/btn-play.svg'
-import pauseBtnUrl from '../assets/img/btn-pause.svg'
 import { stationType } from '../types/station.type'
 import { setStation } from '../store/actions/station.actions'
 import {
@@ -7,21 +5,7 @@ import {
   setIsPlaying,
 } from '../store/actions/player.actions'
 import { useSelector } from 'react-redux'
-import PropTypes from 'prop-types'
-
-function PlayButton({ isPlaying, togglePlay }) {
-  const onPlay = (ev) => {
-    ev.stopPropagation()
-    togglePlay()
-  }
-
-  const buttonUrl = isPlaying ? pauseBtnUrl : playBtnUrl
-  return (
-    <button onClick={onPlay} className='play-btn'>
-      <img src={buttonUrl} alt='' />
-    </button>
-  )
-}
+import { PlayButton } from './PlayBtn'
 
 export function StationPreview({ station }) {
   const { name, createdBy, artists } = station
@@ -66,9 +50,4 @@ export function StationPreview({ station }) {
 
 StationPreview.propTypes = {
   station: stationType.isRequired,
-}
-
-PlayButton.propTypes = {
-  isPlaying: PropTypes.bool.isRequired,
-  togglePlay: PropTypes.func.isRequired,
 }
