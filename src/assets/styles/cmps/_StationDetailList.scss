@@ -9,17 +9,75 @@
     minmax(120px, 3fr)
     minmax(120px, 1fr);
   margin: 1em 1.5em 0 1.5em;
+  color: $station-table-header-font-color;
+}
+
+.song-row {
+  font-size: em(14px);
+  justify-content: center;
+  align-items: center;
+  margin-top: 0em;
+  margin-bottom: 0em;
+
+  border-radius: 0.5em;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+  padding-left: 1em;
+
+  &:hover {
+    background-color: $station-hover-color;
+
+    & .song-index {
+      display: none;
+    }
+
+    & .hover-song-play {
+      display: inline;
+      fill: $clr6;
+      height: em(16px);
+      width: em(16px);
+    }
+  }
+
+  .hover-song-play {
+    display: none;
+  }
+}
+
+.song-index,
+.hover-song-play,
+.album-song-artist,
+.song-album,
+.album-img,
+.song-length {
+  display: flex;
+  align-items: center;
+  line-height: inherit;
 }
 
 hr {
-  color: $hr-color;
+  border: none;
+  height: 1px;
+  // margin: 0.5em 1em;
+  margin: 0.5em 1em 1em 1em;
+  // margin-bottom: 1em;
+
+  background-color: $hr-color;
+}
+
+.song-title-artist {
+  margin-left: 1em;
 }
 
 $song-length-size: em(16px);
-.song-length {
+.song-length-icon {
   height: $song-length-size;
   width: $song-length-size;
   fill: $station-img-default-fill-color;
+}
+
+.song-index {
+  padding-left: 0.5em;
 }
 
 $album-img-size: em(40px);
@@ -28,7 +86,9 @@ $album-img-size: em(40px);
   width: $album-img-size;
 }
 
-.album-song-artist {
-  display: flex;
-  column-gap: 1em;
+.song-title {
+  font-weight: 400;
+  font-size: 1em;
+  font-family: 'Spotifymix-Bold';
+  color: #f0f0f0;
 }
