@@ -1,8 +1,6 @@
-.station-table {
-  font-size: em(14px);
+.station-table,
+.song-row {
   display: grid;
-  justify-content: center;
-  align-items: center;
   grid-auto-flow: column;
   grid-template-columns:
     2em
@@ -10,27 +8,14 @@
     minmax(120px, 4fr)
     minmax(120px, 3fr)
     minmax(120px, 1fr);
-  margin: 2em 1.5em 0 2.5em;
+  margin: 1em 1.5em 0 1.5em;
   color: $station-table-header-font-color;
 }
 
 .song-row {
   font-size: em(14px);
-  display: grid;
   justify-content: center;
   align-items: center;
-  grid-auto-flow: column;
-  grid-template-columns:
-    2em
-    minmax(7.5em, 41em)
-    minmax(7.5em, 27.3em)
-    minmax(7.5em, 1.8fr)
-    minmax(7.5em, 1fr);
-  color: $station-table-header-font-color;
-
-  margin: 0;
-  margin-left: 2em;
-  margin-bottom: 1em;
 
   &:hover {
     background-color: $station-hover-color;
