@@ -44,4 +44,7 @@ $scrollBtnClr: brightness(0) saturate(100%) invert(100%) sepia(96%)
     height: 1em;
     filter: $scrollBtnClr;
   }
+  &:hover {
+    z-index: 30;
+  }
 }
