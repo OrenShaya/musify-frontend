@@ -36,13 +36,13 @@ export function StationDetailsList({ station }) {
             <div className='song-index'>
               {idx + 1}
             </div>
-            <div className='hover-song-play'>
+            <div className='hover-song-play'
+            onClick={() => setCurrentlyPlaying(song._id)}
+            style={{ cursor: 'pointer' }}>
               <svg data-encore-id="icon" role="img" aria-hidden="true" className="Svg-sc-ytk21e-0 bneLcE e-9541-icon zOsKPnD_9x3KJqQCSmAq" viewBox="0 0 24 24"><path d="m7.05 3.606 13.49 7.788a.7.7 0 0 1 0 1.212L7.05 20.394A.7.7 0 0 1 6 19.788V4.212a.7.7 0 0 1 1.05-.606z"></path></svg>
             </div>
             <div className='album-song-artist'>
-              <div className='album-img'
-                onClick={() => setCurrentlyPlaying(song._id)}
-                style={{ cursor: 'pointer' }}>
+              <div className='album-img'>
                 <img src={song?.imgUrl} alt='album image' />
               </div>
               <div className='song-title-artist'>
@@ -55,11 +55,10 @@ export function StationDetailsList({ station }) {
               </div>
             </div>
             <div className='song-album'>
-              {/* {song.album} */ 'Album Name'}
+              {/* {song.album} needed here */ 'Album Name'}
             </div>
             <div>
               {formatDate(song.addedAt || song.updatedAt)}
-              {/* {formatDate(song)} */}
             </div>
             <div className='song-length'>
               {formatTimeFromSeconds(song?.lengthInSeconds)}
