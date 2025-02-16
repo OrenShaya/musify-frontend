@@ -21,7 +21,6 @@ import { Login } from './pages/Login.jsx'
 // import { Signup } from './pages/Signup.jsx'
 import { StationIndex } from './pages/StationIndex.jsx'
 import { StationDetails } from './pages/StationDetails.jsx'
-import { Sidebar } from './cmps/SideBar.jsx'
 
 import {} from './services/station'
 import {} from './services/song'
@@ -64,14 +63,10 @@ export function RootCmp() {
         </Routes>
       </main>
       <aside>
-        <Sidebar />
+        <SideBar />
       </aside>
       <HiddenReactPlayer ref={playerRef} onEnded={handleSongEnded} />
       <AppFooter playerRef={playerRef} />
-      <aside>
-        <SideBar />
-      </aside>
-      <AppFooter />
     </div>
   )
 }
