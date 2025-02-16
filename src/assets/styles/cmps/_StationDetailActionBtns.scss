@@ -1,5 +1,5 @@
 $play-button-size: 24px;
-$play-button-circle-size: 56px;
+$play-button-circle-size: 50px;
 
 .play-button {
   height: $play-button-size;
@@ -15,4 +15,5 @@ $play-button-circle-size: 56px;
   height: $play-button-circle-size;
   width: $play-button-circle-size;
   background-color: $green-button-color;
+  padding: 12px;
 }

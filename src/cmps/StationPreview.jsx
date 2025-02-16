@@ -17,7 +17,7 @@ export function StationPreview({ station }) {
     return artists?.join(', ') ?? 'Artist'
   }
 
-  const isSelectedStation = () => selectedStationId === station._id
+  const isSelectedStation = () => selectedStationId === station?._id
 
   const onTogglePlay = () => {
     if (!isSelectedStation()) {
