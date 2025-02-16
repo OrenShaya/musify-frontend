@@ -1,12 +1,14 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useSelector } from 'react-redux'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import emblem2 from '../assets/demo-songs/emblem2.png'
 import {
-  toggleIsPlaying,
+  //toggleIsPlaying,
   setCurrentlyPlaying,
   moveToPreviousSong,
   moveToNextSong,
+  setIsPlaying,
 } from '../store/actions/player.actions'
 import { formatTimeFromSeconds } from '../services/util.service'
 
@@ -19,6 +21,7 @@ export function AppFooter({ playerRef }) {
   )
   const [currentTime, setCurrentTime] = useState(0)
   const [volume, setVolume] = useState(1)
+  const sliderRef = useRef(null)
 
   let songInputColor = 'white'
 
@@ -27,10 +30,11 @@ export function AppFooter({ playerRef }) {
 
     if (isPlaying) {
       playerRef.current.pause()
+      setIsPlaying(false)
     } else {
       playerRef.current.play()
+      setIsPlaying(true)
     }
-    toggleIsPlaying()
   }
 
   useEffect(() => {
@@ -60,8 +64,13 @@ export function AppFooter({ playerRef }) {
         currentlyPlaying?.url || 'https://www.youtube.com/embed/4fDfbMt6icw'
       )
       setCurrentTime(0)
+      setIsPlaying(true)
+      if (sliderRef.current) {
+        playerRef.current.slideTo(0)
+        handleRangeInput(sliderRef.current)
+      }
     }
-  }, [currentlyPlaying, playerRef])
+  }, [currentlyPlaying])
 
   useEffect(() => {
     if (!playerRef.current) return
@@ -73,9 +82,17 @@ export function AppFooter({ playerRef }) {
     }
   }, [isPlaying, playerRef])
 
+  // try to fix non reseting progress bar
+  // useEffect(() => {
+  //   if (sliderRef.current) {
+  //     handleRangeInput(sliderRef.current)
+  //   }
+  // }, [currentTime])
+
   const formatTime = (time) => formatTimeFromSeconds(time)
 
   const handleRangeInput = (input) => {
+    console.log('handleRangeInput input', input)
     const VALUE = ((input.value - input.min) / (input.max - input.min)) * 100
 
     input.style.background = `linear-gradient(90deg, ${songInputColor} ${
@@ -86,6 +103,9 @@ export function AppFooter({ playerRef }) {
   const handleSlider = (e) => {
     if (playerRef.current) {
       playerRef.current.slideTo(e.target.value)
+      console.log('e.target.value', e.target.value)
+      console.log('e.target', e.target)
+
       handleRangeInput(e.target)
     }
   }
@@ -169,10 +189,10 @@ export function AppFooter({ playerRef }) {
             <span>{formatTime(currentTime)}</span>
           </div>
           <input
+            ref={sliderRef}
             style={{ background: '#4d4d4d' }}
             onMouseEnter={() => (songInputColor = '#1db552')}
             onMouseLeave={() => (songInputColor = 'white')}
-            onInput={(e) => handleRangeInput(e.target)}
             type='range'
             value={currentTime ?? 0}
             onChange={handleSlider}
