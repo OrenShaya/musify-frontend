@@ -12,6 +12,11 @@
   color: $station-table-header-font-color;
 }
 
+.station-table {
+  font-size: 14px;
+  padding-bottom: 0.5em;
+}
+
 .song-row {
   font-size: em(14px);
   justify-content: center;
@@ -26,6 +31,10 @@
 
   &:hover {
     background-color: $station-hover-color;
+
+    &:hover .date-added img {
+      display: flex;
+    }
 
     & .song-index {
       display: none;
@@ -55,10 +64,18 @@
   line-height: inherit;
 }
 
+.song-album {
+  margin-left: -0.5em;
+}
+
+.song-length {
+  margin-left: -0.5em;
+}
+
 hr {
   border: none;
   height: 1px;
-  margin: 0.5em 1em 1em 1em;
+  margin: 0 1em 1em 1em;
 
   background-color: $hr-color;
 }
@@ -112,6 +129,25 @@ $album-img-size: rem(40px);
   text-transform: none;
   text-wrap-mode: wrap;
   vertical-align: baseline;
+}
+
+.date-added {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & img {
+    display: none;
+    align-items: center;
+    margin-right: 3em;
+  }
+}
+
+.add-to-liked {
+  display: none;
+  align-self: center;
+  height: 16px;
+  width: 16px;
 }
 
 .artist {
