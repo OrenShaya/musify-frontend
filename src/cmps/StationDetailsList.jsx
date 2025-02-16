@@ -95,7 +95,7 @@ export function StationDetailsList({ station }) {
                           </div>
                           <div className='date-added'>
                             {formatDate(song.addedAt || song.updatedAt)}
-                            <span> <img className='add-to-liked' src={greenTick}/></span>
+                            <img className='add-to-liked' src={greenTick}/>
                           </div>
                           <div className='song-length'>
                             {formatTimeFromSeconds(song?.lengthInSeconds)}

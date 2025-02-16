@@ -59,10 +59,18 @@
   line-height: inherit;
 }
 
+.song-album {
+  margin-left: -0.5em;
+}
+
+.song-length {
+  margin-left: -1em;
+}
+
 hr {
   border: none;
   height: 1px;
-  margin: 0.5em 1em 1em 1em;
+  margin: 0 1em 1em 1em;
 
   background-color: $hr-color;
 }
@@ -123,16 +131,18 @@ $album-img-size: rem(40px);
   justify-content: space-between;
   align-items: center;
 
-  & span {
-    margin-right: 1em;
+  & img {
+    display: flex;
+    align-items: center;
+    margin-right: 3em;
   }
 }
 
 .add-to-liked {
   display: none;
   align-self: center;
-  height: 24px;
-  width: 14px;
+  height: 16px;
+  width: 16px;
 }
 
 .artist {
