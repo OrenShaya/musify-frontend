@@ -95,7 +95,7 @@ export function AppHeader() {
               placeholder='What do you want to play?'
             />
 
-            <span className='browser-icon'>
+            <span className='browser-icon' onClick={navigate('explore')}>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 data-encore-id='icon'
