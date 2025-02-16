@@ -31,7 +31,7 @@ export function SideBar() {
           </svg>
           <h3 className='side-bar-header'>Your Library</h3>
         </div>
-        <span className='plus-btn'>
+        <span onClick={handleNewStationCLick} className='plus-btn'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             data-encore-id='icon'
