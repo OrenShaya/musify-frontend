@@ -1075,7 +1075,7 @@ export const stationsDemoData = [
     createdBy: {
       _id: "u101",
       fullname: "Puki Ben David",
-      imgUrl: "/src/assets/img/station-corpo-mente.jpeg",
+      imgUrl: "https://f4.bcbits.com/img/a2421482492_65",
       createdAt: 1739398908555,
       updatedAt: 1739399900000
     },
@@ -1216,7 +1216,7 @@ export const stationsDemoData = [
     createdBy: {
       _id: "u103",
       fullname: "Bob Rhymes",
-      imgUrl: "",
+      imgUrl: "https://i.scdn.co/image/ab6761610000e5ebe3427c462c258ff70a3f6375",
       createdAt: 1739410000000,
       updatedAt: 1739413600000
     },
@@ -1282,7 +1282,7 @@ export const stationsDemoData = [
     createdBy: {
       _id: "u104",
       fullname: "Cara Synth",
-      imgUrl: "",
+      imgUrl: "https://listen2vibes.com/assets/images/electronic-vibes-2000x2000-v2-1772x1772.png",
       createdAt: 1739420000000,
       updatedAt: 1739423600000
     },
@@ -4060,7 +4060,7 @@ export const stationsDemoData = [
     createdBy: {
       _id: "UC4KKov_xp4Os4PAnVr28YUQ",
       fullname: "Polo & Pan - Topic",
-      imgUrl: "https://yt3.ggpht.com/MHCYfwZN9xdeQd8cUpgIY6euojZtTr-zuD-f-R_aX7e_1Ihn8qJm5OvNAL2W2Y78UcNpIA7HPg=s800-c-k-c0x00ffffff-no-rj",
+      imgUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYbMV0Wuq3MBq-g2BiyLNFLOVaLGOiusKgvw&s",
       createdAt: 1442962721000,
       updatedAt: 1739722831573
     },
@@ -4136,7 +4136,7 @@ export const stationsDemoData = [
     createdBy: {
       _id: "UC4KKov_xp4Os4PAnVr28YUQ",
       fullname: "Polo & Pan - Topic",
-      imgUrl: "https://yt3.ggpht.com/MHCYfwZN9xdeQd8cUpgIY6euojZtTr-zuD-f-R_aX7e_1Ihn8qJm5OvNAL2W2Y78UcNpIA7HPg=s800-c-k-c0x00ffffff-no-rj",
+      imgUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpmEyttca5OKcFmbs1aTNIEejqUK3kNaFL5Q&s",
       createdAt: 1442962721000,
       updatedAt: 1739722875766
     },
@@ -4212,7 +4212,7 @@ export const stationsDemoData = [
     createdBy: {
       _id: "UCQUFWrwQshjbq3VN0yfm_5Q",
       fullname: "Polo & Pan",
-      imgUrl: "https://yt3.ggpht.com/MHCYfwZN9xdeQd8cUpgIY6euojZtTr-zuD-f-R_aX7e_1Ihn8qJm5OvNAL2W2Y78UcNpIA7HPg=s800-c-k-c0x00ffffff-no-rj",
+      imgUrl: "https://yabangee.com/wp-content/uploads/WhatsApp-Image-2023-06-25-at-12.18.42.jpeg",
       createdAt: 1386260715000,
       updatedAt: 1739722892436
     },
@@ -4725,7 +4725,7 @@ export const stationsDemoData = [
     createdBy: {
       _id: "UCL_vER7ejF-xRWKIkeBas8g",
       fullname: "Corpo-Mente",
-      imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nWkhYyFDlRtNu-LxwhGiaWu4HE7luyGwlZEQnqHMWPVA=s800-c-k-c0x00ffffff-no-rj",
+      imgUrl: "https://www.metalorgie.com/media/cache/band_hero/images/band/picture/Corpo-Mente.jpg",
       createdAt: 1434490368000,
       updatedAt: 1739722932211
     },
@@ -4906,7 +4906,7 @@ export const stationsDemoData = [
     createdBy: {
       _id: "UC_3P0PpZrIhXLtV8kwsaC9Q",
       fullname: "Igorrr",
-      imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nharzTgNj0nldtROqw_WylltWyNMHWsCqJXV3QYlcNSaI=s800-c-k-c0x00ffffff-no-rj",
+      imgUrl: "https://www.metalblade.com/us/mainpics/igorrr.jpg",
       createdAt: 1169576907000,
       updatedAt: 1739722948420
     },
@@ -5268,7 +5268,7 @@ export const stationsDemoData = [
     createdBy: {
       _id: "UCZU9T1ceaOgwfLRq7OKFU4Q",
       fullname: "Linkin Park",
-      imgUrl: "https://yt3.ggpht.com/t1YKHBB0WGDAl5xdXR86CNv3K361XMU5oZ3Wi1zLn36gw6XgJDLb_scBCj2nfvjefrsG8goPztA=s800-c-k-c0x00ffffff-no-rj",
+      imgUrl: "https://m.media-amazon.com/images/I/81iC+O0ec2L._UF1000,1000_QL80_.jpg",
       createdAt: 1164741506000,
       updatedAt: 1739722980834
     },
@@ -5449,7 +5449,7 @@ export const stationsDemoData = [
     createdBy: {
       _id: "UCFcqi7MrlzIp9RMTtUlxE8g",
       fullname: "Avenged Sevenfold",
-      imgUrl: "https://yt3.ggpht.com/1vNNMlL8uinsCpHkgwoIEDMXzL_Bes1jPkhdurDY-h0DZAZJGyaWqk0c7rhqBg1zBz7VoZz9pA=s800-c-k-c0x00ffffff-no-rj",
+      imgUrl: "https://cdn-images.dzcdn.net/images/cover/ab5a993fdec6fe99e71d426d9b7dde1b/0x1900-000000-80-0-0.jpg",
       createdAt: 1136473521000,
       updatedAt: 1739722991372
     },
@@ -6157,7 +6157,7 @@ export const stationsDemoData = [
     createdBy: {
       _id: "UC4LMYsZmbRZOpHV8B-trVvQ",
       fullname: "The Lonely Island - Topic",
-      imgUrl: "https://yt3.ggpht.com/ytc/AIdro_mwpPZiDzeEy8MJSFFzOOREA8CjZRMp1LRBVPfkISIRR4E=s800-c-k-c0x00ffffff-no-rj",
+      imgUrl: "https://i9.ytimg.com/s_p/OLAK5uy_nWY0KyMDwQlup6TY3CSfaqGcWBczw9ybc/sddefault.jpg?sqp=CPiIyL0Gir7X7AMICNTKwr0GEAE=&rs=AOn4CLBcjFQiqkz7_4TDI56yI1dRuw2UGQ&v=1739629908",
       createdAt: 1528839127000,
       updatedAt: 1739723139331
     },
@@ -6323,7 +6323,7 @@ export const stationsDemoData = [
     createdBy: {
       _id: "UCcZWcLAA2WIbL9lxtypqIfQ",
       fullname: "As Blood Runs Black - Topic",
-      imgUrl: "https://yt3.ggpht.com/Wu667Mn_ciQfwKh9IY6Hh99nzJa-22lyKjBTCJ_Anb1GNgLZ2PW4GFvHuOKldJ_0amWsIT-CDg=s800-c-k-c0x00ffffff-no-rj",
+      imgUrl: "https://upload.wikimedia.org/wikipedia/en/4/45/ABRBAllegiance.png",
       createdAt: 1387012645000,
       updatedAt: 1739723161866
     },
@@ -6610,7 +6610,7 @@ export const stationsDemoData = [
     createdBy: {
       _id: "UCGjEbsGoyWSJlMjzuWM4FKQ",
       fullname: "Thy Art Is Murder",
-      imgUrl: "https://yt3.ggpht.com/Z0WmPvrsS_vDzrEyqSdBa64S_5jmd_NJ1RyQYd-ewY8xEzj35rYvhS2nrDgh_9dgNGpfp0s2=s800-c-k-c0x00ffffff-no-rj",
+      imgUrl: "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da848b44360b06029f16d4335299",
       createdAt: 1329058139000,
       updatedAt: 1739723259269
     },
@@ -6686,7 +6686,7 @@ export const stationsDemoData = [
     createdBy: {
       _id: "UCeKNE47oa6xl7KifwZpF9Qg",
       fullname: "Loa",
-      imgUrl: "https://yt3.ggpht.com/jXKcCid-JnRJyZM1cRIhFG3hTwVgdWMtr65UDe6Ui9i-g396wmCHPJRDHhlTAq6cc6DksoHDhw=s800-c-k-c0x00ffffff-no-rj",
+      imgUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTk9VOjB5ms9s8FKWO7C3aTlZuqA1elOLaOCA&s",
       createdAt: 1658398725305,
       updatedAt: 1739723270856
     },
@@ -6897,7 +6897,7 @@ export const stationsDemoData = [
     createdBy: {
       _id: "UC-0ZI1IYz0z2mM7P_Kwwq-A",
       fullname: "Superheaven",
-      imgUrl: "https://yt3.ggpht.com/Xn062GxO67wcfsPlOn9ka6bRCPSCx-gusZLaDeFBtO1mFhQSUQREiZ5FQHgaLWQuHS6uSU2hwzg=s800-c-k-c0x00ffffff-no-rj",
+      imgUrl: "https://cdn-images.dzcdn.net/images/cover/8f568ba0ad957102dd97a19c764cfb0d/0x1900-000000-80-0-0.jpg",
       createdAt: 1396978278000,
       updatedAt: 1739723306283
     },
@@ -7063,7 +7063,7 @@ export const stationsDemoData = [
     createdBy: {
       _id: "UCOqPalU27ztRNMrL2PD-YAA",
       fullname: "Infected Mushroom - Topic",
-      imgUrl: "https://yt3.ggpht.com/ytc/AIdro_klgVFdLfGKOm0StvnZDCBd8346aR8cHtkmNm9IaTfsNsc=s800-c-k-c0x00ffffff-no-rj",
+      imgUrl: "https://cdn-images.dzcdn.net/images/cover/870986e4a689f8ecfeeb3e632e2360e8/0x1900-000000-80-0-0.jpg",
       createdAt: 1373368118000,
       updatedAt: 1739723340773
     },
@@ -7229,7 +7229,7 @@ export const stationsDemoData = [
     createdBy: {
       _id: "UCVvjB7d35cyYtjfoEVDBAIA",
       fullname: "The Crimson Armada - Topic",
-      imgUrl: "https://yt3.ggpht.com/UEQhsS7slCIXDl5Hf_0RN4l3G93Z_5P3OtX0ACi1pIVuKqsQ7KLVQO4KWGKzJsSUtuxrLFsTfw=s800-c-k-c0x00ffffff-no-rj",
+      imgUrl: "https://upload.wikimedia.org/wikipedia/en/0/0b/CrimsonArmada_Guardians.jpg",
       createdAt: 1374469543000,
       updatedAt: 1739723359531
     },
@@ -7260,7 +7260,7 @@ export const stationsDemoData = [
     createdBy: {
       _id: "UC1OR2YNQLZJYFdQjFrPWvVw",
       fullname: "Backstreet Boys",
-      imgUrl: "https://yt3.ggpht.com/4896aHISbT7_BK9A2m1esPVI9T2mo9MdbNy0kKWsHA8XWgWqNC4fbzm1BW8n1NYZueiC0EFCTg=s800-c-k-c0x00ffffff-no-rj",
+      imgUrl: "https://i.scdn.co/image/ab67616d00001e02dafd4b9261a1ab9acd53a53d",
       createdAt: 1235509169000,
       updatedAt: 1739723369533
     },
@@ -7697,7 +7697,7 @@ export const stationsDemoData = [
     createdBy: {
       _id: "UCkEM-3qDgI7F8SiBfo75F6w",
       fullname: "camille martin",
-      imgUrl: "https://yt3.ggpht.com/ytc/AIdro_mIg5mSe3SIJDH8clqPt9FRlqJPQT9pIhWlP88goYCgIC8=s800-c-k-c0x00ffffff-no-rj",
+      imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Martin_nancy1894.jpg/220px-Martin_nancy1894.jpg",
       createdAt: 1379155903000,
       updatedAt: 1739723470333
     },
@@ -7878,7 +7878,7 @@ export const stationsDemoData = [
     createdBy: {
       _id: "UCNi960UsNDRbnTQgKZgTTXg",
       fullname: "Kelvin Monteza",
-      imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nF8OlP_UxrUW5GA9BIRmr2S4hSIE8FoFYgFnmijcjpHWw=s800-c-k-c0x00ffffff-no-rj",
+      imgUrl: "https://i.ytimg.com/vi/PRk1g6lktjY/hqdefault.jpg?sqp=-oaymwEmCOADEOgC8quKqQMa8AEB-AH-BIAC4AOKAgwIABABGHIgRSg4MA8=&rs=AOn4CLAsWOUq03Jy67NCxGw29gLVDPyEwg",
       createdAt: 1344103031000,
       updatedAt: 1739723516463
     },
