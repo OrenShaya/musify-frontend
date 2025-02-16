@@ -30,10 +30,10 @@ import { playerSongEndedEvent } from './store/actions/player.actions.js'
 
 export function RootCmp() {
   const playerRef = useRef(null)
-
   const handleSongEnded = () => {
     playerSongEndedEvent()
   }
+
   return (
     <div className='main-container main-layout'>
       <AppHeader />
