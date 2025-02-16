@@ -18,11 +18,16 @@ export function StationPreview({ station }) {
   }
 
   const isSelectedStation = () => selectedStationId === station._id
+
   const onTogglePlay = () => {
     if (!isSelectedStation()) {
       setStation(station)
+      // TODO: continue playlist, instead of set to first song
       setCurrentlyPlaying(station.songs[0]._id)
+
       setIsPlaying(true)
+    } else {
+      setIsPlaying(!isPlaying)
     }
   }
 
