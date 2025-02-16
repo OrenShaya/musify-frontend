@@ -6,7 +6,7 @@ export function SideBarStationPreview({ station }) {
     return <div>Loading</div>
   }
 
-  console.log('station', station.songs[0])
+  // console.log('station', station.songs[0])
 
   function handleClick(station) {
     console.log('stationId', station.songs[0]._id)
