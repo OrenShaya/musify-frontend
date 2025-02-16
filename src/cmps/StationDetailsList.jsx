@@ -3,6 +3,7 @@ import { formatTimeFromSeconds } from '../services/util.service.js'
 import { setCurrentlyPlaying } from '../store/actions/player.actions.js'
 import { useSelector } from 'react-redux'
 import { updateStation } from '../store/actions/station.actions.js'
+import greenTick from '../assets/icons/green-tick.svg'
 
 export function StationDetailsList({ station }) {
   function formatDate(unixDate) {
@@ -92,8 +93,9 @@ export function StationDetailsList({ station }) {
                           <div className='song-album'>
                             {/* {song.album} needed here */ 'Album Name'}
                           </div>
-                          <div>
+                          <div className='date-added'>
                             {formatDate(song.addedAt || song.updatedAt)}
+                            <span> <img className='add-to-liked' src={greenTick}/></span>
                           </div>
                           <div className='song-length'>
                             {formatTimeFromSeconds(song?.lengthInSeconds)}
