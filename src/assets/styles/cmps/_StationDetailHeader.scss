@@ -10,14 +10,26 @@
   display: flex;
   flex-direction: column;
   gap: 1em;
-  margin-top: 4em;
+  margin-top: 5.7em;
+}
+
+h2.artist-title {
+  display: flex;
+  gap: 0.5em;
+}
+
+.station-creator-name {
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .station-img {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2.5em 1.5em;
+  margin: 1.3em 1.5em 2.5em 1.5em;
   border-radius: em(4px);
 
   width: 100%;
@@ -42,4 +54,17 @@
 
 .station-name {
   font-size: em(96px);
+  font-family: Spotifymix-Bold;
+}
+
+.station-total-length {
+  display: inline;
+  align-self: center;
+  font-size: 14px;
+  color: $station-table-header-font-color;
+}
+
+.verified-icon-img {
+  height: 24px;
+  width: 14px;
 }
