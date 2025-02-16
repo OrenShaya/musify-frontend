@@ -1,5 +1,4 @@
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
-
 import { formatTimeFromSeconds } from '../services/util.service.js'
 import { setCurrentlyPlaying } from '../store/actions/player.actions.js'
 import { useSelector } from 'react-redux'
@@ -82,9 +81,7 @@ export function StationDetailsList({ station }) {
                             </svg>
                           </div>
                           <div className='album-song-artist'>
-                            <div className='album-img'>
-                              <img src={song?.imgUrl} alt='album image' />
-                            </div>
+                            <img className='album-img' src={song?.imgUrl} alt='album image' />
                             <div className='song-title-artist'>
                               <div className='song-title'>{song.title}</div>
                               <div className='artist'>
