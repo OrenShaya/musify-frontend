@@ -57,7 +57,7 @@ export function AppHeader() {
         <div className='nav-links'>
           {/* <NavLink to='about'>About</NavLink> */}
           <button className='home-btn'>
-            <NavLink to='station'>
+            <NavLink to='/'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 data-encore-id='icon'
@@ -95,7 +95,7 @@ export function AppHeader() {
               placeholder='What do you want to play?'
             />
 
-            <span className='browser-icon' onClick={navigate('explore')}>
+            <span className='browser-icon' onClick={() => navigate('explore')}>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 data-encore-id='icon'
@@ -135,10 +135,4 @@ export function AppHeader() {
       </nav>
     </header>
   )
-}
-
-{
-  /* <NavLink to='car'>Cars</NavLink>
-        <NavLink to='chat'>Chat</NavLink>
-        <NavLink to='review'>Review</NavLink> */
 }
