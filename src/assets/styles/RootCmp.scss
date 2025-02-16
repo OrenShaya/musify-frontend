@@ -1,10 +1,19 @@
 html,
 body {
   overflow: hidden; // Prevents scrolling on the entire page
+  ::-webkit-scrollbar {
+    color: #5a5a5a;
+    width: 0.5em;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #5a5a5a;
+    border-radius: 1em;
+  }
 }
 
 .main-container main {
-  // min-height: calc(100vh - 7rem);
-  overflow: hidden; // Prevents scrolling within the main container
+  //   min-height: calc(100vh - 100px);
+  overflow: hidden;
   height: 100vh;
+  padding-bottom: 10em;
 }

@@ -12,5 +12,7 @@ main {
 
 .station-details {
   overflow-y: scroll;
-  height: 85vh;
+  overflow-x: hidden;
+
+  height: 100%;
 }
