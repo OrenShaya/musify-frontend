@@ -1,355 +1,7 @@
-import ddtUrl from '../src/assets/img/station-ddt.jpeg'
-import corpoMenteUrl from '../src/assets/img/station-corpo-mente.jpeg'
-import rubyMyDearUrl from '../src/assets/img/station-ruby-my-dear.jpeg'
+
 
 export const stationsDemoData = [
-  {
-    _id: "maybe-1",
-    name: "ДДТ",
-    tags: [
-      "rock",
-      "80s",
-      "live"
-    ],
-    createdBy: {
-      _id: "maybe-u101",
-      fullname: "Artist",
-      imgUrl: "/src/assets/img/station-ddt.jpeg",
-      createdAt: 1739398908555,
-      updatedAt: 1739399900000
-    },
-    likedByUsers: [
-      {
-        _id: "3S4c4",
-        fullname: "admin",
-        imgUrl: "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
-      },
-      {
-        _id: "3T5yg",
-        fullname: "kiki",
-        imgUrl: "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
-      }
-    ],
-    songs: [
-      {
-        _id: "k3PgFdv",
-        title: "Что такое осень",
-        url: "https://youtu.be/5KC-iscJtsI",
-        imgUrl: "https://i.ytimg.com/vi/_bvx_1B5P38/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLA4WUzmvcL-z7WcNKAgigFSQwuWcw",
-        lengthInSeconds: 462,
-        addedBy: {
-          _id: "u101",
-          fullname: "Puki Ben David"
-        },
-        likedBy: [],
-        createdAt: 1739398908555,
-        updatedAt: 1739398908555
-      },
-      {
-        _id: "hmyRh2G",
-        title: "more or less It it",
-        url: "https://youtu.be/lYBUbBu4W08",
-        imgUrl: "https://cdn.pixabay.com/photo/2013/07/13/12/41/music-160112_1280.png",
-        lengthInSeconds: 699,
-        addedBy: {
-          _id: "u101",
-          fullname: "Puki Ben David"
-        },
-        likedBy: [],
-        createdAt: 1739357362203,
-        updatedAt: 1739357362203
-      }
-    ],
-    msgs: [
-      {
-        _id: "msg1",
-        from: {
-          _id: "7N2Ai",
-          fullname: "baba"
-        },
-        txt: "Welcome to My Rock Station",
-        createdAt: 1739400100000
-      }
-    ]
-  },
-  {
-    _id: "st12345",
-    name: "Corpo-Mente",
-    tags: [
-      "rock",
-      "80s",
-      "live"
-    ],
-    createdBy: {
-      _id: "u101",
-      fullname: "Puki Ben David",
-      imgUrl: "/src/assets/img/station-corpo-mente.jpeg",
-      createdAt: 1739398908555,
-      updatedAt: 1739399900000
-    },
-    likedByUsers: [
-      {
-        _id: "3S4c4",
-        fullname: "admin",
-        imgUrl: "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
-      },
-      {
-        _id: "3T5yg",
-        fullname: "kiki",
-        imgUrl: "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
-      }
-    ],
-    songs: [
-      {
-        _id: "k3PgFdv",
-        title: "bit by bit was All",
-        url: "https://youtu.be/lYBUbBu4W08",
-        imgUrl: "https://cdn.pixabay.com/photo/2013/07/13/12/41/music-160112_1280.png",
-        lengthInSeconds: 462,
-        addedBy: {
-          _id: "u101",
-          fullname: "Puki Ben David"
-        },
-        likedBy: [],
-        createdAt: 1739398908555,
-        updatedAt: 1739398908555,
-        addedAt: 1739398909555
-      },
-      {
-        _id: "hmyRh2G",
-        title: "more or less It it",
-        url: "https://youtu.be/lYBUbBu4W08",
-        imgUrl: "https://cdn.pixabay.com/photo/2013/07/13/12/41/music-160112_1280.png",
-        lengthInSeconds: 699,
-        addedBy: {
-          _id: "u101",
-          fullname: "Puki Ben David"
-        },
-        likedBy: [],
-        createdAt: 1739357362203,
-        updatedAt: 1739357362203,
-        addedAt: 1739357372203
-      }
-    ],
-    msgs: [
-      {
-        _id: "msg1",
-        from: {
-          _id: "7N2Ai",
-          fullname: "baba"
-        },
-        txt: "Welcome to My Rock Station",
-        createdAt: 1739400100000
-      }
-    ]
-  },
-  {
-    _id: "st23456",
-    name: "Brame",
-    artists: [
-      "Ruby My Dear"
-    ],
-    tags: [
-      "classical",
-      "orchestra",
-      "instrumental"
-    ],
-    createdBy: {
-      _id: "u102",
-      fullname: "Alice Maestro",
-      imgUrl: "/src/assets/img/station-ruby-my-dear.jpeg",
-      createdAt: 1739400000000,
-      updatedAt: 1739403600000,
-      addedAt: 1739357732203
-    },
-    likedByUsers: [
-      {
-        _id: "3S4c4",
-        fullname: "admin",
-        imgUrl: "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
-      }
-    ],
-    songs: [
-      {
-        _id: "song1",
-        title: "Moonlight Sonata",
-        url: "https://youtu.be/4Tr0otuiQuU",
-        imgUrl: "https://cdn.pixabay.com/photo/2014/04/03/10/32/music-312233_1280.png",
-        lengthInSeconds: 540,
-        addedBy: {
-          _id: "u102",
-          fullname: "Alice Maestro"
-        },
-        likedBy: [],
-        createdAt: 1739400000000,
-        updatedAt: 1739400000000,
-        addedAt: 1739400005000
-      },
-      {
-        _id: "song2",
-        title: "Four Seasons - Spring",
-        url: "https://youtu.be/f6b8hBdw78Q",
-        imgUrl: "https://cdn.pixabay.com/photo/2016/11/14/03/16/classical-1822032_1280.jpg",
-        lengthInSeconds: 600,
-        addedBy: {
-          _id: "u102",
-          fullname: "Alice Maestro"
-        },
-        likedBy: [],
-        createdAt: 1739400100000,
-        updatedAt: 1739400100000,
-        addedAt: 1739400120000
-      }
-    ],
-    msgs: [
-      {
-        _id: "msg1",
-        from: {
-          _id: "7N2Ai",
-          fullname: "baba"
-        },
-        txt: "Welcome to The Classical Station",
-        createdAt: 1739403600000
-      }
-    ]
-  },
-  {
-    _id: "st34567",
-    name: "Hip Hop Beats",
-    tags: [
-      "hip hop",
-      "rap",
-      "urban"
-    ],
-    createdBy: {
-      _id: "u103",
-      fullname: "Bob Rhymes",
-      imgUrl: "",
-      createdAt: 1739410000000,
-      updatedAt: 1739413600000
-    },
-    likedByUsers: [
-      {
-        _id: "3T5yg",
-        fullname: "kiki",
-        imgUrl: "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
-      }
-    ],
-    songs: [
-      {
-        _id: "song3",
-        title: "Flowing Rhythms",
-        url: "https://youtu.be/3Q3E-6HXzHQ",
-        imgUrl: "https://cdn.pixabay.com/photo/2014/04/03/10/32/hiphop-312234_1280.png",
-        lengthInSeconds: 320,
-        addedBy: {
-          _id: "u103",
-          fullname: "Bob Rhymes"
-        },
-        likedBy: [],
-        createdAt: 1739410000000,
-        updatedAt: 1739410000000,
-        addedAt: 1739410000000
-      },
-      {
-        _id: "song4",
-        title: "Street Stories",
-        url: "https://youtu.be/dFzC-YF93LQ",
-        imgUrl: "https://cdn.pixabay.com/photo/2016/09/01/22/46/urban-1631819_1280.jpg",
-        lengthInSeconds: 275,
-        addedBy: {
-          _id: "u103",
-          fullname: "Bob Rhymes"
-        },
-        likedBy: [],
-        createdAt: 1739410100000,
-        updatedAt: 1739410100000,
-        addedAt: 1739410105000
-      }
-    ],
-    msgs: [
-      {
-        _id: "msg2",
-        from: {
-          _id: "7N2Ai",
-          fullname: "baba"
-        },
-        txt: "Turn up the volume!",
-        createdAt: 1739413600000
-      }
-    ]
-  },
-  {
-    _id: "st45678",
-    name: "Electronic Vibes",
-    tags: [
-      "electronic",
-      "EDM",
-      "dance"
-    ],
-    createdBy: {
-      _id: "u104",
-      fullname: "Cara Synth",
-      imgUrl: "",
-      createdAt: 1739420000000,
-      updatedAt: 1739423600000
-    },
-    likedByUsers: [
-      {
-        _id: "7N2Ai",
-        fullname: "baba",
-        imgUrl: "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
-      },
-      {
-        _id: "Oeiwy",
-        fullname: "shuki",
-        imgUrl: "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
-      }
-    ],
-    songs: [
-      {
-        _id: "song5",
-        title: "Electric Dreams",
-        url: "https://youtu.be/electronic1",
-        imgUrl: "https://cdn.pixabay.com/photo/2017/01/31/17/45/electronic-2022105_1280.jpg",
-        lengthInSeconds: 420,
-        addedBy: {
-          _id: "u104",
-          fullname: "Cara Synth"
-        },
-        likedBy: [],
-        createdAt: 1739420000000,
-        updatedAt: 1739420000000,
-        addedAt: 1739420007000
-      },
-      {
-        _id: "song6",
-        title: "Neon Nights",
-        url: "https://youtu.be/electronic2",
-        imgUrl: "https://cdn.pixabay.com/photo/2018/08/14/13/23/neon-3606436_1280.jpg",
-        lengthInSeconds: 390,
-        addedBy: {
-          _id: "u104",
-          fullname: "Cara Synth"
-        },
-        likedBy: [],
-        createdAt: 1739420100000,
-        updatedAt: 1739420100000,
-        addedAt: 1739420007000
-      }
-    ],
-    msgs: [
-      {
-        _id: "msg3",
-        from: {
-          _id: "7N2Ai",
-          fullname: "baba"
-        },
-        txt: "Get ready to dance!",
-        createdAt: 1739423600000
-      }
-    ]
-  },
+
   {
     songs: [
       {
@@ -639,7 +291,7 @@ export const stationsDemoData = [
       }
     ],
     _id: "PL-tdP6nrpQYte4iLNJC3E7NpNFjR2PtFy",
-    name: "System Of A Down - Topic",
+    name: "System Of A Down",
     createdBy: {
       _id: "UCDJftX2zx_UT_QSnBGIF96w",
       fullname: "System Of A Down - Topic",
@@ -649,7 +301,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["music","workout","party","metal"]
   },
   {
     songs: [
@@ -1030,7 +682,7 @@ export const stationsDemoData = [
       }
     ],
     _id: "PLgF5KLwzxU-2blxEvK9IGZMZ6tKyPOg4L",
-    name: "Iron Maiden - Topic",
+    name: "Iron Maiden",
     createdBy: {
       _id: "UC0zbzp6x7zR8u0LhanNWFyw",
       fullname: "Iron Maiden - Topic",
@@ -1040,7 +692,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["focus","discover","party","metal"]
   },
   {
     songs: [
@@ -1331,7 +983,7 @@ export const stationsDemoData = [
       }
     ],
     _id: "PL9K4gwmvtl1jSO34-fPWmq5OT7Soicmjj",
-    name: "LadyGagaVEVO",
+    name: "Lady Gaga",
     createdBy: {
       _id: "UC07Kxew-cMIaykMOkzqHtBQ",
       fullname: "LadyGagaVEVO",
@@ -1341,7 +993,354 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["music","pop","mood","party"]
+  },
+  {
+    _id: "maybe-1",
+    name: "ДДТ",
+    tags: [
+      "rock",
+      "80s",
+      "live"
+    ],
+    createdBy: {
+      _id: "maybe-u101",
+      fullname: "Artist",
+      imgUrl: "/src/assets/img/station-ddt.jpeg",
+      createdAt: 1739398908555,
+      updatedAt: 1739399900000
+    },
+    likedByUsers: [
+      {
+        _id: "3S4c4",
+        fullname: "admin",
+        imgUrl: "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
+      },
+      {
+        _id: "3T5yg",
+        fullname: "kiki",
+        imgUrl: "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
+      }
+    ],
+    songs: [
+      {
+        _id: "k3PgFdv",
+        title: "Что такое осень",
+        url: "https://youtu.be/5KC-iscJtsI",
+        imgUrl: "https://i.ytimg.com/vi/_bvx_1B5P38/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLA4WUzmvcL-z7WcNKAgigFSQwuWcw",
+        lengthInSeconds: 462,
+        addedBy: {
+          _id: "u101",
+          fullname: "Puki Ben David"
+        },
+        likedBy: [],
+        createdAt: 1739398908555,
+        updatedAt: 1739398908555
+      },
+      {
+        _id: "hmyRh2G",
+        title: "more or less It it",
+        url: "https://youtu.be/lYBUbBu4W08",
+        imgUrl: "https://cdn.pixabay.com/photo/2013/07/13/12/41/music-160112_1280.png",
+        lengthInSeconds: 699,
+        addedBy: {
+          _id: "u101",
+          fullname: "Puki Ben David"
+        },
+        likedBy: [],
+        createdAt: 1739357362203,
+        updatedAt: 1739357362203
+      }
+    ],
+    msgs: [
+      {
+        _id: "msg1",
+        from: {
+          _id: "7N2Ai",
+          fullname: "baba"
+        },
+        txt: "Welcome to My Rock Station",
+        createdAt: 1739400100000
+      }
+    ]
+  },
+  {
+    _id: "st12345",
+    name: "Corpo-Mente",
+    tags: [
+      "rock",
+      "80s",
+      "live"
+    ],
+    createdBy: {
+      _id: "u101",
+      fullname: "Puki Ben David",
+      imgUrl: "/src/assets/img/station-corpo-mente.jpeg",
+      createdAt: 1739398908555,
+      updatedAt: 1739399900000
+    },
+    likedByUsers: [
+      {
+        _id: "3S4c4",
+        fullname: "admin",
+        imgUrl: "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
+      },
+      {
+        _id: "3T5yg",
+        fullname: "kiki",
+        imgUrl: "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
+      }
+    ],
+    songs: [
+      {
+        _id: "k3PgFdv",
+        title: "bit by bit was All",
+        url: "https://youtu.be/lYBUbBu4W08",
+        imgUrl: "https://cdn.pixabay.com/photo/2013/07/13/12/41/music-160112_1280.png",
+        lengthInSeconds: 462,
+        addedBy: {
+          _id: "u101",
+          fullname: "Puki Ben David"
+        },
+        likedBy: [],
+        createdAt: 1739398908555,
+        updatedAt: 1739398908555,
+        addedAt: 1739398909555
+      },
+      {
+        _id: "hmyRh2G",
+        title: "more or less It it",
+        url: "https://youtu.be/lYBUbBu4W08",
+        imgUrl: "https://cdn.pixabay.com/photo/2013/07/13/12/41/music-160112_1280.png",
+        lengthInSeconds: 699,
+        addedBy: {
+          _id: "u101",
+          fullname: "Puki Ben David"
+        },
+        likedBy: [],
+        createdAt: 1739357362203,
+        updatedAt: 1739357362203,
+        addedAt: 1739357372203
+      }
+    ],
+    msgs: [
+      {
+        _id: "msg1",
+        from: {
+          _id: "7N2Ai",
+          fullname: "baba"
+        },
+        txt: "Welcome to My Rock Station",
+        createdAt: 1739400100000
+      }
+    ]
+  },
+  {
+    _id: "st23456",
+    name: "Brame",
+    artists: [
+      "Ruby My Dear"
+    ],
+    tags: [
+      "classical",
+      "orchestra",
+      "instrumental"
+    ],
+    createdBy: {
+      _id: "u102",
+      fullname: "Alice Maestro",
+      imgUrl: "/src/assets/img/station-ruby-my-dear.jpeg",
+      createdAt: 1739400000000,
+      updatedAt: 1739403600000,
+      addedAt: 1739357732203
+    },
+    likedByUsers: [
+      {
+        _id: "3S4c4",
+        fullname: "admin",
+        imgUrl: "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
+      }
+    ],
+    songs: [
+      {
+        _id: "song1",
+        title: "Moonlight Sonata",
+        url: "https://youtu.be/4Tr0otuiQuU",
+        imgUrl: "https://cdn.pixabay.com/photo/2014/04/03/10/32/music-312233_1280.png",
+        lengthInSeconds: 540,
+        addedBy: {
+          _id: "u102",
+          fullname: "Alice Maestro"
+        },
+        likedBy: [],
+        createdAt: 1739400000000,
+        updatedAt: 1739400000000,
+        addedAt: 1739400005000
+      },
+      {
+        _id: "song2",
+        title: "Four Seasons - Spring",
+        url: "https://youtu.be/f6b8hBdw78Q",
+        imgUrl: "https://cdn.pixabay.com/photo/2016/11/14/03/16/classical-1822032_1280.jpg",
+        lengthInSeconds: 600,
+        addedBy: {
+          _id: "u102",
+          fullname: "Alice Maestro"
+        },
+        likedBy: [],
+        createdAt: 1739400100000,
+        updatedAt: 1739400100000,
+        addedAt: 1739400120000
+      }
+    ],
+    msgs: [
+      {
+        _id: "msg1",
+        from: {
+          _id: "7N2Ai",
+          fullname: "baba"
+        },
+        txt: "Welcome to The Classical Station",
+        createdAt: 1739403600000
+      }
+    ]
+  },
+  {
+    _id: "st34567",
+    name: "Hip Hop Beats",
+    tags: [
+      "hip hop",
+      "rap",
+      "urban"
+    ],
+    createdBy: {
+      _id: "u103",
+      fullname: "Bob Rhymes",
+      imgUrl: "",
+      createdAt: 1739410000000,
+      updatedAt: 1739413600000
+    },
+    likedByUsers: [
+      {
+        _id: "3T5yg",
+        fullname: "kiki",
+        imgUrl: "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
+      }
+    ],
+    songs: [
+      {
+        _id: "song3",
+        title: "Flowing Rhythms",
+        url: "https://youtu.be/3Q3E-6HXzHQ",
+        imgUrl: "https://cdn.pixabay.com/photo/2014/04/03/10/32/hiphop-312234_1280.png",
+        lengthInSeconds: 320,
+        addedBy: {
+          _id: "u103",
+          fullname: "Bob Rhymes"
+        },
+        likedBy: [],
+        createdAt: 1739410000000,
+        updatedAt: 1739410000000,
+        addedAt: 1739410000000
+      },
+      {
+        _id: "song4",
+        title: "Street Stories",
+        url: "https://youtu.be/dFzC-YF93LQ",
+        imgUrl: "https://cdn.pixabay.com/photo/2016/09/01/22/46/urban-1631819_1280.jpg",
+        lengthInSeconds: 275,
+        addedBy: {
+          _id: "u103",
+          fullname: "Bob Rhymes"
+        },
+        likedBy: [],
+        createdAt: 1739410100000,
+        updatedAt: 1739410100000,
+        addedAt: 1739410105000
+      }
+    ],
+    msgs: [
+      {
+        _id: "msg2",
+        from: {
+          _id: "7N2Ai",
+          fullname: "baba"
+        },
+        txt: "Turn up the volume!",
+        createdAt: 1739413600000
+      }
+    ]
+  },
+  {
+    _id: "st45678",
+    name: "Electronic Vibes",
+    tags: [
+      "electronic",
+      "EDM",
+      "dance"
+    ],
+    createdBy: {
+      _id: "u104",
+      fullname: "Cara Synth",
+      imgUrl: "",
+      createdAt: 1739420000000,
+      updatedAt: 1739423600000
+    },
+    likedByUsers: [
+      {
+        _id: "7N2Ai",
+        fullname: "baba",
+        imgUrl: "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
+      },
+      {
+        _id: "Oeiwy",
+        fullname: "shuki",
+        imgUrl: "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
+      }
+    ],
+    songs: [
+      {
+        _id: "song5",
+        title: "Electric Dreams",
+        url: "https://youtu.be/electronic1",
+        imgUrl: "https://cdn.pixabay.com/photo/2017/01/31/17/45/electronic-2022105_1280.jpg",
+        lengthInSeconds: 420,
+        addedBy: {
+          _id: "u104",
+          fullname: "Cara Synth"
+        },
+        likedBy: [],
+        createdAt: 1739420000000,
+        updatedAt: 1739420000000,
+        addedAt: 1739420007000
+      },
+      {
+        _id: "song6",
+        title: "Neon Nights",
+        url: "https://youtu.be/electronic2",
+        imgUrl: "https://cdn.pixabay.com/photo/2018/08/14/13/23/neon-3606436_1280.jpg",
+        lengthInSeconds: 390,
+        addedBy: {
+          _id: "u104",
+          fullname: "Cara Synth"
+        },
+        likedBy: [],
+        createdAt: 1739420100000,
+        updatedAt: 1739420100000,
+        addedAt: 1739420007000
+      }
+    ],
+    msgs: [
+      {
+        _id: "msg3",
+        from: {
+          _id: "7N2Ai",
+          fullname: "baba"
+        },
+        txt: "Get ready to dance!",
+        createdAt: 1739423600000
+      }
+    ]
   },
   {
     songs: [
@@ -1647,7 +1646,7 @@ export const stationsDemoData = [
       }
     ],
     _id: "PLiN-7mukU_RGm3gXXR0MXtZ5ynTioL05I",
-    name: "Red Hot Chili Peppers - Topic",
+    name: "Red Hot Chili Peppers",
     createdBy: {
       _id: "UCrSorX845CEWXzU4Z7BojjA",
       fullname: "Red Hot Chili Peppers - Topic",
@@ -1657,21 +1656,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
-  },
-  {
-    _id: "PL_3PKTcHZ6KRuxXcPdvdKwt4L2eWad2UM",
-    name: "pyrojunkie982",
-    createdBy: {
-      _id: "UCn2GYwECz_MzQ0CUVbPzeqg",
-      fullname: "pyrojunkie982",
-      imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nNk1yd6Q0dCjC1na7KjtKAKZoegAt9s_iUX5rmDMbYgA=s800-c-k-c0x00ffffff-no-rj",
-      createdAt: 1158984689000,
-      updatedAt: 1739582144217
-    },
-    msgs: [],
-    likedByUsers: [],
-    tags: []
+    tags: ["music","rock","mood","wellness"]
   },
   {
     songs: [
@@ -1777,7 +1762,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["music","workout","party","pop"]
   },
   {
     songs: [
@@ -2213,7 +2198,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["k-pop","blues","radar","glow","rock"]
   },
   {
     songs: [
@@ -2444,7 +2429,7 @@ export const stationsDemoData = [
       }
     ],
     _id: "PLMEZyDHJojxNlKL-Pk06Za-1SMlBdQEMG",
-    name: "msvogue23",
+    name: "Eminem",
     createdBy: {
       _id: "UCstaTFTqZAC_OqfAq_JF6vA",
       fullname: "msvogue23",
@@ -2454,7 +2439,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["classical","instrumental","workout","made for you","new releases"]
   },
   {
     songs: [
@@ -2575,7 +2560,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["glow","soul","party","pop"]
   },
   {
     _id: "PLN4C_R4ZZCri3uG5xg9x5RcyzQ7JsYHqS",
@@ -2589,11 +2574,11 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["glow","soul","party","pop"]
   },
   {
     _id: "PLqeolX5-uk9OByhNnfDo6MYn0KA28m5Rn",
-    name: "ScorpionsVEVO",
+    name: "Scorpions",
     createdBy: {
       _id: "UCqfmagAXUrUTHpJldTPRseg",
       fullname: "ScorpionsVEVO",
@@ -2603,7 +2588,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["fresh finds","radar","party","pop"]
   },
   {
     songs: [
@@ -2744,7 +2729,7 @@ export const stationsDemoData = [
       }
     ],
     _id: "PLFAcddgaFN8zqIJrTakvM9qWnR7iIrXnj",
-    name: "Michael Jackson - Topic",
+    name: "Michael Jackson",
     createdBy: {
       _id: "UCoIOOL7QKuBhQHVKL8y7BEQ",
       fullname: "Michael Jackson - Topic",
@@ -2754,7 +2739,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["fresh finds","summer","equal","pop"]
   },
   {
     songs: [
@@ -2965,7 +2950,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["fresh finds","afro","equal","travel"]
   },
   {
     songs: [
@@ -3226,7 +3211,7 @@ export const stationsDemoData = [
       }
     ],
     _id: "PL1RRNXldMeRFm7CqtN44oav-TgaWT3yt_",
-    name: "Jimi Hendrix - Topic",
+    name: "Jimi Hendrix",
     createdBy: {
       _id: "UC5NwXf8hOgZgInaYiOCZmUg",
       fullname: "Jimi Hendrix - Topic",
@@ -3236,7 +3221,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["instrumental","afro","love","travel","chill","rock"]
   },
   {
     songs: [
@@ -3417,7 +3402,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["workout","new releases","music","travel","chill"]
   },
   {
     songs: [
@@ -3583,7 +3568,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["workout","new releases","music","travel","chill","radar"]
   },
   {
     songs: [
@@ -3749,7 +3734,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["workout","new releases","music","travel","chill","radar"]
   },
   {
     songs: [
@@ -3975,7 +3960,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["equal","pop","travel","chill","radar"]
   },
   {
     songs: [
@@ -4071,7 +4056,7 @@ export const stationsDemoData = [
       }
     ],
     _id: "OLAK5uy_nnVMeT03vMfxEgtpMWtJ0WIVmjpGMiuS8",
-    name: "Polo & Pan - Topic",
+    name: "Polo & Pan",
     createdBy: {
       _id: "UC4KKov_xp4Os4PAnVr28YUQ",
       fullname: "Polo & Pan - Topic",
@@ -4081,7 +4066,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["equal","pop","travel","chill","radar"]
   },
   {
     songs: [
@@ -4147,7 +4132,7 @@ export const stationsDemoData = [
       }
     ],
     _id: "OLAK5uy_nyZOgjy2P1Sgf-RhFnv4fDseNpR6iBcbI",
-    name: "Polo & Pan - Topic",
+    name: "Polo & Pan",
     createdBy: {
       _id: "UC4KKov_xp4Os4PAnVr28YUQ",
       fullname: "Polo & Pan - Topic",
@@ -4157,7 +4142,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["equal","pop","travel","chill","radar"]
   },
   {
     songs: [
@@ -4233,7 +4218,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["equal","pop","travel","chill","radar"]
   },
   {
     songs: [
@@ -4404,7 +4389,7 @@ export const stationsDemoData = [
       }
     ],
     _id: "OLAK5uy_mP0mskxvsXos8IHN2tPVVNED9tuCtcq1Q",
-    name: "CaravanPalace",
+    name: "Caravan Palace",
     createdBy: {
       _id: "UCKH9HfYY_GEcyltl2mbD5lA",
       fullname: "CaravanPalace",
@@ -4414,7 +4399,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["funk & disco","alternative","wellness","blues","radar"]
   },
   {
     songs: [
@@ -4580,7 +4565,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["metal","rock","new releases","glow","made for you"]
   },
   {
     songs: [
@@ -4746,7 +4731,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["metal","rock","new releases","glow","made for you"]
   },
   {
     songs: [
@@ -4927,7 +4912,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["funk & disco","alternative","wellness","blues","radar"]
   },
   {
     songs: [
@@ -5108,7 +5093,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["metal","rock","new releases","charts","live events"]
   },
   {
     songs: [
@@ -5289,7 +5274,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["music","rock","mood","wellness"]
   },
   {
     songs: [
@@ -5470,7 +5455,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["metal","rock","radar","glow","rock"]
   },
   {
     songs: [
@@ -5666,7 +5651,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["music","rock","mood","wellness"]
   },
   {
     songs: [
@@ -5867,7 +5852,7 @@ export const stationsDemoData = [
       }
     ],
     _id: "OLAK5uy_nl-1HFsx8cCC8wSkTKnMmxQejjqLU-1FY",
-    name: "Breaking Benjamin - Topic",
+    name: "Breaking Benjamin",
     createdBy: {
       _id: "UCgdqrZsRnxy1qGIusPhQEyg",
       fullname: "Breaking Benjamin - Topic",
@@ -5877,7 +5862,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["music","rock","mood","wellness"]
   },
   {
     songs: [
@@ -6168,7 +6153,7 @@ export const stationsDemoData = [
       }
     ],
     _id: "OLAK5uy_l33QlYdYbx4GpWyc-K6DIl8H5xzenB14g",
-    name: "The Lonely Island - Topic",
+    name: "The Lonely Island",
     createdBy: {
       _id: "UC4LMYsZmbRZOpHV8B-trVvQ",
       fullname: "The Lonely Island - Topic",
@@ -6178,7 +6163,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["comedy","pop","mood","wellness"]
   },
   {
     songs: [
@@ -6334,7 +6319,7 @@ export const stationsDemoData = [
       }
     ],
     _id: "OLAK5uy_lPZsvVEy_CyLpgv_3vemFE5GMbaCoHsWA",
-    name: "As Blood Runs Black - Topic",
+    name: "As Blood Runs Black",
     createdBy: {
       _id: "UCcZWcLAA2WIbL9lxtypqIfQ",
       fullname: "As Blood Runs Black - Topic",
@@ -6344,7 +6329,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["metal","discover","workout","indie","mood"]
   },
   {
     songs: [
@@ -6530,7 +6515,7 @@ export const stationsDemoData = [
       }
     ],
     _id: "OLAK5uy_mgg8HCLV0XVgzEJx61GrsgxkAJj8kuN_Q",
-    name: "BreakingBenjaminVEVO",
+    name: "Breaking Benjamin",
     createdBy: {
       _id: "UCzsKCFGWpOk9gxkOjORRkZw",
       fullname: "BreakingBenjaminVEVO",
@@ -6540,7 +6525,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["comedy","pop","anime","wellness"]
   },
   {
     songs: [
@@ -6631,7 +6616,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["gaming","folk & acoustic","soul","focus"]
   },
   {
     songs: [
@@ -6707,7 +6692,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["gaming","classical","Kids & Family","focus"]
   },
   {
     songs: [
@@ -6918,7 +6903,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["alternative","classical","Ambient","blues"]
   },
   {
     songs: [
@@ -7074,7 +7059,7 @@ export const stationsDemoData = [
       }
     ],
     _id: "PLr3-obTIXUD9_03xu4uysEK0xENA3nzbw",
-    name: "Infected Mushroom - Topic",
+    name: "Infected Mushroom",
     createdBy: {
       _id: "UCOqPalU27ztRNMrL2PD-YAA",
       fullname: "Infected Mushroom - Topic",
@@ -7084,7 +7069,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["dance/electronic","charts","workout","comedy","mood"]
   },
   {
     songs: [
@@ -7240,7 +7225,7 @@ export const stationsDemoData = [
       }
     ],
     _id: "OLAK5uy_m9JPE7DHRAVCvXwrWE6TJvdqZ6XaMOb8A",
-    name: "The Crimson Armada - Topic",
+    name: "The Crimson Armada",
     createdBy: {
       _id: "UCVvjB7d35cyYtjfoEVDBAIA",
       fullname: "The Crimson Armada - Topic",
@@ -7250,7 +7235,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["alternative","metal","Ambient","blues"]
   },
   {
     songs: [
@@ -7281,7 +7266,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["alternative","pop","Ambient","cooking & dinning","afro"]
   },
   {
     songs: [
@@ -7497,7 +7482,7 @@ export const stationsDemoData = [
       }
     ],
     _id: "OLAK5uy_kEnWW2cdkpkHEUL9tDdHb4re7oS9PbFs8",
-    name: "Instrumental - Topic",
+    name: "Instrumental",
     createdBy: {
       _id: "UC6CbLoiIRTPnV35P-BLx9YA",
       fullname: "Instrumental - Topic",
@@ -7507,7 +7492,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["classical","instrumental","workout","made for you","new releases"]
   },
   {
     songs: [
@@ -7708,7 +7693,7 @@ export const stationsDemoData = [
       }
     ],
     _id: "PLokAorcvoBv9LAxeK6xwqn3rSEEMhGfGr",
-    name: "camille martin",
+    name: "Camille Martin",
     createdBy: {
       _id: "UCkEM-3qDgI7F8SiBfo75F6w",
       fullname: "camille martin",
@@ -7718,7 +7703,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["alternative","hip-hop","Ambient","cooking & dinning","afro"]
   },
   {
     songs: [
@@ -7899,11 +7884,11 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["funk & disco","hip-hop","Ambient","cooking & dinning","afro"]
   },
   {
     _id: "PLQjNsI6Dpg11c9dywap9noqJWp74dkxNc",
-    name: "Led Zeppelin - Topic",
+    name: "Led Zeppelin",
     createdBy: {
       _id: "UCYtap7ujIPaxTS2iCDoMi3g",
       fullname: "Led Zeppelin - Topic",
@@ -7913,7 +7898,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["rock","fresh finds","radar","cooking & dinning","equal"]
   },
   {
     songs: [
@@ -8174,7 +8159,7 @@ export const stationsDemoData = [
       }
     ],
     _id: "PLXjISBGUSATW6Tk78Sd6ANRIOqKZ5EYe3",
-    name: "BunczucznyKKS",
+    name: "Green Day",
     createdBy: {
       _id: "UC6q94iWv9iXn4PD-IGPlqvw",
       fullname: "BunczucznyKKS",
@@ -8184,7 +8169,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["rock","fresh finds","radar","metal","equal"]
   },
   {
     songs: [
@@ -8400,7 +8385,7 @@ export const stationsDemoData = [
       }
     ],
     _id: "PLexk4sqTMmZQ2ucbRVDUQ5DtWKtd-kudR",
-    name: "Sum 41 - Topic",
+    name: "Sum 41",
     createdBy: {
       _id: "UCcMcUoDPCQhtONMyuKJs-dg",
       fullname: "Sum 41 - Topic",
@@ -8410,7 +8395,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["punk","fresh finds","radar","metal","rock"]
   },
   {
     songs: [
@@ -8566,7 +8551,7 @@ export const stationsDemoData = [
       }
     ],
     _id: "OLAK5uy_nTLeHqB6qT5Mr3qxK83Gvh5fdpZGWflDQ",
-    name: "Emmure - Topic",
+    name: "Emmure",
     createdBy: {
       _id: "UCibTc8XBhnYoeW-Ri7y4_tw",
       fullname: "Emmure - Topic",
@@ -8576,7 +8561,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["punk","fresh finds","radar","metal","rock"]
   },
   {
     songs: [
@@ -8807,7 +8792,7 @@ export const stationsDemoData = [
       }
     ],
     _id: "PLofmCZWRdOtl1dM2XQPx2_8KxveP6KbTt",
-    name: "Guns N' Roses - Topic",
+    name: "Guns N' Roses",
     createdBy: {
       _id: "UCSLbbBoUqpin6BE34whSOvA",
       fullname: "Guns N' Roses - Topic",
@@ -8817,7 +8802,7 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["travel","fresh finds","radar","glow","rock"]
   },
   {
     songs: [
@@ -9003,7 +8988,7 @@ export const stationsDemoData = [
       }
     ],
     _id: "PLycVTiaj8OI-aOPBmpwUlhQp83Puf0hLX",
-    name: "The Beatles - Topic",
+    name: "The Beatles",
     createdBy: {
       _id: "UC2XdaAVUannpujzv32jcouQ",
       fullname: "The Beatles - Topic",
@@ -9013,6 +8998,6 @@ export const stationsDemoData = [
     },
     msgs: [],
     likedByUsers: [],
-    tags: []
+    tags: ["k-pop","blues","radar","glow","rock"]
   }
 ]
