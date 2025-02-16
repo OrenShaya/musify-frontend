@@ -31,7 +31,7 @@ export function StationDetailsList({ station }) {
       <div className='station-table'>
         <div className='song-number'>#</div>
         <div className='song-name'>Title</div>
-        <div className='song-album'>Album</div>
+        <div className='song-album-table-head'>Album</div>
         <div className='song-added-date'>Date added</div>
         <div className='song-length-icon'>
           <svg
