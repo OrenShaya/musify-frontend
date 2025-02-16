@@ -10,7 +10,9 @@ export function SideBar() {
     stationService.query().then(setStations)
   }, [])
 
-  // console.log(stations)
+  function handleNewStationCLick() {
+    console.log('new station clicked')
+  }
 
   return (
     <div className='side-bar'>
