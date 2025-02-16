@@ -43,8 +43,8 @@ export function StationPreview({ station }) {
   }
 
   const isCurrentlyPlaying = isPlaying && isSelectedStation()
-  const imgClass = ['', 'square'][Math.floor(Math.random() * 2)]
-  const stationImgClasses = 'index-station-img ' + imgClass
+  // const imgClass = ['', 'square'][Math.floor(Math.random() * 2)]
+  const stationImgClasses = 'index-station-img '
   return (
     <>
       <article className='station-preview'>
