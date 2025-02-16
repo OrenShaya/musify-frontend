@@ -1,4 +1,17 @@
+import { useState, useEffect } from 'react'
+import { stationService } from '../services/station/station.service.local'
+
+import { SideBarStationPreview } from './SideBarStationPreview'
+
 export function SideBar() {
+  const [stations, setStations] = useState([])
+
+  useEffect(() => {
+    stationService.query().then(setStations)
+  }, [])
+
+  console.log(stations)
+
   return (
     <div className='side-bar'>
       <div className='side-bar-header-container'>
@@ -58,7 +71,9 @@ export function SideBar() {
       </div>
 
       <div className='side-bar-station-container'>
-        <div className='station-preview'></div>
+        {stations.map((station) => (
+          <SideBarStationPreview station={station} />
+        ))}
       </div>
     </div>
   )

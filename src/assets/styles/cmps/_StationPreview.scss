@@ -56,4 +56,9 @@ article.station-preview {
       bottom: 0.8em;
     }
   }
+
+  .side-bar-station-container {
+    overflow-y: scroll;
+    height: 100%;
+  }
 }

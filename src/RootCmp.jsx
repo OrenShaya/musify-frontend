@@ -62,7 +62,7 @@ export function RootCmp() {
           {/* </Route> */}
         </Routes>
       </main>
-      <aside>
+      <aside className='side-bar-container'>
         <SideBar />
       </aside>
       <HiddenReactPlayer ref={playerRef} onEnded={handleSongEnded} />
