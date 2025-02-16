@@ -10,7 +10,7 @@ export function SideBar() {
     stationService.query().then(setStations)
   }, [])
 
-  console.log(stations)
+  // console.log(stations)
 
   return (
     <div className='side-bar'>
