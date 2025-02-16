@@ -5,6 +5,8 @@ import emblem2 from '../assets/demo-songs/emblem2.png'
 import {
   toggleIsPlaying,
   setCurrentlyPlaying,
+  moveToPreviousSong,
+  moveToNextSong,
 } from '../store/actions/player.actions'
 import { formatTimeFromSeconds } from '../services/util.service'
 
@@ -57,6 +59,7 @@ export function AppFooter({ playerRef }) {
       playerRef.current.setSource(
         currentlyPlaying?.url || 'https://www.youtube.com/embed/4fDfbMt6icw'
       )
+      setCurrentTime(0)
     }
   }, [currentlyPlaying, playerRef])
 
@@ -109,7 +112,7 @@ export function AppFooter({ playerRef }) {
       </div>
       <div className='song-controls'>
         <div className='song-btns'>
-          <button className='previous-song-btn'>
+          <button className='previous-song-btn' onClick={moveToPreviousSong}>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               data-encore-id='icon'
@@ -146,7 +149,7 @@ export function AppFooter({ playerRef }) {
             </svg>
           </button>
 
-          <button className='next-song-btn'>
+          <button className='next-song-btn' onClick={moveToNextSong}>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               data-encore-id='icon'
