@@ -3,20 +3,21 @@ $btnClr: #1ed760;
 .play-btn {
   position: absolute;
   bottom: -1em;
-  right: 0.5em;
+  right: 0;
   opacity: 0;
-  height: calc(48px + 16px);
-  width: calc(48px + 16px);
-  margin: 0px;
+  transform: translateY(0.5em);
+  transition: 200ms ease-out;
 
   border-radius: 50%;
   background-color: transparent;
 
-  transform: translateY(8px);
-  transition: 200ms ease-out;
+  $padding: 20px;
+  height: calc(48px + $padding);
+  width: calc(48px + $padding);
+  margin: 0px;
 
   & img {
-    padding: 10px;
+    padding: 12px;
     border-radius: 50%;
     background-color: $btnClr;
   }
