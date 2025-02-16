@@ -10,6 +10,7 @@ export function AppFooter() {
   const [volume, setVolume] = useState(1)
   const audioRef = useRef(new Audio(LOA7MIX))
   const [isHovered, setIsHovered] = useState(false)
+  const [songInputValue, setSongInputValue] = useState(false)
 
   let songInputColor = 'white'
 
@@ -35,6 +36,8 @@ export function AppFooter() {
       audioRef.current.removeEventListener('timeupdate', updateCurrentTime)
     }
   }, [volume])
+
+  useEffect(() => {}, [songInputValue])
 
   const formatTime = (time) => {
     const minutes = Math.floor(time / 60)
