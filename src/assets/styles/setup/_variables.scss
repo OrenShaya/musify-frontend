@@ -1,4 +1,5 @@
 // Colors
+$clr-spotify-green: #1db552;
 $clr1: #ce2e6c;
 $clr2: #4f3a65;
 $clr3: #574f7d;
@@ -8,11 +9,16 @@ $clr6: #fff;
 $clr7: #222;
 $clr8: #000;
 
+$itemBgc: #121212;
+
 $gray1: #ddd;
 $gray2: #aaa;
 $gray3: #777;
 $gray4: #333;
 $gray5: #1f1f1f;
+$gray6: #121212;
+$gray7: #b3b3b3;
+$gray8: #1b1b1b;
 
 $station-img-default-background-color: #282828;
 $station-img-default-fill-color: #7f7f7f;
@@ -20,6 +26,8 @@ $station-header-background-color: #505050;
 $hr-color: #302c3a;
 $itemBgc: #121212;
 $green-button-color: #1ed760;
+$station-table-header-font-color: #b3b3b3;
+$station-hover-color: #2a2b2c;
 
 // Breakpoints
 $mobile-breakpoint: 460px;
@@ -47,6 +55,9 @@ $font-weight: (
   'extrabold': 800,
   'blackbold': 900,
 );
+
+// Sidebar
+$sidebar-width: 18em;
 
 // Colors //
 $colors: (

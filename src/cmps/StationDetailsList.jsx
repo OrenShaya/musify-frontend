@@ -16,7 +16,7 @@ export function StationDetailsList({ station }) {
         <div className='song-name'>Title</div>
         <div className='song-album'>Album</div>
         <div className='song-added-date'>Date added</div>
-        <div className='song-length'>
+        <div className='song-length-icon'>
           <svg
             data-encore-id='icon'
             role='img'
@@ -31,34 +31,40 @@ export function StationDetailsList({ station }) {
       </div>
       <hr />
       <div className='station-details-table'>
-        {station?.songs?.length > 0 &&
-          station?.songs.map((song, idx) => {
-            return (
-              <div className='song-row' key={song._id}>
-                <div className='song-index'>{idx + 1}</div>
-                <div className='album-song-artist'>
-                  <div
-                    className='album-img'
-                    onClick={() => setCurrentlyPlaying(song._id)}
-                    style={{ cursor: 'pointer' }}
-                  >
-                    <img src={song?.imgUrl} alt='album image' />
-                  </div>
-                  <div className='song-title-artist'>
-                    <div className='song-title'>{song.title}</div>
-                    <div className='artist'>{song.addedBy.fullname}</div>
-                  </div>
+        {station?.songs?.length > 0 && station?.songs.map((song, idx) => {
+          return  <div className='song-row' key={song._id}>
+            <div className='song-index'>
+              {idx + 1}
+            </div>
+            <div className='hover-song-play'
+            onClick={() => setCurrentlyPlaying(song._id)}
+            style={{ cursor: 'pointer' }}>
+              <svg data-encore-id="icon" role="img" aria-hidden="true" className="Svg-sc-ytk21e-0 bneLcE e-9541-icon zOsKPnD_9x3KJqQCSmAq" viewBox="0 0 24 24"><path d="m7.05 3.606 13.49 7.788a.7.7 0 0 1 0 1.212L7.05 20.394A.7.7 0 0 1 6 19.788V4.212a.7.7 0 0 1 1.05-.606z"></path></svg>
+            </div>
+            <div className='album-song-artist'>
+              <div className='album-img'>
+                <img src={song?.imgUrl} alt='album image' />
+              </div>
+              <div className='song-title-artist'>
+                <div className='song-title'>
+                  {song.title}
                 </div>
-                <div className='song-album'>
-                  {/* {song.album} */ 'Album Name Here'}
-                </div>
-                <div>{formatDate(song.addedAt)}</div>
-                <div className='song-length'>
-                  {formatTimeFromSeconds(song?.lengthInSeconds)}
+                <div className='artist'>
+                  {song.addedBy.fullname}
                 </div>
               </div>
-            )
-          })}
+            </div>
+            <div className='song-album'>
+              {/* {song.album} needed here */ 'Album Name'}
+            </div>
+            <div>
+              {formatDate(song.addedAt || song.updatedAt)}
+            </div>
+            <div className='song-length'>
+              {formatTimeFromSeconds(song?.lengthInSeconds)}
+            </div>
+          </div>
+        })}
       </div>
     </section>
   )

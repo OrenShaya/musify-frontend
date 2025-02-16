@@ -1,0 +1,53 @@
+.side-bar {
+  height: 100%;
+  width: $sidebar-width;
+  border-radius: 0.5em;
+  background-color: $gray6;
+  margin-inline: 0.2em;
+  padding: 1.5em;
+
+  .library-icon {
+    cursor: pointer;
+    transition: fill 0.7s ease;
+  }
+  h3 {
+    color: $gray7;
+    margin-block: auto;
+    font-size: 1em;
+    transition: color 0.7s ease;
+  }
+
+  .side-bar-header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .side-bar-header-container-left {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+  }
+
+  .side-bar-header-container-left:hover {
+    cursor: pointer;
+    h3 {
+      color: white;
+      cursor: pointer;
+    }
+    .library-icon {
+      fill: white;
+    }
+  }
+  .plus-btn {
+    background-color: $gray8;
+    height: fit-content;
+    fill: white;
+    padding: 0.5em;
+    border-radius: 50%;
+
+    span {
+      height: fit-content;
+    }
+  }
+}

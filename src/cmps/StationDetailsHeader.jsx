@@ -6,6 +6,7 @@
 
 // import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 // import { loadStation, addStationMsg } from '../store/actions/station.actions'
+import { Logger } from 'sass'
 import { formatTimeFromSeconds } from '../services/util.service.js'
 
 export function StationDetailsHeader({station}) {  
@@ -13,11 +14,25 @@ export function StationDetailsHeader({station}) {
   const stationImg = getStationImg(createdBy)
 
   function songsInfo() {
-    const totalSongsLength = station?.songs.reduce((totalSongsLength, song) => {
+    let totalSongsLength = station?.songs.reduce((totalSongsLength, song) => {
       return totalSongsLength + song.lengthInSeconds
     }, 0)
+    totalSongsLength = formatTimeFromSeconds(totalSongsLength)
+    let [minutes, seconds] = totalSongsLength.split(':')   
+    let minutesString = `${minutes} min`
+    let secondsString = `${seconds} sec`
+    let hoursString = ``
+
+    if (+seconds < 10) secondsString = `${seconds.charAt(1)} sec`
+    if (minutes == 0) return secondsString
+    if (+minutes > 60) {     
+      if (+minutes / 60 > 24) return 'over 24 hr' 
+      hoursString += `${Math.floor(minutes / 60)} hr`
+      minutes = +minutes - 60
+      minutesString = `${minutes} min`
+    }
     
-    return  formatTimeFromSeconds(totalSongsLength)
+    return (hoursString) ? `${hoursString} ${minutesString} ${secondsString}` : `${minutesString} ${secondsString}`
   }
 
   function getStationImg(createdBy) {
