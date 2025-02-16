@@ -1,4 +1,5 @@
 $btnClr: #1ed760;
+$btnHoverClr: #3be377;
 
 .play-btn {
   position: absolute;
@@ -20,5 +21,11 @@ $btnClr: #1ed760;
     padding: 12px;
     border-radius: 50%;
     background-color: $btnClr;
+  }
+
+  & img:hover {
+    padding: 12px;
+    border-radius: 50%;
+    background-color: $btnHoverClr;
   }
 }
