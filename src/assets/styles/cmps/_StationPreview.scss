@@ -47,6 +47,7 @@ article.station-preview {
   width: 182px;
   height: em(250px);
   scroll-snap-align: start;
+  cursor: pointer;
 
   &:hover {
     background-color: $itemHoverBgc;

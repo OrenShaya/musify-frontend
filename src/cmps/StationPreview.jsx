@@ -1,11 +1,21 @@
 import PropTypes from 'prop-types'
 
 import playBtnUrl from '../assets/img/btn-play.svg'
+import pauseBtnUrl from '../assets/img/btn-pause.svg'
+import { useToggle } from '../customHooks/useToggle'
 
 function PlayButton() {
+  const [isOn, onToggle] = useToggle()
+
+  const onPlay = (ev) => {
+    ev.stopPropagation()
+    onToggle()
+  }
+
+  const buttonUrl = isOn ? playBtnUrl : pauseBtnUrl
   return (
-    <button className='play-btn'>
-      <img src={playBtnUrl} alt='' />
+    <button onClick={onPlay} className='play-btn'>
+      <img src={buttonUrl} alt='' />
     </button>
   )
 }
