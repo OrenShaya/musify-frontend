@@ -8,6 +8,7 @@ import {
   UPDATE_STATION,
   ADD_STATION_MSG,
   ADD_STATION_SONG,
+  SET_SONGS_QUEUE,
 } from '../reducers/station.reducer'
 
 export async function loadStations(filterBy) {
@@ -24,8 +25,17 @@ export async function loadStation(stationId) {
   try {
     const station = await stationService.getById(stationId)
     store.dispatch(getCmdSetStation(station))
+    store.dispatch(getCmdSetSongsQueue(station.songs))
   } catch (err) {
     console.log('Cannot load station', err)
+    throw err
+  }
+}
+export async function loadSongsQueue(station) {
+  try {
+    store.dispatch(getCmdSetSongsQueue(station.songs))
+  } catch (err) {
+    console.log('Cannot load songs queue', err)
     throw err
   }
 }
@@ -97,6 +107,12 @@ function getCmdSetStation(station) {
     station,
   }
 }
+function getCmdSetSongsQueue(songs) {
+  return {
+    type: SET_SONGS_QUEUE,
+    songsQueue: songs,
+  }
+}
 function getCmdRemoveStation(stationId) {
   return {
     type: REMOVE_STATION,
@@ -125,15 +141,3 @@ function getCmdAddStationMsg(msg) {
 function getCmdAddStationSong(song) {
   return { type: ADD_STATION_SONG, song }
 }
-
-// // unitTestActions()
-// async function unitTestActions() {
-//     await loadStations()
-//     await addStation(stationService.getEmptyStation())
-//     await updateStation({
-//         _id: 'm1oC7',
-//         title: 'Station-Good',
-//     })
-//     await removeStation('m1oC7')
-//     // TODO unit test addStationMsg
-// }

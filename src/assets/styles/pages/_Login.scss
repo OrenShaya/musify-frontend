@@ -1,0 +1,100 @@
+@use '../setup/functions';
+
+$bgClr: #121212;
+$borderClr: #7c7c7c;
+$hoverClr: #3ce478;
+$btnRadius: 2em;
+$subdueClr: #b3b3b3;
+
+.login-page {
+  h1,
+  label,
+  span {
+    color: white;
+  }
+
+  .spotify-logo {
+    height: functions.rem(36px);
+    width: functions.rem(36px);
+
+    margin-block-start: 2em;
+  }
+
+  .icon {
+    height: functions.rem(24px);
+    width: functions.rem(24px);
+  }
+
+  .btn-2fa {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    padding-inline: 2em;
+
+    background-color: transparent;
+    border: 1px solid $borderClr;
+    border-radius: $btnRadius;
+
+    min-width: 300px;
+    min-height: 38px;
+    padding-block: 0.6em;
+
+    font-weight: bold;
+
+    &:hover {
+      border: 2px solid white;
+    }
+  }
+
+  .content-container {
+    display: grid;
+    justify-items: center;
+    background-color: $bgClr;
+
+    max-width: 734px;
+    width: 100%;
+    margin: auto;
+    margin-block: 2em;
+    padding-block-end: 2em;
+  }
+
+  .list-2fa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8em;
+  }
+
+  hr {
+    border: 1px solid #292929;
+    width: 70%;
+    margin-block: 2em;
+    border-right: none;
+    border-bottom: none;
+    border-left: none;
+  }
+
+  a {
+    text-decoration: underline;
+    font-weight: bold;
+    color: white;
+
+    &:hover {
+      color: $hoverClr;
+    }
+  }
+
+  .subdue {
+    color: $subdueClr;
+  }
+
+  .signup {
+    display: inline-flex;
+    gap: 1ch;
+    margin-block-end: 2em;
+  }
+
+  .forgot-password-link {
+    margin-block-end: 2em;
+  }
+}

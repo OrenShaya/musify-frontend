@@ -1,16 +1,14 @@
+/* eslint-disable react/prop-types */
 import { useSelector } from 'react-redux'
-import { useState, useRef, useEffect } from 'react'
-import LOA7MIX from '../assets/demo-songs/LOA7MIX.wav'
+import { useState, useEffect } from 'react'
 import emblem2 from '../assets/demo-songs/emblem2.png'
 import {
   toggleIsPlaying,
   setCurrentlyPlaying,
-  clearCurrentlyPlaying,
 } from '../store/actions/player.actions'
 import { formatTimeFromSeconds } from '../services/util.service'
 
-export function AppFooter() {
-  const count = useSelector((storeState) => storeState.userModule.count)
+export function AppFooter({ playerRef }) {
   const isPlaying = useSelector(
     (storeState) => storeState.playerModule.isPlaying
   )
@@ -19,50 +17,95 @@ export function AppFooter() {
   )
   const [currentTime, setCurrentTime] = useState(0)
   const [volume, setVolume] = useState(1)
-  const audioRef = useRef(new Audio(LOA7MIX))
-  const [isHovered, setIsHovered] = useState(false)
 
   let songInputColor = 'white'
 
   const togglePlay = () => {
+    if (!playerRef.current) return
+
     if (isPlaying) {
-      audioRef.current.pause()
+      playerRef.current.pause()
     } else {
-      audioRef.current.play()
+      playerRef.current.play()
     }
     toggleIsPlaying()
   }
 
   useEffect(() => {
-    const updateCurrentTime = () => {
-      setCurrentTime(audioRef.current.currentTime)
+    // default song
+    setCurrentlyPlaying('FGBhQbmPwH8')
+  }, [])
+
+  useEffect(() => {
+    // poll the player's current time every second
+    const interval = setInterval(() => {
+      if (playerRef.current && isPlaying) {
+        setCurrentTime(playerRef.current.getCurrentTime())
+      }
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [isPlaying, playerRef])
+
+  useEffect(() => {
+    if (playerRef.current) {
+      playerRef.current.setVolume(volume)
     }
+  }, [playerRef, volume])
 
-    audioRef.current.addEventListener('timeupdate', updateCurrentTime)
-
-    audioRef.current.volume = volume
-
-    return () => {
-      audioRef.current.removeEventListener('timeupdate', updateCurrentTime)
+  useEffect(() => {
+    if (currentlyPlaying && currentlyPlaying.url && playerRef.current) {
+      playerRef.current.setSource(
+        currentlyPlaying?.url || 'https://www.youtube.com/embed/4fDfbMt6icw'
+      )
     }
-  }, [volume])
+  }, [currentlyPlaying, playerRef])
+
+  useEffect(() => {
+    if (!playerRef.current) return
+
+    if (isPlaying) {
+      playerRef.current.play()
+    } else {
+      playerRef.current.pause()
+    }
+  }, [isPlaying, playerRef])
 
   const formatTime = (time) => formatTimeFromSeconds(time)
 
   const handleRangeInput = (input) => {
     const VALUE = ((input.value - input.min) / (input.max - input.min)) * 100
 
-    console.log(VALUE)
-
     input.style.background = `linear-gradient(90deg, ${songInputColor} ${
       VALUE ? VALUE : 0
     }%, #4d4d4d ${VALUE ? VALUE : 0}%)`
   }
 
+  const handleSlider = (e) => {
+    if (playerRef.current) {
+      playerRef.current.slideTo(e.target.value)
+      handleRangeInput(e.target)
+    }
+  }
+
   return (
     <footer className='app-footer full'>
-      <div className='song-details'>
-        <img height='70px' width='70px' src={emblem2} alt='song-cover' />
+      <div className='song-details-container'>
+        <div className='song-details'>
+          <img
+            height='70px'
+            width='70px'
+            src={currentlyPlaying?.imgUrl || emblem2}
+            alt='song-cover'
+          />
+          <div className='song-details-spans'>
+            <span className='song-name-span capitalise'>
+              {currentlyPlaying?.title}
+            </span>
+            <span className='song-artist-span capitalise'>
+              {currentlyPlaying?.addedby?.fullname}
+            </span>
+          </div>
+        </div>
       </div>
       <div className='song-controls'>
         <div className='song-btns'>
@@ -128,15 +171,14 @@ export function AppFooter() {
             onMouseLeave={() => (songInputColor = 'white')}
             onInput={(e) => handleRangeInput(e.target)}
             type='range'
-            value={currentTime}
-            onChange={(e) => {
-              audioRef.current.currentTime = e.target.value
-              handleRangeInput(e.target)
-            }}
-            max={audioRef.current.duration || 0}
+            value={currentTime ?? 0}
+            onChange={handleSlider}
+            max={playerRef.current ? playerRef.current.getDuration() ?? 0 : 0}
           />
           <span className='song-duration'>
-            {formatTime(audioRef.current.duration)}
+            {formatTime(
+              playerRef.current ? playerRef.current.getDuration() : 0
+            )}
           </span>
         </div>
       </div>
@@ -147,16 +189,14 @@ export function AppFooter() {
           onChange={(e) => {
             const newVolume = e.target.value / 100
             setVolume(newVolume)
-            audioRef.current.volume = newVolume
+            if (playerRef.current) {
+              playerRef.current.setVolume(newVolume)
+            }
           }}
           min={0}
           max={100}
         />
       </div>
-
-      {/* {import.meta.env.VITE_LOCAL ? 
-                <span className="local-services">Local Services</span> : 
-                <span className="remote-services">Remote Services</span>} */}
     </footer>
   )
 }

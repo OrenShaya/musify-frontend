@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import { Routes, Route } from 'react-router'
 
 import { HomePage } from './pages/HomePage'
@@ -13,18 +14,26 @@ import { AdminIndex } from './pages/AdminIndex.jsx'
 import { AppHeader } from './cmps/AppHeader'
 import { AppFooter } from './cmps/AppFooter'
 import { UserMsg } from './cmps/UserMsg.jsx'
-import { LoginSignup } from './pages/LoginSignup.jsx'
+// import { LoginSignup } from './pages/LoginSignup.jsx'
 import { Login } from './pages/Login.jsx'
-import { Signup } from './pages/Signup.jsx'
+// import { Signup } from './pages/Signup.jsx'
 import { StationIndex } from './pages/StationIndex.jsx'
 import { StationDetails } from './pages/StationDetails.jsx'
+import { Sidebar } from './cmps/SideBar.jsx'
 
 import {} from './services/station'
 import {} from './services/song'
 import {} from './services/youtube-api.service.js'
-import { Sidebar } from './cmps/SideBar.jsx'
+
+import HiddenReactPlayer from './cmps/HiddenReactPlayer'
+import { playerSongEndedEvent } from './store/actions/player.actions.js'
 
 export function RootCmp() {
+  const playerRef = useRef(null)
+
+  const handleSongEnded = () => {
+    playerSongEndedEvent()
+  }
   return (
     <div className='main-container main-layout'>
       <AppHeader />
@@ -47,16 +56,17 @@ export function RootCmp() {
           {/* <Route path='review' element={<ReviewIndex />} /> */}
           {/* <Route path='chat' element={<ChatApp />} /> */}
           <Route path='admin' element={<AdminIndex />} />
-          <Route path='login' element={<LoginSignup />}>
-            <Route index element={<Login />} />
-            <Route path='signup' element={<Signup />} />
-          </Route>
+          {/* <Route path='login' element={<LoginSignup />}> */}
+          <Route path='login' element={<Login />} />
+          {/* <Route path='signup' element={<Signup />} /> */}
+          {/* </Route> */}
         </Routes>
       </main>
       <aside>
         <Sidebar />
       </aside>
-      <AppFooter />
+      <HiddenReactPlayer ref={playerRef} onEnded={handleSongEnded} />
+      <AppFooter playerRef={playerRef} />
     </div>
   )
 }
