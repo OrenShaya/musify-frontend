@@ -1,9 +1,11 @@
 .main-container {
   display: grid;
-  grid-template-columns: 420px 1fr;
+  grid-template-columns: $sidebar-width 1fr;
   grid-template-rows: em(48px) minmax(1fr, 100%) em(72px);
   gap: 8px;
   padding: 8px;
+  overflow: hidden;
+  height: 100vh;
 
   .main {
     grid-column: 2;

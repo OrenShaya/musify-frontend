@@ -1,0 +1,42 @@
+.station-explore-article {
+  position: relative;
+  border-radius: 0.5em;
+  padding-bottom: 56.25%;
+  height: 90%;
+  width: 100%;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: Spotifymix-Bold;
+
+  .genre-header {
+    padding: 16px 16px 0;
+    hyphens: auto;
+    max-width: 100%;
+    span {
+      text-transform: capitalize;
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-wrap: balance;
+    }
+  }
+  .img-container {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 140px;
+    height: 140px;
+    border-radius: 8px;
+    transform: rotate(25deg) translate(18%, -2%);
+    //width: 45%;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+
+    img {
+      object-fit: cover;
+      object-position: center center;
+      user-select: none;
+      display: block;
+      max-width: 100%;
+    }
+  }
+}

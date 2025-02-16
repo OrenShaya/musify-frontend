@@ -1,0 +1,21 @@
+.station-explore-grid {
+  .explore-grid-container {
+    display: grid;
+
+    --min-column-width: 254px;
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(var(--min-column-width), 1fr)
+    );
+    grid-auto-rows: min-content;
+    //grid-auto-flow: dense;
+    gap: em(24px);
+    place-content: center;
+
+    .explore-grid-header {
+      overflow-wrap: break-word;
+      grid-column: 1 / -1;
+      grid-row: 1;
+    }
+  }
+}

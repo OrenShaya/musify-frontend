@@ -95,4 +95,8 @@
       cursor: pointer;
     }
   }
+  .side-bar-station-container {
+    overflow-y: scroll;
+    height: 100vh;
+  }
 }

@@ -3,24 +3,19 @@ import { Routes, Route } from 'react-router'
 
 import { HomePage } from './pages/HomePage'
 import { AboutUs, AboutTeam, AboutVision } from './pages/AboutUs'
-// import { CarIndex } from './pages/CarIndex.jsx'
-// import { ReviewIndex } from './pages/ReviewIndex.jsx'
-// import { ChatApp } from './pages/Chat.jsx'
 import { AdminIndex } from './pages/AdminIndex.jsx'
-
-// import { CarDetails } from './pages/CarDetails'
-// import { UserDetails } from './pages/UserDetails'
 
 import { AppHeader } from './cmps/AppHeader'
 import { AppFooter } from './cmps/AppFooter'
 import { UserMsg } from './cmps/UserMsg.jsx'
 import { SideBar } from './cmps/SideBar.jsx'
 
-import { LoginSignup } from './pages/LoginSignup.jsx'
+//import { LoginSignup } from './pages/LoginSignup.jsx'
 import { Login } from './pages/Login.jsx'
 // import { Signup } from './pages/Signup.jsx'
 import { StationIndex } from './pages/StationIndex.jsx'
 import { StationDetails } from './pages/StationDetails.jsx'
+import { StationExplore } from './pages/StationExplore.jsx'
 
 import {} from './services/station'
 import {} from './services/song'
@@ -49,6 +44,7 @@ export function RootCmp() {
 
           <Route path='station' element={<StationIndex />} />
           <Route path='station/:stationId' element={<StationDetails />} />
+          <Route path='explore' element={<StationExplore />} />
 
           {/* <Route path='car' element={<CarIndex />} /> */}
           {/* <Route path='car/:carId' element={<CarDetails />} /> */}
