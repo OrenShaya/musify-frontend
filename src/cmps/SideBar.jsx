@@ -71,7 +71,7 @@ export function SideBar() {
 
       <div className='side-bar-station-container'>
         {stations.map((station) => (
-          <SideBarStationPreview station={station} />
+          <SideBarStationPreview key={station?._id} station={station} />
         ))}
       </div>
     </div>
