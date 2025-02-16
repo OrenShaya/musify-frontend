@@ -1,7 +1,6 @@
 import { useRef } from 'react'
 import { Routes, Route } from 'react-router'
 
-import { HomePage } from './pages/HomePage'
 import { AboutUs, AboutTeam, AboutVision } from './pages/AboutUs'
 import { AdminIndex } from './pages/AdminIndex.jsx'
 
@@ -36,26 +35,17 @@ export function RootCmp() {
       <UserMsg />
       <main>
         <Routes>
-          <Route path='' element={<HomePage />} />
+          <Route path='' element={<StationIndex />} />
           <Route path='about' element={<AboutUs />}>
             <Route path='team' element={<AboutTeam />} />
             <Route path='vision' element={<AboutVision />} />
           </Route>
 
-          <Route path='station' element={<StationIndex />} />
           <Route path='station/:stationId' element={<StationDetails />} />
           <Route path='explore' element={<StationExplore />} />
 
-          {/* <Route path='car' element={<CarIndex />} /> */}
-          {/* <Route path='car/:carId' element={<CarDetails />} /> */}
-          {/* <Route path='user/:id' element={<UserDetails />} /> */}
-          {/* <Route path='review' element={<ReviewIndex />} /> */}
-          {/* <Route path='chat' element={<ChatApp />} /> */}
           <Route path='admin' element={<AdminIndex />} />
-          {/* <Route path='login' element={<LoginSignup />}> */}
           <Route path='login' element={<Login />} />
-          {/* <Route path='signup' element={<Signup />} /> */}
-          {/* </Route> */}
         </Routes>
       </main>
       <aside className='side-bar-container'>

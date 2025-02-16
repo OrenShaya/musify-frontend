@@ -1,13 +1,17 @@
 import { Link, NavLink } from 'react-router-dom'
-import { useNavigate } from 'react-router'
+import { useLocation, useNavigate } from 'react-router'
 import { useSelector } from 'react-redux'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { logout } from '../store/actions/user.actions'
+
 import profileUrl from '../assets/img/profile-avatar.svg'
+import homeUrl from '../assets/img/home.svg'
+import homeFilledUrl from '../assets/img/home-filled.svg'
 
 export function AppHeader() {
   const user = useSelector((storeState) => storeState.userModule.user)
   const navigate = useNavigate()
+  const location = useLocation()
 
   async function onLogout() {
     try {
@@ -18,6 +22,7 @@ export function AppHeader() {
       showErrorMsg('Cannot logout')
     }
   }
+  const homeIconUrl = location.pathname === '/' ? homeFilledUrl : homeUrl
 
   return (
     <header className='app-header full'>
@@ -57,22 +62,8 @@ export function AppHeader() {
         <div className='nav-links'>
           {/* <NavLink to='about'>About</NavLink> */}
           <button className='home-btn'>
-            <NavLink to='station'>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                data-encore-id='icon'
-                role='img'
-                aria-hidden='true'
-                className='Svg-sc-ytk21e-0 bneLcE e-9541-icon'
-                viewBox='0 0 24 24'
-                width='24'
-                height='24'
-              >
-                <path
-                  d='M13.5 1.515a3 3 0 0 0-3 0L3 5.845a2 2 0 0 0-1 1.732V21a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6h4v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V7.577a2 2 0 0 0-1-1.732l-7.5-4.33z'
-                  fill='white'
-                />
-              </svg>
+            <NavLink to='/'>
+              <img className='header-home-icon' src={homeIconUrl} />
             </NavLink>
           </button>
           {user?.isAdmin && <NavLink to='/admin'>Admin</NavLink>}
@@ -95,7 +86,7 @@ export function AppHeader() {
               placeholder='What do you want to play?'
             />
 
-            <span className='browser-icon' onClick={navigate('explore')}>
+            <span className='browser-icon' onClick={() => navigate('explore')}>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 data-encore-id='icon'
@@ -135,10 +126,4 @@ export function AppHeader() {
       </nav>
     </header>
   )
-}
-
-{
-  /* <NavLink to='car'>Cars</NavLink>
-        <NavLink to='chat'>Chat</NavLink>
-        <NavLink to='review'>Review</NavLink> */
 }
