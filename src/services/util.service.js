@@ -81,6 +81,17 @@ export function debounce(func, timeout = 300) {
   }
 }
 
+export function throttle(fn, delay = 300) {
+  let lastTime = 0
+  return function (...args) {
+    let now = Date.now()
+    if (now - lastTime >= delay) {
+      fn.apply(this, args)
+      lastTime = now
+    }
+  }
+}
+
 export function saveToStorage(key, value) {
   localStorage.setItem(key, JSON.stringify(value))
 }
