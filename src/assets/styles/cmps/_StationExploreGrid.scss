@@ -2,20 +2,22 @@
   .explore-grid-container {
     display: grid;
 
-    --min-column-width: 254px;
-    grid-template-columns: repeat(
-      auto-fit,
-      minmax(var(--min-column-width), 1fr)
-    );
+    grid-template-columns: repeat(auto-fit, minmax(em(220px), 1fr));
     grid-auto-rows: min-content;
     //grid-auto-flow: dense;
-    gap: em(20px);
+    gap: em(24px);
     place-content: center;
 
     .explore-grid-header {
       overflow-wrap: break-word;
       grid-column: 1 / -1;
       grid-row: 1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .explore-grid-container h2 {
+      font-size: 1.25rem;
     }
   }
 }
