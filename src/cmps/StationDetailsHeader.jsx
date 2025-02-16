@@ -1,5 +1,6 @@
 import { Logger } from 'sass'
 import { formatTimeFromSeconds } from '../services/util.service.js'
+import blueTick from '../assets/icons/download.svg'
 
 export function StationDetailsHeader({station}) {  
   const createdBy = station?.createdBy
@@ -42,8 +43,13 @@ export function StationDetailsHeader({station}) {
         <div className='station-type'>Playlist</div>
         <div className='station-name'>{station?.name}</div>
         <div className='user-verified'>
-          <span className='verified-icon'>❄️</span>
-          <h2 className='artist-title'>{createdBy?.fullname} • {station?.songs.length + ' song' + ((station?.songs.length > 1) ? 's' : '') + ','} {songsInfo()}</h2>
+                    
+          <h2 className='artist-title'> <span className='station-creator-name'> {createdBy?.fullname}  </span>
+            <span className='verified-icon'><img className='verified-icon-img' src={blueTick}/></span> 
+            • <span className='station-total-length'>
+              {station?.songs.length + ' song' + ((station?.songs.length > 1) ? 's' : '') + ','} {songsInfo()}
+            </span>
+          </h2>
           <div className='placeholder'> </div>
         </div>
       </div>
