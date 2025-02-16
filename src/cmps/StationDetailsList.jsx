@@ -42,9 +42,7 @@ export function StationDetailsList({ station }) {
               <svg data-encore-id="icon" role="img" aria-hidden="true" className="Svg-sc-ytk21e-0 bneLcE e-9541-icon zOsKPnD_9x3KJqQCSmAq" viewBox="0 0 24 24"><path d="m7.05 3.606 13.49 7.788a.7.7 0 0 1 0 1.212L7.05 20.394A.7.7 0 0 1 6 19.788V4.212a.7.7 0 0 1 1.05-.606z"></path></svg>
             </div>
             <div className='album-song-artist'>
-              <div className='album-img'>
-                <img src={song?.imgUrl} alt='album image' />
-              </div>
+              <img className='album-img' src={song?.imgUrl} alt='album image' />
               <div className='song-title-artist'>
                 <div className='song-title'>
                   {song.title}
