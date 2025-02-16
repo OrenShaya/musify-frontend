@@ -66,3 +66,30 @@ export async function playerSongEndedEvent() {
   setCurrentlyPlaying(nextSong._id)
   setIsPlaying(true)
 }
+
+export function moveToNextSong() {
+  const songs = store.getState().stationModule.songsQueue
+  const currentSong = store.getState().playerModule.currentlyPlaying
+  if (!songs || songs.length === 0) return
+  if (currentSong && currentSong._id) {
+    const currentIndex = songs.findIndex((song) => song._id === currentSong._id)
+
+    const nextIndex = (currentIndex + 1) % songs.length
+    const nextSong = songs[nextIndex]
+    setCurrentlyPlaying(nextSong._id)
+  } else {
+    setCurrentlyPlaying(songs[0]._id)
+  }
+}
+
+export function moveToPreviousSong() {
+  const songs = store.getState().stationModule.songsQueue
+  if (!songs || songs.length === 0) return
+  const currentSong = store.getState().playerModule.currentlyPlaying
+
+  const currentIndex = songs.findIndex((song) => song._id === currentSong._id)
+  const prevIndex = currentIndex === 0 ? songs.length - 1 : currentIndex - 1
+  const prevSong = songs[prevIndex]
+
+  setCurrentlyPlaying(prevSong._id)
+}
