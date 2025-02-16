@@ -64,6 +64,11 @@ export const tagsList = [
   'afro',
   'instromental',
   'trending',
+  '60s',
+  '70s',
+  '80s',
+  '90s',
+  '2000s',
 ]
 
 const service = VITE_LOCAL === 'true' ? local : remote
