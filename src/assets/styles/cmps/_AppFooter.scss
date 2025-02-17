@@ -75,6 +75,14 @@
   width: 30%;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+  gap: 1em;
+
+  .volume-icon {
+    height: 14px;
+    width: 14px;
+    fill: white;
+  }
 
   .volume-slider {
     -webkit-appearance: none;
@@ -82,6 +90,7 @@
     height: 4px;
     border-radius: 2px;
     width: 100px;
+    margin-right: 1em;
 
     background: linear-gradient(
       to right,
