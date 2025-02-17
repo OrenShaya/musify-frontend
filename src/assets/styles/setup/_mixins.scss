@@ -483,7 +483,11 @@
 }
 
 @mixin short-transition($props...) {
+  $transitions: ();
+
   @each $prop in $props {
-    transition: #{$prop} 0.15s ease-out;
+    $transitions: append($transitions, #{$prop} 0.15s ease-out, comma);
   }
+
+  transition: $transitions;
 }

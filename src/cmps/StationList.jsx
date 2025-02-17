@@ -20,7 +20,6 @@ export function StationList({ stations, stationHeader, onMount }) {
   return (
     <div style={{ position: 'relative' }}>
       <h2>{stationHeader}</h2>
-
       <div style={{ position: 'relative' }}>
         <ScrollBtn isRight={true} scrollRef={scrollRef} />
         <ScrollBtn scrollRef={scrollRef} />

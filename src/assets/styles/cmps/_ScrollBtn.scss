@@ -39,6 +39,9 @@ $scrollBtnClr: brightness(0) saturate(100%) invert(100%) sepia(96%)
   &.display {
     opacity: 1;
   }
+  &:hover {
+    @extend .display;
+  }
   .scroll-icon {
     width: 1em;
     height: 1em;

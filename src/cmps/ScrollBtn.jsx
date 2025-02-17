@@ -18,7 +18,6 @@ export function ScrollBtn({ scrollRef, isRight = false }) {
     else elBtn.classList.remove('display')
   }, [isDisplayed])
 
-  // toggle render on hover
   useEffect(() => {
     const elScroll = scrollRef.current
     const elBtn = btnRef.current
