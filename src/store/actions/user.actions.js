@@ -81,3 +81,13 @@ export async function loadUser(userId) {
     console.warn('Cannot load user', err)
   }
 }
+
+export async function likeSong(songId) {
+  try {
+    const user = await userService.getLoggedinUser()
+    userService.likeSong(user._id, songId)
+  } catch (err) {
+    console.warn('Cannot like song', err)
+    throw err
+  }
+}

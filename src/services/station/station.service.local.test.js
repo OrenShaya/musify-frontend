@@ -174,7 +174,7 @@
 //     console.log('added test song:', mockSong2)
 
 //     // add a liked song id to the user.
-//     user = await userService.addLikedSongId(user._id, mockSong._id)
+//     user = await userService.likeSong(user._id, mockSong._id)
 //     console.log('after add song_test_1, likedSongIds:', user.likedSongIds)
 //     console.log('Expected: likedSongIds includes:', mockSong._id)
 
@@ -191,7 +191,7 @@
 //     )
 
 //     // Add another liked song.
-//     user = await userService.addLikedSongId(user._id, mockSong2._id)
+//     user = await userService.likeSong(user._id, mockSong2._id)
 //     await updateLikedSongsStation(user)
 //     console.log('after adding song2, likedSongIds:', user.likedSongIds)
 //     likedStationId = await _getLikedStationId(user)
