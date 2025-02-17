@@ -4,10 +4,10 @@
   grid-auto-flow: column;
   grid-template-columns:
     2em
-    minmax(120px, 6fr)
-    minmax(120px, 4fr)
-    minmax(120px, 3fr)
-    minmax(120px, 1fr);
+    minmax(120px, 5fr)
+    minmax(120px, 3.3fr)
+    minmax(120px, 3.2fr)
+    minmax(100px, 0.8fr);
   margin: 1em 1.5em 0 1.5em;
   color: $station-table-header-font-color;
 }
@@ -85,7 +85,7 @@ hr {
 }
 
 .song-number {
-  margin-left: 1em;
+  margin: auto;
 }
 
 .song-name {
@@ -108,7 +108,6 @@ $song-length-size: em(16px);
 
 .song-index {
   font-size: rem(16px);
-  padding-left: 0.5em;
 }
 
 $album-img-size: rem(40px);
