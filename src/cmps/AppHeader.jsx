@@ -7,6 +7,8 @@ import { logout } from '../store/actions/user.actions'
 import profileUrl from '../assets/img/profile-avatar.svg'
 import homeUrl from '../assets/img/home.svg'
 import homeFilledUrl from '../assets/img/home-filled.svg'
+import browseUrl from '../assets/img/browse.svg'
+import browseFilledUrl from '../assets/img/browse-filled.svg'
 
 export function AppHeader() {
   const user = useSelector((storeState) => storeState.userModule.user)
@@ -23,6 +25,8 @@ export function AppHeader() {
     }
   }
   const homeIconUrl = location.pathname === '/' ? homeFilledUrl : homeUrl
+  const browserIconUrl =
+    location.pathname === '/explore' ? browseFilledUrl : browseUrl
 
   return (
     <header className='app-header full'>
@@ -61,20 +65,19 @@ export function AppHeader() {
 
         <div className='nav-links'>
           {/* <NavLink to='about'>About</NavLink> */}
-          <button className='home-btn'>
-            <NavLink to='/'>
-              <img className='header-home-icon' src={homeIconUrl} />
-            </NavLink>
-          </button>
-          {user?.isAdmin && <NavLink to='/admin'>Admin</NavLink>}
+
+          <NavLink to='/' className='home-btn'>
+            <img className='header-home-icon' src={homeIconUrl} />
+          </NavLink>
+
           <div className='search-container'>
             <span className='search-icon'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 x='0px'
                 y='0px'
-                width='27'
-                height='27'
+                width='29'
+                height='29'
                 viewBox='0 0 30 30'
               >
                 <path d='M 13 3 C 7.4886661 3 3 7.4886661 3 13 C 3 18.511334 7.4886661 23 13 23 C 15.396652 23 17.59741 22.148942 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148942 17.59741 23 15.396652 23 13 C 23 7.4886661 18.511334 3 13 3 z M 13 5 C 17.430666 5 21 8.5693339 21 13 C 21 17.430666 17.430666 21 13 21 C 8.5693339 21 5 17.430666 5 13 C 5 8.5693339 8.5693339 5 13 5 z'></path>
@@ -86,43 +89,33 @@ export function AppHeader() {
               placeholder='What do you want to play?'
             />
 
-            <span className='browser-icon' onClick={() => navigate('explore')}>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                data-encore-id='icon'
-                role='img'
-                aria-hidden='true'
-                className='Svg-sc-ytk21e-0 bneLcE e-9541-icon'
-                viewBox='0 0 24 24'
-                height='24'
-                width='24'
-              >
-                <path d='M15 15.5c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z' />
-
-                <path d='M1.513 9.37A1 1 0 0 1 2.291 9h19.418a1 1 0 0 1 .979 1.208l-2.339 11a1 1 0 0 1-.978.792H4.63a1 1 0 0 1-.978-.792l-2.339-11a1 1 0 0 1 .201-.837zM3.525 11l1.913 9h13.123l1.913-9H3.525zM4 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v4h-2V3H6v3H4V2z' />
-              </svg>
-            </span>
+            <NavLink to='/explore' className='browser-btn'>
+              <img className='browser-icon' src={browserIconUrl} />
+            </NavLink>
           </div>
         </div>
 
-        {!user && (
-          <button className='btn-header-profile'>
-            <NavLink to='login'>
-              <img className='header-profile-icon' src={profileUrl} alt='' />
-            </NavLink>
-          </button>
-        )}
+        <div className='profile-section'>
+          {!user && (
+            <button className='btn-header-profile'>
+              <NavLink to='login'>
+                <img className='header-profile-icon' src={profileUrl} alt='' />
+              </NavLink>
+            </button>
+          )}
 
-        {user && (
-          <div className='user-info'>
-            <Link to={`user/${user._id}`}>
-              {/* {user.imgUrl && <img src={user.imgUrl} />} */}
-              {user.fullname}
-            </Link>
-            {/* <span className="score">{user.score?.toLocaleString()}</span> */}
-            <button onClick={onLogout}>logout</button>
-          </div>
-        )}
+          {user?.isAdmin && <NavLink to='/admin'>Admin</NavLink>}
+
+          {user && (
+            <div className='user-info'>
+              <Link to={`user/${user._id}`}>
+                {/* {user.imgUrl && <img src={user.imgUrl} />} */}
+                {user.fullname}
+              </Link>
+              <button onClick={onLogout}>logout</button>
+            </div>
+          )}
+        </div>
       </nav>
     </header>
   )
