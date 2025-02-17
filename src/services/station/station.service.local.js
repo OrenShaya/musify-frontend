@@ -175,7 +175,10 @@ async function _getLikedStationId(user) {
   //wait for all the station so use Promise.all
   const stations = await Promise.all(stationPromises)
   const likedStation = stations.find(
-    (station) => station && station.name === 'Liked Songs'
+    (station) =>
+      station &&
+      station.name === 'Liked Songs' &&
+      station.createdBy._id === user._id
   )
   return likedStation ? likedStation._id : null
 }
