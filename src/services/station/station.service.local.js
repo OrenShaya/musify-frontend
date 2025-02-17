@@ -108,9 +108,6 @@ async function addStationSong(stationId, song) {
   }
 
   const station = await getById(stationId)
-  if (!station) {
-    throw new Error('No valid stationId, no station found')
-  }
 
   const miniSong = {
     _id: song._id,
@@ -136,9 +133,7 @@ async function removeStationSong(stationId, songId) {
   }
 
   const station = await getById(stationId)
-  if (!station) {
-    throw new Error('No valid stationId, no station found')
-  }
+
   const filteredStationSongs = station.songs.filter(
     (song) => song._id !== songId
   )
