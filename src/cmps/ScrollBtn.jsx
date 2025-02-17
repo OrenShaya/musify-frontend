@@ -56,11 +56,10 @@ export function ScrollBtn({ scrollRef, isRight = false }) {
         : false
 
     // Is scroll to the end?
-    let isHidden = elScroll.scrollLeft === 0
+    let isHidden = elScroll.scrollLeft <= 8
     if (isRight) {
       isHidden =
-        elScroll.clientWidth + elScroll.scrollLeft >=
-        elScroll.scrollWidth - scrollBtnsWidth
+        elScroll.clientWidth + elScroll.scrollLeft >= elScroll.scrollWidth - 5
     }
     if (isHidden || !isHovered) {
       display = false
