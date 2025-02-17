@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import { useEffect } from 'react'
 import { StationExploreGrid } from '../cmps/StationExploreGrid'
 
 const tagsObj = [
@@ -301,6 +302,10 @@ const tagsObj = [
 ]
 
 export function StationExplore() {
+  useEffect(() => {
+    document.title = 'Musify – Search'
+  })
+
   return (
     <section className='station-explore'>
       <StationExploreGrid tagsObj={tagsObj} />

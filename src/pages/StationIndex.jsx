@@ -12,8 +12,13 @@ export function StationIndex() {
   let allStations = Array(6).fill([...stations])
 
   useEffect(() => {
+    document.title = 'Musify'
+  })
+
+  useEffect(() => {
     loadStations()
   }, [])
+
   const stationHeaders = [
     'Jump back in',
     'Your top mixes',
