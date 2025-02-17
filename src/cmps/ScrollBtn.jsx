@@ -38,10 +38,6 @@ export function ScrollBtn({ scrollRef, isRight = false }) {
   }, [isHovered])
 
   const onScroll = () => {
-    const scrollPosition = scrollRef.current.scrollLeft
-    const transformValue = `translateX(${scrollPosition}px)`
-    btnRef.current.style.transform = transformValue
-
     _toggleRender()
   }
 
