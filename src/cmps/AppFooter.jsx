@@ -83,6 +83,13 @@ export function AppFooter({ playerRef }) {
     }
   }, [isPlaying, playerRef])
 
+  useEffect(() => {
+    const slider = document.querySelector('.volume-slider')
+    if (slider) {
+      slider.style.setProperty('--volume-percentage', `${volume * 100}%`)
+    }
+  }, [volume])
+
   const formatTime = (time) => formatTimeFromSeconds(time)
 
   const handleRangeInput = (input) => {
@@ -180,6 +187,7 @@ export function AppFooter({ playerRef }) {
       </div>
       <div className='volume-control'>
         <input
+          className='volume-slider'
           type='range'
           value={volume * 100}
           onChange={(e) => {
