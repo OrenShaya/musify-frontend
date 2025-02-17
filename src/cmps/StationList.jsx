@@ -25,9 +25,8 @@ export function StationList({ stations, stationHeader, onMount }) {
         <ScrollBtn isRight={true} scrollRef={scrollRef} />
         <ScrollBtn scrollRef={scrollRef} />
         {stations.map((station) => (
-          // TODO: remove Math.random when using real data
           <li
-            key={station._id + Math.random() * 11000}
+            key={station._id}
             onClick={() => onNavigate(station._id)}
             className='station-item'
           >

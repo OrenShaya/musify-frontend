@@ -8,6 +8,7 @@
   overflow-x: scroll;
   overflow-y: hidden;
   scrollbar-width: none;
-
   scroll-snap-type: x mandatory;
+
+  margin-inline-start: calc(28px - 40px);
 }
