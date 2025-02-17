@@ -1,5 +1,4 @@
 
-
 export const stationsDemoData = [
 
   {
@@ -294,7 +293,7 @@ export const stationsDemoData = [
     name: "System Of A Down",
     createdBy: {
       _id: "UCDJftX2zx_UT_QSnBGIF96w",
-      fullname: "System Of A Down - Topic",
+      fullname: "System Of A Down",
       imgUrl: "https://yt3.ggpht.com/ytc/AIdro_m6xYq7ErRAA9YY3XG3NLAOZJRfV67Edf-dV9qZD2T-Ak4=s800-c-k-c0x00ffffff-no-rj",
       createdAt: 1369159641000,
       updatedAt: 1739580609719
@@ -685,7 +684,7 @@ export const stationsDemoData = [
     name: "Iron Maiden",
     createdBy: {
       _id: "UC0zbzp6x7zR8u0LhanNWFyw",
-      fullname: "Iron Maiden - Topic",
+      fullname: "Iron Maiden",
       imgUrl: "https://yt3.ggpht.com/ytc/AIdro_lZu7s_pX_cg_98Rr7qP5NKMrz4WOmKmMuUXEehjbSZW7A=s800-c-k-c0x00ffffff-no-rj",
       createdAt: 1373069143000,
       updatedAt: 1739581646548
@@ -697,7 +696,7 @@ export const stationsDemoData = [
   {
     songs: [
       {
-        title: "Lady Gaga - Chromatica I (Audio)",
+        title: "Lady Gaga - Chromatica I",
         url: "https://www.youtube.com/embed/A1cnWzwoK7Q",
         imgUrl: "https://i.ytimg.com/vi/A1cnWzwoK7Q/hqdefault.jpg",
         addedBy: {
@@ -712,7 +711,7 @@ export const stationsDemoData = [
         _id: "A1cnWzwoK7Q"
       },
       {
-        title: "Lady Gaga - Alice (Audio)",
+        title: "Lady Gaga - Alice",
         url: "https://www.youtube.com/embed/wYLZq390IHg",
         imgUrl: "https://i.ytimg.com/vi/wYLZq390IHg/hqdefault.jpg",
         addedBy: {
@@ -727,7 +726,7 @@ export const stationsDemoData = [
         _id: "wYLZq390IHg"
       },
       {
-        title: "Lady Gaga - Stupid Love (Official Music Video)",
+        title: "Lady Gaga - Stupid Love",
         url: "https://www.youtube.com/embed/5L6xyaeiV58",
         imgUrl: "https://i.ytimg.com/vi/5L6xyaeiV58/hqdefault.jpg",
         addedBy: {
@@ -742,7 +741,7 @@ export const stationsDemoData = [
         _id: "5L6xyaeiV58"
       },
       {
-        title: "Lady Gaga, Ariana Grande - Rain On Me (Official Music Video)",
+        title: "Lady Gaga, Ariana Grande - Rain On Me",
         url: "https://www.youtube.com/embed/AoAm4om0wTs",
         imgUrl: "https://i.ytimg.com/vi/AoAm4om0wTs/hqdefault.jpg",
         addedBy: {
@@ -757,7 +756,7 @@ export const stationsDemoData = [
         _id: "AoAm4om0wTs"
       },
       {
-        title: "Lady Gaga - Free Woman (Audio)",
+        title: "Lady Gaga - Free Woman",
         url: "https://www.youtube.com/embed/u_cIs0_C6nA",
         imgUrl: "https://i.ytimg.com/vi/u_cIs0_C6nA/hqdefault.jpg",
         addedBy: {
@@ -772,7 +771,7 @@ export const stationsDemoData = [
         _id: "u_cIs0_C6nA"
       },
       {
-        title: "Lady Gaga - Fun Tonight (Audio)",
+        title: "Lady Gaga - Fun Tonight",
         url: "https://www.youtube.com/embed/zWzBcrniDRw",
         imgUrl: "https://i.ytimg.com/vi/zWzBcrniDRw/hqdefault.jpg",
         addedBy: {
@@ -787,7 +786,7 @@ export const stationsDemoData = [
         _id: "zWzBcrniDRw"
       },
       {
-        title: "Lady Gaga - Chromatica II (Official Audio)",
+        title: "Lady Gaga - Chromatica II",
         url: "https://www.youtube.com/embed/GkaNNFI2KLI",
         imgUrl: "https://i.ytimg.com/vi/GkaNNFI2KLI/hqdefault.jpg",
         addedBy: {
@@ -802,7 +801,7 @@ export const stationsDemoData = [
         _id: "GkaNNFI2KLI"
       },
       {
-        title: "Lady Gaga - 911 (Official Audio)",
+        title: "Lady Gaga - 911",
         url: "https://www.youtube.com/embed/-oI4_shsYnE",
         imgUrl: "https://i.ytimg.com/vi/-oI4_shsYnE/hqdefault.jpg",
         addedBy: {
@@ -817,7 +816,7 @@ export const stationsDemoData = [
         _id: "-oI4_shsYnE"
       },
       {
-        title: "Lady Gaga - Plastic Doll (Official Audio)",
+        title: "Lady Gaga - Plastic Doll",
         url: "https://www.youtube.com/embed/RHtdG2M_W3M",
         imgUrl: "https://i.ytimg.com/vi/RHtdG2M_W3M/hqdefault.jpg",
         addedBy: {
@@ -832,7 +831,7 @@ export const stationsDemoData = [
         _id: "RHtdG2M_W3M"
       },
       {
-        title: "Lady Gaga, BLACKPINK - Sour Candy (Audio)",
+        title: "Lady Gaga, BLACKPINK - Sour Candy",
         url: "https://www.youtube.com/embed/fnPn6At3v28",
         imgUrl: "https://i.ytimg.com/vi/fnPn6At3v28/hqdefault.jpg",
         addedBy: {
@@ -847,7 +846,7 @@ export const stationsDemoData = [
         _id: "fnPn6At3v28"
       },
       {
-        title: "Lady Gaga - Enigma (Audio)",
+        title: "Lady Gaga - Enigma",
         url: "https://www.youtube.com/embed/G0Ys0bgcOuo",
         imgUrl: "https://i.ytimg.com/vi/G0Ys0bgcOuo/hqdefault.jpg",
         addedBy: {
@@ -862,7 +861,7 @@ export const stationsDemoData = [
         _id: "G0Ys0bgcOuo"
       },
       {
-        title: "Lady Gaga - Replay (Official Audio)",
+        title: "Lady Gaga - Replay",
         url: "https://www.youtube.com/embed/ZTwpCLZLdRs",
         imgUrl: "https://i.ytimg.com/vi/ZTwpCLZLdRs/hqdefault.jpg",
         addedBy: {
@@ -877,7 +876,7 @@ export const stationsDemoData = [
         _id: "ZTwpCLZLdRs"
       },
       {
-        title: "Lady Gaga - Chromatica III (Official Audio)",
+        title: "Lady Gaga - Chromatica III",
         url: "https://www.youtube.com/embed/U4VUEdlaxhU",
         imgUrl: "https://i.ytimg.com/vi/U4VUEdlaxhU/hqdefault.jpg",
         addedBy: {
@@ -892,7 +891,7 @@ export const stationsDemoData = [
         _id: "U4VUEdlaxhU"
       },
       {
-        title: "Lady Gaga, Elton John - Sine From Above (Audio)",
+        title: "Lady Gaga, Elton John - Sine From Above",
         url: "https://www.youtube.com/embed/O9GUJ7Wqy3A",
         imgUrl: "https://i.ytimg.com/vi/O9GUJ7Wqy3A/hqdefault.jpg",
         addedBy: {
@@ -907,7 +906,7 @@ export const stationsDemoData = [
         _id: "O9GUJ7Wqy3A"
       },
       {
-        title: "Lady Gaga - 1000 Doves (Official Audio)",
+        title: "Lady Gaga - 1000 Doves",
         url: "https://www.youtube.com/embed/xIq6lpdO-Bw",
         imgUrl: "https://i.ytimg.com/vi/xIq6lpdO-Bw/hqdefault.jpg",
         addedBy: {
@@ -922,7 +921,7 @@ export const stationsDemoData = [
         _id: "xIq6lpdO-Bw"
       },
       {
-        title: "Lady Gaga - Babylon (Audio)",
+        title: "Lady Gaga - Babylon",
         url: "https://www.youtube.com/embed/bOuuMmlf_DE",
         imgUrl: "https://i.ytimg.com/vi/bOuuMmlf_DE/hqdefault.jpg",
         addedBy: {
@@ -937,7 +936,7 @@ export const stationsDemoData = [
         _id: "bOuuMmlf_DE"
       },
       {
-        title: "Stupid Love (Official Vitaclub Warehouse Mix/Audio)",
+        title: "Stupid Love",
         url: "https://www.youtube.com/embed/UzCA_8dAKfA",
         imgUrl: "https://i.ytimg.com/vi/UzCA_8dAKfA/hqdefault.jpg",
         addedBy: {
@@ -952,7 +951,7 @@ export const stationsDemoData = [
         _id: "UzCA_8dAKfA"
       },
       {
-        title: "Lady Gaga - Enigma (Audio)",
+        title: "Lady Gaga - Enigma",
         url: "https://www.youtube.com/embed/G0Ys0bgcOuo",
         imgUrl: "https://i.ytimg.com/vi/G0Ys0bgcOuo/hqdefault.jpg",
         addedBy: {
@@ -967,7 +966,7 @@ export const stationsDemoData = [
         _id: "G0Ys0bgcOuo"
       },
       {
-        title: "Lady Gaga - Chromatica I (Audio)",
+        title: "Lady Gaga - Chromatica I",
         url: "https://www.youtube.com/embed/A1cnWzwoK7Q",
         imgUrl: "https://i.ytimg.com/vi/A1cnWzwoK7Q/hqdefault.jpg",
         addedBy: {
@@ -1065,603 +1064,9 @@ export const stationsDemoData = [
     ]
   },
   {
-    _id: "st12345",
-    name: "Corpo-Mente",
-    tags: [
-      "rock",
-      "80s",
-      "live"
-    ],
-    createdBy: {
-      _id: "u101",
-      fullname: "Puki Ben David",
-      imgUrl: "https://f4.bcbits.com/img/a2421482492_65",
-      createdAt: 1739398908555,
-      updatedAt: 1739399900000
-    },
-    likedByUsers: [
-      {
-        _id: "3S4c4",
-        fullname: "admin",
-        imgUrl: "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
-      },
-      {
-        _id: "3T5yg",
-        fullname: "kiki",
-        imgUrl: "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
-      }
-    ],
     songs: [
       {
-        _id: "k3PgFdv",
-        title: "bit by bit was All",
-        url: "https://youtu.be/lYBUbBu4W08",
-        imgUrl: "https://cdn.pixabay.com/photo/2013/07/13/12/41/music-160112_1280.png",
-        lengthInSeconds: 462,
-        addedBy: {
-          _id: "u101",
-          fullname: "Puki Ben David"
-        },
-        likedBy: [],
-        createdAt: 1739398908555,
-        updatedAt: 1739398908555,
-        addedAt: 1739398909555
-      },
-      {
-        _id: "hmyRh2G",
-        title: "more or less It it",
-        url: "https://youtu.be/lYBUbBu4W08",
-        imgUrl: "https://cdn.pixabay.com/photo/2013/07/13/12/41/music-160112_1280.png",
-        lengthInSeconds: 699,
-        addedBy: {
-          _id: "u101",
-          fullname: "Puki Ben David"
-        },
-        likedBy: [],
-        createdAt: 1739357362203,
-        updatedAt: 1739357362203,
-        addedAt: 1739357372203
-      }
-    ],
-    msgs: [
-      {
-        _id: "msg1",
-        from: {
-          _id: "7N2Ai",
-          fullname: "baba"
-        },
-        txt: "Welcome to My Rock Station",
-        createdAt: 1739400100000
-      }
-    ]
-  },
-  {
-    _id: "st23456",
-    name: "Brame",
-    artists: [
-      "Ruby My Dear"
-    ],
-    tags: [
-      "classical",
-      "orchestra",
-      "instrumental"
-    ],
-    createdBy: {
-      _id: "u102",
-      fullname: "Alice Maestro",
-      imgUrl: "/src/assets/img/station-ruby-my-dear.jpeg",
-      createdAt: 1739400000000,
-      updatedAt: 1739403600000,
-      addedAt: 1739357732203
-    },
-    likedByUsers: [
-      {
-        _id: "3S4c4",
-        fullname: "admin",
-        imgUrl: "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
-      }
-    ],
-    songs: [
-      {
-        _id: "song1",
-        title: "Moonlight Sonata",
-        url: "https://youtu.be/4Tr0otuiQuU",
-        imgUrl: "https://cdn.pixabay.com/photo/2014/04/03/10/32/music-312233_1280.png",
-        lengthInSeconds: 540,
-        addedBy: {
-          _id: "u102",
-          fullname: "Alice Maestro"
-        },
-        likedBy: [],
-        createdAt: 1739400000000,
-        updatedAt: 1739400000000,
-        addedAt: 1739400005000
-      },
-      {
-        _id: "song2",
-        title: "Four Seasons - Spring",
-        url: "https://youtu.be/f6b8hBdw78Q",
-        imgUrl: "https://cdn.pixabay.com/photo/2016/11/14/03/16/classical-1822032_1280.jpg",
-        lengthInSeconds: 600,
-        addedBy: {
-          _id: "u102",
-          fullname: "Alice Maestro"
-        },
-        likedBy: [],
-        createdAt: 1739400100000,
-        updatedAt: 1739400100000,
-        addedAt: 1739400120000
-      }
-    ],
-    msgs: [
-      {
-        _id: "msg1",
-        from: {
-          _id: "7N2Ai",
-          fullname: "baba"
-        },
-        txt: "Welcome to The Classical Station",
-        createdAt: 1739403600000
-      }
-    ]
-  },
-  {
-    _id: "st34567",
-    name: "Hip Hop Beats",
-    tags: [
-      "hip hop",
-      "rap",
-      "urban"
-    ],
-    createdBy: {
-      _id: "u103",
-      fullname: "Bob Rhymes",
-      imgUrl: "https://i.scdn.co/image/ab6761610000e5ebe3427c462c258ff70a3f6375",
-      createdAt: 1739410000000,
-      updatedAt: 1739413600000
-    },
-    likedByUsers: [
-      {
-        _id: "3T5yg",
-        fullname: "kiki",
-        imgUrl: "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
-      }
-    ],
-    songs: [
-      {
-        _id: "song3",
-        title: "Flowing Rhythms",
-        url: "https://youtu.be/3Q3E-6HXzHQ",
-        imgUrl: "https://cdn.pixabay.com/photo/2014/04/03/10/32/hiphop-312234_1280.png",
-        lengthInSeconds: 320,
-        addedBy: {
-          _id: "u103",
-          fullname: "Bob Rhymes"
-        },
-        likedBy: [],
-        createdAt: 1739410000000,
-        updatedAt: 1739410000000,
-        addedAt: 1739410000000
-      },
-      {
-        _id: "song4",
-        title: "Street Stories",
-        url: "https://youtu.be/dFzC-YF93LQ",
-        imgUrl: "https://cdn.pixabay.com/photo/2016/09/01/22/46/urban-1631819_1280.jpg",
-        lengthInSeconds: 275,
-        addedBy: {
-          _id: "u103",
-          fullname: "Bob Rhymes"
-        },
-        likedBy: [],
-        createdAt: 1739410100000,
-        updatedAt: 1739410100000,
-        addedAt: 1739410105000
-      }
-    ],
-    msgs: [
-      {
-        _id: "msg2",
-        from: {
-          _id: "7N2Ai",
-          fullname: "baba"
-        },
-        txt: "Turn up the volume!",
-        createdAt: 1739413600000
-      }
-    ]
-  },
-  {
-    _id: "st45678",
-    name: "Electronic Vibes",
-    tags: [
-      "electronic",
-      "EDM",
-      "dance"
-    ],
-    createdBy: {
-      _id: "u104",
-      fullname: "Cara Synth",
-      imgUrl: "https://listen2vibes.com/assets/images/electronic-vibes-2000x2000-v2-1772x1772.png",
-      createdAt: 1739420000000,
-      updatedAt: 1739423600000
-    },
-    likedByUsers: [
-      {
-        _id: "7N2Ai",
-        fullname: "baba",
-        imgUrl: "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
-      },
-      {
-        _id: "Oeiwy",
-        fullname: "shuki",
-        imgUrl: "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
-      }
-    ],
-    songs: [
-      {
-        _id: "song5",
-        title: "Electric Dreams",
-        url: "https://youtu.be/electronic1",
-        imgUrl: "https://cdn.pixabay.com/photo/2017/01/31/17/45/electronic-2022105_1280.jpg",
-        lengthInSeconds: 420,
-        addedBy: {
-          _id: "u104",
-          fullname: "Cara Synth"
-        },
-        likedBy: [],
-        createdAt: 1739420000000,
-        updatedAt: 1739420000000,
-        addedAt: 1739420007000
-      },
-      {
-        _id: "song6",
-        title: "Neon Nights",
-        url: "https://youtu.be/electronic2",
-        imgUrl: "https://cdn.pixabay.com/photo/2018/08/14/13/23/neon-3606436_1280.jpg",
-        lengthInSeconds: 390,
-        addedBy: {
-          _id: "u104",
-          fullname: "Cara Synth"
-        },
-        likedBy: [],
-        createdAt: 1739420100000,
-        updatedAt: 1739420100000,
-        addedAt: 1739420007000
-      }
-    ],
-    msgs: [
-      {
-        _id: "msg3",
-        from: {
-          _id: "7N2Ai",
-          fullname: "baba"
-        },
-        txt: "Get ready to dance!",
-        createdAt: 1739423600000
-      }
-    ]
-  },
-  {
-    songs: [
-      {
-        title: "Around the World",
-        url: "https://www.youtube.com/embed/iiupU-K_TKE",
-        imgUrl: "https://i.ytimg.com/vi/iiupU-K_TKE/hqdefault.jpg",
-        addedBy: {
-          _id: "UCpvEzypPseM9j8XaEA6cbLg",
-          fullname: "Le Sémaphore",
-          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
-        },
-        lengthInSeconds: 324,
-        likedBy: [],
-        createdAt: 1570626593000,
-        updatedAt: 1739546096472,
-        _id: "iiupU-K_TKE"
-      },
-      {
-        title: "Parallel Universe",
-        url: "https://www.youtube.com/embed/X-o8eGhKhlI",
-        imgUrl: "https://i.ytimg.com/vi/X-o8eGhKhlI/hqdefault.jpg",
-        addedBy: {
-          _id: "UCpvEzypPseM9j8XaEA6cbLg",
-          fullname: "Le Sémaphore",
-          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
-        },
-        lengthInSeconds: 287,
-        likedBy: [],
-        createdAt: 1570626599000,
-        updatedAt: 1739535514400,
-        _id: "X-o8eGhKhlI"
-      },
-      {
-        title: "Scar Tissue",
-        url: "https://www.youtube.com/embed/U7k2qv8KTDI",
-        imgUrl: "https://i.ytimg.com/vi/U7k2qv8KTDI/hqdefault.jpg",
-        addedBy: {
-          _id: "UCpvEzypPseM9j8XaEA6cbLg",
-          fullname: "Le Sémaphore",
-          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
-        },
-        lengthInSeconds: 169,
-        likedBy: [],
-        createdAt: 1570626716000,
-        updatedAt: 1739537378512,
-        _id: "U7k2qv8KTDI"
-      },
-      {
-        title: "Otherside",
-        url: "https://www.youtube.com/embed/LCZLCG4JFm4",
-        imgUrl: "https://i.ytimg.com/vi/LCZLCG4JFm4/hqdefault.jpg",
-        addedBy: {
-          _id: "UCpvEzypPseM9j8XaEA6cbLg",
-          fullname: "Le Sémaphore",
-          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
-        },
-        lengthInSeconds: 399,
-        likedBy: [],
-        createdAt: 1570626737000,
-        updatedAt: 1739509678294,
-        _id: "LCZLCG4JFm4"
-      },
-      {
-        title: "Get on Top",
-        url: "https://www.youtube.com/embed/x3kkTjfPD0E",
-        imgUrl: "https://i.ytimg.com/vi/x3kkTjfPD0E/hqdefault.jpg",
-        addedBy: {
-          _id: "UCpvEzypPseM9j8XaEA6cbLg",
-          fullname: "Le Sémaphore",
-          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
-        },
-        lengthInSeconds: 186,
-        likedBy: [],
-        createdAt: 1570626779000,
-        updatedAt: 1739498635022,
-        _id: "x3kkTjfPD0E"
-      },
-      {
-        title: "Californication",
-        url: "https://www.youtube.com/embed/OtXiwSCq99Q",
-        imgUrl: "https://i.ytimg.com/vi/OtXiwSCq99Q/hqdefault.jpg",
-        addedBy: {
-          _id: "UCpvEzypPseM9j8XaEA6cbLg",
-          fullname: "Le Sémaphore",
-          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
-        },
-        lengthInSeconds: 212,
-        likedBy: [],
-        createdAt: 1570626790000,
-        updatedAt: 1739571247737,
-        _id: "OtXiwSCq99Q"
-      },
-      {
-        title: "Easily",
-        url: "https://www.youtube.com/embed/Rtcm6QB5RL8",
-        imgUrl: "https://i.ytimg.com/vi/Rtcm6QB5RL8/hqdefault.jpg",
-        addedBy: {
-          _id: "UCpvEzypPseM9j8XaEA6cbLg",
-          fullname: "Le Sémaphore",
-          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
-        },
-        lengthInSeconds: 308,
-        likedBy: [],
-        createdAt: 1570626808000,
-        updatedAt: 1739570494857,
-        _id: "Rtcm6QB5RL8"
-      },
-      {
-        title: "Porcelain",
-        url: "https://www.youtube.com/embed/JA-mwTAqilg",
-        imgUrl: "https://i.ytimg.com/vi/JA-mwTAqilg/hqdefault.jpg",
-        addedBy: {
-          _id: "UCpvEzypPseM9j8XaEA6cbLg",
-          fullname: "Le Sémaphore",
-          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
-        },
-        lengthInSeconds: 75,
-        likedBy: [],
-        createdAt: 1570626819000,
-        updatedAt: 1739563643746,
-        _id: "JA-mwTAqilg"
-      },
-      {
-        title: "Emit Remmus",
-        url: "https://www.youtube.com/embed/i6HOe3T1QFY",
-        imgUrl: "https://i.ytimg.com/vi/i6HOe3T1QFY/hqdefault.jpg",
-        addedBy: {
-          _id: "UCpvEzypPseM9j8XaEA6cbLg",
-          fullname: "Le Sémaphore",
-          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
-        },
-        lengthInSeconds: 192,
-        likedBy: [],
-        createdAt: 1570626846000,
-        updatedAt: 1739563499900,
-        _id: "i6HOe3T1QFY"
-      },
-      {
-        title: "I Like Dirt",
-        url: "https://www.youtube.com/embed/kKqlzeZQR2w",
-        imgUrl: "https://i.ytimg.com/vi/kKqlzeZQR2w/hqdefault.jpg",
-        addedBy: {
-          _id: "UCpvEzypPseM9j8XaEA6cbLg",
-          fullname: "Le Sémaphore",
-          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
-        },
-        lengthInSeconds: 106,
-        likedBy: [],
-        createdAt: 1570626855000,
-        updatedAt: 1739512764787,
-        _id: "kKqlzeZQR2w"
-      },
-      {
-        title: "This Velvet Glove",
-        url: "https://www.youtube.com/embed/eJwVqRuqypE",
-        imgUrl: "https://i.ytimg.com/vi/eJwVqRuqypE/hqdefault.jpg",
-        addedBy: {
-          _id: "UCpvEzypPseM9j8XaEA6cbLg",
-          fullname: "Le Sémaphore",
-          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
-        },
-        lengthInSeconds: 219,
-        likedBy: [],
-        createdAt: 1570626876000,
-        updatedAt: 1739528316843,
-        _id: "eJwVqRuqypE"
-      },
-      {
-        title: "Savior",
-        url: "https://www.youtube.com/embed/nAYaCX4Bdpo",
-        imgUrl: "https://i.ytimg.com/vi/nAYaCX4Bdpo/hqdefault.jpg",
-        addedBy: {
-          _id: "UCpvEzypPseM9j8XaEA6cbLg",
-          fullname: "Le Sémaphore",
-          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
-        },
-        lengthInSeconds: 275,
-        likedBy: [],
-        createdAt: 1570626890000,
-        updatedAt: 1739556196601,
-        _id: "nAYaCX4Bdpo"
-      },
-      {
-        title: "Purple Stain",
-        url: "https://www.youtube.com/embed/dzsfExBCxLg",
-        imgUrl: "https://i.ytimg.com/vi/dzsfExBCxLg/hqdefault.jpg",
-        addedBy: {
-          _id: "UCpvEzypPseM9j8XaEA6cbLg",
-          fullname: "Le Sémaphore",
-          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
-        },
-        lengthInSeconds: 334,
-        likedBy: [],
-        createdAt: 1570626912000,
-        updatedAt: 1739528162379,
-        _id: "dzsfExBCxLg"
-      },
-      {
-        title: "Right on Time",
-        url: "https://www.youtube.com/embed/jJlLO8wcMsE",
-        imgUrl: "https://i.ytimg.com/vi/jJlLO8wcMsE/hqdefault.jpg",
-        addedBy: {
-          _id: "UCpvEzypPseM9j8XaEA6cbLg",
-          fullname: "Le Sémaphore",
-          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
-        },
-        lengthInSeconds: 231,
-        likedBy: [],
-        createdAt: 1570626926000,
-        updatedAt: 1739552702808,
-        _id: "jJlLO8wcMsE"
-      },
-      {
-        title: "Road Trippin'",
-        url: "https://www.youtube.com/embed/8ozhjdj3ALo",
-        imgUrl: "https://i.ytimg.com/vi/8ozhjdj3ALo/hqdefault.jpg",
-        addedBy: {
-          _id: "UCpvEzypPseM9j8XaEA6cbLg",
-          fullname: "Le Sémaphore",
-          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
-        },
-        lengthInSeconds: 142,
-        likedBy: [],
-        createdAt: 1570626939000,
-        updatedAt: 1739546440692,
-        _id: "8ozhjdj3ALo"
-      },
-      {
-        title: "Red Hot Chili Peppers - Around The World [Official Music Video] [HD UPGRADE]",
-        url: "https://www.youtube.com/embed/a9eNQZbjpJk",
-        imgUrl: "https://i.ytimg.com/vi/a9eNQZbjpJk/hqdefault.jpg",
-        addedBy: {
-          _id: "UCpvEzypPseM9j8XaEA6cbLg",
-          fullname: "Le Sémaphore",
-          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
-        },
-        lengthInSeconds: 81,
-        likedBy: [],
-        createdAt: 1570627425000,
-        updatedAt: 1739510172312,
-        _id: "a9eNQZbjpJk"
-      },
-      {
-        title: "Red Hot Chili Peppers - Scar Tissue [Official Music Video] [HD UPGRADE]",
-        url: "https://www.youtube.com/embed/mzJj5-lubeM",
-        imgUrl: "https://i.ytimg.com/vi/mzJj5-lubeM/hqdefault.jpg",
-        addedBy: {
-          _id: "UCpvEzypPseM9j8XaEA6cbLg",
-          fullname: "Le Sémaphore",
-          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
-        },
-        lengthInSeconds: 221,
-        likedBy: [],
-        createdAt: 1570627560000,
-        updatedAt: 1739495919449,
-        _id: "mzJj5-lubeM"
-      },
-      {
-        title: "Red Hot Chili Peppers - Otherside [Official Music Video] [HD UPGRADE]",
-        url: "https://www.youtube.com/embed/rn_YodiJO6k",
-        imgUrl: "https://i.ytimg.com/vi/rn_YodiJO6k/hqdefault.jpg",
-        addedBy: {
-          _id: "UCpvEzypPseM9j8XaEA6cbLg",
-          fullname: "Le Sémaphore",
-          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
-        },
-        lengthInSeconds: 262,
-        likedBy: [],
-        createdAt: 1570627573000,
-        updatedAt: 1739525731789,
-        _id: "rn_YodiJO6k"
-      },
-      {
-        title: "Red Hot Chili Peppers - Californication (Official Music Video) [HD UPGRADE]",
-        url: "https://www.youtube.com/embed/YlUKcNNmywk",
-        imgUrl: "https://i.ytimg.com/vi/YlUKcNNmywk/hqdefault.jpg",
-        addedBy: {
-          _id: "UCpvEzypPseM9j8XaEA6cbLg",
-          fullname: "Le Sémaphore",
-          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
-        },
-        lengthInSeconds: 316,
-        likedBy: [],
-        createdAt: 1570627589000,
-        updatedAt: 1739535361012,
-        _id: "YlUKcNNmywk"
-      },
-      {
-        title: "Red Hot Chili Peppers - Road Trippin' [Official Music Video] [HD UPGRADE]",
-        url: "https://www.youtube.com/embed/11GYvfYjyV0",
-        imgUrl: "https://i.ytimg.com/vi/11GYvfYjyV0/hqdefault.jpg",
-        addedBy: {
-          _id: "UCpvEzypPseM9j8XaEA6cbLg",
-          fullname: "Le Sémaphore",
-          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
-        },
-        lengthInSeconds: 107,
-        likedBy: [],
-        createdAt: 1570627622000,
-        updatedAt: 1739579295867,
-        _id: "11GYvfYjyV0"
-      }
-    ],
-    _id: "PLiN-7mukU_RGm3gXXR0MXtZ5ynTioL05I",
-    name: "Red Hot Chili Peppers",
-    createdBy: {
-      _id: "UCrSorX845CEWXzU4Z7BojjA",
-      fullname: "Red Hot Chili Peppers - Topic",
-      imgUrl: "https://yt3.ggpht.com/O-ftbUQoWe32VfOlIme0zZes00iU3YnlD9vj1eAzjIP95XR2mllLRumLW-zyDidEHGDF9rwu=s800-c-k-c0x00ffffff-no-rj",
-      createdAt: 1368713398000,
-      updatedAt: 1739582097106
-    },
-    msgs: [],
-    likedByUsers: [],
-    tags: ["music","rock","mood","wellness"]
-  },
-  {
-    songs: [
-      {
-        title: "Bruno Mars - It Will Rain (Official Music Video)",
+        title: "Bruno Mars - It Will Rain",
         url: "https://www.youtube.com/embed/W-w3WfgpcGg",
         imgUrl: "https://i.ytimg.com/vi/W-w3WfgpcGg/hqdefault.jpg",
         addedBy: {
@@ -1676,7 +1081,7 @@ export const stationsDemoData = [
         _id: "W-w3WfgpcGg"
       },
       {
-        title: "Bruno Mars - Grenade (Official Music Video)",
+        title: "Bruno Mars - Grenade",
         url: "https://www.youtube.com/embed/SR6iYWJxHqs",
         imgUrl: "https://i.ytimg.com/vi/SR6iYWJxHqs/hqdefault.jpg",
         addedBy: {
@@ -1691,7 +1096,7 @@ export const stationsDemoData = [
         _id: "SR6iYWJxHqs"
       },
       {
-        title: "Bruno Mars - Just The Way You Are (Official Music Video)",
+        title: "Bruno Mars - Just The Way You Are",
         url: "https://www.youtube.com/embed/LjhCEhWiKXk",
         imgUrl: "https://i.ytimg.com/vi/LjhCEhWiKXk/hqdefault.jpg",
         addedBy: {
@@ -1706,7 +1111,7 @@ export const stationsDemoData = [
         _id: "LjhCEhWiKXk"
       },
       {
-        title: "Bruno Mars - When I Was Your Man (Official Music Video)",
+        title: "Bruno Mars - When I Was Your Man",
         url: "https://www.youtube.com/embed/ekzHIouo8Q4",
         imgUrl: "https://i.ytimg.com/vi/ekzHIouo8Q4/hqdefault.jpg",
         addedBy: {
@@ -1721,7 +1126,7 @@ export const stationsDemoData = [
         _id: "ekzHIouo8Q4"
       },
       {
-        title: "Bruno Mars - Locked Out Of Heaven (Official Music Video)",
+        title: "Bruno Mars - Locked Out Of Heaven",
         url: "https://www.youtube.com/embed/e-fA-gBCkj0",
         imgUrl: "https://i.ytimg.com/vi/e-fA-gBCkj0/hqdefault.jpg",
         addedBy: {
@@ -1756,7 +1161,7 @@ export const stationsDemoData = [
     createdBy: {
       _id: "UCoUM-UJ7rirJYP8CQ0EIaHA",
       fullname: "Bruno Mars",
-      imgUrl: "https://yt3.ggpht.com/DFAj5Pcujo1P0iXe8x4XoZwwItN9cbHnDxbdamvhqSTzXTmyNlqsE1HN2bEQN5vpXE6SB1IAoCM=s800-c-k-c0x00ffffff-no-rj",
+      imgUrl: "https://yt3.ggpht.com/DFAj5Pcujo1P0iXe8x4XoZwwItN9cbHnDxbdamvhqSTzXTmyNlqsE1HN2bEQN5vpXE6SB1IAoCM=s800-c-k-c0x00ffffff",
       createdAt: 1158629683000,
       updatedAt: 1739582265108
     },
@@ -1932,7 +1337,7 @@ export const stationsDemoData = [
         _id: "QmFE6HBq72c"
       },
       {
-        title: "2Pac - California Love (Remix) (feat. Dr  Dre & Roger Troutman)",
+        title: "2Pac - California Love (feat. Dr  Dre & Roger Troutman)",
         url: "https://www.youtube.com/embed/4fDfbMt6icw",
         imgUrl: "https://i.ytimg.com/vi/4fDfbMt6icw/hqdefault.jpg",
         addedBy: {
@@ -2278,7 +1683,7 @@ export const stationsDemoData = [
         _id: "NMCJYfutZ8Y"
       },
       {
-        title: "Eminem - Without Me (Official Music Video)",
+        title: "Eminem - Without Me",
         url: "https://www.youtube.com/embed/YVkUvmDQ3HY",
         imgUrl: "https://i.ytimg.com/vi/YVkUvmDQ3HY/hqdefault.jpg",
         addedBy: {
@@ -2293,7 +1698,7 @@ export const stationsDemoData = [
         _id: "YVkUvmDQ3HY"
       },
       {
-        title: "Eminem - We Made You (Official Music Video)",
+        title: "Eminem - We Made You",
         url: "https://www.youtube.com/embed/RSdKmX2BH7o",
         imgUrl: "https://i.ytimg.com/vi/RSdKmX2BH7o/hqdefault.jpg",
         addedBy: {
@@ -2323,7 +1728,7 @@ export const stationsDemoData = [
         _id: "eJO5HU_7_1w"
       },
       {
-        title: "Eminem - Just Lose It (Official Music Video)",
+        title: "Eminem - Just Lose It",
         url: "https://www.youtube.com/embed/9dcVOmEQzKA",
         imgUrl: "https://i.ytimg.com/vi/9dcVOmEQzKA/hqdefault.jpg",
         addedBy: {
@@ -2338,7 +1743,7 @@ export const stationsDemoData = [
         _id: "9dcVOmEQzKA"
       },
       {
-        title: "Eminem - When I'm Gone (Official Music Video)",
+        title: "Eminem - When I'm Gone",
         url: "https://www.youtube.com/embed/1wYNFfgrXTI",
         imgUrl: "https://i.ytimg.com/vi/1wYNFfgrXTI/hqdefault.jpg",
         addedBy: {
@@ -2353,7 +1758,7 @@ export const stationsDemoData = [
         _id: "1wYNFfgrXTI"
       },
       {
-        title: "Eminem - Like Toy Soldiers (Official Music Video)",
+        title: "Eminem - Like Toy Soldiers",
         url: "https://www.youtube.com/embed/lexLAjh8fPA",
         imgUrl: "https://i.ytimg.com/vi/lexLAjh8fPA/hqdefault.jpg",
         addedBy: {
@@ -2368,7 +1773,7 @@ export const stationsDemoData = [
         _id: "lexLAjh8fPA"
       },
       {
-        title: "Eminem - Sing For The Moment (Official Music Video)",
+        title: "Eminem - Sing For The Moment",
         url: "https://www.youtube.com/embed/D4hAVemuQXY",
         imgUrl: "https://i.ytimg.com/vi/D4hAVemuQXY/hqdefault.jpg",
         addedBy: {
@@ -2383,7 +1788,7 @@ export const stationsDemoData = [
         _id: "D4hAVemuQXY"
       },
       {
-        title: "Eminem - Cleanin' Out My Closet (Official Music Video)",
+        title: "Eminem - Cleanin' Out My Closet",
         url: "https://www.youtube.com/embed/RQ9_TKayu9s",
         imgUrl: "https://i.ytimg.com/vi/RQ9_TKayu9s/hqdefault.jpg",
         addedBy: {
@@ -2413,7 +1818,7 @@ export const stationsDemoData = [
         _id: "S9bCLPwzSC0"
       },
       {
-        title: "Eminem - Beautiful (Official Music Video)",
+        title: "Eminem - Beautiful",
         url: "https://www.youtube.com/embed/lgT1AidzRWM",
         imgUrl: "https://i.ytimg.com/vi/lgT1AidzRWM/hqdefault.jpg",
         addedBy: {
@@ -2732,7 +2137,7 @@ export const stationsDemoData = [
     name: "Michael Jackson",
     createdBy: {
       _id: "UCoIOOL7QKuBhQHVKL8y7BEQ",
-      fullname: "Michael Jackson - Topic",
+      fullname: "Michael Jackson",
       imgUrl: "https://yt3.ggpht.com/nvt02XjPB-lklNBuV8rI9BQOgD1l7geYdJBzTkgoFJTgdK_Fzv_eaoQ9jV4Vb9DWFks0QFzeog=s800-c-k-c0x00ffffff-no-rj",
       createdAt: 1371165416000,
       updatedAt: 1739582715114
@@ -3214,7 +2619,7 @@ export const stationsDemoData = [
     name: "Jimi Hendrix",
     createdBy: {
       _id: "UC5NwXf8hOgZgInaYiOCZmUg",
-      fullname: "Jimi Hendrix - Topic",
+      fullname: "Jimi Hendrix",
       imgUrl: "https://yt3.ggpht.com/v6AcaTJlTIV-gPB8Q_2AFA331R2ghK_SHHUBCaq6qZofKmCIUpDwgcx4Et2VsSx3IAzlnnuHDA=s800-c-k-c0x00ffffff-no-rj",
       createdAt: 1368720421000,
       updatedAt: 1739582952108
@@ -4059,7 +3464,7 @@ export const stationsDemoData = [
     name: "Polo & Pan",
     createdBy: {
       _id: "UC4KKov_xp4Os4PAnVr28YUQ",
-      fullname: "Polo & Pan - Topic",
+      fullname: "Polo & Pan",
       imgUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYbMV0Wuq3MBq-g2BiyLNFLOVaLGOiusKgvw&s",
       createdAt: 1442962721000,
       updatedAt: 1739722831573
@@ -4135,7 +3540,7 @@ export const stationsDemoData = [
     name: "Polo & Pan",
     createdBy: {
       _id: "UC4KKov_xp4Os4PAnVr28YUQ",
-      fullname: "Polo & Pan - Topic",
+      fullname: "Polo & Pan",
       imgUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpmEyttca5OKcFmbs1aTNIEejqUK3kNaFL5Q&s",
       createdAt: 1442962721000,
       updatedAt: 1739722875766
@@ -4162,7 +3567,7 @@ export const stationsDemoData = [
         _id: "1KSBCNHXOUA"
       },
       {
-        title: "POLO & PAN — Attrape-rêve (official audio)",
+        title: "POLO & PAN — Attrape-rêve",
         url: "https://www.youtube.com/embed/gRgP-IUOQao",
         imgUrl: "https://i.ytimg.com/vi/gRgP-IUOQao/hqdefault.jpg",
         addedBy: {
@@ -4177,7 +3582,7 @@ export const stationsDemoData = [
         _id: "gRgP-IUOQao"
       },
       {
-        title: "POLO & PAN — Pili Pili (official audio)",
+        title: "POLO & PAN — Pili Pili",
         url: "https://www.youtube.com/embed/PnzLjXMEqtU",
         imgUrl: "https://i.ytimg.com/vi/PnzLjXMEqtU/hqdefault.jpg",
         addedBy: {
@@ -4192,7 +3597,7 @@ export const stationsDemoData = [
         _id: "PnzLjXMEqtU"
       },
       {
-        title: "POLO & PAN feat. Antonin — Peter Pan (official audio)",
+        title: "POLO & PAN feat. Antonin — Peter Pan",
         url: "https://www.youtube.com/embed/lhBmz8EnKrk",
         imgUrl: "https://i.ytimg.com/vi/lhBmz8EnKrk/hqdefault.jpg",
         addedBy: {
@@ -4313,7 +3718,7 @@ export const stationsDemoData = [
         _id: "qQ-Pyx4joKM"
       },
       {
-        title: "Caravan Palace - Midnight (Official Music Video)",
+        title: "Caravan Palace - Midnight",
         url: "https://www.youtube.com/embed/8b-ecNhMIyw",
         imgUrl: "https://i.ytimg.com/vi/8b-ecNhMIyw/hqdefault.jpg",
         addedBy: {
@@ -4400,6 +3805,600 @@ export const stationsDemoData = [
     msgs: [],
     likedByUsers: [],
     tags: ["funk & disco","alternative","wellness","blues","radar"]
+  },
+  {
+    _id: "st12345",
+    name: "Corpo-Mente",
+    tags: [
+      "rock",
+      "80s",
+      "live"
+    ],
+    createdBy: {
+      _id: "u101",
+      fullname: "Puki Ben David",
+      imgUrl: "https://f4.bcbits.com/img/a2421482492_65",
+      createdAt: 1739398908555,
+      updatedAt: 1739399900000
+    },
+    likedByUsers: [
+      {
+        _id: "3S4c4",
+        fullname: "admin",
+        imgUrl: "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
+      },
+      {
+        _id: "3T5yg",
+        fullname: "kiki",
+        imgUrl: "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
+      }
+    ],
+    songs: [
+      {
+        _id: "k3PgFdv",
+        title: "bit by bit was All",
+        url: "https://youtu.be/lYBUbBu4W08",
+        imgUrl: "https://cdn.pixabay.com/photo/2013/07/13/12/41/music-160112_1280.png",
+        lengthInSeconds: 462,
+        addedBy: {
+          _id: "u101",
+          fullname: "Puki Ben David"
+        },
+        likedBy: [],
+        createdAt: 1739398908555,
+        updatedAt: 1739398908555,
+        addedAt: 1739398909555
+      },
+      {
+        _id: "hmyRh2G",
+        title: "more or less It it",
+        url: "https://youtu.be/lYBUbBu4W08",
+        imgUrl: "https://cdn.pixabay.com/photo/2013/07/13/12/41/music-160112_1280.png",
+        lengthInSeconds: 699,
+        addedBy: {
+          _id: "u101",
+          fullname: "Puki Ben David"
+        },
+        likedBy: [],
+        createdAt: 1739357362203,
+        updatedAt: 1739357362203,
+        addedAt: 1739357372203
+      }
+    ],
+    msgs: [
+      {
+        _id: "msg1",
+        from: {
+          _id: "7N2Ai",
+          fullname: "baba"
+        },
+        txt: "Welcome to My Rock Station",
+        createdAt: 1739400100000
+      }
+    ]
+  },
+  {
+    _id: "st23456",
+    name: "Brame",
+    artists: [
+      "Ruby My Dear"
+    ],
+    tags: [
+      "classical",
+      "orchestra",
+      "instrumental"
+    ],
+    createdBy: {
+      _id: "u102",
+      fullname: "Alice Maestro",
+      imgUrl: "/src/assets/img/station-ruby-my-dear.jpeg",
+      createdAt: 1739400000000,
+      updatedAt: 1739403600000,
+      addedAt: 1739357732203
+    },
+    likedByUsers: [
+      {
+        _id: "3S4c4",
+        fullname: "admin",
+        imgUrl: "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
+      }
+    ],
+    songs: [
+      {
+        _id: "song1",
+        title: "Moonlight Sonata",
+        url: "https://youtu.be/4Tr0otuiQuU",
+        imgUrl: "https://cdn.pixabay.com/photo/2014/04/03/10/32/music-312233_1280.png",
+        lengthInSeconds: 540,
+        addedBy: {
+          _id: "u102",
+          fullname: "Alice Maestro"
+        },
+        likedBy: [],
+        createdAt: 1739400000000,
+        updatedAt: 1739400000000,
+        addedAt: 1739400005000
+      },
+      {
+        _id: "song2",
+        title: "Four Seasons - Spring",
+        url: "https://youtu.be/f6b8hBdw78Q",
+        imgUrl: "https://cdn.pixabay.com/photo/2016/11/14/03/16/classical-1822032_1280.jpg",
+        lengthInSeconds: 600,
+        addedBy: {
+          _id: "u102",
+          fullname: "Alice Maestro"
+        },
+        likedBy: [],
+        createdAt: 1739400100000,
+        updatedAt: 1739400100000,
+        addedAt: 1739400120000
+      }
+    ],
+    msgs: [
+      {
+        _id: "msg1",
+        from: {
+          _id: "7N2Ai",
+          fullname: "baba"
+        },
+        txt: "Welcome to The Classical Station",
+        createdAt: 1739403600000
+      }
+    ]
+  },
+  {
+    _id: "st34567",
+    name: "Hip Hop Beats",
+    tags: [
+      "hip hop",
+      "rap",
+      "urban"
+    ],
+    createdBy: {
+      _id: "u103",
+      fullname: "Bob Rhymes",
+      imgUrl: "https://i.scdn.co/image/ab6761610000e5ebe3427c462c258ff70a3f6375",
+      createdAt: 1739410000000,
+      updatedAt: 1739413600000
+    },
+    likedByUsers: [
+      {
+        _id: "3T5yg",
+        fullname: "kiki",
+        imgUrl: "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
+      }
+    ],
+    songs: [
+      {
+        _id: "song3",
+        title: "Flowing Rhythms",
+        url: "https://youtu.be/3Q3E-6HXzHQ",
+        imgUrl: "https://cdn.pixabay.com/photo/2014/04/03/10/32/hiphop-312234_1280.png",
+        lengthInSeconds: 320,
+        addedBy: {
+          _id: "u103",
+          fullname: "Bob Rhymes"
+        },
+        likedBy: [],
+        createdAt: 1739410000000,
+        updatedAt: 1739410000000,
+        addedAt: 1739410000000
+      },
+      {
+        _id: "song4",
+        title: "Street Stories",
+        url: "https://youtu.be/dFzC-YF93LQ",
+        imgUrl: "https://cdn.pixabay.com/photo/2016/09/01/22/46/urban-1631819_1280.jpg",
+        lengthInSeconds: 275,
+        addedBy: {
+          _id: "u103",
+          fullname: "Bob Rhymes"
+        },
+        likedBy: [],
+        createdAt: 1739410100000,
+        updatedAt: 1739410100000,
+        addedAt: 1739410105000
+      }
+    ],
+    msgs: [
+      {
+        _id: "msg2",
+        from: {
+          _id: "7N2Ai",
+          fullname: "baba"
+        },
+        txt: "Turn up the volume!",
+        createdAt: 1739413600000
+      }
+    ]
+  },
+  {
+    _id: "st45678",
+    name: "Electronic Vibes",
+    tags: [
+      "electronic",
+      "EDM",
+      "dance"
+    ],
+    createdBy: {
+      _id: "u104",
+      fullname: "Cara Synth",
+      imgUrl: "https://listen2vibes.com/assets/images/electronic-vibes-2000x2000-v2-1772x1772.png",
+      createdAt: 1739420000000,
+      updatedAt: 1739423600000
+    },
+    likedByUsers: [
+      {
+        _id: "7N2Ai",
+        fullname: "baba",
+        imgUrl: "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
+      },
+      {
+        _id: "Oeiwy",
+        fullname: "shuki",
+        imgUrl: "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
+      }
+    ],
+    songs: [
+      {
+        _id: "song5",
+        title: "Electric Dreams",
+        url: "https://youtu.be/electronic1",
+        imgUrl: "https://cdn.pixabay.com/photo/2017/01/31/17/45/electronic-2022105_1280.jpg",
+        lengthInSeconds: 420,
+        addedBy: {
+          _id: "u104",
+          fullname: "Cara Synth"
+        },
+        likedBy: [],
+        createdAt: 1739420000000,
+        updatedAt: 1739420000000,
+        addedAt: 1739420007000
+      },
+      {
+        _id: "song6",
+        title: "Neon Nights",
+        url: "https://youtu.be/electronic2",
+        imgUrl: "https://cdn.pixabay.com/photo/2018/08/14/13/23/neon-3606436_1280.jpg",
+        lengthInSeconds: 390,
+        addedBy: {
+          _id: "u104",
+          fullname: "Cara Synth"
+        },
+        likedBy: [],
+        createdAt: 1739420100000,
+        updatedAt: 1739420100000,
+        addedAt: 1739420007000
+      }
+    ],
+    msgs: [
+      {
+        _id: "msg3",
+        from: {
+          _id: "7N2Ai",
+          fullname: "baba"
+        },
+        txt: "Get ready to dance!",
+        createdAt: 1739423600000
+      }
+    ]
+  },
+  {
+    songs: [
+      {
+        title: "Around the World",
+        url: "https://www.youtube.com/embed/iiupU-K_TKE",
+        imgUrl: "https://i.ytimg.com/vi/iiupU-K_TKE/hqdefault.jpg",
+        addedBy: {
+          _id: "UCpvEzypPseM9j8XaEA6cbLg",
+          fullname: "Le Sémaphore",
+          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
+        },
+        lengthInSeconds: 324,
+        likedBy: [],
+        createdAt: 1570626593000,
+        updatedAt: 1739546096472,
+        _id: "iiupU-K_TKE"
+      },
+      {
+        title: "Parallel Universe",
+        url: "https://www.youtube.com/embed/X-o8eGhKhlI",
+        imgUrl: "https://i.ytimg.com/vi/X-o8eGhKhlI/hqdefault.jpg",
+        addedBy: {
+          _id: "UCpvEzypPseM9j8XaEA6cbLg",
+          fullname: "Le Sémaphore",
+          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
+        },
+        lengthInSeconds: 287,
+        likedBy: [],
+        createdAt: 1570626599000,
+        updatedAt: 1739535514400,
+        _id: "X-o8eGhKhlI"
+      },
+      {
+        title: "Scar Tissue",
+        url: "https://www.youtube.com/embed/U7k2qv8KTDI",
+        imgUrl: "https://i.ytimg.com/vi/U7k2qv8KTDI/hqdefault.jpg",
+        addedBy: {
+          _id: "UCpvEzypPseM9j8XaEA6cbLg",
+          fullname: "Le Sémaphore",
+          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
+        },
+        lengthInSeconds: 169,
+        likedBy: [],
+        createdAt: 1570626716000,
+        updatedAt: 1739537378512,
+        _id: "U7k2qv8KTDI"
+      },
+      {
+        title: "Otherside",
+        url: "https://www.youtube.com/embed/LCZLCG4JFm4",
+        imgUrl: "https://i.ytimg.com/vi/LCZLCG4JFm4/hqdefault.jpg",
+        addedBy: {
+          _id: "UCpvEzypPseM9j8XaEA6cbLg",
+          fullname: "Le Sémaphore",
+          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
+        },
+        lengthInSeconds: 399,
+        likedBy: [],
+        createdAt: 1570626737000,
+        updatedAt: 1739509678294,
+        _id: "LCZLCG4JFm4"
+      },
+      {
+        title: "Get on Top",
+        url: "https://www.youtube.com/embed/x3kkTjfPD0E",
+        imgUrl: "https://i.ytimg.com/vi/x3kkTjfPD0E/hqdefault.jpg",
+        addedBy: {
+          _id: "UCpvEzypPseM9j8XaEA6cbLg",
+          fullname: "Le Sémaphore",
+          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
+        },
+        lengthInSeconds: 186,
+        likedBy: [],
+        createdAt: 1570626779000,
+        updatedAt: 1739498635022,
+        _id: "x3kkTjfPD0E"
+      },
+      {
+        title: "Californication",
+        url: "https://www.youtube.com/embed/OtXiwSCq99Q",
+        imgUrl: "https://i.ytimg.com/vi/OtXiwSCq99Q/hqdefault.jpg",
+        addedBy: {
+          _id: "UCpvEzypPseM9j8XaEA6cbLg",
+          fullname: "Le Sémaphore",
+          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
+        },
+        lengthInSeconds: 212,
+        likedBy: [],
+        createdAt: 1570626790000,
+        updatedAt: 1739571247737,
+        _id: "OtXiwSCq99Q"
+      },
+      {
+        title: "Easily",
+        url: "https://www.youtube.com/embed/Rtcm6QB5RL8",
+        imgUrl: "https://i.ytimg.com/vi/Rtcm6QB5RL8/hqdefault.jpg",
+        addedBy: {
+          _id: "UCpvEzypPseM9j8XaEA6cbLg",
+          fullname: "Le Sémaphore",
+          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
+        },
+        lengthInSeconds: 308,
+        likedBy: [],
+        createdAt: 1570626808000,
+        updatedAt: 1739570494857,
+        _id: "Rtcm6QB5RL8"
+      },
+      {
+        title: "Porcelain",
+        url: "https://www.youtube.com/embed/JA-mwTAqilg",
+        imgUrl: "https://i.ytimg.com/vi/JA-mwTAqilg/hqdefault.jpg",
+        addedBy: {
+          _id: "UCpvEzypPseM9j8XaEA6cbLg",
+          fullname: "Le Sémaphore",
+          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
+        },
+        lengthInSeconds: 75,
+        likedBy: [],
+        createdAt: 1570626819000,
+        updatedAt: 1739563643746,
+        _id: "JA-mwTAqilg"
+      },
+      {
+        title: "Emit Remmus",
+        url: "https://www.youtube.com/embed/i6HOe3T1QFY",
+        imgUrl: "https://i.ytimg.com/vi/i6HOe3T1QFY/hqdefault.jpg",
+        addedBy: {
+          _id: "UCpvEzypPseM9j8XaEA6cbLg",
+          fullname: "Le Sémaphore",
+          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
+        },
+        lengthInSeconds: 192,
+        likedBy: [],
+        createdAt: 1570626846000,
+        updatedAt: 1739563499900,
+        _id: "i6HOe3T1QFY"
+      },
+      {
+        title: "I Like Dirt",
+        url: "https://www.youtube.com/embed/kKqlzeZQR2w",
+        imgUrl: "https://i.ytimg.com/vi/kKqlzeZQR2w/hqdefault.jpg",
+        addedBy: {
+          _id: "UCpvEzypPseM9j8XaEA6cbLg",
+          fullname: "Le Sémaphore",
+          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
+        },
+        lengthInSeconds: 106,
+        likedBy: [],
+        createdAt: 1570626855000,
+        updatedAt: 1739512764787,
+        _id: "kKqlzeZQR2w"
+      },
+      {
+        title: "This Velvet Glove",
+        url: "https://www.youtube.com/embed/eJwVqRuqypE",
+        imgUrl: "https://i.ytimg.com/vi/eJwVqRuqypE/hqdefault.jpg",
+        addedBy: {
+          _id: "UCpvEzypPseM9j8XaEA6cbLg",
+          fullname: "Le Sémaphore",
+          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
+        },
+        lengthInSeconds: 219,
+        likedBy: [],
+        createdAt: 1570626876000,
+        updatedAt: 1739528316843,
+        _id: "eJwVqRuqypE"
+      },
+      {
+        title: "Savior",
+        url: "https://www.youtube.com/embed/nAYaCX4Bdpo",
+        imgUrl: "https://i.ytimg.com/vi/nAYaCX4Bdpo/hqdefault.jpg",
+        addedBy: {
+          _id: "UCpvEzypPseM9j8XaEA6cbLg",
+          fullname: "Le Sémaphore",
+          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
+        },
+        lengthInSeconds: 275,
+        likedBy: [],
+        createdAt: 1570626890000,
+        updatedAt: 1739556196601,
+        _id: "nAYaCX4Bdpo"
+      },
+      {
+        title: "Purple Stain",
+        url: "https://www.youtube.com/embed/dzsfExBCxLg",
+        imgUrl: "https://i.ytimg.com/vi/dzsfExBCxLg/hqdefault.jpg",
+        addedBy: {
+          _id: "UCpvEzypPseM9j8XaEA6cbLg",
+          fullname: "Le Sémaphore",
+          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
+        },
+        lengthInSeconds: 334,
+        likedBy: [],
+        createdAt: 1570626912000,
+        updatedAt: 1739528162379,
+        _id: "dzsfExBCxLg"
+      },
+      {
+        title: "Right on Time",
+        url: "https://www.youtube.com/embed/jJlLO8wcMsE",
+        imgUrl: "https://i.ytimg.com/vi/jJlLO8wcMsE/hqdefault.jpg",
+        addedBy: {
+          _id: "UCpvEzypPseM9j8XaEA6cbLg",
+          fullname: "Le Sémaphore",
+          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
+        },
+        lengthInSeconds: 231,
+        likedBy: [],
+        createdAt: 1570626926000,
+        updatedAt: 1739552702808,
+        _id: "jJlLO8wcMsE"
+      },
+      {
+        title: "Road Trippin'",
+        url: "https://www.youtube.com/embed/8ozhjdj3ALo",
+        imgUrl: "https://i.ytimg.com/vi/8ozhjdj3ALo/hqdefault.jpg",
+        addedBy: {
+          _id: "UCpvEzypPseM9j8XaEA6cbLg",
+          fullname: "Le Sémaphore",
+          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
+        },
+        lengthInSeconds: 142,
+        likedBy: [],
+        createdAt: 1570626939000,
+        updatedAt: 1739546440692,
+        _id: "8ozhjdj3ALo"
+      },
+      {
+        title: "Red Hot Chili Peppers - Around The World [Official Music Video] [HD UPGRADE]",
+        url: "https://www.youtube.com/embed/a9eNQZbjpJk",
+        imgUrl: "https://i.ytimg.com/vi/a9eNQZbjpJk/hqdefault.jpg",
+        addedBy: {
+          _id: "UCpvEzypPseM9j8XaEA6cbLg",
+          fullname: "Le Sémaphore",
+          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
+        },
+        lengthInSeconds: 81,
+        likedBy: [],
+        createdAt: 1570627425000,
+        updatedAt: 1739510172312,
+        _id: "a9eNQZbjpJk"
+      },
+      {
+        title: "Red Hot Chili Peppers - Scar Tissue [Official Music Video] [HD UPGRADE]",
+        url: "https://www.youtube.com/embed/mzJj5-lubeM",
+        imgUrl: "https://i.ytimg.com/vi/mzJj5-lubeM/hqdefault.jpg",
+        addedBy: {
+          _id: "UCpvEzypPseM9j8XaEA6cbLg",
+          fullname: "Le Sémaphore",
+          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
+        },
+        lengthInSeconds: 221,
+        likedBy: [],
+        createdAt: 1570627560000,
+        updatedAt: 1739495919449,
+        _id: "mzJj5-lubeM"
+      },
+      {
+        title: "Red Hot Chili Peppers - Otherside [Official Music Video] [HD UPGRADE]",
+        url: "https://www.youtube.com/embed/rn_YodiJO6k",
+        imgUrl: "https://i.ytimg.com/vi/rn_YodiJO6k/hqdefault.jpg",
+        addedBy: {
+          _id: "UCpvEzypPseM9j8XaEA6cbLg",
+          fullname: "Le Sémaphore",
+          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
+        },
+        lengthInSeconds: 262,
+        likedBy: [],
+        createdAt: 1570627573000,
+        updatedAt: 1739525731789,
+        _id: "rn_YodiJO6k"
+      },
+      {
+        title: "Red Hot Chili Peppers - Californication [HD UPGRADE]",
+        url: "https://www.youtube.com/embed/YlUKcNNmywk",
+        imgUrl: "https://i.ytimg.com/vi/YlUKcNNmywk/hqdefault.jpg",
+        addedBy: {
+          _id: "UCpvEzypPseM9j8XaEA6cbLg",
+          fullname: "Le Sémaphore",
+          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
+        },
+        lengthInSeconds: 316,
+        likedBy: [],
+        createdAt: 1570627589000,
+        updatedAt: 1739535361012,
+        _id: "YlUKcNNmywk"
+      },
+      {
+        title: "Red Hot Chili Peppers - Road Trippin' [Official Music Video] [HD UPGRADE]",
+        url: "https://www.youtube.com/embed/11GYvfYjyV0",
+        imgUrl: "https://i.ytimg.com/vi/11GYvfYjyV0/hqdefault.jpg",
+        addedBy: {
+          _id: "UCpvEzypPseM9j8XaEA6cbLg",
+          fullname: "Le Sémaphore",
+          imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nbNP4C904JTZDyi2HWE7ekHFoCZh2EzYHsaxxnheWJBLE=s800-c-k-c0x00ffffff-no-rj"
+        },
+        lengthInSeconds: 107,
+        likedBy: [],
+        createdAt: 1570627622000,
+        updatedAt: 1739579295867,
+        _id: "11GYvfYjyV0"
+      }
+    ],
+    _id: "PLiN-7mukU_RGm3gXXR0MXtZ5ynTioL05I",
+    name: "Red Hot Chili Peppers",
+    createdBy: {
+      _id: "UCrSorX845CEWXzU4Z7BojjA",
+      fullname: "Red Hot Chili Peppers",
+      imgUrl: "https://yt3.ggpht.com/O-ftbUQoWe32VfOlIme0zZes00iU3YnlD9vj1eAzjIP95XR2mllLRumLW-zyDidEHGDF9rwu=s800-c-k-c0x00ffffff-no-rj",
+      createdAt: 1368713398000,
+      updatedAt: 1739582097106
+    },
+    msgs: [],
+    likedByUsers: [],
+    tags: ["music","rock","mood","wellness"]
   },
   {
     songs: [
@@ -5113,7 +5112,7 @@ export const stationsDemoData = [
         _id: "ay32SqJPpB0"
       },
       {
-        title: "The Emptiness Machine (Official Music Video) - Linkin Park",
+        title: "The Emptiness Machine - Linkin Park",
         url: "https://www.youtube.com/embed/SRXH9AbT280",
         imgUrl: "https://i.ytimg.com/vi/SRXH9AbT280/hqdefault.jpg",
         addedBy: {
@@ -5143,7 +5142,7 @@ export const stationsDemoData = [
         _id: "_f9b0NB5o4E"
       },
       {
-        title: "Heavy Is the Crown (Official Audio) - Linkin Park",
+        title: "Heavy Is the Crown - Linkin Park",
         url: "https://www.youtube.com/embed/ZAt8oxY0GQo",
         imgUrl: "https://i.ytimg.com/vi/ZAt8oxY0GQo/hqdefault.jpg",
         addedBy: {
@@ -5158,7 +5157,7 @@ export const stationsDemoData = [
         _id: "ZAt8oxY0GQo"
       },
       {
-        title: "Over Each Other (Official Music Video) - Linkin Park",
+        title: "Over Each Other - Linkin Park",
         url: "https://www.youtube.com/embed/fSHoePrnmMw",
         imgUrl: "https://i.ytimg.com/vi/fSHoePrnmMw/hqdefault.jpg",
         addedBy: {
@@ -5203,7 +5202,7 @@ export const stationsDemoData = [
         _id: "qaMxFaIZiKY"
       },
       {
-        title: "Two Faced (Official Music Video) - Linkin Park",
+        title: "Two Faced - Linkin Park",
         url: "https://www.youtube.com/embed/kivUsDGWojU",
         imgUrl: "https://i.ytimg.com/vi/kivUsDGWojU/hqdefault.jpg",
         addedBy: {
@@ -5505,7 +5504,7 @@ export const stationsDemoData = [
         _id: "GVcY--XzeIc"
       },
       {
-        title: "Disturbed - Down With The Sickness (Official Music Video) [HD UPGRADE]",
+        title: "Disturbed - Down With The Sickness [HD UPGRADE]",
         url: "https://www.youtube.com/embed/09LTT0xwdfw",
         imgUrl: "https://i.ytimg.com/vi/09LTT0xwdfw/hqdefault.jpg",
         addedBy: {
@@ -5565,7 +5564,7 @@ export const stationsDemoData = [
         _id: "8k5A4fOxiso"
       },
       {
-        title: "Disturbed - Want (Official Music Video) [HD Upgrade]",
+        title: "Disturbed - Want [HD Upgrade]",
         url: "https://www.youtube.com/embed/YAgboJGglfA",
         imgUrl: "https://i.ytimg.com/vi/YAgboJGglfA/hqdefault.jpg",
         addedBy: {
@@ -5855,7 +5854,7 @@ export const stationsDemoData = [
     name: "Breaking Benjamin",
     createdBy: {
       _id: "UCgdqrZsRnxy1qGIusPhQEyg",
-      fullname: "Breaking Benjamin - Topic",
+      fullname: "Breaking Benjamin",
       imgUrl: "https://yt3.ggpht.com/HxzOQv6aAl_H64ELBQtGhLADAqk9tdTtiagrhCy9cOQfGJCfQYlpUh1XsGxZt_pHZPndOl5cXg=s800-c-k-c0x00ffffff-no-rj",
       createdAt: 1373792809000,
       updatedAt: 1739723021497
@@ -6156,7 +6155,7 @@ export const stationsDemoData = [
     name: "The Lonely Island",
     createdBy: {
       _id: "UC4LMYsZmbRZOpHV8B-trVvQ",
-      fullname: "The Lonely Island - Topic",
+      fullname: "The Lonely Island",
       imgUrl: "https://i9.ytimg.com/s_p/OLAK5uy_nWY0KyMDwQlup6TY3CSfaqGcWBczw9ybc/sddefault.jpg?sqp=CPiIyL0Gir7X7AMICNTKwr0GEAE=&rs=AOn4CLBcjFQiqkz7_4TDI56yI1dRuw2UGQ&v=1739629908",
       createdAt: 1528839127000,
       updatedAt: 1739723139331
@@ -6322,7 +6321,7 @@ export const stationsDemoData = [
     name: "As Blood Runs Black",
     createdBy: {
       _id: "UCcZWcLAA2WIbL9lxtypqIfQ",
-      fullname: "As Blood Runs Black - Topic",
+      fullname: "As Blood Runs Black",
       imgUrl: "https://upload.wikimedia.org/wikipedia/en/4/45/ABRBAllegiance.png",
       createdAt: 1387012645000,
       updatedAt: 1739723161866
@@ -6530,7 +6529,7 @@ export const stationsDemoData = [
   {
     songs: [
       {
-        title: "THY ART IS MURDER - I'll Show You God (OFFICIAL AUDIO)",
+        title: "THY ART IS MURDER - I'll Show You God",
         url: "https://www.youtube.com/embed/M3NJ84M8rYI",
         imgUrl: "https://i.ytimg.com/vi/M3NJ84M8rYI/hqdefault.jpg",
         addedBy: {
@@ -6545,7 +6544,7 @@ export const stationsDemoData = [
         _id: "M3NJ84M8rYI"
       },
       {
-        title: "THY ART IS MURDER - Whore To A Chainsaw (OFFICIAL AUDIO)",
+        title: "THY ART IS MURDER - Whore To A Chainsaw",
         url: "https://www.youtube.com/embed/neEXtRTPhZo",
         imgUrl: "https://i.ytimg.com/vi/neEXtRTPhZo/hqdefault.jpg",
         addedBy: {
@@ -6560,7 +6559,7 @@ export const stationsDemoData = [
         _id: "neEXtRTPhZo"
       },
       {
-        title: "THY ART IS MURDER - Parasitic Autopsy (OFFICIAL AUDIO)",
+        title: "THY ART IS MURDER - Parasitic Autopsy",
         url: "https://www.youtube.com/embed/6t5C6uhzqU8",
         imgUrl: "https://i.ytimg.com/vi/6t5C6uhzqU8/hqdefault.jpg",
         addedBy: {
@@ -6575,7 +6574,7 @@ export const stationsDemoData = [
         _id: "6t5C6uhzqU8"
       },
       {
-        title: "THY ART IS MURDER - Breeding Bacteria (OFFICIAL AUDIO)",
+        title: "THY ART IS MURDER - Breeding Bacteria",
         url: "https://www.youtube.com/embed/ZdfFCgeTJgU",
         imgUrl: "https://i.ytimg.com/vi/ZdfFCgeTJgU/hqdefault.jpg",
         addedBy: {
@@ -6590,7 +6589,7 @@ export const stationsDemoData = [
         _id: "ZdfFCgeTJgU"
       },
       {
-        title: "THY ART IS MURDER - Infinite Death (OFFICIAL AUDIO)",
+        title: "THY ART IS MURDER - Infinite Death",
         url: "https://www.youtube.com/embed/PSXH0xgy-0o",
         imgUrl: "https://i.ytimg.com/vi/PSXH0xgy-0o/hqdefault.jpg",
         addedBy: {
@@ -6983,7 +6982,7 @@ export const stationsDemoData = [
         _id: "qG79ur_-Mew"
       },
       {
-        title: "Demons of Pain (Remix)",
+        title: "Demons of Pain",
         url: "https://www.youtube.com/embed/yDpjd-gWlek",
         imgUrl: "https://i.ytimg.com/vi/yDpjd-gWlek/hqdefault.jpg",
         addedBy: {
@@ -7062,7 +7061,7 @@ export const stationsDemoData = [
     name: "Infected Mushroom",
     createdBy: {
       _id: "UCOqPalU27ztRNMrL2PD-YAA",
-      fullname: "Infected Mushroom - Topic",
+      fullname: "Infected Mushroom",
       imgUrl: "https://cdn-images.dzcdn.net/images/cover/870986e4a689f8ecfeeb3e632e2360e8/0x1900-000000-80-0-0.jpg",
       createdAt: 1373368118000,
       updatedAt: 1739723340773
@@ -7228,7 +7227,7 @@ export const stationsDemoData = [
     name: "The Crimson Armada",
     createdBy: {
       _id: "UCVvjB7d35cyYtjfoEVDBAIA",
-      fullname: "The Crimson Armada - Topic",
+      fullname: "The Crimson Armada",
       imgUrl: "https://upload.wikimedia.org/wikipedia/en/0/0b/CrimsonArmada_Guardians.jpg",
       createdAt: 1374469543000,
       updatedAt: 1739723359531
@@ -7485,7 +7484,7 @@ export const stationsDemoData = [
     name: "Instrumental",
     createdBy: {
       _id: "UC6CbLoiIRTPnV35P-BLx9YA",
-      fullname: "Instrumental - Topic",
+      fullname: "Instrumental",
       imgUrl: "https://yt3.ggpht.com/g9PubQUN5aqFDnez29AT-159s7SeSdSRJiR8XEPS_0yHM1x5dAc1LLeacN3jPtiO9NmQQbYZBg=s800-c-k-c0x00ffffff-no-rj",
       createdAt: 1534453285000,
       updatedAt: 1739723395226
@@ -7891,7 +7890,7 @@ export const stationsDemoData = [
     name: "Led Zeppelin",
     createdBy: {
       _id: "UCYtap7ujIPaxTS2iCDoMi3g",
-      fullname: "Led Zeppelin - Topic",
+      fullname: "Led Zeppelin",
       imgUrl: "https://yt3.ggpht.com/ytc/AIdro_l1c-TdVA-NOeZENu4TclnA7wBU_G1AVLsBSEa9DoUcrE8=s800-c-k-c0x00ffffff-no-rj",
       createdAt: 1369145698000,
       updatedAt: 1739723694281
@@ -7933,7 +7932,7 @@ export const stationsDemoData = [
         _id: "djelUbjBlkA"
       },
       {
-        title: "Green Day - Holiday (Audio)",
+        title: "Green Day - Holiday",
         url: "https://www.youtube.com/embed/l2hA8g1cNvQ",
         imgUrl: "https://i.ytimg.com/vi/l2hA8g1cNvQ/hqdefault.jpg",
         addedBy: {
@@ -7948,7 +7947,7 @@ export const stationsDemoData = [
         _id: "l2hA8g1cNvQ"
       },
       {
-        title: "Green Day - Boulevard of Broken Dreams (Audio)",
+        title: "Green Day - Boulevard of Broken Dreams",
         url: "https://www.youtube.com/embed/Dx1SPxGn-iU",
         imgUrl: "https://i.ytimg.com/vi/Dx1SPxGn-iU/hqdefault.jpg",
         addedBy: {
@@ -8388,7 +8387,7 @@ export const stationsDemoData = [
     name: "Sum 41",
     createdBy: {
       _id: "UCcMcUoDPCQhtONMyuKJs-dg",
-      fullname: "Sum 41 - Topic",
+      fullname: "Sum 41",
       imgUrl: "https://yt3.ggpht.com/08kCjQfyxG9_BkDzoX6X_5dKNExgo3R0hRUDctj2f8H_2P6Rhcnx08loVpVUdtFJkdESQ4muX20=s800-c-k-c0x00ffffff-no-rj",
       createdAt: 1372929223000,
       updatedAt: 1739723960961
@@ -8554,7 +8553,7 @@ export const stationsDemoData = [
     name: "Emmure",
     createdBy: {
       _id: "UCibTc8XBhnYoeW-Ri7y4_tw",
-      fullname: "Emmure - Topic",
+      fullname: "Emmure",
       imgUrl: "https://yt3.ggpht.com/Q9y9ei9dA7QugaVPl-Plx2MTuYPDhVbk9gYFITbxdLWby5g_Kn4KOqEqsVM-nrEMEm4Z6efiBw=s800-c-k-c0x00ffffff-no-rj",
       createdAt: 1383453843000,
       updatedAt: 1739724250993
@@ -8795,7 +8794,7 @@ export const stationsDemoData = [
     name: "Guns N' Roses",
     createdBy: {
       _id: "UCSLbbBoUqpin6BE34whSOvA",
-      fullname: "Guns N' Roses - Topic",
+      fullname: "Guns N' Roses",
       imgUrl: "https://yt3.ggpht.com/NOffjBzduuBi233oo3u5e_GZw_dPN4PqWEdOn0neHj-rEzTd4KurXRQInExaMOhhFK-fU2rBMw=s800-c-k-c0x00ffffff-no-rj",
       createdAt: 1377853684000,
       updatedAt: 1739724308252
@@ -8991,7 +8990,7 @@ export const stationsDemoData = [
     name: "The Beatles",
     createdBy: {
       _id: "UC2XdaAVUannpujzv32jcouQ",
-      fullname: "The Beatles - Topic",
+      fullname: "The Beatles",
       imgUrl: "https://yt3.ggpht.com/ytc/AIdro_nmFhQpQ4qy5zJZxVP6dYoMYVXCMZEPh1ChDMmsWJVP62c=s800-c-k-c0x00ffffff-no-rj",
       createdAt: 1371168392000,
       updatedAt: 1739724353085
