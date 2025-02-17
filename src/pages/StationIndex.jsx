@@ -39,11 +39,7 @@ export function StationIndex() {
       <div className='station-index' ref={indexRef}>
         <ul>
           {allStations.map((stations, i) => (
-            // TODO: replace with station ID
-            <li
-              className='station-index-item'
-              key={'k' + Math.random() * 100000}
-            >
+            <li className='station-index-item' key={stationHeaders[i]}>
               <StationList
                 stations={stations}
                 stationHeader={stationHeaders[i]}
