@@ -17,10 +17,11 @@ export const userService = {
   update,
   getLoggedinUser,
   saveLoggedinUser,
-  addLikedSongId,
+  likeSong,
   removeLikedSongId,
   addLikedStationId,
   removeLikedStationId,
+  isLikedSong,
 }
 
 async function getUsers() {
@@ -96,18 +97,27 @@ async function logout() {
   sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
 }
 
-function getLoggedinUser() {
+async function getLoggedinUser() {
   return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
 
 export async function addUserManualy(userCred) {
-  const users = await storageService.query(STORAGE_KEY_USERS)
-  const existingUser = users.find((u) => u.username === userCred.username)
-  if (existingUser) return
-  userCred.likedStationIds = []
-  userCred.likedSongIds = []
-  userCred.isAdmin = false
-  storageService.postWithId(STORAGE_KEY_USERS, userCred)
+  // Only used to manualy add demo data
+  try {
+    const users = await storageService.query(STORAGE_KEY_USERS)
+    const existingUser = users.find((u) => u.username === userCred.username)
+    if (existingUser) return
+
+    userCred.likedStationIds = []
+    userCred.likedSongIds = []
+    userCred.isAdmin = false
+    storageService.postWithId(STORAGE_KEY_USERS, userCred)
+  } catch {
+    // eslint-disable-next-line no-extra-semi
+    ;(err) => {
+      throw new Error('Unable to add user manualy, err: ', err)
+    }
+  }
 }
 
 function saveLoggedinUser(user) {
@@ -124,7 +134,7 @@ function saveLoggedinUser(user) {
 }
 
 // add song
-async function addLikedSongId(userId, songId) {
+async function likeSong(userId, songId) {
   if (!userId || !songId) throw new Error('not valid userId or songId')
 
   const user = await getById(userId)
@@ -140,6 +150,7 @@ async function addLikedSongId(userId, songId) {
     _id: userId,
     likedSongIds: user.likedSongIds,
   })
+
   // Update the liked station after updating likedSongIds
   await stationService.updateLikedSongsStation(updatedUser)
   return updatedUser
@@ -188,6 +199,11 @@ async function removeLikedStationId(userId, stationId) {
     (id) => id !== stationId
   )
   return await update({ _id: userId, likedStationIds: user.likedStationIds })
+}
+
+async function isLikedSong(userId, songId) {
+  const user = await getById(userId)
+  return user.likedSongIds.includes(songId)
 }
 
 /************************************************************* */

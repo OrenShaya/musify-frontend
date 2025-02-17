@@ -4,18 +4,31 @@ import appleLogoUrl from '../assets/img/apple.svg'
 import facebookLogoUrl from '../assets/img/facebook.svg'
 import googleLogoUrl from '../assets/img/google.svg'
 import { LoginForm } from '../cmps/LoginForm'
+import { useNavigate } from 'react-router'
 
 export function Login() {
+  const navigate = useNavigate()
+
   useEffect(() => {
-    document.title = 'Log in - Spotify'
+    document.title = 'Log in - Musify'
+
+    document.querySelector('main').classList.add('full-page')
+
+    return () => {
+      document.querySelector('main').classList.remove('full-page')
+    }
   }, [])
 
   const services2fa = [
     { name: 'Google', icon: googleLogoUrl },
     { name: 'Facebook', icon: facebookLogoUrl },
-    { name: 'Apple', icon: appleLogoUrl },
+    { name: 'Guest', icon: appleLogoUrl },
   ]
-  // console.log('services2fa:', services2fa)
+
+  const onNavigate = () => {
+    navigate('/')
+  }
+
   return (
     <div className='login-page'>
       {/* Content */}
@@ -26,7 +39,7 @@ export function Login() {
         <ul className='list-2fa'>
           {services2fa.map((service) => (
             <li key={service.name}>
-              <button className='btn btn-2fa'>
+              <button className='btn btn-2fa' onClick={onNavigate}>
                 {<img src={service.icon} alt='' className='icon' />}
                 <span>Continue with {service.name}</span>
               </button>

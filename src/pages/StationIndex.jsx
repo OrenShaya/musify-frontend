@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux'
 export function StationIndex() {
   const indexRef = useRef()
   const stations = useSelector((s) => s.stationModule.stations)
+  const shadowContainerRef = useRef()
 
   let allStations = Array(6).fill([...stations])
 
@@ -23,7 +24,7 @@ export function StationIndex() {
   ]
 
   const onMount = () => {
-    document.querySelector('.shadow-container').style = getBoundriesStyle()
+    shadowContainerRef.current.style = getBoundriesStyle()
   }
 
   const getBoundriesStyle = () => {
@@ -38,11 +39,7 @@ export function StationIndex() {
       <div className='station-index' ref={indexRef}>
         <ul>
           {allStations.map((stations, i) => (
-            // TODO: replace with station ID
-            <li
-              className='station-index-item'
-              key={'k' + Math.random() * 100000}
-            >
+            <li className='station-index-item' key={stationHeaders[i]}>
               <StationList
                 stations={stations}
                 stationHeader={stationHeaders[i]}
@@ -52,7 +49,7 @@ export function StationIndex() {
           ))}
         </ul>
       </div>
-      <div className='shadow-container'></div>
+      <div ref={shadowContainerRef} className='shadow-container'></div>
     </>
   )
 }

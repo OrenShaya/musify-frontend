@@ -148,6 +148,11 @@ $album-img-size: rem(40px);
   align-self: center;
   height: 16px;
   width: 16px;
+
+  &.add {
+    filter: invert(80%) sepia(0%) saturate(0%) hue-rotate(346deg)
+      brightness(91%) contrast(88%);
+  }
 }
 
 .artist {

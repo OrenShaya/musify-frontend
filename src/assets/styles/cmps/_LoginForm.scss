@@ -89,10 +89,12 @@ $inputBorderClr: #727272;
       border: none;
       width: 24px;
       height: 24px;
+      margin: 0;
       padding: 0;
       filter: invert(74%) sepia(0%) saturate(26%) hue-rotate(233deg)
         brightness(96%) contrast(94%); // svg fill color
-      right: 12px;
+      right: 1.6em;
+      top: -0.4em;
       transform: translateY(50%);
 
       &:hover {

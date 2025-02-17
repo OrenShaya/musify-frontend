@@ -1,4 +1,3 @@
-import { stationType } from '../types/station.type'
 import { setStation } from '../store/actions/station.actions'
 import {
   setCurrentlyPlaying,
@@ -6,6 +5,7 @@ import {
 } from '../store/actions/player.actions'
 import { useSelector } from 'react-redux'
 import { PlayButton } from './PlayBtn'
+import PropTypes from 'prop-types'
 
 export function StationPreview({ station }) {
   const { name, createdBy, artists } = station
@@ -54,5 +54,13 @@ export function StationPreview({ station }) {
 }
 
 StationPreview.propTypes = {
-  station: stationType.isRequired,
+  station: PropTypes.shape({
+    _id: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    artists: PropTypes.arrayOf(PropTypes.string),
+    createdBy: PropTypes.shape({
+      imgUrl: PropTypes.string.isRequired,
+    }),
+    songs: PropTypes.arrayOf(PropTypes.shape({})),
+  }).isRequired,
 }

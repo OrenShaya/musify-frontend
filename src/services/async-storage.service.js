@@ -30,6 +30,7 @@ async function post(entityType, newEntity) {
   return newEntity
 }
 
+// Used to add an entity iw an existing id
 // queue the mutex chain
 let mutex = Promise.resolve()
 async function postWithId(entityType, newEntity) {

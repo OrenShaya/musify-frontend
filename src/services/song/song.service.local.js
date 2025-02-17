@@ -17,6 +17,7 @@ export const songService = {
   query,
   getById,
   save,
+  likedBy,
   remove,
 }
 
@@ -123,6 +124,11 @@ function _createSong(
   return song
 }
 
+async function likedBy(songId, userId) {
+  const song = await getById(songId)
+  return song.likedBy.includes(userId)
+}
+
 const mySongDemoData = songsDemoData
 
 // next line is used to fill up with demo data
@@ -159,6 +165,7 @@ function _createSongs() {
 }
 
 export async function addSongFromYT(ytSong, artist) {
+  // Only used to manualy add demo data
   const artistId = artist.id
   const artistCreatedAt = artist.createdAt
   const artistImgUrl = artist.imgUrl

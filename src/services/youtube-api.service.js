@@ -171,37 +171,43 @@ export async function getPlaylist(
     return Promise.resolve(gPlaylists[playlistID])
   }
 
-  const { data } = await axios.get(_setPlaylistURL(playlistID))
+  try {
+    const { data } = await axios.get(_setPlaylistURL(playlistID))
 
-  const playlistInfo = _getPlaylistInfo(data.items[0])
+    const playlistInfo = _getPlaylistInfo(data.items[0])
 
-  const playListSongs = await _getSongInfoFromPlaylist(data.items)
+    const playListSongs = await _getSongInfoFromPlaylist(data.items)
 
-  const station = {}
-  station.songs = playListSongs
-  station._id = playlistInfo.id
-  station.name = playlistInfo.playlistName
-  const createdById = playlistInfo.playlistOwnerId
+    const station = {}
+    station.songs = playListSongs
+    station._id = playlistInfo.id
+    station.name = playlistInfo.playlistName
+    const createdById = playlistInfo.playlistOwnerId
 
-  const owner = await getArtist(createdById)
+    const owner = await getArtist(createdById)
 
-  station.createdBy = {
-    _id: createdById,
-    fullname: owner.artistTitle || 'Mupify',
-    imgUrl: owner.imgUrl || '',
-    createdAt: owner.createdAt || Date.now(),
-    updatedAt: Date.now(),
+    station.createdBy = {
+      _id: createdById,
+      fullname: owner.artistTitle || 'Mupify',
+      imgUrl: owner.imgUrl || '',
+      createdAt: owner.createdAt || Date.now(),
+      updatedAt: Date.now(),
+    }
+
+    station.msgs = []
+    station.likedByUsers = []
+    station.tags = []
+
+    gPlaylists[playlistID] = station
+    saveToStorage(YT_PLAYLIST_STORAGE_KEY, gPlaylists)
+    await addStationManualy(station)
+    const finalSongs = await storageService.query('song_db')
+    return gPlaylists[playlistID]
+  } catch {
+    return (err) => {
+      throw new Error('Unable to add a playlist. err:', err)
+    }
   }
-
-  station.msgs = []
-  station.likedByUsers = []
-  station.tags = []
-
-  gPlaylists[playlistID] = station
-  saveToStorage(YT_PLAYLIST_STORAGE_KEY, gPlaylists)
-  await addStationManualy(station)
-  const finalSongs = await storageService.query('song_db')
-  return gPlaylists[playlistID]
 }
 
 function _getPlaylistInfo(video) {
