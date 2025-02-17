@@ -29,7 +29,6 @@ export function SideBarStationPreview({ station }) {
   }
 
   return (
-    // <div>Hello</div>
     <Link to={`/station/${station._id}`}>
       <div
         onClick={() => handleClick(station)}

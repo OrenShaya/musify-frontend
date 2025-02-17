@@ -83,13 +83,6 @@ export function AppFooter({ playerRef }) {
     }
   }, [isPlaying, playerRef])
 
-  // try to fix non reseting progress bar
-  // useEffect(() => {
-  //   if (sliderRef.current) {
-  //     handleRangeInput(sliderRef.current)
-  //   }
-  // }, [currentTime])
-
   const formatTime = (time) => formatTimeFromSeconds(time)
 
   const handleRangeInput = (input) => {
