@@ -8,20 +8,18 @@ import { AppHeader } from './cmps/AppHeader'
 import { AppFooter } from './cmps/AppFooter'
 import { UserMsg } from './cmps/UserMsg.jsx'
 import { SideBar } from './cmps/SideBar.jsx'
+import HiddenReactPlayer from './cmps/HiddenReactPlayer'
+import { playerSongEndedEvent } from './store/actions/player.actions.js'
 
-//import { LoginSignup } from './pages/LoginSignup.jsx'
 import { Login } from './pages/Login.jsx'
-// import { Signup } from './pages/Signup.jsx'
 import { StationIndex } from './pages/StationIndex.jsx'
 import { StationDetails } from './pages/StationDetails.jsx'
 import { StationExplore } from './pages/StationExplore.jsx'
 
+// Init db
 import {} from './services/station'
 import {} from './services/song'
 import {} from './services/youtube-api.service.js'
-
-import HiddenReactPlayer from './cmps/HiddenReactPlayer'
-import { playerSongEndedEvent } from './store/actions/player.actions.js'
 
 export function RootCmp() {
   const playerRef = useRef(null)

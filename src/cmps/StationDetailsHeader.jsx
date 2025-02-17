@@ -1,6 +1,6 @@
 import { Logger } from 'sass'
 import { formatTimeFromSeconds } from '../services/util.service.js'
-import blueTick from '../assets/icons/download.svg'
+import blueTick from '../assets/icons/blue-tick.svg'
 
 export function StationDetailsHeader({station}) {  
   const createdBy = station?.createdBy

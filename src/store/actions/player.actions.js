@@ -32,10 +32,12 @@ export async function playerSongEndedEvent() {
     console.warn('No currently playing song')
     return
   }
+
   let currSongsQueue = store.getState().stationModule.songsQueue
   if (!currSongsQueue || currSongsQueue.length === 0) {
     console.warn('No current songs queue')
     const currStation = store.getState().stationModule.station
+
     if (!currStation) {
       setIsPlaying(false)
       console.warn('No current station for songs queue')

@@ -71,6 +71,7 @@ async function save(station) {
       songs: [...(station.songs ?? [])],
       msgs: [...(station.msgs ?? [])],
     }
+
     savedStation = await storageService.put(STORAGE_KEY, stationToSave)
   } else {
     const activeUser = userService.getLoggedinUser()
@@ -97,6 +98,7 @@ async function save(station) {
 }
 
 export async function addStationManualy(station) {
+  // Only used to manualy add demo data
   await storageService.postWithId(STORAGE_KEY, station)
 }
 
@@ -148,8 +150,6 @@ async function removeStationSong(stationId, songId) {
 //For debugging
 //window.stationss = stationService
 
-let stationsDemo = stationsDemoData
-
 var runOnce = false
 if (!runOnce) {
   _createStations()
@@ -159,8 +159,8 @@ if (!runOnce) {
 function _createStations() {
   let stations = loadFromStorage(STORAGE_KEY)
   if (!stations || !stations.length) {
-    if (stationsDemo) {
-      saveToStorage(STORAGE_KEY, stationsDemo)
+    if (stationsDemoData) {
+      saveToStorage(STORAGE_KEY, stationsDemoData)
     }
   }
 }
@@ -198,6 +198,7 @@ async function updateLikedSongsStation(user) {
     return
   }
 
+  // likedStation templte
   let likedStation
   if (!likedStationId) {
     const newStation = {
