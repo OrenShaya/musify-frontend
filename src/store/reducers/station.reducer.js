@@ -23,6 +23,7 @@ export function stationReducer(state = initialState, action) {
     case SET_STATIONS:
       newState = { ...state, stations: action.stations }
       break
+
     case SET_STATION:
       newState = { ...state, station: action.station }
       break
@@ -40,15 +41,18 @@ export function stationReducer(state = initialState, action) {
       )
       newState = { ...state, stations, lastRemovedStation }
       break
+
     case ADD_STATION:
       newState = { ...state, stations: [...state.stations, action.station] }
       break
+
     case UPDATE_STATION:
       stations = state.stations.map((station) =>
         station._id === action.station._id ? action.station : station
       )
       newState = { ...state, stations, station: action.station }
       break
+
     case ADD_STATION_MSG:
       newState = {
         ...state,
@@ -58,6 +62,7 @@ export function stationReducer(state = initialState, action) {
         },
       }
       break
+
     case ADD_STATION_SONG:
       newState = {
         ...state,
@@ -67,6 +72,7 @@ export function stationReducer(state = initialState, action) {
         },
       }
       break
+
     case REMOVE_STATION_SONG:
       newState = {
         ...state,
@@ -78,6 +84,7 @@ export function stationReducer(state = initialState, action) {
         },
       }
       break
+
     default:
       break
   }

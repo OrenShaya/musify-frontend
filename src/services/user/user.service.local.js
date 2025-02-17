@@ -101,13 +101,22 @@ function getLoggedinUser() {
 }
 
 export async function addUserManualy(userCred) {
-  const users = await storageService.query(STORAGE_KEY_USERS)
-  const existingUser = users.find((u) => u.username === userCred.username)
-  if (existingUser) return
-  userCred.likedStationIds = []
-  userCred.likedSongIds = []
-  userCred.isAdmin = false
-  storageService.postWithId(STORAGE_KEY_USERS, userCred)
+  // Only used to manualy add demo data
+  try {
+    const users = await storageService.query(STORAGE_KEY_USERS)
+    const existingUser = users.find((u) => u.username === userCred.username)
+    if (existingUser) return
+
+    userCred.likedStationIds = []
+    userCred.likedSongIds = []
+    userCred.isAdmin = false
+    storageService.postWithId(STORAGE_KEY_USERS, userCred)
+  } catch {
+    // eslint-disable-next-line no-extra-semi
+    ;(err) => {
+      throw new Error('Unable to add user manualy, err: ', err)
+    }
+  }
 }
 
 function saveLoggedinUser(user) {
@@ -140,6 +149,7 @@ async function addLikedSongId(userId, songId) {
     _id: userId,
     likedSongIds: user.likedSongIds,
   })
+
   // Update the liked station after updating likedSongIds
   await stationService.updateLikedSongsStation(updatedUser)
   return updatedUser

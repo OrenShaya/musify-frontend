@@ -31,6 +31,7 @@ export async function loadStation(stationId) {
     throw err
   }
 }
+
 export async function loadSongsQueue(station) {
   try {
     store.dispatch(getCmdSetSongsQueue(station.songs))
@@ -105,36 +106,42 @@ function getCmdSetStations(stations) {
     stations,
   }
 }
+
 function getCmdSetStation(station) {
   return {
     type: SET_STATION,
     station,
   }
 }
+
 function getCmdSetSongsQueue(songs) {
   return {
     type: SET_SONGS_QUEUE,
     songsQueue: songs,
   }
 }
+
 function getCmdRemoveStation(stationId) {
   return {
     type: REMOVE_STATION,
     stationId,
   }
 }
+
 function getCmdAddStation(station) {
   return {
     type: ADD_STATION,
     station,
   }
 }
+
 function getCmdUpdateStation(station) {
   return {
     type: UPDATE_STATION,
     station,
   }
 }
+
 function getCmdAddStationMsg(msg) {
   return {
     type: ADD_STATION_MSG,

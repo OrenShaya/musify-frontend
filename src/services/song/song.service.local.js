@@ -159,6 +159,7 @@ function _createSongs() {
 }
 
 export async function addSongFromYT(ytSong, artist) {
+  // Only used to manualy add demo data
   const artistId = artist.id
   const artistCreatedAt = artist.createdAt
   const artistImgUrl = artist.imgUrl
