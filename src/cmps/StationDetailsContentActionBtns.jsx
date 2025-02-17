@@ -6,7 +6,7 @@ import {
   setCurrentlyPlaying,
   setIsPlaying,
 } from '../store/actions/player.actions'
-import { stationType } from '../types/station.type'
+import PropTypes from 'prop-types'
 
 export function StationDetailsActionBtns({ station }) {
   const selectedStationId = useSelector((s) => s.stationModule.station?._id)
@@ -40,5 +40,13 @@ export function StationDetailsActionBtns({ station }) {
 }
 
 StationDetailsActionBtns.propType = {
-  station: stationType,
+  station: PropTypes.shape({
+    _id: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    artists: PropTypes.arrayOf(PropTypes.string),
+    createdBy: PropTypes.shape({
+      imgUrl: PropTypes.string.isRequired,
+    }),
+    songs: PropTypes.arrayOf(PropTypes.shape({})),
+  }).isRequired,
 }
