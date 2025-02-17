@@ -207,7 +207,7 @@ async function updateLikedSongsStation(user) {
       createdBy: {
         _id: user._id,
         fullname: user.fullname,
-        imgUrl: '',
+        imgUrl: user?.imgUrl || '',
         createdAt: Date.now(),
         updatedAt: Date.now(),
       },
@@ -215,7 +215,7 @@ async function updateLikedSongsStation(user) {
         {
           _id: user._id,
           fullname: user.fullname,
-          imgUrl: user.imgUrl,
+          imgUrl: user?.imgUrl || '',
         },
       ],
       songs: [],
