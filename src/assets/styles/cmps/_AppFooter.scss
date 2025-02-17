@@ -7,6 +7,7 @@
   align-items: center;
   justify-content: center;
   justify-content: space-between;
+  height: 5.4em;
 
   padding: rem(10px) 1rem;
   background-color: black;
@@ -31,6 +32,7 @@
 .song-controls {
   display: grid;
   gap: 9px;
+  width: 40%;
 
   input {
     margin-top: 1rem;
@@ -69,6 +71,16 @@
   padding: 0;
 }
 
+.volume-control {
+  width: 30%;
+  display: flex;
+  justify-content: flex-end;
+
+  input {
+    margin-right: 1em;
+  }
+}
+
 .song-position-bar {
   display: flex;
   align-items: center;
@@ -82,7 +94,7 @@
     appearance: none;
     background: #ffffff;
     cursor: pointer;
-    width: 39rem;
+    width: 100%;
     height: 4px;
     border-radius: 2em;
   }
@@ -181,4 +193,8 @@
       }
     }
   }
+}
+
+.song-details-container {
+  width: 30%;
 }
