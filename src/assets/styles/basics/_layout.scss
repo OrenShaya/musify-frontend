@@ -29,6 +29,15 @@
     grid-column: 1 / -1;
     grid-row: 1;
   }
+
+  .full-page {
+    position: fixed;
+    inset: 0;
+    overflow-y: auto;
+    z-index: 100;
+    padding-block-end: 0;
+  }
+
   // @include for-narrow-layout {
   //     grid-template-columns:
   //         minmax(20px, 1fr)
