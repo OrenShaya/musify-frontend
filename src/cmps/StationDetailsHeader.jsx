@@ -11,7 +11,7 @@ export function StationDetailsHeader({ station }) {
   const createdBy = station?.createdBy
   const heroImgRef = useRef()
   const [headerColor, setHeaderColor] = useState([0, 0, 0])
-  const [style, setStyle] = useState({zIndex: -1});
+  const [style, setStyle] = useState({ zIndex: -1 })
 
   useEffect(() => {
     const img = heroImgRef.current
@@ -72,27 +72,41 @@ export function StationDetailsHeader({ station }) {
       className='station-details-header'
       style={{ background: headerColor }}
     >
-      <div className='station-img-container'
-        onMouseEnter={e => {
-            setStyle({zIndex: 2});
+      <div
+        className='station-img-container'
+        onMouseEnter={(e) => {
+          setStyle({ zIndex: 2 })
         }}
-        onMouseLeave={e => {
-            setStyle({zIndex: -1})
+        onMouseLeave={(e) => {
+          setStyle({ zIndex: -1 })
         }}
-      > {/* Edit station image svg */}
-        <div className='svg-container' style={style}> 
-          <svg xmlns='http://www.w3.org/2000/svg' data-encore-id='icon' role='img' aria-hidden='true' className='edit-img-svg' viewBox='0 0 24 24'>
-            <path d='M17.318 1.975a3.329 3.329 0 1 1 4.707 4.707L8.451 20.256c-.49.49-1.082.867-1.735 1.103L2.34 22.94a1 1 0 0 1-1.28-1.28l1.581-4.376a4.726 4.726 0 0 1 1.103-1.735L17.318 1.975zm3.293 1.414a1.329 1.329 0 0 0-1.88 0L5.159 16.963c-.283.283-.5.624-.636 1l-.857 2.372 2.371-.857a2.726 2.726 0 0 0 1.001-.636L20.611 5.268a1.329 1.329 0 0 0 0-1.879z' fill='#ffffff'/>
+      >
+        {' '}
+        {/* Edit station image svg */}
+        <div className='svg-container' style={style}>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            data-encore-id='icon'
+            role='img'
+            aria-hidden='true'
+            className='edit-img-svg'
+            viewBox='0 0 24 24'
+          >
+            <path
+              d='M17.318 1.975a3.329 3.329 0 1 1 4.707 4.707L8.451 20.256c-.49.49-1.082.867-1.735 1.103L2.34 22.94a1 1 0 0 1-1.28-1.28l1.581-4.376a4.726 4.726 0 0 1 1.103-1.735L17.318 1.975zm3.293 1.414a1.329 1.329 0 0 0-1.88 0L5.159 16.963c-.283.283-.5.624-.636 1l-.857 2.372 2.371-.857a2.726 2.726 0 0 0 1.001-.636L20.611 5.268a1.329 1.329 0 0 0 0-1.879z'
+              fill='#ffffff'
+            />
           </svg>
-          Choose photo 
+          Choose photo
         </div>
         {/* Artist image in header */}
         <img
-        crossOrigin='anonymous'
-        ref={heroImgRef}
-        src={heroImgUrl}
-        className='station-img'
-        alt='playlist img'/>
+          crossOrigin='anonymous'
+          ref={heroImgRef}
+          src={heroImgUrl}
+          className='station-img'
+          alt='playlist img'
+        />
       </div>
 
       <div className='header-container'>
