@@ -7,13 +7,14 @@
   .search-divider {
     grid-row: 1;
     grid-column: 1 / -1;
-    padding-block: em(24px);
+    margin-block: em(24px);
   }
 
   .station-details-search-header {
     grid-row: 2;
     grid-column: 1 / -1;
     padding-inline: em(16px);
+    padding-block-end: em(24px);
 
     @include flex(
       $flex-direction: column,
@@ -25,9 +26,7 @@
       color: $clr-neutral-white;
       font-size: 1.5rem;
       font-weight: 700;
-      //text-wrap: balance;
       -webkit-tap-highlight-color: transparent;
-      //vertical-align: baseline;
     }
 
     .searchbar-container-form {
@@ -115,7 +114,7 @@
           overflow: hidden;
 
           &:hover {
-            fill: #fff;
+            fill: $clr-neutral-white;
             scale: 1.04;
             cursor: pointer;
           }
@@ -158,6 +157,10 @@
           font-size: 1rem;
           line-height: normal;
           color: $clr-neutral-white;
+
+          .artist {
+            color: #838383;
+          }
         }
         .song-album {
           text-transform: capitalize;
@@ -211,7 +214,7 @@
         left: em(32px);
         bottom: 50%;
         pointer-events: auto;
-        color: #fff;
+        color: $clr-neutral-white;
         background: rgba(0, 0, 0, 0.6);
         border-radius: 4px;
         transform: translateY(50%);
@@ -219,8 +222,7 @@
       }
 
       &:hover {
-        //background-color: rgba(0, 0, 0, 0.5);
-        background-color: #ffffff1a;
+        background-color: rgba(255, 255, 255, 0.102);
 
         &:hover .date-added img {
           display: flex;
@@ -234,9 +236,26 @@
           width: em(16px);
         }
       }
-      &:focus-within,
-      &:focus {
+      &:focus-within {
         background-color: #5a5a5a;
+      }
+    }
+
+    .no-results-display {
+      @include flex($flex-direction: column);
+      color: #b3b3b3;
+
+      h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-wrap: balance;
+        -webkit-tap-highlight-color: transparent;
+        color: inherit;
+        margin-block: 0;
+      }
+      p {
+        font-size: 0.875rem;
+        color: inherit;
       }
     }
   }
