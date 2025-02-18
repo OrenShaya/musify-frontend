@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { Routes, Route } from 'react-router'
 
 import { AboutUs, AboutTeam, AboutVision } from './pages/AboutUs'
@@ -20,12 +20,18 @@ import { StationExplore } from './pages/StationExplore.jsx'
 import {} from './services/station'
 import {} from './services/song'
 import {} from './services/youtube-api.service.js'
+import { login } from './store/actions/user.actions.js'
 
 export function RootCmp() {
   const playerRef = useRef(null)
   const handleSongEnded = () => {
     playerSongEndedEvent()
   }
+
+  useEffect(() => {
+    // Connect default guest
+    login({ username: 'guest', password: 'guest' })
+  }, [])
 
   return (
     <div className='main-container main-layout'>
