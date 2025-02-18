@@ -1,5 +1,6 @@
 import { formatTimeFromSeconds } from '../services/util.service.js'
 import blueTick from '../assets/icons/blue-tick.svg'
+import stationDefaultUrl from '../assets/icons/station-default-img.svg'
 
 export function StationDetailsHeader({ station }) {
   const createdBy = station?.createdBy
@@ -39,6 +40,7 @@ export function StationDetailsHeader({ station }) {
           alt='playlist img'
         />
       )
+    // No image? use svg
     return (
       <div className='station-img'>
         <svg
@@ -56,9 +58,15 @@ export function StationDetailsHeader({ station }) {
     )
   }
 
+  const heroImgUrl = createdBy?.imgUrl ?? stationDefaultUrl
   return (
-    <section className='station-details-header'>
-      {stationImg}
+    <section
+      className='station-details-header'
+      style={{ backgroundColor: headerColor.current }}
+    >
+      {/* Artist image in header */}
+      <img src={heroImgUrl} className='station-img' alt='playlist img' />
+
       <div className='header-container'>
         <div className='station-type'>Playlist</div>
         <div className='station-name'>{station?.name}</div>
