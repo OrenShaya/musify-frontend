@@ -17,7 +17,7 @@ let gArtists = loadFromStorage(YT_ARTIST_STORAGE_KEY) || {}
 let gPlaylists = loadFromStorage(YT_PLAYLIST_STORAGE_KEY) || {}
 
 const maxResult = 10
-const ytTop5SongURL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${maxResult}&videoEmbeddable=true&type=video&key=${YT_API_KEY}`
+const ytTop5SongURL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${maxResult}&videoEmbeddable=true&type=video&videoCategoryId=10&key=${YT_API_KEY}`
 const ytSongURL = `https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails&id=SONGID&key=${YT_API_KEY}` // the SONGID can be chaged
 const ytArtistURL = `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=CHANNELID&key=${YT_API_KEY}` // the CHANNELID can be chaged
 const ytPlaylistURL = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLAYLISTID&maxResults=50&key=${YT_API_KEY}` // the PLAYLISTID can be chaged
