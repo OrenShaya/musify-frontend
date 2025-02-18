@@ -25,7 +25,7 @@ h2.artist-title {
   align-items: center;
 }
 
-.station-img {
+.station-img-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,6 +45,13 @@ h2.artist-title {
   svg {
     height: 4em;
     width: 4em;
+  }
+
+  .svg-container {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
   }
 }
 

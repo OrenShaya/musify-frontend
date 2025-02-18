@@ -3,6 +3,7 @@ import ColorThief from '../../node_modules/colorthief/dist/color-thief.mjs'
 import { formatTimeFromSeconds } from '../services/util.service.js'
 import blueTick from '../assets/icons/blue-tick.svg'
 import stationDefaultUrl from '../assets/icons/station-default-img.svg'
+import editSvg from '../assets/icons/edit-svg-white.svg'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { useRef } from 'react'
@@ -64,20 +65,41 @@ export function StationDetailsHeader({ station }) {
       : `${minutesString} ${secondsString}`
   }
 
-  const heroImgUrl = createdBy?.imgUrl ?? stationDefaultUrl
+
+  // const [style, setStyle] = useState({zIndex: 2});
+  const [style, setStyle] = useState({zIndex: -1});
+
+
+  // const heroImgUrl = createdBy?.imgUrl ?? stationDefaultUrl
+  const heroImgUrl = 'https://i.scdn.co/image/ab67616d0000e1a391b3adb195fd4017fd3d6400'
   return (
     <section
       className='station-details-header'
       style={{ background: headerColor }}
     >
-      {/* Artist image in header */}
-      <img
+      <div className='station-img-container'
+        onMouseEnter={e => {
+            setStyle({zIndex: 2});
+        }}
+        onMouseLeave={e => {
+            setStyle({zIndex: -1})
+            // setStyle({zIndex: 2})
+        }}
+      >
+        <div className='svg-container' style={style}> 
+          <svg xmlns='http://www.w3.org/2000/svg' data-encore-id='icon' role='img' aria-hidden='true' className='Svg-sc-ytk21e-0 bHdpig e-9541-icon' viewBox='0 0 24 24'>
+            <path d='M17.318 1.975a3.329 3.329 0 1 1 4.707 4.707L8.451 20.256c-.49.49-1.082.867-1.735 1.103L2.34 22.94a1 1 0 0 1-1.28-1.28l1.581-4.376a4.726 4.726 0 0 1 1.103-1.735L17.318 1.975zm3.293 1.414a1.329 1.329 0 0 0-1.88 0L5.159 16.963c-.283.283-.5.624-.636 1l-.857 2.372 2.371-.857a2.726 2.726 0 0 0 1.001-.636L20.611 5.268a1.329 1.329 0 0 0 0-1.879z' fill='#ffffff'/>
+          </svg>
+          Choose photo 
+        </div>
+        {/* Artist image in header */}
+        <img
         crossOrigin='anonymous'
         ref={heroImgRef}
         src={heroImgUrl}
         className='station-img'
-        alt='playlist img'
-      />
+        alt='playlist img'/>
+      </div>
 
       <div className='header-container'>
         <div className='station-type'>Playlist</div>
