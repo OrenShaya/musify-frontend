@@ -83,9 +83,11 @@ export async function loadUser(userId) {
 }
 
 export async function likeSong(songId) {
+  const user = userService.getLoggedinUser()
   try {
-    const user = await userService.getLoggedinUser()
-    userService.likeSong(user._id, songId)
+    const updatedUser = await userService.likeSong(user._id, songId)
+    debugger
+    store.dispatch({ type: SET_USER, user: updatedUser })
   } catch (err) {
     console.warn('Cannot like song', err)
     throw err

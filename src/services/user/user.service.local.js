@@ -97,7 +97,7 @@ async function logout() {
   sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
 }
 
-async function getLoggedinUser() {
+function getLoggedinUser() {
   return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
 
