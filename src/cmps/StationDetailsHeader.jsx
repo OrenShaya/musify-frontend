@@ -92,8 +92,8 @@ export function StationDetailsHeader({ station }) {
             <span className='verified-icon'>
               <img className='verified-icon-img' src={blueTick} />
             </span>
-            •{' '}
             <span className='station-total-length'>
+              •{' '}
               {station?.songs &&
                 station?.songs.length +
                   ' song' +
