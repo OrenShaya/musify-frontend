@@ -8,8 +8,10 @@ import PropTypes from 'prop-types'
 const scrollBtnsWidth = 27 * 2
 
 export function ScrollBtn({ scrollRef, isRight = false }) {
+  // TODO: pass left button to right (and vise verse) to add display condition
   const btnRef = useRef()
   const isHovered = useHover(scrollRef)
+  const isBtnHovered = useHover(btnRef)
   const [isDisplayed, setIsDisplayed] = useState(false)
 
   useEffect(() => {
@@ -22,16 +24,16 @@ export function ScrollBtn({ scrollRef, isRight = false }) {
     const elScroll = scrollRef.current
     const elBtn = btnRef.current
 
-    const clickListener = elBtn.addEventListener('click', onClick)
+    elBtn.addEventListener('click', onClick)
 
-    const scrollListener = elScroll.addEventListener('scroll', onScroll)
+    elScroll.addEventListener('scroll', onScroll)
 
     const resizeObserver = new ResizeObserver(_toggleRender)
-    resizeObserver.observe(document.documentElement)
+    resizeObserver.observe(elScroll)
 
     return () => {
-      elBtn.removeEventListener('click', clickListener)
-      elScroll.removeEventListener('scroll', scrollListener)
+      elBtn.removeEventListener('click', onClick)
+      elScroll.removeEventListener('scroll', onScroll)
       resizeObserver.disconnect()
     }
   }, [isHovered])
@@ -50,21 +52,25 @@ export function ScrollBtn({ scrollRef, isRight = false }) {
 
     elScroll.offsetHeight // trigger reflow
 
-    let display =
+    // More scroll items than fit on screen?
+    let shouldDisplay =
       elScroll.scrollWidth - scrollBtnsWidth > elScroll.clientWidth
         ? true
         : false
 
     // Is scroll to the end?
-    let isHidden = elScroll.scrollLeft <= 8
+    const PADDING = 8
+    let isHidden = elScroll.scrollLeft <= PADDING
     if (isRight) {
       isHidden =
         elScroll.clientWidth + elScroll.scrollLeft >= elScroll.scrollWidth - 5
     }
-    if (isHidden || !isHovered) {
-      display = false
+
+    if (isHidden || (!isHovered && !isBtnHovered)) {
+      shouldDisplay = false
     }
-    setIsDisplayed(display)
+
+    setIsDisplayed(shouldDisplay)
   }
 
   const btnClassName = isRight ? 'btn-scroll-right' : 'btn-scroll-left'
