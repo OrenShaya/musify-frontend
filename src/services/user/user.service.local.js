@@ -151,8 +151,6 @@ async function likeSong(userId, songId) {
     likedSongIds: user.likedSongIds,
   })
 
-  // Update the liked station after updating likedSongIds
-  await stationService.updateLikedSongsStation(updatedUser)
   return updatedUser
 }
 
@@ -169,7 +167,7 @@ async function removeLikedSongId(userId, songId) {
     _id: userId,
     likedSongIds: user.likedSongIds,
   })
-  await stationService.updateLikedSongsStation(updatedUser)
+
   return updatedUser
 }
 
