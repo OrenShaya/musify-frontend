@@ -1,7 +1,7 @@
 .main-container {
   display: grid;
   grid-template-columns: $sidebar-width 1fr; // 420px
-  grid-template-rows: 48px 1fr 72px;
+  grid-template-rows: 52px 1fr 72px;
   gap: em(8px);
   padding: em(8px);
 
