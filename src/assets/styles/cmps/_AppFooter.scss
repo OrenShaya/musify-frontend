@@ -78,7 +78,8 @@
   align-items: center;
   gap: 1em;
 
-  .volume-icon {
+  .volume-icon,
+  .volume-mute-icon {
     height: 14px;
     width: 14px;
     fill: white;
