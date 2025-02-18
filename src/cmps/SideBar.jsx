@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { stationService } from '../services/station/station.service.local'
 import { addStation } from '../store/actions/station.actions'
 import { SideBarStationPreview } from './SideBarStationPreview'
-import {} from '../assets/icons/station-default-img.svg'
+import stationDefaultUrl from '../assets/icons/station-default-sidebar-img.svg'
 import { useNavigate } from 'react-router'
 
 export function SideBar() {
@@ -53,7 +53,7 @@ export function SideBar() {
       createdBy: {
         _id: '',
         fullname: '',
-        imgUrl: '../assets/icons/station-default-img.svg',
+        imgUrl: stationDefaultUrl,
         createdAt: Date.now(),
       },
       likedByUsers: [], // '{minimal-user}'
