@@ -28,7 +28,9 @@ export function StationDetails() {
       <StationDetailsHeader station={station} />
       <StationDetailsActionBtns station={station} />
       <StationDetailsList station={station} />
-      <StationDetailsSearch station={station} />
+      {user?._id === station?.createdBy?._id && (
+        <StationDetailsSearch station={station} />
+      )}
     </section>
   )
 }
