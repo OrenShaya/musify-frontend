@@ -24,7 +24,6 @@ import { login } from './store/actions/user.actions.js'
 
 export function RootCmp() {
   const playerRef = useRef(null)
-  const mainRef = useRef(null)
 
   const handleSongEnded = () => {
     playerSongEndedEvent()
@@ -35,18 +34,11 @@ export function RootCmp() {
     login({ username: 'guest', password: 'guest' })
   }, [])
 
-  useEffect(() => {
-    if (mainRef.current) {
-      const mainScrollHeight = mainRef.current.scrollHeight
-      mainRef.current.style.height = `${mainScrollHeight}px`
-    }
-  }, [mainRef.current?.scrollHeight])
-
   return (
     <div className='main-container main-layout'>
       <AppHeader />
       <UserMsg />
-      <main style={{ overflowY: 'scroll' }} ref={mainRef}>
+      <main style={{ overflowY: 'scroll', height: '100vh' }}>
         <Routes>
           <Route path='' element={<StationIndex />} />
           <Route path='about' element={<AboutUs />}>
