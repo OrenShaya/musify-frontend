@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { stationService } from '../services/station/station.service.local'
 import { addStation } from '../store/actions/station.actions'
 import { SideBarStationPreview } from './SideBarStationPreview'
+import {} from '../assets/icons/station-default-img.svg'
 
 export function SideBar() {
   const [stations, setStations] = useState([])
@@ -50,7 +51,7 @@ export function SideBar() {
       createdBy: {
         _id: '',
         fullname: '',
-        imgUrl: '',
+        imgUrl: '../assets/icons/station-default-img.svg',
         createdAt: Date.now(),
       },
       likedByUsers: [], // '{minimal-user}'
