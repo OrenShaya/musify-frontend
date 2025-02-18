@@ -26,7 +26,7 @@ import { addSongFromYT } from '../services/song/song.service.local.js'
 export function StationDetailsSearch({ station }) {
   const [searchTerm, setSearchTerm] = useState('')
   const searchInputRef = useRef(null)
-  const setSearchTermDebounce = debounce(setSearchTerm, 300)
+  const setSearchTermDebounce = useRef(debounce(setSearchTerm, 300))
   const [searchedSongs, setSearchedSongs] = useState(null)
 
   useEffect(() => {
@@ -116,9 +116,10 @@ export function StationDetailsSearch({ station }) {
           placeholder='Search for songs or episodes'
           value={searchTerm}
           ref={searchInputRef}
-          onChange={setSearchTermDebounce}
+          onChange={setSearchTermDebounce.current}
         />
       </form>
+
       <DragDropContext onDragEnd={handleOnDragEnd}>
         <Droppable droppableId='droppable'>
           {(provided) => (
@@ -129,7 +130,7 @@ export function StationDetailsSearch({ station }) {
             >
               {searchedSongs?.length > 0 &&
                 searchedSongs.map((song, idx) => (
-                  <Draggable key={song._id} draggableId={song._id} index={idx}>
+                  <Draggable key={song.id} draggableId={song.id} index={idx}>
                     {(provided) => (
                       <div
                         ref={provided.innerRef}
@@ -139,7 +140,7 @@ export function StationDetailsSearch({ station }) {
                         <div className='song-row'>
                           <div
                             className='hover-song-play'
-                            onClick={() => setCurrentlyPlaying(song._id)}
+                            onClick={() => setCurrentlyPlaying(song.id)}
                             style={{ cursor: 'pointer' }}
                           >
                             <svg
@@ -159,26 +160,19 @@ export function StationDetailsSearch({ station }) {
                               alt='album image'
                             />
                             <div className='song-title-artist'>
-                              <div className='song-title'>{song.title}</div>
-                              <div className='artist'>
-                                {song.addedBy.fullname}
-                              </div>
+                              <div className='song-title'>{song.songTitle}</div>
+                              <div className='artist'>{song.artistTitle}</div>
                             </div>
                           </div>
                           <div className='song-album'>
                             {/* {song.album} needed here */ 'Album Name'}
                           </div>
-                          <div className='date-added'>
-                            {formatDate(song.addedAt || song.updatedAt)}
-                            <LikeBtn
-                              song={song}
-                              isLiked={isLikedSong(song._id)}
-                              onLikeSong={onLikeSong}
-                            />
-                          </div>
-                          <div className='song-length'>
-                            {formatTimeFromSeconds(song?.lengthInSeconds)}
-                          </div>
+
+                          <button
+                            onClick={addSongToStation(song.id, song.artistId)}
+                          >
+                            Add
+                          </button>
                         </div>
                       </div>
                     )}
@@ -190,22 +184,5 @@ export function StationDetailsSearch({ station }) {
         </Droppable>
       </DragDropContext>
     </section>
-  )
-}
-
-function LikeBtn({ song, isLiked, onLikeSong }) {
-  const getClasses = () => {
-    const classes = ['add-to-liked']
-    if (!isLiked) classes.push('add')
-
-    return classes.join(' ')
-  }
-
-  const imgUrl = isLiked ? greenTickUrl : addLikedSongUrl
-
-  return (
-    <button className='clean-btn' onClick={() => onLikeSong(song._id)}>
-      <img className={getClasses()} src={imgUrl} />
-    </button>
   )
 }
