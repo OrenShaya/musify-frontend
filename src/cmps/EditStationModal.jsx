@@ -28,26 +28,35 @@ export function EditStationModal() {
           id='station-img-input'
           accept='image/png, image/gif, image/jpeg'
         />
-        <input
-          type='text'
-          name='edit-station-name'
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          id='edit-station-name'
-          autoComplete='off'
-          placeholder='Add a name'
-          className={
-            error ? 'station-name-input error-border' : 'station-name-input'
-          }
-          required
-        />
-        <textarea
-          name='edit-station-decription'
-          id='edit-station-decription'
-          placeholder='Add an optional description'
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
+
+        <fieldset>
+          <legend>Name</legend>
+          <input
+            type='text'
+            name='edit-station-name'
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            id='edit-station-name'
+            autoComplete='off'
+            placeholder='Add a name'
+            className={
+              error ? 'station-name-input error-border' : 'station-name-input'
+            }
+            required
+          />
+        </fieldset>
+
+        <fieldset>
+          <legend>Description</legend>
+          <textarea
+            name='edit-station-decription'
+            id='edit-station-decription'
+            placeholder='Add an optional description'
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </fieldset>
+
         <input
           type='submit'
           value='Save'
