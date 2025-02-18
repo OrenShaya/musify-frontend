@@ -97,6 +97,43 @@
   }
 }
 
+.side-bar-new-playlist-container {
+  position: absolute;
+  left: 12em;
+  top: 8em;
+  display: flex;
+  flex-direction: column;
+  // gap: 0.2em;
+  border-radius: 0.2em;
+  background-color: #282828;
+  // padding: 0.3em;
+  box-shadow: 0 16px 24px rgba(0, 0, 0, 0.3), 0 6px 8px rgba(0, 0, 0, 0.2);
+
+  button {
+    text-align: left;
+    background-color: inherit;
+    border: none;
+    color: white;
+    font-size: 0.9em;
+    margin: 0.3em;
+    padding: 1em;
+    // padding: 0.5em 0.8em;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    cursor: pointer;
+    svg {
+      fill: white;
+    }
+  }
+  button:hover {
+    background-color: #3e3e3e;
+  }
+  .hidden {
+    display: none;
+  }
+}
+
 // .side-bar-container {
 //   position: relative;
 //   width: $sidebar-width;
