@@ -5,10 +5,10 @@ import { useSelector } from 'react-redux'
 import { updateStation } from '../store/actions/station.actions.js'
 import greenTickUrl from '../assets/icons/green-tick.svg'
 import addLikedSongUrl from '../assets/img/add-liked-song.svg'
-import { likeSong } from '../store/actions/user.actions.js'
+import { toggleLikeSong } from '../store/actions/user.actions.js'
 
 export function StationDetailsList({ station }) {
-  const likedSongs = useSelector((s) => s.userModule.user.likedSongIds)
+  const likedSongs = useSelector((s) => s.userModule.user?.likedSongIds)
   const songs = useSelector((s) => s.stationModule.station?.songs)
 
   // Function to handle the drop result
@@ -22,8 +22,8 @@ export function StationDetailsList({ station }) {
     updateStation({ ...station, songs: reorderedItems })
   }
 
-  const onLikeSong = (songId) => {
-    likeSong(songId)
+  const onLikeSong = (songId, setLikedTo) => {
+    toggleLikeSong(songId, setLikedTo)
   }
 
   const isLikedSong = (songId) => {
@@ -139,7 +139,10 @@ function LikeBtn({ song, isLiked, onLikeSong }) {
   const imgUrl = isLiked ? greenTickUrl : addLikedSongUrl
 
   return (
-    <button className='clean-btn' onClick={() => onLikeSong(song._id)}>
+    <button
+      className='clean-btn'
+      onClick={() => onLikeSong(song._id, !isLiked)}
+    >
       <img className={getClasses()} src={imgUrl} />
     </button>
   )

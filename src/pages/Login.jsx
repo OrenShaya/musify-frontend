@@ -5,6 +5,7 @@ import facebookLogoUrl from '../assets/img/facebook.svg'
 import googleLogoUrl from '../assets/img/google.svg'
 import { LoginForm } from '../cmps/LoginForm'
 import { useNavigate } from 'react-router'
+import { login } from '../store/actions/user.actions'
 
 export function Login() {
   const navigate = useNavigate()
@@ -26,6 +27,7 @@ export function Login() {
   ]
 
   const onNavigate = () => {
+    login({ username: 'guest', password: 'guest' })
     navigate('/')
   }
 
@@ -36,7 +38,7 @@ export function Login() {
         <img src={spotifyLogoUrl} alt='' className='spotify-logo' />
         <h1>Log in to Spotify</h1>
         {/* 2FA */}
-        <ul className='list-2fa'>
+        {/* <ul className='list-2fa'>
           {services2fa.map((service) => (
             <li key={service.name}>
               <button className='btn btn-2fa' onClick={onNavigate}>
@@ -45,8 +47,16 @@ export function Login() {
               </button>
             </li>
           ))}
-        </ul>
+        </ul> */}
         <hr />
+
+        <button
+          className='btn btn-2fa'
+          style={{ display: 'flex' }}
+          onClick={onNavigate}
+        >
+          <span>Continue as Guest</span>
+        </button>
 
         <LoginForm />
 
