@@ -11,6 +11,7 @@ export function StationDetailsHeader({ station }) {
   const createdBy = station?.createdBy
   const heroImgRef = useRef()
   const [headerColor, setHeaderColor] = useState([0, 0, 0])
+  const [style, setStyle] = useState({zIndex: -1});
 
   useEffect(() => {
     const img = heroImgRef.current
@@ -64,17 +65,8 @@ export function StationDetailsHeader({ station }) {
       : `${minutesString} ${secondsString}`
   }
 
-
-  // const [style, setStyle] = useState({zIndex: 2});
-  const [style, setStyle] = useState({zIndex: -1});
-
-
   const heroImgUrl = createdBy?.imgUrl ?? stationDefaultUrl
-  const heroImg = new Image()
-  heroImg.src = heroImgUrl
-  heroImg.onload = () => {
-    console.log('height:', heroImg.height, 'width:', heroImg.width )
-  }
+
   return (
     <section
       className='station-details-header'
@@ -86,7 +78,6 @@ export function StationDetailsHeader({ station }) {
         }}
         onMouseLeave={e => {
             setStyle({zIndex: -1})
-            // setStyle({zIndex: 2})
         }}
       > {/* Edit station image svg */}
         <div className='svg-container' style={style}> 
