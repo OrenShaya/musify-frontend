@@ -1,8 +1,5 @@
 import { userService } from '../../services/user'
 
-export const INCREMENT = 'INCREMENT'
-export const DECREMENT = 'DECREMENT'
-export const CHANGE_COUNT = 'CHANGE_COUNT'
 export const SET_USER = 'SET_USER'
 export const SET_WATCHED_USER = 'SET_WATCHED_USER'
 export const REMOVE_USER = 'REMOVE_USER'
@@ -18,19 +15,6 @@ const initialState = {
 export function userReducer(state = initialState, action) {
   var newState = state
   switch (action.type) {
-    // TODO: remove count
-    case INCREMENT:
-      newState = { ...state, count: state.count + 1 }
-      break
-
-    case DECREMENT:
-      newState = { ...state, count: state.count - 1 }
-      break
-
-    case CHANGE_COUNT:
-      newState = { ...state, count: state.count + action.diff }
-      break
-
     case SET_USER:
       newState = { ...state, user: action.user }
       break
