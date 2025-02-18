@@ -41,12 +41,12 @@ export async function getSongs(keyword = 'metal') {
   }
 
   const { data } = await axios.get(`${ytTop5SongURL}&q=${keyword}`)
-  gSongsMap[keyword] = data.items.map(_getSongInfoBrowse)
+  gSongsMap[keyword] = data.items.map(getSongInfoBrowse)
   saveToStorage(YT_STORAGE_KEY, gSongsMap)
   return gSongsMap[keyword]
 }
 
-function _getSongInfoBrowse(video) {
+export function getSongInfoBrowse(video) {
   const { id, snippet } = video
   const { channelId, channelTitle, publishedAt, title, thumbnails } = snippet
   const { high, medium } = thumbnails
