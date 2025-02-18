@@ -1,7 +1,7 @@
 import { loadStation, addStationMsg } from '../store/actions/station.actions'
 import { setCurrentlyPlaying } from '../store/actions/player.actions'
 import { useNavigate } from 'react-router-dom'
-import stationDefaultUrl from '../assets/icons/station-default-img.svg'
+import stationDefaultUrl from '/src/assets/icons/station-default-img.svg'
 import { Link } from 'react-router-dom'
 
 export function SideBarStationPreview({ station }) {
@@ -25,9 +25,7 @@ export function SideBarStationPreview({ station }) {
       })
   }
 
-  const STATION_IMG_SRC = station.createdBy.imgUrl
-    ? station.createdBy.imgUrl
-    : stationDefaultUrl
+  const STATION_IMG_SRC = station.createdBy?.imgUrl ?? stationDefaultUrl
 
   return (
     <Link to={`/station/${station._id}`}>
