@@ -31,9 +31,8 @@
     border-radius: 0.6em;
     background-color: #282828;
   }
-  svg {
-    height: 16px;
-    width: 16px;
+  img[src$='.svg'] {
+    padding: 0.8em;
   }
 }
 
@@ -41,4 +40,8 @@
   img {
     border-radius: 50%;
   }
+}
+
+a:hover {
+  text-decoration: none;
 }
