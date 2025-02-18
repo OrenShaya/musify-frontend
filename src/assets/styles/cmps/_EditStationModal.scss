@@ -1,0 +1,10 @@
+.edit-station-modal {
+  position: absolute;
+  inset: 1;
+  min-height: 380px;
+  min-width: 524px;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 24px;
+}
