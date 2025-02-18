@@ -31,6 +31,7 @@ h2.artist-title {
   align-items: center;
   margin: 1.3em 1.5em 2.5em 1.5em;
   border-radius: em(4px);
+  position: relative;
 
   width: 100%;
   max-width: em(232px);
@@ -49,9 +50,12 @@ h2.artist-title {
 
   .svg-container {
     display: flex;
+    justify-content: center;
     position: absolute;
     flex-direction: column;
     align-items: center;
+    background-color: rgb(0, 0, 0, 0.7);
+    inset: 0;
   }
 }
 
