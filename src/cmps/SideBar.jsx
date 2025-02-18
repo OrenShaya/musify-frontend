@@ -3,8 +3,10 @@ import { stationService } from '../services/station/station.service.local'
 import { addStation } from '../store/actions/station.actions'
 import { SideBarStationPreview } from './SideBarStationPreview'
 import {} from '../assets/icons/station-default-img.svg'
+import { useNavigate } from 'react-router'
 
 export function SideBar() {
+  const navigate = useNavigate()
   const [stations, setStations] = useState([])
   const PLAYLIST_CONTAINER = useRef(null)
 
@@ -60,6 +62,7 @@ export function SideBar() {
     }
     addStation(newStation).then((savedStation) => {
       setStations((prevStations) => [savedStation, ...prevStations])
+      navigate(`/station/${savedStation._id}`)
     })
     console.log('new playlist btn clicked')
   }
