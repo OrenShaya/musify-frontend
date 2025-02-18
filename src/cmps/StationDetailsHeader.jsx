@@ -1,6 +1,6 @@
 import ColorThief from '../../node_modules/colorthief/dist/color-thief.mjs'
 
-import { formatTimeFromSeconds, rgbToHex } from '../services/util.service.js'
+import { formatTimeFromSeconds } from '../services/util.service.js'
 import blueTick from '../assets/icons/blue-tick.svg'
 import stationDefaultUrl from '../assets/icons/station-default-img.svg'
 import { useState } from 'react'
@@ -18,8 +18,10 @@ export function StationDetailsHeader({ station }) {
 
     const handleImageLoad = async () => {
       if (img && img.complete && !img.src.includes('station-default-img')) {
-        const color = await colorThief.getColor(img)
-        setHeaderColor(rgbToHex(...color))
+        const [r, g, b] = await colorThief.getColor(img)
+        setHeaderColor(
+          `linear-gradient(0deg, rgb(0, 0, 0) 10%, rgb(${r}, ${g}, ${b}) 100%)`
+        )
       }
     }
 
@@ -66,7 +68,7 @@ export function StationDetailsHeader({ station }) {
   return (
     <section
       className='station-details-header'
-      style={{ backgroundColor: headerColor }}
+      style={{ background: headerColor }}
     >
       {/* Artist image in header */}
       <img
