@@ -18,6 +18,8 @@ $btnHoverClr: #3be377;
   margin: 0px;
 
   & img {
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
+
     padding: 12px;
     border-radius: 50%;
     background-color: $btnClr;
@@ -27,5 +29,6 @@ $btnHoverClr: #3be377;
     padding: 12px;
     border-radius: 50%;
     background-color: $btnHoverClr;
+    scale: 1.04;
   }
 }

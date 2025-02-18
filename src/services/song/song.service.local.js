@@ -17,6 +17,7 @@ export const songService = {
   query,
   getById,
   save,
+  likedBy,
   remove,
 }
 
@@ -121,6 +122,11 @@ function _createSong(
   song.updatedAt = Date.now() - getRandomIntInclusive(0, 1000 * 60 * 60 * 24)
   song._id = _id || makeId(6)
   return song
+}
+
+async function likedBy(songId, userId) {
+  const song = await getById(songId)
+  return song.likedBy.includes(userId)
 }
 
 const mySongDemoData = songsDemoData

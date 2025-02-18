@@ -18,6 +18,7 @@ const initialState = {
 export function userReducer(state = initialState, action) {
   var newState = state
   switch (action.type) {
+    // TODO: remove count
     case INCREMENT:
       newState = { ...state, count: state.count + 1 }
       break

@@ -3,17 +3,28 @@ import { StationList } from '../cmps/StationList'
 import { useEffect, useRef } from 'react'
 import { loadStations } from '../store/actions/station.actions'
 import { useSelector } from 'react-redux'
+import { useClientSize } from '../customHooks/useClientSize'
 
 export function StationIndex() {
   const indexRef = useRef()
   const stations = useSelector((s) => s.stationModule.stations)
   const shadowContainerRef = useRef()
+  const [width, height] = useClientSize(indexRef)
 
   let allStations = Array(6).fill([...stations])
 
   useEffect(() => {
+    document.title = 'Musify'
+  })
+
+  useEffect(() => {
     loadStations()
   }, [])
+
+  useEffect(() => {
+    onMount()
+  }, [width, height])
+
   const stationHeaders = [
     'Jump back in',
     'Your top mixes',

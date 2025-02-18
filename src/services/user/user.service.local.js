@@ -17,10 +17,11 @@ export const userService = {
   update,
   getLoggedinUser,
   saveLoggedinUser,
-  addLikedSongId,
+  likeSong,
   removeLikedSongId,
   addLikedStationId,
   removeLikedStationId,
+  isLikedSong,
 }
 
 async function getUsers() {
@@ -96,7 +97,7 @@ async function logout() {
   sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
 }
 
-function getLoggedinUser() {
+async function getLoggedinUser() {
   return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
 
@@ -133,7 +134,7 @@ function saveLoggedinUser(user) {
 }
 
 // add song
-async function addLikedSongId(userId, songId) {
+async function likeSong(userId, songId) {
   if (!userId || !songId) throw new Error('not valid userId or songId')
 
   const user = await getById(userId)
@@ -198,6 +199,11 @@ async function removeLikedStationId(userId, stationId) {
     (id) => id !== stationId
   )
   return await update({ _id: userId, likedStationIds: user.likedStationIds })
+}
+
+async function isLikedSong(userId, songId) {
+  const user = await getById(userId)
+  return user.likedSongIds.includes(songId)
 }
 
 /************************************************************* */

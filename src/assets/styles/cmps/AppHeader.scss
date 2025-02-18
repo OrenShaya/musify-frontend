@@ -247,6 +247,12 @@
     margin-inline-start: auto;
     color: $clr1;
 
+    button {
+      color: white;
+      border-radius: 8px;
+      background-color: $station-hover-color;
+    }
+
     img {
       width: 32px;
       aspect-ratio: 1;

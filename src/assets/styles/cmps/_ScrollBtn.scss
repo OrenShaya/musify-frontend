@@ -34,7 +34,7 @@ $scrollBtnClr: brightness(0) saturate(100%) invert(100%) sepia(96%)
   background-color: $scrollBtnBgc;
 
   opacity: 0;
-  @include short-transition(transform, opacity);
+  @include short-transition(transform, opacity, scale);
 
   &.display {
     opacity: 1;

@@ -12,8 +12,11 @@ import { StationDetailsActionBtns } from '../cmps/StationDetailsContentActionBtn
 
 export function StationDetails() {
   const { stationId } = useParams()
-
   const station = useSelector((storeState) => storeState.stationModule.station)
+
+  useEffect(() => {
+    if (station) document.title = station.name + ' | Musify'
+  }, [station])
 
   useEffect(() => {
     loadStation(stationId)

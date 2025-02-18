@@ -1,18 +1,14 @@
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
-import { formatTimeFromSeconds } from '../services/util.service.js'
+import { formatDate, formatTimeFromSeconds } from '../services/util.service.js'
 import { setCurrentlyPlaying } from '../store/actions/player.actions.js'
 import { useSelector } from 'react-redux'
 import { updateStation } from '../store/actions/station.actions.js'
-import greenTick from '../assets/icons/green-tick.svg'
+import greenTickUrl from '../assets/icons/green-tick.svg'
+import addLikedSongUrl from '../assets/img/add-liked-song.svg'
+import { likeSong } from '../store/actions/user.actions.js'
 
 export function StationDetailsList({ station }) {
-  function formatDate(unixDate) {
-    const date = new Date(unixDate)
-    const options = { year: 'numeric', month: 'short', day: 'numeric' }
-    const formattedDate = date.toLocaleDateString('en-US', options)
-    return formattedDate
-  }
-
+  const likedSongs = useSelector((s) => s.userModule.user.likedSongIds)
   const songs = useSelector((s) => s.stationModule.station?.songs)
 
   // Function to handle the drop result
@@ -24,6 +20,14 @@ export function StationDetailsList({ station }) {
     reorderedItems.splice(result.destination.index, 0, movedItem)
 
     updateStation({ ...station, songs: reorderedItems })
+  }
+
+  const onLikeSong = (songId) => {
+    likeSong(songId)
+  }
+
+  const isLikedSong = (songId) => {
+    return likedSongs?.includes(songId)
   }
 
   return (
@@ -82,7 +86,11 @@ export function StationDetailsList({ station }) {
                             </svg>
                           </div>
                           <div className='album-song-artist'>
-                            <img className='album-img' src={song?.imgUrl} alt='album image' />
+                            <img
+                              className='album-img'
+                              src={song?.imgUrl}
+                              alt='album image'
+                            />
                             <div className='song-title-artist'>
                               <div className='song-title'>{song.title}</div>
                               <div className='artist'>
@@ -95,7 +103,11 @@ export function StationDetailsList({ station }) {
                           </div>
                           <div className='date-added'>
                             {formatDate(song.addedAt || song.updatedAt)}
-                            <img className='add-to-liked' src={greenTick}/>
+                            <LikeBtn
+                              song={song}
+                              isLiked={isLikedSong(song._id)}
+                              onLikeSong={onLikeSong}
+                            />
                           </div>
                           <div className='song-length'>
                             {formatTimeFromSeconds(song?.lengthInSeconds)}
@@ -111,5 +123,22 @@ export function StationDetailsList({ station }) {
         </Droppable>
       </DragDropContext>
     </section>
+  )
+}
+
+function LikeBtn({ song, isLiked, onLikeSong }) {
+  const getClasses = () => {
+    const classes = ['add-to-liked']
+    if (!isLiked) classes.push('add')
+
+    return classes.join(' ')
+  }
+
+  const imgUrl = isLiked ? greenTickUrl : addLikedSongUrl
+
+  return (
+    <button className='clean-btn' onClick={() => onLikeSong(song._id)}>
+      <img className={getClasses()} src={imgUrl} />
+    </button>
   )
 }
