@@ -8,17 +8,11 @@ export function SideBarStationPreview({ station }) {
     return <div>Loading</div>
   }
 
-  // console.log('station', station.songs[0])
-
   function handleClick(station) {
-    console.log('stationId', station.songs[0]._id)
     loadStation(station._id)
       .then(() => {
-        // console.log('works')
-
         if (station.songs[0] && station.songs[0]._id) {
           setCurrentlyPlaying(station.songs[0]._id)
-          console.log('works')
         } else {
           console.log('Song ID not found, cannot set currently playing')
         }
@@ -29,7 +23,6 @@ export function SideBarStationPreview({ station }) {
   }
 
   return (
-    // <div>Hello</div>
     <Link to={`/station/${station._id}`}>
       <div
         onClick={() => handleClick(station)}

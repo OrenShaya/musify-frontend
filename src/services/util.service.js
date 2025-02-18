@@ -196,3 +196,10 @@ export function formatSecondsFromTime(timeString) {
 
   return minutes * 60 + seconds
 }
+
+export function formatDate(unixDate) {
+  const date = new Date(unixDate)
+  const options = { year: 'numeric', month: 'short', day: 'numeric' }
+  const formattedDate = date.toLocaleDateString('en-US', options)
+  return formattedDate
+}

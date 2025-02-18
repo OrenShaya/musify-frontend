@@ -18,23 +18,23 @@ export function StationList({ stations, stationHeader, onMount }) {
   }
 
   return (
-    <div>
+    <div style={{ position: 'relative' }}>
       <h2>{stationHeader}</h2>
-
-      <ul ref={scrollRef} className='station-list'>
+      <div style={{ position: 'relative' }}>
         <ScrollBtn isRight={true} scrollRef={scrollRef} />
         <ScrollBtn scrollRef={scrollRef} />
-        {stations.map((station) => (
-          // TODO: remove Math.random when using real data
-          <li
-            key={station._id + Math.random() * 11000}
-            onClick={() => onNavigate(station._id)}
-            className='station-item'
-          >
-            <StationPreview station={station} />
-          </li>
-        ))}
-      </ul>
+        <ul ref={scrollRef} className='station-list'>
+          {stations.map((station) => (
+            <li
+              key={station._id}
+              onClick={() => onNavigate(station._id)}
+              className='station-item'
+            >
+              <StationPreview station={station} />
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   )
 }

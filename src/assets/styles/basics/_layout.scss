@@ -1,11 +1,9 @@
 .main-container {
   display: grid;
-  grid-template-columns: $sidebar-width 1fr;
-  grid-template-rows: em(48px) minmax(1fr, 100%) em(72px); //
-  gap: 8px;
-  padding: 8px;
-  // overflow: hidden;
-  height: 100vh;
+  grid-template-columns: $sidebar-width 1fr; // 420px
+  grid-template-rows: 48px 1fr 72px;
+  gap: em(12px);
+  padding: em(8px);
 
   .main {
     min-height: 90vh;
@@ -29,6 +27,15 @@
     grid-column: 1 / -1;
     grid-row: 1;
   }
+
+  .full-page {
+    position: fixed;
+    inset: 0;
+    overflow-y: auto;
+    z-index: 100;
+    padding-block-end: 0;
+  }
+
   // @include for-narrow-layout {
   //     grid-template-columns:
   //         minmax(20px, 1fr)

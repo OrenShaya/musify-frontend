@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import { useEffect } from 'react'
 import { StationExploreGrid } from '../cmps/StationExploreGrid'
 
 const tagsObj = [
@@ -212,7 +213,7 @@ const tagsObj = [
     _id: 't035',
     tagName: 'instrumental',
     imgUrl: 'https://i.scdn.co/image/ab67fb8200005caf44774504bdbe31a7bc45598c',
-    bgColor: '#121212',
+    bgColor: '#0D73EC',
   },
   {
     _id: 't036',
@@ -301,6 +302,10 @@ const tagsObj = [
 ]
 
 export function StationExplore() {
+  useEffect(() => {
+    document.title = 'Musify – Search'
+  })
+
   return (
     <section className='station-explore'>
       <StationExploreGrid tagsObj={tagsObj} />

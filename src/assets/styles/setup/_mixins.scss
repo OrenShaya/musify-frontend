@@ -35,6 +35,29 @@
 
 /* Media  Mixins */
 
+$mobile-width: 560px;
+$tablet-width: 768px;
+$desktop-width: 954px;
+
+@mixin mobile {
+  @media (max-width: #{$tablet-width - 1px}) {
+    // @media (min-width: #{$mobile-width}) and (max-width: #{$tablet-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
 //aspect ratio mixin
 @mixin aspect-ratio($width: 1, $height: 1) {
   position: relative;
@@ -68,6 +91,7 @@
 }
 
 // Buttons
+// How to use:
 // @include btn(
 //   $bg: $clr-primary-blue,
 //   $clr: $clr-neutral-white,
@@ -263,6 +287,7 @@
   grid-template-rows: $rows;
   gap: $gap;
 }
+
 @mixin grid-templte-area($areas, $gap: 0) {
   display: grid;
   grid-template-areas: $areas;
@@ -483,7 +508,11 @@
 }
 
 @mixin short-transition($props...) {
+  $transitions: ();
+
   @each $prop in $props {
-    transition: #{$prop} 0.15s ease-out;
+    $transitions: append($transitions, #{$prop} 0.15s ease-out, comma);
   }
+
+  transition: $transitions;
 }

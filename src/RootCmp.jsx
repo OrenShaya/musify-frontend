@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Routes, Route } from 'react-router'
 
 import { AboutUs, AboutTeam, AboutVision } from './pages/AboutUs'
@@ -8,32 +8,45 @@ import { AppHeader } from './cmps/AppHeader'
 import { AppFooter } from './cmps/AppFooter'
 import { UserMsg } from './cmps/UserMsg.jsx'
 import { SideBar } from './cmps/SideBar.jsx'
+import HiddenReactPlayer from './cmps/HiddenReactPlayer'
+import { playerSongEndedEvent } from './store/actions/player.actions.js'
 
-//import { LoginSignup } from './pages/LoginSignup.jsx'
 import { Login } from './pages/Login.jsx'
-// import { Signup } from './pages/Signup.jsx'
 import { StationIndex } from './pages/StationIndex.jsx'
 import { StationDetails } from './pages/StationDetails.jsx'
 import { StationExplore } from './pages/StationExplore.jsx'
 
+// Init db
 import {} from './services/station'
 import {} from './services/song'
 import {} from './services/youtube-api.service.js'
-
-import HiddenReactPlayer from './cmps/HiddenReactPlayer'
-import { playerSongEndedEvent } from './store/actions/player.actions.js'
+import { login } from './store/actions/user.actions.js'
 
 export function RootCmp() {
   const playerRef = useRef(null)
+  const mainRef = useRef(null)
+
   const handleSongEnded = () => {
     playerSongEndedEvent()
   }
+
+  useEffect(() => {
+    // Connect default guest
+    login({ username: 'guest', password: 'guest' })
+  }, [])
+
+  useEffect(() => {
+    if (mainRef.current) {
+      const mainScrollHeight = mainRef.current.scrollHeight
+      mainRef.current.style.height = `${mainScrollHeight}px`
+    }
+  }, [mainRef.current?.scrollHeight])
 
   return (
     <div className='main-container main-layout'>
       <AppHeader />
       <UserMsg />
-      <main>
+      <main style={{ overflowY: 'scroll' }} ref={mainRef}>
         <Routes>
           <Route path='' element={<StationIndex />} />
           <Route path='about' element={<AboutUs />}>

@@ -16,7 +16,7 @@ export async function loadStations(filterBy) {
     const stations = await stationService.query(filterBy)
     store.dispatch(getCmdSetStations(stations))
   } catch (err) {
-    console.log('Cannot load stations', err)
+    console.warn('Cannot load stations', err)
     throw err
   }
 }
@@ -27,15 +27,16 @@ export async function loadStation(stationId) {
     store.dispatch(getCmdSetStation(station))
     store.dispatch(getCmdSetSongsQueue(station.songs))
   } catch (err) {
-    console.log('Cannot load station', err)
+    console.warn('Cannot load station', err)
     throw err
   }
 }
+
 export async function loadSongsQueue(station) {
   try {
     store.dispatch(getCmdSetSongsQueue(station.songs))
   } catch (err) {
-    console.log('Cannot load songs queue', err)
+    console.warn('Cannot load songs queue', err)
     throw err
   }
 }
@@ -45,7 +46,7 @@ export async function removeStation(stationId) {
     await stationService.remove(stationId)
     store.dispatch(getCmdRemoveStation(stationId))
   } catch (err) {
-    console.log('Cannot remove station', err)
+    console.warn('Cannot remove station', err)
     throw err
   }
 }
@@ -56,7 +57,7 @@ export async function addStation(station) {
     store.dispatch(getCmdAddStation(savedStation))
     return savedStation
   } catch (err) {
-    console.log('Cannot add station', err)
+    console.warn('Cannot add station', err)
     throw err
   }
 }
@@ -67,7 +68,7 @@ export async function updateStation(station) {
     store.dispatch(getCmdUpdateStation(savedStation))
     return savedStation
   } catch (err) {
-    console.log('Cannot save station', err)
+    console.warn('Cannot save station', err)
     throw err
   }
 }
@@ -82,7 +83,7 @@ export async function addStationMsg(stationId, txt) {
     store.dispatch(getCmdAddStationMsg(msg))
     return msg
   } catch (err) {
-    console.log('Cannot add station msg', err)
+    console.warn('Cannot add station msg', err)
     throw err
   }
 }
@@ -93,7 +94,7 @@ export async function addStationSong(stationId, song) {
     store.dispatch(getCmdAddStationSong(savedSong))
     return savedSong
   } catch (err) {
-    console.log('Cannot add station song', err)
+    console.warn('Cannot add station song', err)
     throw err
   }
 }
@@ -105,36 +106,42 @@ function getCmdSetStations(stations) {
     stations,
   }
 }
+
 function getCmdSetStation(station) {
   return {
     type: SET_STATION,
     station,
   }
 }
+
 function getCmdSetSongsQueue(songs) {
   return {
     type: SET_SONGS_QUEUE,
     songsQueue: songs,
   }
 }
+
 function getCmdRemoveStation(stationId) {
   return {
     type: REMOVE_STATION,
     stationId,
   }
 }
+
 function getCmdAddStation(station) {
   return {
     type: ADD_STATION,
     station,
   }
 }
+
 function getCmdUpdateStation(station) {
   return {
     type: UPDATE_STATION,
     station,
   }
 }
+
 function getCmdAddStationMsg(msg) {
   return {
     type: ADD_STATION_MSG,

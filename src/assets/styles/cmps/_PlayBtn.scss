@@ -1,4 +1,5 @@
 $btnClr: #1ed760;
+$btnHoverClr: #3be377;
 
 .play-btn {
   position: absolute;
@@ -17,8 +18,17 @@ $btnClr: #1ed760;
   margin: 0px;
 
   & img {
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
+
     padding: 12px;
     border-radius: 50%;
     background-color: $btnClr;
+  }
+
+  & img:hover {
+    padding: 12px;
+    border-radius: 50%;
+    background-color: $btnHoverClr;
+    scale: 1.04;
   }
 }

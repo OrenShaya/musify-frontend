@@ -103,12 +103,12 @@
 //     console.log('logged in user:', loggedInUser)
 
 //     // add  songid
-//     let updatedUser = await addLikedSongId(loggedInUser._id, 'song_test_1')
+//     let updatedUser = await likeSong(loggedInUser._id, 'song_test_1')
 //     console.log('after add id "song_test_1":', updatedUser.likedSongIds)
 //     console.log('Expected: likedSongIds includes "song_test_1"')
 
 //     // add songid again
-//     updatedUser = await addLikedSongId(loggedInUser._id, 'song_test_2')
+//     updatedUser = await likeSong(loggedInUser._id, 'song_test_2')
 //     console.log('after add songid "song_test_2":', updatedUser.likedSongIds)
 //     console.log(
 //       'Expected: likedSongIds includes "song_test_1" and "song_test_2"'

@@ -2,24 +2,30 @@
   position: relative;
   overflow: hidden;
 
-  border-radius: 0.5em;
+  border: none;
+
+  border-radius: em(8px);
   padding-bottom: 56.25%;
   height: 100%;
-  min-height: em(130px);
-  max-height: em(180px);
-  min-width: em(130px);
   width: 100%;
+
+  min-height: em(123.5px);
+  max-height: em(180px);
+
+  min-width: em(220px);
+  max-width: em(240px);
+
   cursor: pointer;
-  font-family: Spotifymix-Bold;
+  font-family: Spotifymix-Bold, sans-serif;
   transition: all 0.2s ease;
 
   .genre-header {
-    padding: 16px 16px 0;
+    padding: em(16px);
     hyphens: auto;
-    max-width: 100%;
+    max-width: 80%;
     span {
       text-transform: capitalize;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       font-weight: 700;
       text-wrap: balance;
     }
@@ -29,90 +35,41 @@
     position: absolute;
     right: 0;
     bottom: 0;
-    width: 130px;
-    height: 130px;
-    border-radius: 8px;
+    width: 45%;
+    min-width: em(130px);
+    max-width: em(205px);
+    aspect-ratio: 1 / 1;
+    border-radius: em(4px);
+
     transform: rotate(25deg) translate(18%, -2%);
+    transform-origin: center;
+
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 
     img {
       object-fit: cover;
       object-position: center center;
+      overflow: clip;
       user-select: none;
       display: block;
       max-width: 100%;
       width: 100%;
       height: auto;
+      border-radius: em(4px);
     }
   }
 
-  &:hover {
-    transform: scale(1.04);
-  }
-
-  //::after
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    transition: background-color 0.3s;
-  }
-
-  &:hover::after {
-    background: rgba(0, 0, 0, 0.1);
+  &:focus-visible {
+    outline: 1px solid $clr-neutral-white;
   }
 
   // Media Queries
 
-  @media (min-width: 700px) {
-    min-height: em(90px);
-    max-height: em(100px);
+  @media (min-width: 768px) {
+    max-width: em(300px);
 
-    .genre-header {
-      padding: em(16px);
-
-      span {
-        font-size: rem(24px);
-      }
-    }
-
-    .img-container {
-      width: 150px;
-      height: 150px;
-    }
-  }
-
-  @media (min-width: 900px) {
-    min-height: em(90px);
-    max-height: em(200px);
-
-    .img-container {
-      width: 140px;
-      height: 140px;
-    }
-  }
-
-  @media (min-width: 1100px) {
-    min-height: em(90px);
-    max-height: em(180px);
-
-    .img-container {
-      width: 135px;
-      height: 135px;
-    }
-  }
-
-  @media (min-width: 1300px) {
-    max-height: em(140px);
-
-    .img-container {
-      width: 130px;
-      height: 130px;
+    .genre-header span {
+      font-size: 1.5rem;
     }
   }
 }

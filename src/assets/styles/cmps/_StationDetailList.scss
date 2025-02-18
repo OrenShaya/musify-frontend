@@ -4,12 +4,17 @@
   grid-auto-flow: column;
   grid-template-columns:
     2em
-    minmax(120px, 6fr)
-    minmax(120px, 4fr)
-    minmax(120px, 3fr)
-    minmax(120px, 1fr);
+    minmax(120px, 5fr)
+    minmax(120px, 3.3fr)
+    minmax(120px, 3.2fr)
+    minmax(100px, 0.8fr);
   margin: 1em 1.5em 0 1.5em;
   color: $station-table-header-font-color;
+}
+
+.station-table {
+  font-size: 14px;
+  padding-bottom: 0.5em;
 }
 
 .song-row {
@@ -26,6 +31,10 @@
 
   &:hover {
     background-color: $station-hover-color;
+
+    &:hover .date-added img {
+      display: flex;
+    }
 
     & .song-index {
       display: none;
@@ -55,10 +64,18 @@
   line-height: inherit;
 }
 
+.song-album {
+  margin-left: -0.5em;
+}
+
+.song-length {
+  margin-left: -0.5em;
+}
+
 hr {
   border: none;
   height: 1px;
-  margin: 0.5em 1em 1em 1em;
+  margin: 0 1em 1em 1em;
 
   background-color: $hr-color;
 }
@@ -68,7 +85,7 @@ hr {
 }
 
 .song-number {
-  margin-left: 1em;
+  margin: auto;
 }
 
 .song-name {
@@ -91,7 +108,6 @@ $song-length-size: em(16px);
 
 .song-index {
   font-size: rem(16px);
-  padding-left: 0.5em;
 }
 
 $album-img-size: rem(40px);
@@ -112,6 +128,30 @@ $album-img-size: rem(40px);
   text-transform: none;
   text-wrap-mode: wrap;
   vertical-align: baseline;
+}
+
+.date-added {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & img {
+    display: none;
+    align-items: center;
+    margin-right: 3em;
+  }
+}
+
+.add-to-liked {
+  display: none;
+  align-self: center;
+  height: 16px;
+  width: 16px;
+
+  &.add {
+    filter: invert(80%) sepia(0%) saturate(0%) hue-rotate(346deg)
+      brightness(91%) contrast(88%);
+  }
 }
 
 .artist {
