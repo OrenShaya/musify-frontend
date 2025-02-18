@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { stationService } from '../services/station/station.service.local'
+import { addStation } from '../store/actions/station.actions'
 import { SideBarStationPreview } from './SideBarStationPreview'
 
 export function SideBar() {
@@ -13,7 +14,7 @@ export function SideBar() {
       '.side-bar-new-playlist-container'
     )
 
-    document.addEventListener('click', (ev) => {
+    const handleClick = (ev) => {
       if (ev.target.classList.contains('side-bar-new-playlist-container'))
         return
       if (ev.target.classList.contains('plus-btn')) {
@@ -27,13 +28,15 @@ export function SideBar() {
       if (!PLAYLIST_CONTAINER.current.classList.contains('hidden'))
         return toggleHiddenClass()
       return
-    })
+    }
+
+    document.addEventListener('click', handleClick)
 
     // Cleanup event listener on component unmount
     return () => {
       document.removeEventListener('click', handleClick)
     }
-  }, [])
+  }, [stations])
 
   function toggleHiddenClass() {
     PLAYLIST_CONTAINER.current.classList.toggle('hidden')
@@ -41,9 +44,21 @@ export function SideBar() {
   }
 
   function newPlaylistBtn() {
-    stationService.save({
+    const newStation = {
       name: 'New Playlist',
+      tags: [],
+      createdBy: {
+        _id: '',
+        fullname: '',
+        imgUrl: '',
+        createdAt: Date.now(),
+      },
+      likedByUsers: [], // '{minimal-user}'
       songs: [],
+      msgs: [],
+    }
+    addStation(newStation).then((savedStation) => {
+      setStations((prevStations) => [savedStation, ...prevStations])
     })
     console.log('new playlist btn clicked')
   }
@@ -90,10 +105,10 @@ export function SideBar() {
           >
             <svg
               xmlns='http://www.w3.org/2000/svg'
-              data-encore-id='icon'
+              dataEncoreId='icon'
               role='img'
-              aria-hidden='true'
-              class='Svg-sc-ytk21e-0 dYnaPI e-9541-icon'
+              ariaHidden='true'
+              className='Svg-sc-ytk21e-0 dYnaPI e-9541-icon'
               viewBox='0 0 16 16'
               height='16px'
               width='16px'
@@ -105,10 +120,10 @@ export function SideBar() {
           <button>
             <svg
               xmlns='http://www.w3.org/2000/svg'
-              data-encore-id='icon'
+              dataEncoreId='icon'
               role='img'
-              aria-hidden='true'
-              class='Svg-sc-ytk21e-0 dYnaPI e-9541-icon'
+              ariaHidden='true'
+              className='Svg-sc-ytk21e-0 dYnaPI e-9541-icon'
               viewBox='0 0 16 16'
               height='16px'
               width='16px'
@@ -142,9 +157,15 @@ export function SideBar() {
             </svg>
           </button>
         </div>
-        {stations.map((station) => (
-          <SideBarStationPreview key={station?._id} station={station} />
-        ))}
+        <div className='pinned-stations'></div>
+        <div className='regular-stations'>
+          {stations
+            .slice()
+            .reverse()
+            .map((station) => (
+              <SideBarStationPreview key={station?._id} station={station} />
+            ))}
+        </div>
       </div>
     </div>
   )
