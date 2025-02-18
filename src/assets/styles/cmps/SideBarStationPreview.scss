@@ -29,6 +29,11 @@
 .side-bar-station-preview.playlist {
   img {
     border-radius: 0.6em;
+    background-color: #282828;
+  }
+  svg {
+    height: 16px;
+    width: 16px;
   }
 }
 

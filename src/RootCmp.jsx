@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Routes, Route } from 'react-router'
 
 import { AboutUs, AboutTeam, AboutVision } from './pages/AboutUs'
@@ -24,6 +24,8 @@ import { login } from './store/actions/user.actions.js'
 
 export function RootCmp() {
   const playerRef = useRef(null)
+  const mainRef = useRef(null)
+
   const handleSongEnded = () => {
     playerSongEndedEvent()
   }
@@ -33,11 +35,18 @@ export function RootCmp() {
     login({ username: 'guest', password: 'guest' })
   }, [])
 
+  useEffect(() => {
+    if (mainRef.current) {
+      const mainScrollHeight = mainRef.current.scrollHeight
+      mainRef.current.style.height = `${mainScrollHeight}px`
+    }
+  }, [mainRef.current?.scrollHeight])
+
   return (
     <div className='main-container main-layout'>
       <AppHeader />
       <UserMsg />
-      <main>
+      <main style={{ overflowY: 'scroll' }} ref={mainRef}>
         <Routes>
           <Route path='' element={<StationIndex />} />
           <Route path='about' element={<AboutUs />}>
