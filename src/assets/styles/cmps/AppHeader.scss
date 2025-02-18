@@ -4,7 +4,6 @@
 
 .app-header {
   display: flex;
-  margin: 0;
   min-height: em(48px);
   padding: 8px 0.35em 0 1.5em;
   margin-block-end: 8px;
@@ -81,8 +80,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        // margin-block: 0.5em;
-        //padding: 12px 64px 12px 48px;
 
         padding-inline: 0;
         background-color: $gray5;
@@ -138,17 +135,35 @@
           cursor: text;
           color: white;
 
+          &::-webkit-search-decoration,
+          &::-webkit-search-cancel-button,
+          &::-webkit-search-results-button,
+          &::-webkit-search-results-decoration {
+            display: none;
+          }
+
           &::placeholder {
             text-overflow: ellipsis;
             color: rgba(white, 0.65);
             font-size: 16px;
             font-weight: 500;
+            letter-spacing: 1.05px;
+          }
+
+          &:not(:placeholder-shown) {
+            ~ a.browser-btn {
+              display: none;
+            }
+            ~ button.reset-btn {
+              display: grid;
+            }
           }
         }
 
         a.browser-btn {
           padding-inline: 12px 4px;
           margin-inline-end: 12px;
+          margin-inline-start: 7px;
 
           display: grid;
           place-content: center;
@@ -175,6 +190,42 @@
 
             &:hover {
               fill: #fff;
+              scale: 1.04;
+              cursor: pointer;
+            }
+          }
+        }
+        button.reset-btn {
+          display: none;
+          padding-inline: 12px 4px;
+          margin-inline-end: 12px;
+          margin-inline-start: 7px;
+
+          place-content: center;
+          width: 48px;
+          height: 24px;
+          background-color: transparent;
+          flex-shrink: 0;
+          cursor: pointer;
+          text-align: center;
+
+          img.reset-icon {
+            color: $clr-neutral-white;
+
+            display: block;
+            background-color: transparent;
+
+            transition: fill 0.4s ease;
+            fill: currentcolor;
+            width: 24px;
+            height: 24px;
+            min-width: 24px;
+            min-height: 24px;
+
+            overflow: hidden;
+
+            &:hover {
+              fill: #fff !important;
               scale: 1.04;
               cursor: pointer;
             }
@@ -231,5 +282,24 @@
     height: 24px;
     filter: invert(100%) sepia(0%) saturate(7494%) hue-rotate(51deg)
       brightness(98%) contrast(96%);
+  }
+
+  @include tablet {
+    transition: opacity 0.3s ease-in;
+
+    nav {
+      justify-content: flex-start;
+
+      .profile-section {
+        margin-inline-start: auto;
+      }
+    }
+    input.search-bar {
+      width: 410px;
+      flex-shrink: 2;
+    }
+  }
+
+  @include mobile {
   }
 }

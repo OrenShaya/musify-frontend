@@ -9,11 +9,14 @@ import homeUrl from '../assets/img/home.svg'
 import homeFilledUrl from '../assets/img/home-filled.svg'
 import browseUrl from '../assets/img/browse.svg'
 import browseFilledUrl from '../assets/img/browse-filled.svg'
+import resetUrl from '../assets/img/x.svg'
+import { useRef } from 'react'
 
 export function AppHeader() {
   const user = useSelector((storeState) => storeState.userModule.user)
   const navigate = useNavigate()
   const location = useLocation()
+  const searchbarRef = useRef(null)
 
   async function onLogout() {
     try {
@@ -22,6 +25,12 @@ export function AppHeader() {
       showSuccessMsg(`Bye now`)
     } catch (err) {
       showErrorMsg('Cannot logout')
+    }
+  }
+
+  function resetSearchBar() {
+    if (searchbarRef.current) {
+      searchbarRef.current.value = ''
     }
   }
   const homeIconUrl = location.pathname === '/' ? homeFilledUrl : homeUrl
@@ -86,12 +95,16 @@ export function AppHeader() {
             <input
               className='search-bar'
               type='search'
+              ref={searchbarRef}
               placeholder='What do you want to play?'
             />
 
             <NavLink to='/explore' className='browser-btn'>
               <img className='browser-icon' src={browserIconUrl} />
             </NavLink>
+            <button type='reset' className='reset-btn' onClick={resetSearchBar}>
+              <img className='reset-icon' src={resetUrl} />
+            </button>
           </div>
         </div>
 
