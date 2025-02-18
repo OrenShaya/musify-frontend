@@ -1,75 +1,67 @@
 /* eslint-disable no-extra-semi */
 /* eslint-disable react/prop-types */
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
-import {
-  debounce,
-  formatDate,
-  formatTimeFromSeconds,
-} from '../services/util.service.js'
+import { debounce } from '../services/util.service.js'
 import { setCurrentlyPlaying } from '../store/actions/player.actions.js'
-import { useSelector } from 'react-redux'
 import {
   addStationSong,
   updateStation,
 } from '../store/actions/station.actions.js'
-import greenTickUrl from '../assets/icons/green-tick.svg'
-import addLikedSongUrl from '../assets/img/add-liked-song.svg'
 import { useState, useEffect, useRef } from 'react'
 import {
   getArtist,
   getSong,
-  getSongInfoBrowse,
   getSongs,
 } from '../services/youtube-api.service.js'
+import resetUrl from '../assets/img/x.svg'
+
 import { addSongFromYT } from '../services/song/song.service.local.js'
 
 export function StationDetailsSearch({ station }) {
   const [searchTerm, setSearchTerm] = useState('')
-  const searchInputRef = useRef(null)
-  const setSearchTermDebounce = useRef(debounce(setSearchTerm, 300))
+
   const [searchedSongs, setSearchedSongs] = useState(null)
 
+  const getSearchedSongsDebounce = useRef(
+    debounce((term) => getSearchedSongs(term), 500)
+  )
+
   useEffect(() => {
-    getSearchedSongs()
+    getSearchedSongsDebounce.current(searchTerm)
   }, [searchTerm])
 
-  async function getSearchedSongs() {
+  async function addSongAndPlayIt(songId) {
+    const song = await getSong(songId)
+    if (!song) return
+
+    setCurrentlyPlaying(song._id)
+  }
+
+  async function getSearchedSongs(term) {
+    if (!term || term === '') return
     try {
-      const songs = await getSongs(searchInputRef.current.value)
+      const songs = await getSongs(term)
       if (!songs) return
 
-      const miniSongs = songs.map((song) => {
-        return getSongInfoBrowse(song)
-        // {
-        //     id,
-        //     songTitle,
-        //     songUrl,
-        //     imgUrl,
-        //     artistTitle,
-        //     artistId,
-        //     createdAt,
-        // }
-      })
-      setSearchedSongs(miniSongs)
-    } catch {
-      ;(err) => {
-        throw new Error('Unable to search for songs', err)
-      }
+      setSearchedSongs(songs)
+    } catch (err) {
+      console.error('Unable to search for songs', err)
     }
   }
   async function addSongToStation(songId, artistId) {
+    if (!songId || !artistId) return
     try {
       const ytSong = await getSong(songId)
       if (!ytSong) return
+
       const artist = await getArtist(artistId)
       if (!artist) return
       const readySong = await addSongFromYT(ytSong, artist)
       if (!readySong) return
+
       await addStationSong(station._id, readySong)
-    } catch {
-      ;(err) => {
-        throw new Error('Unable to search for songs', err)
-      }
+    } catch (err) {
+      console.error('Unable to search for songs', err)
     }
   }
 
@@ -84,41 +76,43 @@ export function StationDetailsSearch({ station }) {
     updateStation({ ...station, songs: reorderedItems })
   }
 
+  function resetSearchInput() {
+    setSearchTerm('')
+  }
+
   return (
     <section className='station-details-search'>
-      {/* <div className='station-table'>
-        <div className='song-number'>#</div>
-        <div className='song-name'>Title</div>
-        <div className='song-album-table-head'>Album</div>
-        <div className='song-added-date'>Date added</div>
-        <div className='song-length-icon'>
-          <svg
-            data-encore-id='icon'
-            role='img'
-            aria-hidden='true'
-            className='Svg-sc-ytk21e-0 dYnaPI e-9541-icon'
-            viewBox='0 0 16 16'
-          >
-            <path d='M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z'></path>
-            <path d='M8 3.25a.75.75 0 0 1 .75.75v3.25H11a.75.75 0 0 1 0 1.5H7.25V4A.75.75 0 0 1 8 3.25z'></path>
-          </svg>
-        </div>
-      </div>
-      <hr /> */}
+      <hr className='search-divider' />
       <div className='station-details-search-header'>
         <h1>Let&#39;s find something for your playlist</h1>
+
+        <form className='searchbar-container-form'>
+          <span className='search-icon'>
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              x='0px'
+              y='0px'
+              width='24'
+              height='24'
+              fill='#b3b3b3'
+              viewBox='0 0 30 30'
+            >
+              <path d='M 13 3 C 7.4886661 3 3 7.4886661 3 13 C 3 18.511334 7.4886661 23 13 23 C 15.396652 23 17.59741 22.148942 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148942 17.59741 23 15.396652 23 13 C 23 7.4886661 18.511334 3 13 3 z M 13 5 C 17.430666 5 21 8.5693339 21 13 C 21 17.430666 17.430666 21 13 21 C 8.5693339 21 5 17.430666 5 13 C 5 8.5693339 8.5693339 5 13 5 z'></path>
+            </svg>
+          </span>
+          <input
+            type='search'
+            name='song-search'
+            id='song-search'
+            placeholder='Search for songs or episodes'
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <button type='reset' className='reset-btn' onClick={resetSearchInput}>
+            <img className='reset-icon' src={resetUrl} />
+          </button>
+        </form>
       </div>
-      <form className='searchbar-container-form'>
-        <input
-          type='search'
-          name=''
-          id=''
-          placeholder='Search for songs or episodes'
-          value={searchTerm}
-          ref={searchInputRef}
-          onChange={setSearchTermDebounce.current}
-        />
-      </form>
 
       <DragDropContext onDragEnd={handleOnDragEnd}>
         <Droppable droppableId='droppable'>
@@ -128,7 +122,7 @@ export function StationDetailsSearch({ station }) {
               {...provided.droppableProps}
               ref={provided.innerRef}
             >
-              {searchedSongs?.length > 0 &&
+              {searchedSongs?.length > 0 ? (
                 searchedSongs.map((song, idx) => (
                   <Draggable key={song.id} draggableId={song.id} index={idx}>
                     {(provided) => (
@@ -140,7 +134,7 @@ export function StationDetailsSearch({ station }) {
                         <div className='song-row'>
                           <div
                             className='hover-song-play'
-                            onClick={() => setCurrentlyPlaying(song.id)}
+                            onClick={() => addSongAndPlayIt(song?.id)}
                             style={{ cursor: 'pointer' }}
                           >
                             <svg
@@ -169,7 +163,10 @@ export function StationDetailsSearch({ station }) {
                           </div>
 
                           <button
-                            onClick={addSongToStation(song.id, song.artistId)}
+                            className='add-song-to-station-btn'
+                            onClick={() =>
+                              addSongToStation(song?.id, song?.artistId)
+                            }
                           >
                             Add
                           </button>
@@ -177,7 +174,24 @@ export function StationDetailsSearch({ station }) {
                       </div>
                     )}
                   </Draggable>
-                ))}
+                ))
+              ) : (
+                <div>
+                  {searchTerm !== '' || searchTerm !== ' ' ? (
+                    <div className='no-results-display'>
+                      <h1>
+                        No results found for &quot;{searchTerm.toString()}&quot;
+                      </h1>
+                      <p>
+                        Please make sure your words are spelled correctly, or
+                        use fewer or different keywords.
+                      </p>
+                    </div>
+                  ) : (
+                    ''
+                  )}
+                </div>
+              )}
               {provided.placeholder}
             </div>
           )}
