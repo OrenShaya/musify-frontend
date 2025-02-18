@@ -8,11 +8,20 @@ import {
 } from '../services/util.service.js'
 import { setCurrentlyPlaying } from '../store/actions/player.actions.js'
 import { useSelector } from 'react-redux'
-import { updateStation } from '../store/actions/station.actions.js'
+import {
+  addStationSong,
+  updateStation,
+} from '../store/actions/station.actions.js'
 import greenTickUrl from '../assets/icons/green-tick.svg'
 import addLikedSongUrl from '../assets/img/add-liked-song.svg'
 import { useState, useEffect, useRef } from 'react'
-import { getSongInfoBrowse, getSongs } from '../services/youtube-api.service.js'
+import {
+  getArtist,
+  getSong,
+  getSongInfoBrowse,
+  getSongs,
+} from '../services/youtube-api.service.js'
+import { addSongFromYT } from '../services/song/song.service.local.js'
 
 export function StationDetailsSearch({ station }) {
   const [searchTerm, setSearchTerm] = useState('')
@@ -48,6 +57,22 @@ export function StationDetailsSearch({ station }) {
       }
     }
   }
+  async function addSongToStation(songId, artistId) {
+    try {
+      const ytSong = await getSong(songId)
+      if (!ytSong) return
+      const artist = await getArtist(artistId)
+      if (!artist) return
+      const readySong = await addSongFromYT(ytSong, artist)
+      if (!readySong) return
+      await addStationSong(station._id, readySong)
+    } catch {
+      ;(err) => {
+        throw new Error('Unable to search for songs', err)
+      }
+    }
+  }
+
   // Function to handle the drop result
   const handleOnDragEnd = (result) => {
     if (!result.destination) return // Exit if dropped outside the list
