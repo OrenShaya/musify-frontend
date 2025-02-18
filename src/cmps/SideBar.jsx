@@ -89,9 +89,9 @@ export function SideBar() {
         <span name='Create new playlist' className='plus-btn'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
-            dataEncoreId='icon'
+            data-encore-id='icon'
             role='img'
-            ariaHidden='true'
+            aria-hidden='true'
             className='Svg-sc-ytk21e-0 dYnaPI e-9541-icon'
             viewBox='0 0 16 16'
             height='16px'
@@ -109,9 +109,9 @@ export function SideBar() {
           >
             <svg
               xmlns='http://www.w3.org/2000/svg'
-              dataEncoreId='icon'
+              data-encore-id='icon'
               role='img'
-              ariaHidden='true'
+              aria-hidden='true'
               className='Svg-sc-ytk21e-0 dYnaPI e-9541-icon'
               viewBox='0 0 16 16'
               height='16px'
@@ -124,9 +124,9 @@ export function SideBar() {
           <button>
             <svg
               xmlns='http://www.w3.org/2000/svg'
-              dataEncoreId='icon'
+              data-encore-id='icon'
               role='img'
-              ariaHidden='true'
+              aria-hidden='true'
               className='Svg-sc-ytk21e-0 dYnaPI e-9541-icon'
               viewBox='0 0 16 16'
               height='16px'
