@@ -52,7 +52,7 @@ export function StationDetailsList({ station }) {
           </div>
         </div>
       )}
-      <hr />
+      {station?.songs?.length > 0 && <hr />}
       <DragDropContext onDragEnd={handleOnDragEnd}>
         <Droppable droppableId='droppable'>
           {(provided) => (
