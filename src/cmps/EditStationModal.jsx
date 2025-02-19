@@ -178,11 +178,7 @@ export function EditStationModal({ station, setIsModalShow }) {
                   crossOrigin='anonymous'
                   ref={imgRef}
                   src={imgUrlHandler}
-                  className={`station-img ${
-                    imgUrlHandler === stationDefaultUrl
-                      ? 'default-station-img'
-                      : ''
-                  }`}
+                  className='station-img-edit'
                   alt='playlist img'
                 />
                 {/* Options image in header */}
@@ -240,7 +236,6 @@ export function EditStationModal({ station, setIsModalShow }) {
                 error ? 'station-name-input error-border' : 'station-name-input'
               }
               required
-              pattern='^[a-zA-Z0-9 _-]{3,30}$'
             />
           </fieldset>
 
