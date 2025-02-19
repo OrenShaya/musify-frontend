@@ -43,6 +43,7 @@ $whiteFilter: invert(100%) sepia(100%) saturate(46%) hue-rotate(89deg)
       height: 37px;
 
       .logo {
+        margin: auto;
         filter: $whiteFilter;
       }
     }
