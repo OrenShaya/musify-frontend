@@ -34,7 +34,7 @@ export function StationDetailsSearch({ station }) {
     const song = await getSong(songId)
     if (!song) return
 
-    setCurrentlyPlaying(song._id)
+    setCurrentlyPlaying(song.yt_id)
   }
 
   async function getSearchedSongs(term) {

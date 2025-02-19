@@ -79,7 +79,7 @@ export function stationReducer(state = initialState, action) {
         station: {
           ...state.station,
           songs: (state.station?.songs || []).filter(
-            (song) => song._id !== action.songId
+            (song) => song.yt_id !== action.songId
           ),
         },
       }

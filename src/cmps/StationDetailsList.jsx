@@ -63,7 +63,11 @@ export function StationDetailsList({ station }) {
             >
               {station?.songs?.length > 0 &&
                 station?.songs.map((song, idx) => (
-                  <Draggable key={song._id} draggableId={song._id} index={idx}>
+                  <Draggable
+                    key={song.yt_id}
+                    draggableId={song.yt_id}
+                    index={idx}
+                  >
                     {(provided) => (
                       <div
                         ref={provided.innerRef}
@@ -74,7 +78,7 @@ export function StationDetailsList({ station }) {
                           <div className='song-index'>{idx + 1}</div>
                           <div
                             className='hover-song-play'
-                            onClick={() => setCurrentlyPlaying(song._id)}
+                            onClick={() => setCurrentlyPlaying(song.yt_id)}
                             style={{ cursor: 'pointer' }}
                           >
                             <svg
@@ -107,7 +111,7 @@ export function StationDetailsList({ station }) {
                             {formatDate(song.addedAt || song.updatedAt)}
                             <LikeBtn
                               song={song}
-                              isLiked={isLikedSong(song._id)}
+                              isLiked={isLikedSong(song.yt_id)}
                               onLikeSong={onLikeSong}
                             />
                           </div>
@@ -141,7 +145,7 @@ function LikeBtn({ song, isLiked, onLikeSong }) {
   return (
     <button
       className='clean-btn'
-      onClick={() => onLikeSong(song._id, !isLiked)}
+      onClick={() => onLikeSong(song.yt_id, !isLiked)}
     >
       <img className={getClasses()} src={imgUrl} />
     </button>
