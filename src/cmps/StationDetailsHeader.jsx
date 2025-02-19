@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import ColorThief from '../../node_modules/colorthief/dist/color-thief.mjs'
 
 import { formatTimeFromSeconds } from '../services/util.service.js'
@@ -6,12 +8,14 @@ import stationDefaultUrl from '../assets/icons/station-default-img.svg'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { useRef } from 'react'
+import { useSelector } from 'react-redux'
 
-export function StationDetailsHeader({ station }) {
+export function StationDetailsHeader({ station, setIsModalShow }) {
   const createdBy = station?.createdBy
   const heroImgRef = useRef()
   const [headerColor, setHeaderColor] = useState([0, 0, 0])
   const [style, setStyle] = useState({ zIndex: -1 })
+  const user = useSelector((storeState) => storeState.userModule.user)
 
   useEffect(() => {
     const img = heroImgRef.current
@@ -65,7 +69,12 @@ export function StationDetailsHeader({ station }) {
       : `${minutesString} ${secondsString}`
   }
 
-  const heroImgUrl = createdBy?.imgUrl ?? stationDefaultUrl
+  const heroImgUrl = station?.createdBy?.imgUrl ?? stationDefaultUrl
+
+  function openEditModal() {
+    if (user?._id !== createdBy?._id) return
+    setIsModalShow()
+  }
 
   return (
     <section
@@ -83,22 +92,24 @@ export function StationDetailsHeader({ station }) {
       >
         {' '}
         {/* Edit station image svg */}
-        <div className='svg-container' style={style}>
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            data-encore-id='icon'
-            role='img'
-            aria-hidden='true'
-            className='edit-img-svg'
-            viewBox='0 0 24 24'
-          >
-            <path
-              d='M17.318 1.975a3.329 3.329 0 1 1 4.707 4.707L8.451 20.256c-.49.49-1.082.867-1.735 1.103L2.34 22.94a1 1 0 0 1-1.28-1.28l1.581-4.376a4.726 4.726 0 0 1 1.103-1.735L17.318 1.975zm3.293 1.414a1.329 1.329 0 0 0-1.88 0L5.159 16.963c-.283.283-.5.624-.636 1l-.857 2.372 2.371-.857a2.726 2.726 0 0 0 1.001-.636L20.611 5.268a1.329 1.329 0 0 0 0-1.879z'
-              fill='#ffffff'
-            />
-          </svg>
-          Choose photo
-        </div>
+        {user && user?._id === station?.createdBy?._id && (
+          <div className='svg-container' style={style} onClick={openEditModal}>
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              data-encore-id='icon'
+              role='img'
+              aria-hidden='true'
+              className='edit-img-svg'
+              viewBox='0 0 24 24'
+            >
+              <path
+                d='M17.318 1.975a3.329 3.329 0 1 1 4.707 4.707L8.451 20.256c-.49.49-1.082.867-1.735 1.103L2.34 22.94a1 1 0 0 1-1.28-1.28l1.581-4.376a4.726 4.726 0 0 1 1.103-1.735L17.318 1.975zm3.293 1.414a1.329 1.329 0 0 0-1.88 0L5.159 16.963c-.283.283-.5.624-.636 1l-.857 2.372 2.371-.857a2.726 2.726 0 0 0 1.001-.636L20.611 5.268a1.329 1.329 0 0 0 0-1.879z'
+                fill='#ffffff'
+              />
+            </svg>
+            Choose photo
+          </div>
+        )}
         {/* Artist image in header */}
         <img
           crossOrigin='anonymous'
@@ -111,7 +122,9 @@ export function StationDetailsHeader({ station }) {
 
       <div className='header-container'>
         <div className='station-type'>Playlist</div>
-        <div className='station-name'>{station?.name}</div>
+        <div className='station-name' onClick={openEditModal}>
+          {station?.name}
+        </div>
         <div className='user-verified'>
           <h2 className='artist-title'>
             {' '}
