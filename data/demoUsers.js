@@ -66,6 +66,8 @@
 //     _id: 'u101',
 //   },
 // ]
+import gUserImg from '../src/assets/img/G-user.png'
+
 export const demoUsers = [
   {
     username: 'admin',
@@ -85,8 +87,7 @@ export const demoUsers = [
     isAdmin: true,
     likedStationIds: [],
     likedSongIds: [],
-    imgUrl:
-      'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png',
+    imgUrl: gUserImg,
     _id: '3S4c4',
   },
   {

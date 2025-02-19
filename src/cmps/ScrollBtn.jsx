@@ -50,11 +50,11 @@ export function ScrollBtn({ scrollRef, isRight = false }) {
   function _toggleRender() {
     const elScroll = scrollRef.current
 
-    elScroll.offsetHeight // trigger reflow
+    elScroll?.offsetHeight // trigger reflow
 
     // More scroll items than fit on screen?
     let shouldDisplay =
-      elScroll.scrollWidth - scrollBtnsWidth > elScroll.clientWidth
+      elScroll?.scrollWidth - scrollBtnsWidth > elScroll?.clientWidth
         ? true
         : false
 

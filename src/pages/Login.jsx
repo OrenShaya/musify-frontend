@@ -36,7 +36,7 @@ export function Login() {
       {/* Content */}
       <div className='content-container'>
         <img src={spotifyLogoUrl} alt='' className='spotify-logo' />
-        <h1>Log in to Spotify</h1>
+        <h1>Log in to Musify</h1>
         {/* 2FA */}
         {/* <ul className='list-2fa'>
           {services2fa.map((service) => (
@@ -66,7 +66,7 @@ export function Login() {
           <a className='forgot-password-link'>Forgot your password?</a>
           <span className='subdue signup'>
             Don&#39;t have an account?
-            <a>Sign up for Spotify</a>
+            <a>Sign up for Musify</a>
           </span>
         </>
       </div>

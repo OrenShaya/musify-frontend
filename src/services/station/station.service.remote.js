@@ -5,10 +5,10 @@ export const stationService = {
   getById,
   save,
   remove,
-  addStationMsg,
+  addStationSong,
 }
 
-async function query(filterBy = { txt: '', price: 0 }) {
+async function query(filterBy = { name: '', tags: [] }) {
   return httpService.get(`station`, filterBy)
 }
 
@@ -20,16 +20,24 @@ async function remove(stationId) {
   return httpService.delete(`station/${stationId}`)
 }
 async function save(station) {
-  var savedStation
   if (station._id) {
-    savedStation = await httpService.put(`station/${station._id}`, station)
-  } else {
-    savedStation = await httpService.post('station', station)
+    return put(station)
   }
-  return savedStation
+  return post(station)
 }
 
-async function addStationMsg(stationId, txt) {
-  const savedMsg = await httpService.post(`station/${stationId}/msg`, { txt })
-  return savedMsg
+async function put(station) {
+  return await httpService.put(`station/${station._id}`, station)
+}
+
+async function post(station) {
+  return await httpService.post('station', station)
+}
+
+async function addStationSong(stationId, song) {
+  if (!stationId || !song) {
+    throw new Error('Not valid stationId or song in addStationSong')
+  }
+
+  return await httpService.put(`station/${stationId}/song`, song)
 }

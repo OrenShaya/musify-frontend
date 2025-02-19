@@ -1,28 +1,35 @@
-import { loadStation, addStationMsg } from '../store/actions/station.actions'
-import { setCurrentlyPlaying } from '../store/actions/player.actions'
-import { useNavigate } from 'react-router-dom'
+import { setStation } from '../store/actions/station.actions'
+import {
+  setCurrentlyPlaying,
+  setIsPlaying,
+} from '../store/actions/player.actions'
 import stationDefaultUrl from '../assets/icons/station-default-img.svg'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import PropTypes from 'prop-types'
 
 export function SideBarStationPreview({ station }) {
+  const selectedStationId = useSelector((s) => s.stationModule.station?._id)
+  const isPlaying = useSelector((s) => s.playerModule.isPlaying)
+
   // if (!station || !station.songs || station.songs.length === 0) {
   if (!station) {
     console.log(station)
     return <div>Loading</div>
   }
 
-  function handleClick(station) {
-    loadStation(station._id)
-      .then(() => {
-        if (station.songs[0] && station.songs[0]._id) {
-          setCurrentlyPlaying(station.songs[0]._id)
-        } else {
-          console.log('Song ID not found, cannot set currently playing')
-        }
-      })
-      .catch((err) => {
-        console.log('Cannot load station', err)
-      })
+  const isSelectedStation = (station) => selectedStationId === station?._id
+
+  const handleClick = (station) => {
+    if (!isSelectedStation()) {
+      setStation(station)
+      // TODO: continue playlist, instead of set to first song
+      setCurrentlyPlaying(station, station.songs[0].yt_id)
+
+      setIsPlaying(true)
+    } else {
+      setIsPlaying(!isPlaying)
+    }
   }
 
   const STATION_IMG_SRC = station.createdBy?.imgUrl ?? stationDefaultUrl
@@ -46,4 +53,22 @@ export function SideBarStationPreview({ station }) {
       </div>
     </Link>
   )
+}
+
+SideBarStationPreview.propTypes = {
+  station: PropTypes.shape({
+    _id: PropTypes.string,
+    yt_id: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    artists: PropTypes.arrayOf(PropTypes.string),
+    createdBy: PropTypes.shape({
+      imgUrl: PropTypes.string.isRequired,
+      fullname: PropTypes.string,
+    }),
+    songs: PropTypes.arrayOf(
+      PropTypes.shape({
+        yt_id: PropTypes.string,
+      })
+    ),
+  }).isRequired,
 }

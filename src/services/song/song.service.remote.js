@@ -20,8 +20,8 @@ async function remove(songId) {
 }
 async function save(song) {
   var savedSong
-  if (song._id) {
-    savedSong = await httpService.put(`song/${song._id}`, song)
+  if (song.yt_id) {
+    savedSong = await httpService.put(`song/${song.yt_id}`, song)
   } else {
     savedSong = await httpService.post('song', song)
   }

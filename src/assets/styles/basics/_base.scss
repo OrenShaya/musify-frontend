@@ -6,6 +6,19 @@
   padding: 0;
 }
 
+html,
+body {
+  overflow: hidden; // Prevents scrolling on the entire page
+  ::-webkit-scrollbar {
+    color: #5a5a5a;
+    width: 0.5em;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #5a5a5a;
+    border-radius: 1em;
+  }
+}
+
 html {
   line-height: 1.6;
 }
@@ -24,7 +37,7 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0 0 0;
+  margin: 0;
 }
 
 @media (prefers-reduced-motion: no-preference) {

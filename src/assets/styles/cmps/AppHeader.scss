@@ -5,7 +5,7 @@
 .app-header {
   display: flex;
   min-height: em(48px);
-  padding: 8px 0.35em 0 1.5em;
+  padding: 0 0.35em 0 1.5em;
   margin-block-end: 8px;
   justify-content: center;
   align-items: center;
@@ -246,6 +246,8 @@
     align-items: center;
     margin-inline-start: auto;
     color: $clr1;
+    position: relative;
+    cursor: pointer;
 
     button {
       color: white;
@@ -303,6 +305,38 @@
     input.search-bar {
       width: 410px;
       flex-shrink: 2;
+    }
+  }
+
+  .user-menu {
+    position: absolute;
+    right: 4em;
+    top: 54px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.5em;
+    background-color: #282828;
+    box-shadow: 0 16px 24px rgba(0, 0, 0, 0.3), 0 6px 8px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+
+    button {
+      background-color: inherit;
+      font-size: 0.9em;
+      border-radius: 1em;
+      padding: 1em;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #3e3e3e;
+    }
+
+    .hidden {
+      display: none;
     }
   }
 

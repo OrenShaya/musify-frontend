@@ -25,7 +25,6 @@ export function SideBar() {
         return toggleHiddenClass()
       }
       if (ev.target.classList.contains('e-9541-icon')) {
-        console.log('svg btn clicked')
         return toggleHiddenClass()
       }
       if (!PLAYLIST_CONTAINER.current.classList.contains('hidden'))
@@ -43,7 +42,6 @@ export function SideBar() {
 
   function toggleHiddenClass() {
     PLAYLIST_CONTAINER.current.classList.toggle('hidden')
-    // console.log('new station clicked')
   }
 
   function newPlaylistBtn() {
@@ -64,11 +62,10 @@ export function SideBar() {
       setStations((prevStations) => [savedStation, ...prevStations])
       navigate(`/station/${savedStation._id}`)
     })
-    console.log('new playlist btn clicked')
   }
 
   return (
-    <div className='side-bar'>
+    <aside className='side-bar'>
       <div className='side-bar-header-container'>
         <div className='side-bar-header-container-left'>
           <svg
@@ -171,6 +168,6 @@ export function SideBar() {
             ))}
         </div>
       </div>
-    </div>
+    </aside>
   )
 }

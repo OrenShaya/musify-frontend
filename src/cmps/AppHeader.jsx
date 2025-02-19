@@ -10,19 +10,24 @@ import homeFilledUrl from '../assets/img/home-filled.svg'
 import browseUrl from '../assets/img/browse.svg'
 import browseFilledUrl from '../assets/img/browse-filled.svg'
 import resetUrl from '../assets/img/x.svg'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 
 export function AppHeader() {
   const user = useSelector((storeState) => storeState.userModule.user)
   const navigate = useNavigate()
   const location = useLocation()
   const searchbarRef = useRef(null)
+  const [showUserMenu, setShowUserMenu] = useState(false)
+
+  function onUserClick(ev) {
+    setShowUserMenu(!showUserMenu)
+  }
 
   async function onLogout() {
+    setShowUserMenu(false)
     try {
       await logout()
       navigate('/')
-      showSuccessMsg(`Bye now`)
     } catch (err) {
       showErrorMsg('Cannot logout')
     }
@@ -117,15 +122,18 @@ export function AppHeader() {
             </button>
           )}
 
-          {user?.isAdmin && <NavLink to='/admin'>Admin</NavLink>}
-
+          {/* {user?.isAdmin && <NavLink to='/admin'>Admin</NavLink>} */}
           {user && (
-            <div className='user-info'>
-              <Link to={`user/${user._id}`}>
-                {/* {user.imgUrl && <img src={user.imgUrl} />} */}
-                {user.fullname}
-              </Link>
-              <button onClick={onLogout}>logout</button>
+            <div className='user-container-div'>
+              {showUserMenu && <div className='user-menu'>
+                <button onClick={onLogout}>Logout</button>
+              </div>}
+              <div className='user-info btn-header-profile'>
+                {user.imgUrl && <img src={user.imgUrl} onClick={onUserClick}/>}
+                {/* <Link to={`user/${user._id}`}>
+                  {user.fullname}
+                  </Link> */}
+              </div>
             </div>
           )}
         </div>

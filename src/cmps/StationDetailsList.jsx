@@ -1,15 +1,20 @@
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
 import { formatDate, formatTimeFromSeconds } from '../services/util.service.js'
-import { setCurrentlyPlaying } from '../store/actions/player.actions.js'
+import {
+  setCurrentlyPlaying,
+  setIsPlaying,
+} from '../store/actions/player.actions.js'
 import { useSelector } from 'react-redux'
-import { updateStation } from '../store/actions/station.actions.js'
+import { setStation, updateStation } from '../store/actions/station.actions.js'
 import greenTickUrl from '../assets/icons/green-tick.svg'
 import addLikedSongUrl from '../assets/img/add-liked-song.svg'
 import { toggleLikeSong } from '../store/actions/user.actions.js'
 
 export function StationDetailsList({ station }) {
+  const selectedStationId = useSelector((s) => s.stationModule.station?._id)
+  const isPlaying = useSelector((s) => s.playerModule.isPlaying)
   const likedSongs = useSelector((s) => s.userModule.user?.likedSongIds)
-  const songs = useSelector((s) => s.stationModule.station?.songs)
+  const songs = station?.songs
 
   // Function to handle the drop result
   const handleOnDragEnd = (result) => {
@@ -28,6 +33,13 @@ export function StationDetailsList({ station }) {
 
   const isLikedSong = (songId) => {
     return likedSongs?.includes(songId)
+  }
+
+  const isSelectedStation = () => selectedStationId === station?._id
+
+  const onTogglePlay = (ytSongId) => {
+    setStation(station)
+    setCurrentlyPlaying(station, ytSongId)
   }
 
   return (
@@ -63,7 +75,11 @@ export function StationDetailsList({ station }) {
             >
               {station?.songs?.length > 0 &&
                 station?.songs.map((song, idx) => (
-                  <Draggable key={song._id} draggableId={song._id} index={idx}>
+                  <Draggable
+                    key={song.yt_id}
+                    draggableId={song.yt_id}
+                    index={idx}
+                  >
                     {(provided) => (
                       <div
                         ref={provided.innerRef}
@@ -74,7 +90,7 @@ export function StationDetailsList({ station }) {
                           <div className='song-index'>{idx + 1}</div>
                           <div
                             className='hover-song-play'
-                            onClick={() => setCurrentlyPlaying(song._id)}
+                            onClick={() => onTogglePlay(song.yt_id)}
                             style={{ cursor: 'pointer' }}
                           >
                             <svg
@@ -107,7 +123,7 @@ export function StationDetailsList({ station }) {
                             {formatDate(song.addedAt || song.updatedAt)}
                             <LikeBtn
                               song={song}
-                              isLiked={isLikedSong(song._id)}
+                              isLiked={isLikedSong(song.yt_id)}
                               onLikeSong={onLikeSong}
                             />
                           </div>
@@ -141,7 +157,7 @@ function LikeBtn({ song, isLiked, onLikeSong }) {
   return (
     <button
       className='clean-btn'
-      onClick={() => onLikeSong(song._id, !isLiked)}
+      onClick={() => onLikeSong(song.yt_id, !isLiked)}
     >
       <img className={getClasses()} src={imgUrl} />
     </button>
