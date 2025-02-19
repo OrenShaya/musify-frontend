@@ -236,7 +236,6 @@ export function EditStationModal({ station, setIsModalShow }) {
                 error ? 'station-name-input error-border' : 'station-name-input'
               }
               required
-              pattern='^[a-zA-Z0-9 _-]{3,30}$'
             />
           </fieldset>
 
