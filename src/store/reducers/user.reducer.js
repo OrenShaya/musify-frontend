@@ -6,7 +6,6 @@ export const REMOVE_USER = 'REMOVE_USER'
 export const SET_USERS = 'SET_USERS'
 
 const initialState = {
-  count: 10,
   user: userService.getLoggedinUser() || null,
   users: [],
   watchedUser: null,
