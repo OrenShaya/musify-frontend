@@ -66,8 +66,8 @@ async function update(updateInfo) {
 async function login(userCred) {
   const users = await storageService.query(STORAGE_KEY_USERS)
   const user = users.find(
-    (user) => user.username === userCred.username
-    // && user.password === userCred.password
+    (user) =>
+      user.username === userCred.username && user.password === userCred.password
   )
 
   if (!user) {
