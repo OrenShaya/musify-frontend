@@ -1,9 +1,10 @@
 import { useRef } from 'react'
 
 import { Formik, Form, Field, ErrorMessage } from 'formik'
-
+import { useNavigate } from 'react-router'
 import errorUrl from '../assets/img/error.svg'
 import showPasswordUrl from '../assets/img/show-password.svg'
+import { login } from '../store/actions/user.actions'
 
 const TextField = (props) => {
   return <input {...props} ref={props.myref} type='text' spellCheck='false' />
@@ -15,6 +16,7 @@ const PasswordField = (props) => {
 
 export function LoginForm() {
   const emailFieldRef = useRef()
+  const navigate = useNavigate()
 
   return (
     <div>
@@ -24,7 +26,7 @@ export function LoginForm() {
           const errors = {}
           if (!values.email) {
             errors.email =
-              'Please enter your Spotify username or email address.'
+              'Please enter your Musify username or email address.'
             emailFieldRef.current.classList.add('error')
           } else {
             emailFieldRef.current.classList.remove('error')
@@ -33,8 +35,12 @@ export function LoginForm() {
         }}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
-            alert(JSON.stringify(values, null, 2))
             setSubmitting(false)
+            // in case its a username
+            // which is very likely with us
+            values.username = values.email         
+            login(values)
+            navigate('/')
           }, 400)
         }}
       >
