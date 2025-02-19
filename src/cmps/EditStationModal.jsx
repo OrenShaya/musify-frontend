@@ -178,11 +178,7 @@ export function EditStationModal({ station, setIsModalShow }) {
                   crossOrigin='anonymous'
                   ref={imgRef}
                   src={imgUrlHandler}
-                  className={`station-img ${
-                    imgUrlHandler === stationDefaultUrl
-                      ? 'default-station-img'
-                      : ''
-                  }`}
+                  className='station-img-edit'
                   alt='playlist img'
                 />
                 {/* Options image in header */}
