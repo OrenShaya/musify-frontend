@@ -7,6 +7,8 @@ import { useNavigate } from 'react-router-dom'
 
 export function StationList({ stations, stationHeader, onMount }) {
   const scrollRef = useRef()
+  const containerRef = useRef()
+
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -20,9 +22,17 @@ export function StationList({ stations, stationHeader, onMount }) {
   return (
     <div style={{ position: 'relative' }}>
       <h2>{stationHeader}</h2>
-      <div style={{ position: 'relative' }}>
-        <ScrollBtn isRight={true} scrollRef={scrollRef} />
-        <ScrollBtn scrollRef={scrollRef} />
+      <div
+        ref={containerRef}
+        className='station-list-container'
+        style={{ position: 'relative' }}
+      >
+        <ScrollBtn
+          isRight={true}
+          scrollRef={scrollRef}
+          containerRef={containerRef}
+        />
+        <ScrollBtn scrollRef={scrollRef} containerRef={containerRef} />
         <ul ref={scrollRef} className='station-list'>
           {stations.map((station) => (
             <li
