@@ -5,7 +5,6 @@ import {
   SET_IS_PLAYING,
   CLEAR_CURRENTLY_PLAYING,
 } from '../reducers/player.reducer'
-import { songService } from '../../services/song'
 import { loadSongsQueue } from './station.actions'
 
 export async function toggleIsPlaying() {
@@ -16,8 +15,8 @@ export async function setIsPlaying(itNeedsToPlay = false) {
   store.dispatch({ type: SET_IS_PLAYING, isPlaying: itNeedsToPlay })
 }
 
-export async function setCurrentlyPlaying(songId) {
-  const song = await songService.getById(songId)
+export async function setCurrentlyPlaying(station, songId) {
+  const song = station.songs.find((s) => s.yt_id === songId)
   store.dispatch({ type: SET_CURRENTLY_PLAYING, currentlyPlaying: song })
 }
 
