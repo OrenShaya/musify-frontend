@@ -10,7 +10,11 @@ import { useEffect } from 'react'
 import { useRef } from 'react'
 import { useSelector } from 'react-redux'
 
-export function StationDetailsHeader({ station, setIsModalShow }) {
+export function StationDetailsHeader({
+  station,
+  setIsModalShow,
+  setGradientColor,
+}) {
   const createdBy = station?.createdBy
   const heroImgRef = useRef()
   const [headerColor, setHeaderColor] = useState([0, 0, 0])
@@ -24,9 +28,10 @@ export function StationDetailsHeader({ station, setIsModalShow }) {
     const handleImageLoad = async () => {
       if (img && img.complete && !img.src.includes('station-default-img')) {
         const [r, g, b] = await colorThief.getColor(img)
-        setHeaderColor(
+        setGradientColor(
           `linear-gradient(0deg, rgb(0, 0, 0) 10%, rgb(${r}, ${g}, ${b}) 100%)`
         )
+        setHeaderColor(`transparent`)
       }
     }
 

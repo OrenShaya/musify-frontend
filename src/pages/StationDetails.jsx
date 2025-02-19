@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -17,7 +17,7 @@ export function StationDetails() {
   const { stationId } = useParams()
   const station = useSelector((storeState) => storeState.stationModule.station)
   const user = useSelector((storeState) => storeState.userModule.user)
-
+  const [gradientColor, setGradientColor] = useState([0, 0, 0])
   const [isModalShow, setIsModalShow] = useToggle(false)
 
   useEffect(() => {
@@ -29,8 +29,12 @@ export function StationDetails() {
   }, [stationId])
 
   return (
-    <section className='station-details'>
-      <StationDetailsHeader station={station} setIsModalShow={setIsModalShow} />
+    <section className='station-details' style={{ background: gradientColor }}>
+      <StationDetailsHeader
+        station={station}
+        setIsModalShow={setIsModalShow}
+        setGradientColor={setGradientColor}
+      />
       <StationDetailsActionBtns station={station} />
       <StationDetailsList station={station} />
       {user && user?._id === station?.createdBy?._id && (
