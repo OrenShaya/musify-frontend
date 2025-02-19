@@ -6,12 +6,12 @@ import { useHover } from '../customHooks/useHover'
 import PropTypes from 'prop-types'
 
 const scrollBtnsWidth = 27 * 2
+const PADDING = 8
 
-export function ScrollBtn({ scrollRef, isRight = false }) {
+export function ScrollBtn({ scrollRef, containerRef, isRight = false }) {
   // TODO: pass left button to right (and vise verse) to add display condition
   const btnRef = useRef()
-  const isHovered = useHover(scrollRef)
-  const isBtnHovered = useHover(btnRef)
+  const isHovered = useHover(containerRef)
   const [isDisplayed, setIsDisplayed] = useState(false)
 
   useEffect(() => {
@@ -59,14 +59,13 @@ export function ScrollBtn({ scrollRef, isRight = false }) {
         : false
 
     // Is scroll to the end?
-    const PADDING = 8
     let isHidden = elScroll.scrollLeft <= PADDING
     if (isRight) {
       isHidden =
         elScroll.clientWidth + elScroll.scrollLeft >= elScroll.scrollWidth - 5
     }
 
-    if (isHidden || (!isHovered && !isBtnHovered)) {
+    if (isHidden || !isHovered) {
       shouldDisplay = false
     }
 
@@ -84,5 +83,6 @@ export function ScrollBtn({ scrollRef, isRight = false }) {
 
 ScrollBtn.propTypes = {
   scrollRef: PropTypes.object,
+  containerRef: PropTypes.object,
   isRight: PropTypes.bool,
 }
