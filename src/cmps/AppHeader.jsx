@@ -114,30 +114,39 @@ export function AppHeader() {
         </div>
 
         <div className='profile-section'>
-          {!user && (
-            <button className='btn-header-profile'>
-              <NavLink to='login'>
-                <img className='header-profile-icon' src={profileUrl} alt='' />
-              </NavLink>
-            </button>
-          )}
-
-          {/* {user?.isAdmin && <NavLink to='/admin'>Admin</NavLink>} */}
-          {user && (
-            <div className='user-container-div'>
-              {showUserMenu && <div className='user-menu'>
-                <button onClick={onLogout}>Logout</button>
-              </div>}
-              <div className='user-info btn-header-profile'>
-                {user.imgUrl && <img src={user.imgUrl} onClick={onUserClick}/>}
-                {/* <Link to={`user/${user._id}`}>
-                  {user.fullname}
-                  </Link> */}
-              </div>
-            </div>
-          )}
+          <Profile
+            user={user}
+            showUserMenu={showUserMenu}
+            onLogout={onLogout}
+            onUserClick={onUserClick}
+          />
         </div>
       </nav>
     </header>
+  )
+}
+
+const Profile = ({ user, showUserMenu, onLogout, onUserClick }) => {
+  if (!user)
+    return (
+      <button className='btn-header-profile'>
+        <NavLink to='login'>
+          <img className='header-profile-icon' src={profileUrl} alt='' />
+        </NavLink>
+      </button>
+    )
+  return (
+    <>
+      <div className='user-container-div'>
+        {showUserMenu && (
+          <div className='user-menu'>
+            <button onClick={onLogout}>Logout</button>
+          </div>
+        )}
+        <div className='user-info btn-header-profile'>
+          {user.imgUrl && <img src={user.imgUrl} onClick={onUserClick} />}
+        </div>
+      </div>
+    </>
   )
 }
