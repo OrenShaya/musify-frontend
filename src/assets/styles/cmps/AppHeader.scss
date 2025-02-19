@@ -246,6 +246,7 @@
     align-items: center;
     margin-inline-start: auto;
     color: $clr1;
+    position: relative;
 
     button {
       color: white;
@@ -303,6 +304,40 @@
     input.search-bar {
       width: 410px;
       flex-shrink: 2;
+    }
+  }
+
+  .user-menu {
+    position: absolute;
+    right: 4em;
+    top: 54px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.2em;
+    background-color: #282828;
+    box-shadow: 0 16px 24px rgba(0, 0, 0, 0.3), 0 6px 8px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+
+    button {
+      background-color: inherit;
+      color: white;
+      font-size: 0.9em;
+      padding: 0.5em;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      // svg {
+      //   fill: white;
+      // }
+    }
+
+    button:hover {
+      background-color: #3e3e3e;
+    }
+
+    .hidden {
+      display: none;
     }
   }
 
