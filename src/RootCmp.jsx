@@ -35,12 +35,12 @@ export function RootCmp() {
     login({ username: 'guest', password: 'guest' })
   }, [])
 
-  useEffect(() => {
-    if (mainRef.current) {
-      const mainScrollHeight = mainRef.current.scrollHeight
-      mainRef.current.style.height = `${mainScrollHeight}px`
-    }
-  }, [mainRef.current?.scrollHeight])
+  // useEffect(() => {
+  //   if (mainRef.current) {
+  //     const mainScrollHeight = mainRef.current.scrollHeight
+  //     mainRef.current.style.height = `${mainScrollHeight}px`
+  //   }
+  // }, [mainRef.current?.scrollHeight])
 
   return (
     <div className='main-container main-layout'>
@@ -61,11 +61,8 @@ export function RootCmp() {
           <Route path='login' element={<Login />} />
         </Routes>
       </main>
-      <aside className='side-bar-container'>
-        <SideBar />
-      </aside>
+      <SideBar />
       <HiddenReactPlayer ref={playerRef} onEnded={handleSongEnded} />
-      <div className='app-footer'>Hello</div>
       <AppFooter playerRef={playerRef} />
     </div>
   )

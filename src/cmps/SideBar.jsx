@@ -68,7 +68,7 @@ export function SideBar() {
   }
 
   return (
-    <div className='side-bar'>
+    <aside className='side-bar'>
       <div className='side-bar-header-container'>
         <div className='side-bar-header-container-left'>
           <svg
@@ -171,6 +171,6 @@ export function SideBar() {
             ))}
         </div>
       </div>
-    </div>
+    </aside>
   )
 }
