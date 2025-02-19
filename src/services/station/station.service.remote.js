@@ -8,7 +8,7 @@ export const stationService = {
   addStationSong,
 }
 
-async function query(filterBy = { txt: '', price: 0 }) {
+async function query(filterBy = { name: '', tags: [] }) {
   return httpService.get(`station`, filterBy)
 }
 
