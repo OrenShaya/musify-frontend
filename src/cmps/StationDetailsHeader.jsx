@@ -135,15 +135,17 @@ export function StationDetailsHeader({ station, setIsModalShow }) {
             <span className='verified-icon'>
               <img className='verified-icon-img' src={blueTick} />
             </span>
-            <span className='station-total-length'>
-              •{' '}
-              {station?.songs &&
-                station?.songs.length +
-                  ' song' +
-                  (station?.songs.length > 1 ? 's' : '') +
-                  ','}{' '}
-              {songsInfo()}
-            </span>
+            {station?.songs?.length > 0 && (
+              <span className='station-total-length'>
+                •{' '}
+                {station?.songs &&
+                  station?.songs.length +
+                    ' song' +
+                    (station?.songs.length > 1 ? 's' : '') +
+                    ','}{' '}
+                {songsInfo()}
+              </span>
+            )}
           </h2>
           <div className='placeholder'> </div>
         </div>
