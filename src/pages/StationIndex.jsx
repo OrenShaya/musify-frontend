@@ -11,7 +11,17 @@ export function StationIndex() {
   const shadowContainerRef = useRef()
   const [width, height] = useClientSize(indexRef)
 
-  let allStations = Array(6).fill([...stations])
+  const getAllStations = () => {
+    const allStations = Array(5)
+
+    for (let i = 0; i < 5; i++) {
+      const from = i * 10
+      const to = (1 + i) * 10
+      allStations[i] = stations.slice(from, to)
+    }
+
+    return allStations
+  }
 
   useEffect(() => {
     document.title = 'Musify'
@@ -28,7 +38,6 @@ export function StationIndex() {
   const stationHeaders = [
     'Jump back in',
     'Your top mixes',
-    'Your shows',
     'Recommended for today',
     'New releases for you',
     'Albums featuring songs you like',
@@ -49,7 +58,7 @@ export function StationIndex() {
     <>
       <div className='station-index' ref={indexRef}>
         <ul>
-          {allStations.map((stations, i) => (
+          {getAllStations().map((stations, i) => (
             <li className='station-index-item' key={stationHeaders[i]}>
               <StationList
                 stations={stations}
