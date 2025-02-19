@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useEffect, useRef, useState } from 'react'
-import stationDefaultUrl from '../assets/icons/station-default-img-smaller.svg'
+import stationDefaultUrl from '../assets/icons/station-default-sidebar-img.svg'
 import dotDotDotIcon from '../assets/img/dotdotdot.svg'
 import trashIcon from '../assets/img/trash.svg'
 import uploadImageIcon from '../assets/img/upload-image.svg'
@@ -180,6 +180,11 @@ export function EditStationModal({ station, setIsModalShow }) {
                   src={imgUrlHandler}
                   className='station-img-edit'
                   alt='playlist img'
+                  style={{
+                    ...(imgUrlHandler === stationDefaultUrl && {
+                      padding: '60px',
+                    }),
+                  }}
                 />
                 {/* Options image in header */}
                 <div className='image-options' ref={showOptionsRef}>

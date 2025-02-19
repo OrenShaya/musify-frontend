@@ -4,7 +4,7 @@ import ColorThief from '../../node_modules/colorthief/dist/color-thief.mjs'
 
 import { formatTimeFromSeconds } from '../services/util.service.js'
 import blueTick from '../assets/icons/blue-tick.svg'
-import stationDefaultUrl from '../assets/icons/station-default-img.svg'
+import stationDefaultUrl from '../assets/icons/station-default-sidebar-img.svg'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { useRef } from 'react'
@@ -120,8 +120,13 @@ export function StationDetailsHeader({
           crossOrigin='anonymous'
           ref={heroImgRef}
           src={heroImgUrl}
-          className='station-img'
+          className={`station-img ${
+            heroImgUrl === stationDefaultUrl ? 'station-default-img' : ''
+          }`}
           alt='playlist img'
+          style={{
+            ...(heroImgUrl === stationDefaultUrl && { padding: '80px' }),
+          }}
         />
       </div>
 
