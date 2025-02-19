@@ -43,6 +43,9 @@ h2.artist-title {
   background-color: $station-img-default-background-color;
   fill: $station-img-default-fill-color;
 
+  img.station-img {
+    padding: em(80px);
+  }
   svg {
     height: 4em;
     width: 4em;
