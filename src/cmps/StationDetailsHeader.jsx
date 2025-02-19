@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import ColorThief from '../../node_modules/colorthief/dist/color-thief.mjs'
 
 import { formatTimeFromSeconds } from '../services/util.service.js'
@@ -6,12 +8,14 @@ import stationDefaultUrl from '../assets/icons/station-default-img.svg'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { useRef } from 'react'
+import { useSelector } from 'react-redux'
 
-export function StationDetailsHeader({ station }) {
+export function StationDetailsHeader({ station, setIsModalShow }) {
   const createdBy = station?.createdBy
   const heroImgRef = useRef()
   const [headerColor, setHeaderColor] = useState([0, 0, 0])
   const [style, setStyle] = useState({ zIndex: -1 })
+  const user = useSelector((storeState) => storeState.userModule.user)
 
   useEffect(() => {
     const img = heroImgRef.current
@@ -65,7 +69,12 @@ export function StationDetailsHeader({ station }) {
       : `${minutesString} ${secondsString}`
   }
 
-  const heroImgUrl = createdBy?.imgUrl ?? stationDefaultUrl
+  const heroImgUrl = station?.createdBy?.imgUrl ?? stationDefaultUrl
+
+  function openEditModal() {
+    if (user?._id !== createdBy?._id) return
+    setIsModalShow()
+  }
 
   return (
     <section
@@ -106,12 +115,15 @@ export function StationDetailsHeader({ station }) {
           src={heroImgUrl}
           className='station-img'
           alt='playlist img'
+          onClick={openEditModal}
         />
       </div>
 
       <div className='header-container'>
         <div className='station-type'>Playlist</div>
-        <div className='station-name'>{station?.name}</div>
+        <div className='station-name' onClick={openEditModal}>
+          {station?.name}
+        </div>
         <div className='user-verified'>
           <h2 className='artist-title'>
             {' '}
