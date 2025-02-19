@@ -1,7 +1,8 @@
 // .main-container .app-header {
 //   padding: 0;
 // }
-
+$whiteFilter: invert(100%) sepia(100%) saturate(46%) hue-rotate(89deg)
+  brightness(112%) contrast(112%);
 .app-header {
   display: flex;
   min-height: em(48px);
@@ -40,6 +41,11 @@
       display: grid;
       width: 37px;
       height: 37px;
+
+      .logo {
+        margin: auto;
+        filter: $whiteFilter;
+      }
     }
 
     .nav-links {
