@@ -33,10 +33,10 @@ export function StationDetails() {
       <StationDetailsHeader station={station} setIsModalShow={setIsModalShow} />
       <StationDetailsActionBtns station={station} />
       <StationDetailsList station={station} />
-      {user?._id === station?.createdBy?._id && (
+      {user && user?._id === station?.createdBy?._id && (
         <StationDetailsSearch station={station} />
       )}
-      {isModalShow && (
+      {user && isModalShow && (
         <EditStationModal station={station} setIsModalShow={setIsModalShow} />
       )}
     </section>
