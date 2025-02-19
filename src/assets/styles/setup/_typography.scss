@@ -5,7 +5,8 @@
 
 @font-face {
   font-family: Spotifymix-Bold;
-  src: url(../fonts/SpotifyMix-Bold.ttf);
+  src: url(../fonts/SpotifyMixUI-Bold.ttf);
+  // src: url(../fonts/SpotifyMix-Bold.ttf);
 }
 
 @font-face {
@@ -20,12 +21,14 @@
 
 @font-face {
   font-family: Spotifymix-Medium;
-  src: url(../fonts/SpotifyMix-Medium.ttf);
+  src: url(../fonts/SpotifyMixUITitleVariable.ttf);
+  // src: url(../fonts/SpotifyMix-Medium.ttf);
 }
 
 @font-face {
   font-family: Spotifymix-Regular;
-  src: url(../fonts/SpotifyMix-Regular.ttf);
+  src: url(../fonts/SpotifyMixUI-Regular.ttf);
+  // src: url(../fonts/SpotifyMix-Regular.ttf);
 }
 
 @font-face {
@@ -36,4 +39,14 @@
 @font-face {
   font-family: Spotifymix-Ultra;
   src: url(../fonts/SpotifyMix-Ultra.ttf);
+}
+
+@font-face {
+  font-family: CircularSp-Hebr-Bold;
+  src: url(../fonts/CircularSp-Hebr-Bold.ttf);
+}
+
+@font-face {
+  font-family: CircularSp-Hebr-Regular;
+  src: url(../fonts/CircularSp-Hebr-Book.ttf);
 }
