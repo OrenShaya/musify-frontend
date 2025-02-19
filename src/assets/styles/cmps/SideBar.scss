@@ -104,10 +104,8 @@
   top: 8em;
   display: flex;
   flex-direction: column;
-  // gap: 0.2em;
   border-radius: 0.2em;
   background-color: #282828;
-  // padding: 0.3em;
   box-shadow: 0 16px 24px rgba(0, 0, 0, 0.3), 0 6px 8px rgba(0, 0, 0, 0.2);
 
   button {
@@ -133,15 +131,4 @@
   .hidden {
     display: none;
   }
-  // img {
-  //   svg {
-  //     background-color: #282828;
-  //   }
-  // }
 }
-
-// .side-bar-container {
-//   position: relative;
-//   width: $sidebar-width;
-//   padding-bottom: 0;
-// }
