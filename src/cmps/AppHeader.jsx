@@ -126,7 +126,7 @@ export function AppHeader() {
           {user && (
             <div className='user-container-div'>
               {showUserMenu && <div className='user-menu'>
-                <button onClick={onLogout}>logout</button>
+                <button onClick={onLogout}>Logout</button>
               </div>}
               <div className='user-info btn-header-profile'>
                 {user.imgUrl && <img src={user.imgUrl} onClick={onUserClick}/>}
