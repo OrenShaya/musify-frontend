@@ -9,7 +9,7 @@ import { toggleLikeSong } from '../store/actions/user.actions.js'
 
 export function StationDetailsList({ station }) {
   const likedSongs = useSelector((s) => s.userModule.user?.likedSongIds)
-  const songs = useSelector((s) => s.stationModule.station?.songs)
+  const songs = station?.songs
 
   // Function to handle the drop result
   const handleOnDragEnd = (result) => {
