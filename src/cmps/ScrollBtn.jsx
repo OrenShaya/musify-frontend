@@ -54,7 +54,7 @@ export function ScrollBtn({ scrollRef, isRight = false }) {
 
     // More scroll items than fit on screen?
     let shouldDisplay =
-      elScroll.scrollWidth - scrollBtnsWidth > elScroll.clientWidth
+      elScroll?.scrollWidth - scrollBtnsWidth > elScroll?.clientWidth
         ? true
         : false
 

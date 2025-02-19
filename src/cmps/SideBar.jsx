@@ -62,7 +62,6 @@ export function SideBar() {
       setStations((prevStations) => [savedStation, ...prevStations])
       navigate(`/station/${savedStation._id}`)
     })
-    console.log('new playlist btn clicked')
   }
 
   return (
