@@ -1,12 +1,14 @@
 .side-bar {
-  // height: 100%;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  height: 100%;
+  overflow: hidden;
   width: $sidebar-width;
   border-radius: 0.5em;
   background-color: $gray6;
   margin-inline: 0.2em;
   padding-top: 1.5em;
   padding-inline: 0.9em;
-  // position: sticky;
 
   .library-icon {
     cursor: pointer;
@@ -93,7 +95,6 @@
   }
   .side-bar-station-container {
     overflow-y: scroll;
-    height: 100vh;
   }
 }
 
