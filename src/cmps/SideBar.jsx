@@ -25,7 +25,6 @@ export function SideBar() {
         return toggleHiddenClass()
       }
       if (ev.target.classList.contains('e-9541-icon')) {
-        console.log('svg btn clicked')
         return toggleHiddenClass()
       }
       if (!PLAYLIST_CONTAINER.current.classList.contains('hidden'))
@@ -43,7 +42,6 @@ export function SideBar() {
 
   function toggleHiddenClass() {
     PLAYLIST_CONTAINER.current.classList.toggle('hidden')
-    // console.log('new station clicked')
   }
 
   function newPlaylistBtn() {
