@@ -30,7 +30,7 @@ export function StationDetails() {
 
   return (
     <section className='station-details'>
-      <StationDetailsHeader station={station} />
+      <StationDetailsHeader station={station} setIsModalShow={setIsModalShow} />
       <StationDetailsActionBtns station={station} />
       <StationDetailsList station={station} />
       {user?._id === station?.createdBy?._id && (
