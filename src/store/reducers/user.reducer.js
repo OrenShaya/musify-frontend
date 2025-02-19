@@ -1,6 +1,7 @@
 import { userService } from '../../services/user'
 
 export const SET_USER = 'SET_USER'
+export const SET_STATION_GROUPS = 'SET_STATION_GROUPS'
 export const SET_WATCHED_USER = 'SET_WATCHED_USER'
 export const REMOVE_USER = 'REMOVE_USER'
 export const SET_USERS = 'SET_USERS'
@@ -9,6 +10,7 @@ const initialState = {
   user: userService.getLoggedinUser() || null,
   users: [],
   watchedUser: null,
+  stationGroups: [],
 }
 
 export function userReducer(state = initialState, action) {
@@ -31,6 +33,10 @@ export function userReducer(state = initialState, action) {
 
     case SET_USERS:
       newState = { ...state, users: action.users }
+      break
+
+    case SET_STATION_GROUPS:
+      newState = { ...state, stationGroups: action.stationGroups }
       break
 
     default:

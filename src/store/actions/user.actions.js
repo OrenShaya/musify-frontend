@@ -5,6 +5,7 @@ import { showErrorMsg } from '../../services/event-bus.service'
 import { LOADING_DONE, LOADING_START } from '../reducers/system.reducer'
 import {
   REMOVE_USER,
+  SET_STATION_GROUPS,
   SET_USER,
   SET_USERS,
   SET_WATCHED_USER,
@@ -37,6 +38,11 @@ export async function login(credentials) {
     store.dispatch({
       type: SET_USER,
       user,
+    })
+    debugger
+    store.dispatch({
+      type: SET_STATION_GROUPS,
+      stationGroups: user.stationGroups,
     })
     return user
   } catch (err) {
