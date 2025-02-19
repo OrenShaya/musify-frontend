@@ -11,7 +11,7 @@ const TextField = (props) => {
 }
 
 const PasswordField = (props) => {
-  return <input {...props} ref={props.myref} type='text' />
+  return <input {...props} ref={props.myref} type='password' />
 }
 
 export function LoginForm() {
@@ -33,15 +33,20 @@ export function LoginForm() {
           }
           return errors
         }}
-        onSubmit={(values, { setSubmitting }) => {
+        onSubmit={(values, { setSubmitting, setErrors }) => {
           setTimeout(() => {
             setSubmitting(false)
             // in case its a username
             // which is very likely with us
             values.username = values.email         
             login(values)
-            navigate('/')
-          }, 400)
+              .then((user) => {
+                navigate('/')
+              })
+              .catch((err) => {
+                setErrors({ email: 'Invalid username or password', password: 'Invalid username or password' })
+              })
+          }, 300)
         }}
       >
         {({ isSubmitting }) => (
