@@ -76,8 +76,8 @@ export function StationDetailsList({ station }) {
               {station?.songs?.length > 0 &&
                 station?.songs.map((song, idx) => (
                   <Draggable
-                    key={song.yt_id}
-                    draggableId={song.yt_id}
+                    key={song?.yt_id}
+                    draggableId={song?.yt_id}
                     index={idx}
                   >
                     {(provided) => (
@@ -90,7 +90,7 @@ export function StationDetailsList({ station }) {
                           <div className='song-index'>{idx + 1}</div>
                           <div
                             className='hover-song-play'
-                            onClick={() => onTogglePlay(song.yt_id)}
+                            onClick={() => onTogglePlay(song?.yt_id)}
                             style={{ cursor: 'pointer' }}
                           >
                             <svg
