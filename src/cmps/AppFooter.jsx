@@ -70,6 +70,11 @@ export function AppFooter({ playerRef }) {
       setCurrentTime(0)
       setIsPlaying(true)
       if (sliderRef.current) {
+        // currentlyPlaying is the song object playing
+        // playerRef.current.getDuration() is null
+        // the slider thumb is moving, maybe I can work with that
+        console.log('playerRef.current', playerRef.current)
+
         playerRef.current.slideTo(0)
         handleRangeInput(sliderRef.current)
       }
@@ -212,6 +217,7 @@ export function AppFooter({ playerRef }) {
           <div className='elapsed-time'>
             <span>{formatTime(currentTime)}</span>
           </div>
+          {/* song progress bar */}
           <input
             ref={sliderRef}
             style={{ background: '#4d4d4d' }}
