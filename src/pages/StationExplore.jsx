@@ -316,7 +316,6 @@ export function StationExplore() {
 
   useEffect(() => {
     if (!filteredTerm) return
-    console.log('useEffect filteredTerm', filteredTerm)
     ;(async () => {
       await getFilteredStations()
     })()
@@ -328,10 +327,7 @@ export function StationExplore() {
         name: '',
         tags: [`${filteredTerm}`],
       }
-      console.log('getFilteredStations query', query)
       const stations = await stationService.query(query)
-      console.log('stations = await loadStations(query)', stations)
-      console.log('filteredStations', filteredStations)
 
       setFilteredStations(stations)
     } catch (err) {

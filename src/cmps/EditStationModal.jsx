@@ -75,7 +75,6 @@ export function EditStationModal({ station, setIsModalShow }) {
   const onFileChange = (ev) => {
     /*Selected files data can be collected here.*/
     uploadImg(ev)
-    console.log(ev.target.files)
   }
 
   function onImageOptionsShow(ev) {
