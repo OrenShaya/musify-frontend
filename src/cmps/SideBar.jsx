@@ -54,15 +54,6 @@ export function SideBar() {
 
   const handleSearch = useDebounce((ev) => {
     const searchTerm = ev.target.value.toLowerCase()
-    console.log(searchTerm)
-    console.log(stations)
-    // const filteredStations = stations.filter((station) =>
-    // console.log(station.name, searchTerm)
-
-    // station.name.toLowerCase().includes(searchTerm)
-    // )
-    // console.log(stations)
-    // console.log(filteredStations)
     setFilterTerm(searchTerm)
     console.log(filterTerm)
   }, 300)
