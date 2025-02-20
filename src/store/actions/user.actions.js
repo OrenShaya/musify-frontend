@@ -39,7 +39,6 @@ export async function login(credentials) {
       type: SET_USER,
       user,
     })
-    debugger
     store.dispatch({
       type: SET_STATION_GROUPS,
       stationGroups: user.stationGroups,
