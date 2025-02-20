@@ -173,7 +173,6 @@
             height: 16px;
             display: block;
             margin-inline-end: em(12px);
-            //background-color: rgba(0, 0, 0, 0.3);
             cursor: pointer;
           }
 
@@ -195,6 +194,9 @@
 
               cursor: pointer;
               padding: 4px 8px;
+              vector-effect: non-scaling-stroke;
+              fill: #656565;
+              text-align: start;
 
               @include flex();
 
@@ -207,6 +209,7 @@
 
               &:hover {
                 background-color: #3e3e3e;
+                border: 4px solid #282828;
               }
             }
           }
