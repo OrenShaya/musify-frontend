@@ -18,7 +18,7 @@ export function StationDetailsActionBtns({ station }) {
     if (!isSelectedStation()) {
       setStation(station)
       // TODO: continue playlist, instead of set to first song
-      setCurrentlyPlaying(station.songs[0]._id)
+      setCurrentlyPlaying(station.songs[0].yt_id)
 
       setIsPlaying(true)
     } else {
