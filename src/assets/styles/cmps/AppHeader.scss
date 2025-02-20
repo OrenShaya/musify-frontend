@@ -6,7 +6,7 @@ $whiteFilter: invert(100%) sepia(100%) saturate(46%) hue-rotate(89deg)
 .app-header {
   display: flex;
   min-height: em(48px);
-  padding: 0 0.35em 0 1.5em;
+  padding: 0 0 0 17px;
   //margin-block-end: 8px;
   justify-content: center;
   align-items: center;
@@ -34,7 +34,6 @@ $whiteFilter: invert(100%) sepia(100%) saturate(46%) hue-rotate(89deg)
 
     .profile-section {
       justify-self: end;
-      margin-inline-start: 2.5em;
     }
 
     .header-logo-link {
@@ -83,9 +82,10 @@ $whiteFilter: invert(100%) sepia(100%) saturate(46%) hue-rotate(89deg)
 
       .search-container {
         position: relative;
-        display: flex;
+        display: inline-flex;
         justify-content: center;
         align-items: center;
+        width: 474px;
 
         padding-inline: 0;
         background-color: $gray5;
@@ -114,12 +114,14 @@ $whiteFilter: invert(100%) sepia(100%) saturate(46%) hue-rotate(89deg)
         }
 
         .search-icon {
+          position: absolute;
+          left: 0;
+          place-content: center;
           display: grid;
           fill: #b3b3b3;
           background-color: transparent;
           transition: fill 0.5s ease;
           cursor: pointer;
-          padding: 10px 0 13px 18px;
           height: 48px;
           width: 48px;
           font-size: 1rem;
@@ -136,7 +138,7 @@ $whiteFilter: invert(100%) sepia(100%) saturate(46%) hue-rotate(89deg)
           max-height: 48px;
           font-size: 1rem;
           padding-block: 1em;
-          padding-inline-start: 10px;
+          padding-inline-start: 4em;
 
           cursor: text;
           color: white;
@@ -303,10 +305,6 @@ $whiteFilter: invert(100%) sepia(100%) saturate(46%) hue-rotate(89deg)
 
     nav {
       justify-content: flex-start;
-
-      .profile-section {
-        margin-inline-start: auto;
-      }
     }
     input.search-bar {
       width: 410px;
