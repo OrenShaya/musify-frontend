@@ -37,7 +37,7 @@ export function SideBar() {
     return () => {
       elAddStation.removeEventListener('click', handleClick)
     }
-  }, [filterTerm, stations])
+  }, [filterTerm])
 
   function toggleHiddenClass() {
     PLAYLIST_CONTAINER.current.classList.toggle('hidden')
