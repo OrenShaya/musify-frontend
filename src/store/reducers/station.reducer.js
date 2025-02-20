@@ -47,7 +47,7 @@ export function stationReducer(state = initialState, action) {
       break
 
     case ADD_STATION:
-      newState = { ...state, stations: [...state.stations, action.station] }
+      newState = { ...state, stations: [action.station, ...state.stations] }
       break
 
     case ADD_LIKED_SONG:

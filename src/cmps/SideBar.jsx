@@ -1,19 +1,18 @@
-import { useState, useEffect, useRef } from 'react'
-import { stationService } from '../services/station/station.service.local'
+import { useEffect, useRef } from 'react'
 import { addStation } from '../store/actions/station.actions'
 import { SideBarStationPreview } from './SideBarStationPreview'
 import stationDefaultUrl from '../assets/icons/station-default-sidebar-img.svg'
 import { useNavigate } from 'react-router'
+import { useSelector } from 'react-redux'
 
 export function SideBar() {
   const addStationRef = useRef()
   const navigate = useNavigate()
-  const [stations, setStations] = useState([])
+  const stations = useSelector((s) => s.stationModule.stations)
   const PLAYLIST_CONTAINER = useRef(null)
 
   useEffect(() => {
     // TODO: click outside closes modal
-    stationService.query().then(setStations)
 
     PLAYLIST_CONTAINER.current = document.querySelector(
       '.side-bar-new-playlist-container'
@@ -54,7 +53,6 @@ export function SideBar() {
       msgs: [],
     }
     addStation(newStation).then((savedStation) => {
-      setStations((prevStations) => [savedStation, ...prevStations])
       navigate(`/station/${savedStation._id}`)
     })
   }
@@ -98,11 +96,7 @@ export function SideBar() {
         </span>
 
         <ul className='side-bar-new-playlist-container hidden'>
-          <button
-            onClick={() => {
-              newPlaylistBtn()
-            }}
-          >
+          <button onClick={newPlaylistBtn}>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               data-encore-id='icon'
