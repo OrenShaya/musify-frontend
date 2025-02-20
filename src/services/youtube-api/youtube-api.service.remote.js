@@ -62,8 +62,8 @@ export function getSongInfoBrowse(video) {
 
   return {
     yt_id: songId,
-    songTitle,
-    songUrl,
+    title: songTitle,
+    url: songUrl,
     imgUrl,
     artistTitle,
     artistId,
@@ -75,7 +75,7 @@ export function getSongInfoBrowse(video) {
 
 export async function getSong(songID) {
   if (!songID) {
-    console.log('getSong: no songID')
+    console.warn('getSong: no songID')
     return null
   }
   if (gSongs[songID]) {
@@ -114,8 +114,8 @@ function _getSongInfo(video) {
 
   return {
     yt_id: songId,
-    songTitle,
-    songUrl,
+    title: songTitle,
+    url: songUrl,
     imgUrl,
     artistTitle,
     artistId,
@@ -269,8 +269,8 @@ async function _getSongInfoFromPlaylist(videos) {
 
       const song = {
         yt_id: songId,
-        songTitle,
-        songUrl,
+        title: songTitle,
+        url: songUrl,
         imgUrl,
         artistTitle,
         artistId,
