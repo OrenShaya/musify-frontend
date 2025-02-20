@@ -6,6 +6,7 @@ export const useClientSize = (myref) => {
 
   useEffect(() => {
     const observer = new ResizeObserver(() => {
+      if (!myref.current) return
       setWidth(myref.current.clientWidth)
       setHeight(myref.current.clientHeight)
     })
