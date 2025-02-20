@@ -76,8 +76,8 @@ const Profile = ({ user, showUserMenu, onLogout, onUserClick }) => {
             <button onClick={onLogout}>Logout</button>
           </div>
         )}
-        <div className='user-info btn-header-profile'>
-          {user.imgUrl && <img src={user.imgUrl} onClick={onUserClick} />}
+        <div onClick={onUserClick} className='user-info btn-header-profile' >
+          {user.imgUrl && <img src={user.imgUrl} />}
         </div>
       </div>
     </>
