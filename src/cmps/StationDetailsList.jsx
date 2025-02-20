@@ -67,7 +67,8 @@ export function StationDetailsList({ station }) {
       <DragDropContext onDragEnd={handleOnDragEnd}>
         <Droppable droppableId='droppable'>
           {(provided) => (
-            <div key={station?._id}
+            <div
+              key={station?._id}
               className='station-details-table'
               {...provided.droppableProps}
               ref={provided.innerRef}
@@ -111,7 +112,7 @@ export function StationDetailsList({ station }) {
                             <div className='song-title-artist'>
                               <div className='song-title'>{song.title}</div>
                               <div className='artist'>
-                                {song.addedBy.fullname}
+                                {song?.addedBy?.fullname}
                               </div>
                             </div>
                           </div>
@@ -119,10 +120,10 @@ export function StationDetailsList({ station }) {
                             {/* {song.album} needed here */ 'Album Name'}
                           </div>
                           <div className='date-added'>
-                            {formatDate(song.addedAt || song.updatedAt)}
+                            {formatDate(song?.addedAt || song?.updatedAt)}
                             <LikeBtn
                               song={song}
-                              isLiked={isLikedSong(song.yt_id)}
+                              isLiked={isLikedSong(song?.yt_id)}
                               onLikeSong={onLikeSong}
                             />
                           </div>
@@ -156,7 +157,7 @@ function LikeBtn({ song, isLiked, onLikeSong }) {
   return (
     <button
       className='clean-btn'
-      onClick={() => onLikeSong(song.yt_id, !isLiked)}
+      onClick={() => onLikeSong(song?.yt_id, !isLiked)}
     >
       <img className={getClasses()} src={imgUrl} />
     </button>
