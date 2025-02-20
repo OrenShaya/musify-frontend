@@ -1,5 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable react/prop-types */
 import { useSelector } from 'react-redux'
 import { useState, useEffect, useRef } from 'react'
 import emblem2 from '../assets/demo-songs/emblem2.png'
@@ -22,13 +20,11 @@ export function AppFooter({ playerRef }) {
   const currentStation = useSelector((s) => s.stationModule.station)
   const [currentTime, setCurrentTime] = useState(0)
   const [volume, setVolume] = useState(1)
-  const sliderRef = useRef(null)
+  const songProgressRef = useRef(null)
   const volumeSliderRef = useRef(null)
 
   const [isMute, setIsMute] = useState(false)
   const [lastVolume, setLastVolume] = useState(volume)
-
-  let songInputColor = 'white'
 
   const togglePlay = () => {
     if (!playerRef.current) return
@@ -44,6 +40,7 @@ export function AppFooter({ playerRef }) {
 
   useEffect(() => {
     if (currentStation) setCurrentlyPlaying(currentStation, 'FGBhQbmPwH8')
+    songProgressRef.current.style.setProperty('--song-time', 0)
   }, [])
 
   useEffect(() => {
@@ -69,9 +66,8 @@ export function AppFooter({ playerRef }) {
       )
       setCurrentTime(0)
       setIsPlaying(true)
-      if (sliderRef.current) {
+      if (songProgressRef.current) {
         playerRef.current.slideTo(0)
-        handleRangeInput(sliderRef.current)
       }
     }
   }, [currentlyPlaying])
@@ -94,22 +90,23 @@ export function AppFooter({ playerRef }) {
     }
   }, [volume])
 
+  useEffect(() => {
+    const slider = songProgressRef.current
+    if (slider) {
+      let timeInPrecetage = currentTime / playerRef.current.getDuration() * 100
+      if (isNaN(timeInPrecetage)) timeInPrecetage = 0
+      slider.style.setProperty('--song-time', `${timeInPrecetage}%`)
+    }
+  }, [currentTime])
+
   const formatTime = (time) => formatTimeFromSeconds(time)
-
-  const handleRangeInput = (input) => {
-    const VALUE = ((input.value - input.min) / (input.max - input.min)) * 100
-
-    input.style.background = `linear-gradient(90deg, ${songInputColor} ${
-      VALUE ? VALUE : 0
-    }%, #4d4d4d ${VALUE ? VALUE : 0}%)`
-  }
 
   const handleSlider = (e) => {
     e.stopPropagation()
     if (playerRef.current) {
       playerRef.current.slideTo(e.target.value)
-
-      handleRangeInput(e.target)
+      const timeInPercentage = (e.target.value / playerRef.current.getDuration()) * 100
+      songProgressRef.current.style.setProperty('--song-time', `${timeInPercentage}%`)
     }
   }
 
@@ -207,14 +204,13 @@ export function AppFooter({ playerRef }) {
             <span>{formatTime(currentTime)}</span>
           </div>
           <input
-            ref={sliderRef}
-            style={{ background: '#4d4d4d' }}
-            onMouseEnter={() => (songInputColor = '#1db552')}
-            onMouseLeave={() => (songInputColor = 'white')}
-            type='range'
-            value={currentTime ?? 0}
-            onChange={handleSlider}
-            max={playerRef.current ? playerRef.current.getDuration() ?? 0 : 0}
+          ref={songProgressRef}
+          className='song-progress-bar'
+          type='range'
+          value={currentTime || 0}
+          onInput={(e) => handleSlider(e)}
+          min={0}
+          max={playerRef?.current?.getDuration() || 0}
           />
           <span className='song-duration'>
             {formatTime(
