@@ -95,7 +95,8 @@ export function AppFooter({ playerRef }) {
   useEffect(() => {
     const slider = songProgressRef.current
     if (slider) {
-      slider.style.setProperty('--song-time', currentTime)
+      const timeInPrecetage = currentTime / playerRef.current.getDuration() * 100
+      slider.style.setProperty('--song-time', `${timeInPrecetage}%`)
     }
   }, [currentTime])
 
