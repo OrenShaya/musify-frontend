@@ -190,10 +190,7 @@ export function AppFooter({ playerRef }) {
             isPlaying={isPlaying}
             className='footer-play-btn'
           />
-          <button
-            className='next-song-btn'
-            onClick={(e) => onMoveToNextSong(e)}
-          >
+          <button className='next-song-btn' onClick={onMoveToNextSong}>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               data-encore-id='icon'
