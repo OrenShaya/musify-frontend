@@ -4,4 +4,32 @@
 
   padding-inline: 24px;
   padding-block-start: em(67px);
+
+  h2 {
+    margin-block-end: 1em;
+
+    span {
+      text-transform: capitalize;
+    }
+  }
+
+  .station-list-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(em(160px), 1fr));
+    grid-auto-rows: dense;
+    justify-items: center;
+    gap: 1em;
+
+    text-align: center;
+    margin-block-end: 1em;
+
+    .station-preview {
+      background-color: #181818;
+      border-radius: 0.5em;
+
+      &:hover {
+        background-color: #161616;
+      }
+    }
+  }
 }
