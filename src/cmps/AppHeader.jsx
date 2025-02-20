@@ -126,10 +126,74 @@ const NavlinkGroup = () => {
         <NavLink to='/explore' className='browser-btn'>
           <img className='browser-icon' src={browserIconUrl} />
         </NavLink>
+<<<<<<< HEAD
         <button type='reset' className='reset-btn' onClick={resetSearchBar}>
           <img className='reset-icon' src={resetUrl} />
         </button>
       </div>
     </>
+=======
+
+        <div className='nav-links'>
+          {/* <NavLink to='about'>About</NavLink> */}
+
+          <NavLink to='/' className='home-btn'>
+            <img className='header-home-icon' src={homeIconUrl} />
+          </NavLink>
+
+          <div className='search-container'>
+            <span className='search-icon'>
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                x='0px'
+                y='0px'
+                width='29'
+                height='29'
+                viewBox='0 0 30 30'
+              >
+                <path d='M 13 3 C 7.4886661 3 3 7.4886661 3 13 C 3 18.511334 7.4886661 23 13 23 C 15.396652 23 17.59741 22.148942 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148942 17.59741 23 15.396652 23 13 C 23 7.4886661 18.511334 3 13 3 z M 13 5 C 17.430666 5 21 8.5693339 21 13 C 21 17.430666 17.430666 21 13 21 C 8.5693339 21 5 17.430666 5 13 C 5 8.5693339 8.5693339 5 13 5 z'></path>
+              </svg>
+            </span>
+            <input
+              className='search-bar'
+              type='search'
+              ref={searchbarRef}
+              placeholder='What do you want to play?'
+              onKeyDown={handleSearch}
+            />
+
+            <NavLink to='/explore' className='browser-btn'>
+              <img className='browser-icon' src={browserIconUrl} />
+            </NavLink>
+            <button type='reset' className='reset-btn' onClick={resetSearchBar}>
+              <img className='reset-icon' src={resetUrl} />
+            </button>
+          </div>
+        </div>
+
+        <div className='profile-section'>
+          {!user && (
+            <button className='btn-header-profile'>
+              <NavLink to='login'>
+                <img className='header-profile-icon' src={profileUrl} alt='' />
+              </NavLink>
+            </button>
+          )}
+
+          {user?.isAdmin && <NavLink to='/admin'>Admin</NavLink>}
+
+          {user && (
+            <div className='user-info'>
+              <Link to={`user/${user._id}`}>
+                {/* {user.imgUrl && <img src={user.imgUrl} />} */}
+                {user.fullname}
+              </Link>
+              <button onClick={onLogout}>logout</button>
+            </div>
+          )}
+        </div>
+      </nav>
+    </header>
+>>>>>>> Side-Bar
   )
 }
