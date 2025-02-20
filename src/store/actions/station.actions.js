@@ -75,6 +75,7 @@ export async function updateStation(station) {
 
 export async function setStation(station) {
   store.dispatch(getCmdSetStation(station))
+  setQueue(station.songs)
 }
 
 export async function addStationMsg(stationId, txt) {

@@ -4,6 +4,7 @@
   line-height: 1;
   border-radius: 0.5em;
   background-color: $station-header-background-color;
+  container-type: inline-size;
 }
 
 .header-container {
@@ -71,6 +72,7 @@ h2.artist-title {
   font-size: em(96px);
   font-family: Spotifymix-Bold;
   cursor: pointer;
+  font-size: clamp(44px, 6cqw, 96px);
 }
 
 .station-total-length {
