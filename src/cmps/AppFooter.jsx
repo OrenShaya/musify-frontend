@@ -121,7 +121,7 @@ export function AppFooter({ playerRef }) {
     setIsMute(() => volume == 0)
   }
 
-  function onMuteVolume(ev) {
+  function onMuteVolume() {
     if (!isMute) {
       setLastVolume(volume)
       setVolume(0)
