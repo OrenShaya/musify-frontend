@@ -10,6 +10,7 @@ import {
   SET_USERS,
   SET_WATCHED_USER,
 } from '../reducers/user.reducer'
+import { ADD_LIKED_SONG } from '../reducers/station.reducer'
 
 export async function loadUsers() {
   try {
@@ -87,13 +88,21 @@ export async function loadUser(userId) {
   }
 }
 
+const getSong = (station, songId) => {
+  return station.songs.find((s) => s.yt_id === songId)
+}
+
 export async function toggleLikeSong(songId, setToLiked) {
   const user = userService.getLoggedinUser()
   try {
     let updatedUser
     if (setToLiked) {
-      const stationId = store.getState().stationModule.station._id
-      updatedUser = await userService.likeSong(stationId, songId)
+      const station = store.getState().stationModule.station
+      updatedUser = await userService.likeSong(station._id, songId)
+      if (updatedUser?.modifiedCount === 1) {
+        const song = getSong(station, songId)
+        store.dispatch({ type: ADD_LIKED_SONG, song })
+      }
     } else updatedUser = await userService.removeLikedSongId(user._id, songId)
     store.dispatch({ type: SET_USER, user: updatedUser })
   } catch (err) {
