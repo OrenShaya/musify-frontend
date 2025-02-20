@@ -19,6 +19,7 @@ export const songService = {
   save,
   likedBy,
   remove,
+  addSongFromYT,
 }
 
 async function query(filterBy = { title: '', minLength: '' }) {
