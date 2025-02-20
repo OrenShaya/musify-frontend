@@ -99,6 +99,10 @@ export async function addStationSong(stationId, song) {
   }
 }
 
+export async function setQueue(songs) {
+  store.dispatch(getCmdSetSongsQueue(songs))
+}
+
 // Command Creators:
 function getCmdSetStations(stations) {
   return {
