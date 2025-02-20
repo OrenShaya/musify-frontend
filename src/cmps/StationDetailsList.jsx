@@ -67,7 +67,7 @@ export function StationDetailsList({ station }) {
       <DragDropContext onDragEnd={handleOnDragEnd}>
         <Droppable droppableId='droppable'>
           {(provided) => (
-            <div
+            <div key={station?._id}
               className='station-details-table'
               {...provided.droppableProps}
               ref={provided.innerRef}
