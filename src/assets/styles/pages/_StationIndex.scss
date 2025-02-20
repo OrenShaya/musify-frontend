@@ -3,6 +3,7 @@
   color: white;
   padding-inline-start: 40px;
   padding-block-start: 40px;
+  background: linear-gradient(180deg, #793636 -30%, #121212 20%);
 
   .station-index-item {
     margin-block: 2em;
@@ -14,11 +15,13 @@
   }
 }
 
-.shadow-container {
-  pointer-events: none;
-  position: absolute;
-  z-index: 10;
-  padding: 40px;
-  top: 0;
+.shadow {
+  margin-block-start: 2em;
   box-shadow: rgb(18 18 18 / 50%) -40px 0px 13px 0px inset;
+  position: absolute;
+  z-index: 20;
+  pointer-events: none;
+  inset: 0px;
+  height: 100%;
+  margin-right: -8px;
 }

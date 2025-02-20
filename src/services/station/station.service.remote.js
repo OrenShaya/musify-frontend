@@ -62,7 +62,7 @@ function getLikedSongsStation() {
 
   stations.forEach((station) => {
     station.songs.forEach((song) => {
-      if (song.likedByUsers.includes(userId)) {
+      if (song.likedByUsers?.includes(userId)) {
         likedSongsStation.songs.push(song)
       }
     })

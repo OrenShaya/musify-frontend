@@ -26,6 +26,12 @@
   }
 }
 
+@mixin for-extra-wide-layout {
+  @media (min-width: $break-extra-wide) {
+    @content;
+  }
+}
+
 @mixin layoutGTC($max) {
   grid-template-columns:
     minmax($layoutPadding, 1fr)

@@ -37,7 +37,7 @@ export function SideBar() {
     return () => {
       elAddStation.removeEventListener('click', handleClick)
     }
-  }, [filterTerm, stations])
+  }, [filterTerm])
 
   function toggleHiddenClass() {
     PLAYLIST_CONTAINER.current.classList.toggle('hidden')
@@ -46,7 +46,6 @@ export function SideBar() {
   const handleSearch = useDebounce((ev) => {
     const searchTerm = ev.target.value.toLowerCase()
     setFilterTerm(searchTerm)
-    console.log(filterTerm)
   }, 300)
 
   function newPlaylistBtn() {

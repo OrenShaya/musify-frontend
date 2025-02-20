@@ -5,7 +5,7 @@ import {
   setIsPlaying,
 } from '../store/actions/player.actions'
 import { useSelector } from 'react-redux'
-import { PlayButton } from './PlayBtn'
+import { PlayButton } from './PlayButton'
 import PropTypes from 'prop-types'
 
 export function StationPreviewFiltered({ station }) {

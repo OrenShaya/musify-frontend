@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useSelector } from 'react-redux'
 import { setStation } from '../store/actions/station.actions'
-import { PlayButton } from './PlayBtn'
+import { PlayButton } from './PlayButton'
 import {
   setCurrentlyPlaying,
   setIsPlaying,

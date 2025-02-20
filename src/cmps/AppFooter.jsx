@@ -8,7 +8,7 @@ import {
   setIsPlaying,
 } from '../store/actions/player.actions'
 import { formatTimeFromSeconds } from '../services/util.service'
-import { PlayButton } from './PlayBtn'
+import { PlayButton } from './PlayButton'
 
 export function AppFooter({ playerRef }) {
   const isPlaying = useSelector(
@@ -93,7 +93,8 @@ export function AppFooter({ playerRef }) {
   useEffect(() => {
     const slider = songProgressRef.current
     if (slider) {
-      let timeInPrecetage = currentTime / playerRef.current.getDuration() * 100
+      let timeInPrecetage =
+        (currentTime / playerRef.current.getDuration()) * 100
       if (isNaN(timeInPrecetage)) timeInPrecetage = 0
       slider.style.setProperty('--song-time', `${timeInPrecetage}%`)
     }
@@ -105,8 +106,12 @@ export function AppFooter({ playerRef }) {
     e.stopPropagation()
     if (playerRef.current) {
       playerRef.current.slideTo(e.target.value)
-      const timeInPercentage = (e.target.value / playerRef.current.getDuration()) * 100
-      songProgressRef.current.style.setProperty('--song-time', `${timeInPercentage}%`)
+      const timeInPercentage =
+        (e.target.value / playerRef.current.getDuration()) * 100
+      songProgressRef.current.style.setProperty(
+        '--song-time',
+        `${timeInPercentage}%`
+      )
     }
   }
 
@@ -155,7 +160,7 @@ export function AppFooter({ playerRef }) {
               {currentlyPlaying?.title}
             </span>
             <span className='song-artist-span capitalise'>
-              {currentlyPlaying?.addedby?.fullname}
+              {currentlyPlaying?.addedBy?.fullname}
             </span>
           </div>
         </div>
@@ -204,13 +209,13 @@ export function AppFooter({ playerRef }) {
             <span>{formatTime(currentTime)}</span>
           </div>
           <input
-          ref={songProgressRef}
-          className='song-progress-bar'
-          type='range'
-          value={currentTime || 0}
-          onInput={(e) => handleSlider(e)}
-          min={0}
-          max={playerRef?.current?.getDuration() || 0}
+            ref={songProgressRef}
+            className='song-progress-bar'
+            type='range'
+            value={currentTime || 0}
+            onInput={(e) => handleSlider(e)}
+            min={0}
+            max={playerRef?.current?.getDuration() || 0}
           />
           <span className='song-duration'>
             {formatTime(

@@ -1,15 +1,12 @@
 import { StationList } from '../cmps/StationList'
 
 import { useEffect, useRef } from 'react'
-import { loadStations } from '../store/actions/station.actions'
 import { useSelector } from 'react-redux'
-import { useClientSize } from '../customHooks/useClientSize'
+import { RecentlyPlayedStations } from '../cmps/RecentlyPlayedStations'
 
 export function StationIndex() {
   const indexRef = useRef()
   const stations = useSelector((s) => s.stationModule.stations)
-  const shadowContainerRef = useRef()
-  const [width, height] = useClientSize(indexRef)
 
   const getAllStations = () => {
     const allStations = Array(5)
@@ -27,14 +24,6 @@ export function StationIndex() {
     document.title = 'Musify'
   })
 
-  useEffect(() => {
-    loadStations()
-  }, [])
-
-  useEffect(() => {
-    onMount()
-  }, [width, height])
-
   const stationHeaders = [
     'Jump back in',
     'Your top mixes',
@@ -43,33 +32,24 @@ export function StationIndex() {
     'Albums featuring songs you like',
   ]
 
-  const onMount = () => {
-    shadowContainerRef.current.style = getBoundriesStyle()
-  }
-
-  const getBoundriesStyle = () => {
-    const width = indexRef.current?.offsetWidth
-    const height = indexRef.current?.offsetHeight
-
-    return `width:${width}px; height:${height}px;`
-  }
-
   return (
     <>
       <div className='station-index' ref={indexRef}>
-        <ul>
-          {getAllStations().map((stations, i) => (
-            <li className='station-index-item' key={stationHeaders[i]}>
-              <StationList
-                stations={stations}
-                stationHeader={stationHeaders[i]}
-                onMount={onMount}
-              />
-            </li>
-          ))}
-        </ul>
+        <RecentlyPlayedStations />
+        <div style={{ position: 'relative' }}>
+          <ul>
+            {getAllStations().map((stations, i) => (
+              <li className='station-index-item' key={stationHeaders[i]}>
+                <StationList
+                  stations={stations}
+                  stationHeader={stationHeaders[i]}
+                />
+              </li>
+            ))}
+          </ul>
+          <div className='shadow'></div>
+        </div>
       </div>
-      <div ref={shadowContainerRef} className='shadow-container'></div>
     </>
   )
 }
