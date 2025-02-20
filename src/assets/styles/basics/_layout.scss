@@ -7,7 +7,7 @@
   display: grid;
   grid-template-columns: $sidebar-width 1fr;
   grid-template-rows: auto 1fr auto;
-  gap: em(12px);
+  gap: em(8px);
   padding: em(8px);
 
   .main {
