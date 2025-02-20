@@ -16,14 +16,9 @@ export function SideBar() {
   const [isSearchExpanded, setIsSearchExpanded] = useState(false)
 
   useEffect(() => {
-<<<<<<< HEAD
-    // TODO: click outside closes modal
-    stationService.query().then(setStations)
-=======
     stationService.query({ name: filterTerm }).then((stations) => {
       setStations(stations)
     })
->>>>>>> Side-Bar
 
     PLAYLIST_CONTAINER.current = document.querySelector(
       '.side-bar-new-playlist-container'
