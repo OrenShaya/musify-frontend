@@ -49,7 +49,7 @@ export function ScrollBtn({ scrollRef, containerRef, isRight = false }) {
 
   function _toggleRender() {
     const elScroll = scrollRef.current
-
+    if (!elScroll) return
     elScroll?.offsetHeight // trigger reflow
 
     // More scroll items than fit on screen?

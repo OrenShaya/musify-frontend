@@ -22,6 +22,7 @@ function getById(stationId) {
 async function remove(stationId) {
   return httpService.delete(`station/${stationId}`)
 }
+
 async function save(station) {
   if (station._id) {
     return put(station)
