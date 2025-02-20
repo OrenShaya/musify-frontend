@@ -21,7 +21,6 @@ export function SideBar() {
       if (ev.target.classList.contains('side-bar-new-playlist-container'))
         return
       if (ev.target.classList.contains('plus-btn')) {
-        console.log('plus btn clicked')
         return toggleHiddenClass()
       }
       if (ev.target.classList.contains('e-9541-icon')) {

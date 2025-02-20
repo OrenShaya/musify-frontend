@@ -139,13 +139,11 @@ export function AppFooter({ playerRef }) {
     setIsMute(!isMute)
   }
   function onMoveToNextSong(e) {
-    console.log(e)
     e.stopPropagation()
     e.nativeEvent.stopImmediatePropagation()
     moveToNextSong()
   }
   function onMoveToPrevSong(e) {
-    console.log(e)
     e.stopPropagation()
     e.nativeEvent.stopImmediatePropagation()
     moveToPreviousSong()

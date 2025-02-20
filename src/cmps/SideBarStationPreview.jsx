@@ -14,7 +14,6 @@ export function SideBarStationPreview({ station }) {
 
   // if (!station || !station.songs || station.songs.length === 0) {
   if (!station) {
-    console.log(station)
     return <div>Loading</div>
   }
 
