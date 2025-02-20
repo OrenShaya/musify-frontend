@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react'
 import { StationExploreGrid } from '../cmps/StationExploreGrid'
-import { loadStations } from '../store/actions/station.actions'
 import { useNavigate } from 'react-router'
 import { StationPreviewFiltered } from '../cmps/StationPreviewFiltered'
 import { stationService } from '../services/station'

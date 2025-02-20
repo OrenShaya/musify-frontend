@@ -1,9 +1,9 @@
 import { StationList } from '../cmps/StationList'
 
 import { useEffect, useRef } from 'react'
-import { loadStations } from '../store/actions/station.actions'
 import { useSelector } from 'react-redux'
 import { useClientSize } from '../customHooks/useClientSize'
+import { RecentlyPlayedStations } from '../cmps/RecentlyPlayedStations'
 
 export function StationIndex() {
   const indexRef = useRef()
@@ -26,10 +26,6 @@ export function StationIndex() {
   useEffect(() => {
     document.title = 'Musify'
   })
-
-  useEffect(() => {
-    loadStations()
-  }, [])
 
   useEffect(() => {
     onMount()
@@ -56,6 +52,7 @@ export function StationIndex() {
 
   return (
     <>
+      <RecentlyPlayedStations />
       <div className='station-index' ref={indexRef}>
         <ul>
           {getAllStations().map((stations, i) => (
