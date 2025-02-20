@@ -84,13 +84,11 @@ export async function getSong(songID) {
 
   const { data } = await axios.get(_setSongURL(songID))
   const newSong = _getSongInfo(data.items[0])
-  console.log('getSong: newSong', newSong)
+
   const artistId = newSong.artistId
-  console.log('getSong: artistId', artistId)
   const artist = await getArtist(artistId)
-  console.log('getSong: artist', artist)
+
   const readySong = await songService.addSongFromYT(newSong, artist)
-  console.log('getSong: readySong', readySong)
 
   gSongs[songID] = readySong
   saveToStorage(YT_SONG_STORAGE_KEY, gSongs)
@@ -132,17 +130,16 @@ function _setSongURL(songID) {
 /************************************** ARTIST **************************************/
 export async function getArtist(artistID) {
   if (!artistID) {
-    console.log('getArtist(artistID) no artistID')
-
+    console.warn('getArtist(artistID) no artistID')
     return null
   }
+
   if (gArtists[artistID]) {
     return Promise.resolve(gArtists[artistID])
   }
 
   const { data } = await axios.get(_setArtistURL(artistID))
   gArtists[artistID] = _getArtistInfo(data.items[0])
-  console.log('getArtist(artistID) gArtists[artistID]', gArtists[artistID])
   saveToStorage(YT_ARTIST_STORAGE_KEY, gArtists)
   return gArtists[artistID]
 }

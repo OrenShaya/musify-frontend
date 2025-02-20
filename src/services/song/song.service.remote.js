@@ -36,27 +36,18 @@ async function addSongFromYT(ytSong, artist) {
   const artistImgUrl = artist.imgUrl
   const artistTitle = artist.artistTitle
 
-  console.log('artist', artist)
-  console.log('ytSong', ytSong)
-
-  const { songTitle, songUrl, imgUrl, createdAt } = ytSong
-  const songId = ytSong.yt_id
+  const { title, url, imgUrl, createdAt, yt_id } = ytSong
 
   const newSong = {
-    title: songTitle,
-    url: songUrl,
-    imgUrl: imgUrl,
+    title,
+    url,
+    imgUrl,
     addedBy: { yt_id: artistId, fullname: artistTitle, imgUrl: artistImgUrl },
     lengthInSeconds: getRandomIntInclusive(30, 400),
     likedBy: [],
     createdAt,
     updatedAt: Date.now() - getRandomIntInclusive(0, 1000 * 60 * 60 * 24),
-    yt_id: songId,
+    yt_id,
   }
-  console.log('newSong', newSong)
-
-  // const readySong = await save(newSong)
-  // console.log('readySong', readySong)
-
   return newSong
 }
