@@ -6,8 +6,8 @@ $itemBgc: #17191a;
   @include for-extra-wide-layout {
     grid-template-columns: repeat(4, 1fr);
   }
-  padding: em(40px);
   gap: em(12px);
+  padding-inline-end: em(30px);
 
   .recent-image {
     height: 64px;

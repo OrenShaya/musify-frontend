@@ -52,8 +52,8 @@ export function StationIndex() {
 
   return (
     <>
-      <RecentlyPlayedStations />
       <div className='station-index' ref={indexRef}>
+        <RecentlyPlayedStations />
         <ul>
           {getAllStations().map((stations, i) => (
             <li className='station-index-item' key={stationHeaders[i]}>
