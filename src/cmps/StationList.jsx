@@ -55,7 +55,7 @@ StationList.propTypes = {
       _id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       createdBy: PropTypes.shape({
-        imgUrl: PropTypes.string.isRequired,
+        imgUrl: PropTypes.string,
       }),
     }).isRequired
   ),
