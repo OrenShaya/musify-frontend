@@ -1,0 +1,32 @@
+$itemBgc: #17191a;
+
+.recent-stations-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: em(40px);
+  gap: em(12px);
+
+  .recent-image {
+    height: 64px;
+
+    border-radius: em(4px) 0 0 em(4px);
+  }
+
+  .recent-station-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1em;
+
+    border-radius: em(4px);
+
+    &:hover {
+      background-color: lighten($itemBgc, 10%);
+    }
+  }
+
+  .recent-station-name {
+    display: grid;
+    align-content: center;
+    font-weight: bold;
+  }
+}
