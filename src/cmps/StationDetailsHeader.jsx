@@ -94,6 +94,9 @@ export function StationDetailsHeader({
         onMouseLeave={(e) => {
           setStyle({ zIndex: -1 })
         }}
+        style={{
+          ...(heroImgUrl !== stationDefaultUrl && { background: headerColor }),
+        }}
       >
         {' '}
         {/* Edit station image svg */}
