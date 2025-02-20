@@ -78,7 +78,48 @@
   }
 
   .side-bar-search-container {
+    margin-block: 0.5em;
+    .search-bar {
+      margin: 0.3em;
+      width: 2.5em;
+      background-color: inherit;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      border-radius: 0.3em;
+
+      &.expanded {
+        width: 13em;
+        background-color: #2a2a2a;
+      }
+    }
+
+    input {
+      width: 0;
+      padding: 0;
+      opacity: 0;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      color: #757575;
+      border-radius: 0.3em;
+      transition: all 0.3s ease;
+
+      &.expanded {
+        width: 14em;
+        padding: 0.7em;
+        // margin-left: 2em;
+        opacity: 1;
+      }
+    }
+
+    input:focus-within {
+      opacity: 1;
+    }
+
     button {
+      margin: 0;
+      position: relative;
       background-color: transparent;
       display: grid;
       fill: #b3b3b3;

@@ -4,14 +4,20 @@ import { addStation } from '../store/actions/station.actions'
 import { SideBarStationPreview } from './SideBarStationPreview'
 import stationDefaultUrl from '../assets/icons/station-default-sidebar-img.svg'
 import { useNavigate } from 'react-router'
+import { Value } from 'sass'
+import { useDebounce } from '../customHooks/useDebounce'
 
 export function SideBar() {
   const navigate = useNavigate()
   const [stations, setStations] = useState([])
+  const [filterTerm, setFilterTerm] = useState()
   const PLAYLIST_CONTAINER = useRef(null)
+  const [isSearchExpanded, setIsSearchExpanded] = useState(false)
 
   useEffect(() => {
-    stationService.query().then(setStations)
+    stationService.query({ name: filterTerm }).then((stations) => {
+      setStations(stations)
+    })
 
     PLAYLIST_CONTAINER.current = document.querySelector(
       '.side-bar-new-playlist-container'
@@ -39,12 +45,27 @@ export function SideBar() {
     return () => {
       document.removeEventListener('click', handleClick)
     }
-  }, [stations])
+  }, [filterTerm])
 
   function toggleHiddenClass() {
     PLAYLIST_CONTAINER.current.classList.toggle('hidden')
     // console.log('new station clicked')
   }
+
+  const handleSearch = useDebounce((ev) => {
+    const searchTerm = ev.target.value.toLowerCase()
+    console.log(searchTerm)
+    console.log(stations)
+    // const filteredStations = stations.filter((station) =>
+    // console.log(station.name, searchTerm)
+
+    // station.name.toLowerCase().includes(searchTerm)
+    // )
+    // console.log(stations)
+    // console.log(filteredStations)
+    setFilterTerm(searchTerm)
+    console.log(filterTerm)
+  }, 300)
 
   function newPlaylistBtn() {
     const newStation = {
@@ -147,18 +168,26 @@ export function SideBar() {
 
       <div className='side-bar-station-container'>
         <div className='side-bar-search-container'>
-          <button>
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              x='0px'
-              y='0px'
-              width='20'
-              height='20'
-              viewBox='0 0 30 30'
-            >
-              <path d='M 13 3 C 7.4886661 3 3 7.4886661 3 13 C 3 18.511334 7.4886661 23 13 23 C 15.396652 23 17.59741 22.148942 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148942 17.59741 23 15.396652 23 13 C 23 7.4886661 18.511334 3 13 3 z M 13 5 C 17.430666 5 21 8.5693339 21 13 C 21 17.430666 17.430666 21 13 21 C 8.5693339 21 5 17.430666 5 13 C 5 8.5693339 8.5693339 5 13 5 z'></path>
-            </svg>
-          </button>
+          <div className={`search-bar ${isSearchExpanded ? 'expanded' : ''}`}>
+            <button onClick={() => setIsSearchExpanded(!isSearchExpanded)}>
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                x='0px'
+                y='0px'
+                width='20'
+                height='20'
+                viewBox='0 0 30 30'
+              >
+                <path d='M 13 3 C 7.4886661 3 3 7.4886661 3 13 C 3 18.511334 7.4886661 23 13 23 C 15.396652 23 17.59741 22.148942 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148942 17.59741 23 15.396652 23 13 C 23 7.4886661 18.511334 3 13 3 z M 13 5 C 17.430666 5 21 8.5693339 21 13 C 21 17.430666 17.430666 21 13 21 C 8.5693339 21 5 17.430666 5 13 C 5 8.5693339 8.5693339 5 13 5 z'></path>
+              </svg>
+            </button>
+            <input
+              className={isSearchExpanded ? 'expanded' : ''}
+              type='search'
+              placeholder='Search is your library'
+              onChange={handleSearch}
+            />
+          </div>
         </div>
         <div className='pinned-stations'></div>
         <div className='regular-stations'>
