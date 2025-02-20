@@ -6,36 +6,31 @@ import stationDefaultUrl from '../assets/icons/station-default-sidebar-img.svg'
 import { useNavigate } from 'react-router'
 
 export function SideBar() {
+  const addStationRef = useRef()
   const navigate = useNavigate()
   const [stations, setStations] = useState([])
   const PLAYLIST_CONTAINER = useRef(null)
 
   useEffect(() => {
+    // TODO: click outside closes modal
     stationService.query().then(setStations)
 
     PLAYLIST_CONTAINER.current = document.querySelector(
       '.side-bar-new-playlist-container'
     )
 
-    const handleClick = (ev) => {
-      if (ev.target.classList.contains('side-bar-new-playlist-container'))
-        return
-      if (ev.target.classList.contains('plus-btn')) {
-        return toggleHiddenClass()
-      }
-      if (ev.target.classList.contains('e-9541-icon')) {
-        return toggleHiddenClass()
-      }
-      if (!PLAYLIST_CONTAINER.current.classList.contains('hidden'))
-        return toggleHiddenClass()
+    const elAddStation = addStationRef.current
+
+    const handleClick = () => {
+      toggleHiddenClass()
       return
     }
 
-    document.addEventListener('click', handleClick)
+    elAddStation.addEventListener('click', handleClick)
 
     // Cleanup event listener on component unmount
     return () => {
-      document.removeEventListener('click', handleClick)
+      elAddStation.removeEventListener('click', handleClick)
     }
   }, [])
   // Removed dependency [stations] because it triggers a render loop
@@ -83,7 +78,11 @@ export function SideBar() {
           </svg>
           <h3 className='side-bar-header'>Your Library</h3>
         </div>
-        <span name='Create new playlist' className='plus-btn'>
+        <span
+          ref={addStationRef}
+          name='Create new playlist'
+          className='plus-btn'
+        >
           <svg
             xmlns='http://www.w3.org/2000/svg'
             data-encore-id='icon'
