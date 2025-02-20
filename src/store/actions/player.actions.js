@@ -84,7 +84,8 @@ export function moveToNextSong() {
 
     setCurrentlyPlaying(currStation, nextSong.yt_id)
   } else {
-    setCurrentlyPlaying(songs[0]._id)
+    const currStation = store.getState().stationModule.station
+    setCurrentlyPlaying(currStation, songs[0].yt_id)
   }
 }
 
