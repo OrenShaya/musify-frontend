@@ -20,10 +20,6 @@ export function SideBar() {
       setStations(stations)
     })
 
-    PLAYLIST_CONTAINER.current = document.querySelector(
-      '.side-bar-new-playlist-container'
-    )
-
     const elAddStation = addStationRef.current
 
     const handleClick = () => {
@@ -65,6 +61,7 @@ export function SideBar() {
     addStation(newStation).then((savedStation) => {
       navigate(`/station/${savedStation._id}`)
     })
+    toggleHiddenClass()
   }
 
   return (
@@ -105,7 +102,10 @@ export function SideBar() {
           </svg>
         </span>
 
-        <ul className='side-bar-new-playlist-container hidden'>
+        <ul
+          className='side-bar-new-playlist-container hidden'
+          ref={PLAYLIST_CONTAINER}
+        >
           <button onClick={newPlaylistBtn}>
             <svg
               xmlns='http://www.w3.org/2000/svg'
