@@ -26,8 +26,6 @@ export function AppFooter({ playerRef }) {
   const [isMute, setIsMute] = useState(false)
   const [lastVolume, setLastVolume] = useState(volume)
 
-  let songInputColor = 'white'
-
   const togglePlay = () => {
     if (!playerRef.current) return
 
@@ -42,6 +40,7 @@ export function AppFooter({ playerRef }) {
 
   useEffect(() => {
     if (currentStation) setCurrentlyPlaying(currentStation, 'FGBhQbmPwH8')
+    songProgressRef.current.style.setProperty('--song-time', 0)
   }, [])
 
   useEffect(() => {
@@ -69,7 +68,6 @@ export function AppFooter({ playerRef }) {
       setIsPlaying(true)
       if (songProgressRef.current) {
         playerRef.current.slideTo(0)
-        // handleRangeInput(sliderRef.current)
       }
     }
   }, [currentlyPlaying])
@@ -95,7 +93,8 @@ export function AppFooter({ playerRef }) {
   useEffect(() => {
     const slider = songProgressRef.current
     if (slider) {
-      const timeInPrecetage = currentTime / playerRef.current.getDuration() * 100
+      let timeInPrecetage = currentTime / playerRef.current.getDuration() * 100
+      if (isNaN(timeInPrecetage)) timeInPrecetage = 0
       slider.style.setProperty('--song-time', `${timeInPrecetage}%`)
     }
   }, [currentTime])
@@ -106,8 +105,8 @@ export function AppFooter({ playerRef }) {
     e.stopPropagation()
     if (playerRef.current) {
       playerRef.current.slideTo(e.target.value)
-      songProgressRef.current.style.setProperty('--song-time', e.target.value)
-      // handleRangeInput(e.target)
+      const timeInPercentage = (e.target.value / playerRef.current.getDuration()) * 100
+      songProgressRef.current.style.setProperty('--song-time', `${timeInPercentage}%`)
     }
   }
 
@@ -210,20 +209,10 @@ export function AppFooter({ playerRef }) {
           className='song-progress-bar'
           type='range'
           value={currentTime || 0}
-          onChange={(e) => handleSlider(e)}
+          onInput={(e) => handleSlider(e)}
           min={0}
           max={playerRef?.current?.getDuration() || 0}
           />
-          {/* <input
-            ref={songProgressRef}
-            style={{ background: '#4d4d4d' }}
-            onMouseEnter={() => (songInputColor = '#1db552')}
-            onMouseLeave={() => (songInputColor = 'white')}
-            type='range'
-            value={currentTime ?? 0}
-            onChange={handleSlider}
-            max={playerRef.current ? playerRef.current.getDuration() ?? 0 : 0}
-          /> */}
           <span className='song-duration'>
             {formatTime(
               playerRef.current ? playerRef.current.getDuration() : 0
