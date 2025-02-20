@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
 import axios from 'axios'
-import { saveToStorage, loadFromStorage } from './util.service'
-import { addSongFromYT } from './song/song.service.local'
-import { addStationManualy } from './station/station.service.local'
-import { storageService } from './async-storage.service'
+import { saveToStorage, loadFromStorage } from '../util.service'
+import { songService } from '../song/song.service.remote'
+import { stationService } from '../station/station.service.remote'
+import { storageService } from '../async-storage.service'
 
 const YT_API_KEY = import.meta.env.VITE_YOUTUBE_API
 
@@ -61,7 +61,7 @@ export function getSongInfoBrowse(video) {
   const createdAt = new Date(publishedAt).getTime()
 
   return {
-    id: songId,
+    yt_id: songId,
     songTitle,
     songUrl,
     imgUrl,
@@ -74,21 +74,28 @@ export function getSongInfoBrowse(video) {
 /************************************** SONG **************************************/
 
 export async function getSong(songID) {
-  if (!songID) return null
+  if (!songID) {
+    console.log('getSong: no songID')
+    return null
+  }
   if (gSongs[songID]) {
     return Promise.resolve(gSongs[songID])
   }
 
   const { data } = await axios.get(_setSongURL(songID))
   const newSong = _getSongInfo(data.items[0])
+  console.log('getSong: newSong', newSong)
   const artistId = newSong.artistId
+  console.log('getSong: artistId', artistId)
   const artist = await getArtist(artistId)
-  const readySong = await addSongFromYT(newSong, artist)
+  console.log('getSong: artist', artist)
+  const readySong = await songService.addSongFromYT(newSong, artist)
+  console.log('getSong: readySong', readySong)
 
   gSongs[songID] = readySong
   saveToStorage(YT_SONG_STORAGE_KEY, gSongs)
 
-  return gSongs[songID]
+  return readySong
 }
 
 function _getSongInfo(video) {
@@ -106,7 +113,7 @@ function _getSongInfo(video) {
   const createdAt = new Date(publishedAt).getTime()
 
   return {
-    _id: songId,
+    yt_id: songId,
     songTitle,
     songUrl,
     imgUrl,
@@ -124,13 +131,18 @@ function _setSongURL(songID) {
 
 /************************************** ARTIST **************************************/
 export async function getArtist(artistID) {
-  if (!artistID) return null
+  if (!artistID) {
+    console.log('getArtist(artistID) no artistID')
+
+    return null
+  }
   if (gArtists[artistID]) {
     return Promise.resolve(gArtists[artistID])
   }
 
   const { data } = await axios.get(_setArtistURL(artistID))
   gArtists[artistID] = _getArtistInfo(data.items[0])
+  console.log('getArtist(artistID) gArtists[artistID]', gArtists[artistID])
   saveToStorage(YT_ARTIST_STORAGE_KEY, gArtists)
   return gArtists[artistID]
 }
@@ -138,8 +150,8 @@ export async function getArtist(artistID) {
 function _getArtistInfo(video) {
   const { id, snippet, statistics } = video
   const { publishedAt, title, thumbnails } = snippet
-  const { high, medium } = thumbnails
-  const { subscriberCount, videoCount, viewCount } = statistics
+  const { high } = thumbnails
+  const { videoCount, viewCount } = statistics
 
   const artistId = id
   const imgUrl = high.url
@@ -147,7 +159,7 @@ function _getArtistInfo(video) {
   const createdAt = new Date(publishedAt).getTime()
 
   return {
-    id: artistId,
+    yt_id: artistId,
     imgUrl,
     artistTitle,
     createdAt,
@@ -180,17 +192,17 @@ export async function getPlaylist(
 
     const station = {}
     station.songs = playListSongs
-    station._id = playlistInfo.id
+    station.yt_id = playlistInfo.id
     station.name = playlistInfo.playlistName
     const createdById = playlistInfo.playlistOwnerId
 
-    const owner = await getArtist(createdById)
+    const artist = await getArtist(createdById)
 
     station.createdBy = {
-      _id: createdById,
-      fullname: owner.artistTitle || 'Mupify',
-      imgUrl: owner.imgUrl || '',
-      createdAt: owner.createdAt || Date.now(),
+      yt_id: createdById,
+      fullname: artist.artistTitle || 'Mupify',
+      imgUrl: artist.imgUrl || '',
+      createdAt: artist.createdAt || Date.now(),
       updatedAt: Date.now(),
     }
 
@@ -198,11 +210,12 @@ export async function getPlaylist(
     station.likedByUsers = []
     station.tags = []
 
-    gPlaylists[playlistID] = station
+    const readyStaion = await stationService.save(station)
+    gPlaylists[playlistID] = readyStaion
     saveToStorage(YT_PLAYLIST_STORAGE_KEY, gPlaylists)
-    await addStationManualy(station)
-    const finalSongs = await storageService.query('song_db')
-    return gPlaylists[playlistID]
+    //await addStationManualy(station)
+    //const finalSongs = await storageService.query('song_db')
+    return readyStaion
   } catch {
     return (err) => {
       throw new Error('Unable to add a playlist. err:', err)
@@ -255,7 +268,7 @@ async function _getSongInfoFromPlaylist(videos) {
       const createdAt = new Date(publishedAt).getTime()
 
       const song = {
-        _id: songId,
+        yt_id: songId,
         songTitle,
         songUrl,
         imgUrl,
@@ -265,7 +278,7 @@ async function _getSongInfoFromPlaylist(videos) {
       }
 
       const artist = await getArtist(artistId)
-      const readySong = await addSongFromYT(song, artist)
+      const readySong = await songService.addSongFromYT(song, artist)
       gSongs[songId] = readySong
       saveToStorage(YT_SONG_STORAGE_KEY, gSongs)
 
