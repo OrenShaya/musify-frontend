@@ -84,7 +84,7 @@
         }
 
         &:not(:placeholder-shown) {
-          background-color: transparent;
+          background-color: transparent !important;
 
           ~ button.reset-btn {
             display: grid;
