@@ -15,6 +15,7 @@ import { Login } from './pages/Login.jsx'
 import { StationIndex } from './pages/StationIndex.jsx'
 import { StationDetails } from './pages/StationDetails.jsx'
 import { StationExplore } from './pages/StationExplore.jsx'
+import { StationSearch } from './pages/StationSearch.jsx'
 
 // Init db
 import {} from './services/station'
@@ -56,6 +57,7 @@ export function RootCmp() {
 
           <Route path='station/:stationId' element={<StationDetails />} />
           <Route path='explore' element={<StationExplore />} />
+          <Route path='search/:searchText' element={<StationSearch />} />
 
           <Route path='admin' element={<AdminIndex />} />
           <Route path='login' element={<Login />} />

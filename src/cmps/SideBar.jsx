@@ -143,7 +143,6 @@ export function SideBar() {
         <span className='sort-item'>Playlists</span>
         <span className='sort-item'>Artists</span>
         <span className='sort-item'>Albums</span>
-        <span className='sort-item'>Podcasts&Shows</span>
       </div>
 
       <div className='side-bar-station-container'>

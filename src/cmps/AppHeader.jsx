@@ -28,6 +28,13 @@ export function AppHeader() {
     }
   }
 
+  function handleSearch(ev) {
+    if (ev.key === 'Enter' && searchbarRef.current.value.trim()) {
+      navigate(`/search/${searchbarRef.current.value.trim()}`)
+      resetSearchBar()
+    }
+  }
+
   function resetSearchBar() {
     if (searchbarRef.current) {
       searchbarRef.current.value = ''
@@ -97,6 +104,7 @@ export function AppHeader() {
               type='search'
               ref={searchbarRef}
               placeholder='What do you want to play?'
+              onKeyDown={handleSearch}
             />
 
             <NavLink to='/explore' className='browser-btn'>
