@@ -1,6 +1,10 @@
 /* eslint-disable no-unused-vars */
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { StationExploreGrid } from '../cmps/StationExploreGrid'
+import { loadStations } from '../store/actions/station.actions'
+import { useNavigate } from 'react-router'
+import { StationPreviewFiltered } from '../cmps/StationPreviewFiltered'
+import { stationService } from '../services/station'
 
 const tagsObj = [
   {
@@ -302,13 +306,64 @@ const tagsObj = [
 ]
 
 export function StationExplore() {
+  const [filteredStations, setFilteredStations] = useState(null)
+  const [filteredTerm, setFilteredTerm] = useState(null)
+  const navigate = useNavigate()
+
   useEffect(() => {
-    document.title = 'Musify – Search'
-  })
+    document.title = 'Musify - Search'
+  }, [])
+
+  useEffect(() => {
+    if (!filteredTerm) return
+    console.log('useEffect filteredTerm', filteredTerm)
+    ;(async () => {
+      await getFilteredStations()
+    })()
+  }, [filteredTerm])
+
+  async function getFilteredStations() {
+    try {
+      const query = {
+        name: '',
+        tags: [`${filteredTerm}`],
+      }
+      console.log('getFilteredStations query', query)
+      const stations = await stationService.query(query)
+      console.log('stations = await loadStations(query)', stations)
+      console.log('filteredStations', filteredStations)
+
+      setFilteredStations(stations)
+    } catch (err) {
+      console.error('Cannot get filtered stations', err)
+    }
+  }
+
+  const onNavigate = (stationId) => {
+    navigate('/station/' + stationId)
+  }
 
   return (
     <section className='station-explore'>
-      <StationExploreGrid tagsObj={tagsObj} />
+      {filteredStations && (
+        <div className='filtered-stations-section'>
+          <h2>
+            Playlists of <span>{filteredTerm.toString()}</span>
+          </h2>
+          <ul className='station-list-grid'>
+            {filteredStations.map((station) => (
+              <li
+                key={station._id}
+                onClick={() => onNavigate(station._id)}
+                className='station-item'
+              >
+                <StationPreviewFiltered station={station} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+      <StationExploreGrid tagsObj={tagsObj} setFilteredTerm={setFilteredTerm} />
     </section>
   )
 }
