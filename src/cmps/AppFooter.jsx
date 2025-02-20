@@ -105,6 +105,7 @@ export function AppFooter({ playerRef }) {
   }
 
   const handleSlider = (e) => {
+    e.stopPropagation()
     if (playerRef.current) {
       playerRef.current.slideTo(e.target.value)
 
@@ -113,6 +114,7 @@ export function AppFooter({ playerRef }) {
   }
 
   function onVolumeChange(e) {
+    e.stopPropagation()
     let newVolume = e.target.value / 100
     setVolume(newVolume)
     if (playerRef.current) {
@@ -121,7 +123,8 @@ export function AppFooter({ playerRef }) {
     setIsMute(() => volume == 0)
   }
 
-  function onMuteVolume() {
+  function onMuteVolume(e) {
+    e.stopPropagation()
     if (!isMute) {
       setLastVolume(volume)
       setVolume(0)
@@ -129,6 +132,18 @@ export function AppFooter({ playerRef }) {
       setVolume(lastVolume)
     }
     setIsMute(!isMute)
+  }
+  function onMoveToNextSong(e) {
+    console.log(e)
+    e.stopPropagation()
+    e.nativeEvent.stopImmediatePropagation()
+    moveToNextSong()
+  }
+  function onMoveToPrevSong(e) {
+    console.log(e)
+    e.stopPropagation()
+    e.nativeEvent.stopImmediatePropagation()
+    moveToPreviousSong()
   }
 
   return (
@@ -153,7 +168,10 @@ export function AppFooter({ playerRef }) {
       </div>
       <div className='song-controls'>
         <div className='song-btns'>
-          <button className='previous-song-btn' onClick={moveToPreviousSong}>
+          <button
+            className='previous-song-btn'
+            onClick={(e) => onMoveToPrevSong(e)}
+          >
             <svg
               xmlns='http://www.w3.org/2000/svg'
               data-encore-id='icon'
@@ -172,7 +190,10 @@ export function AppFooter({ playerRef }) {
             isPlaying={isPlaying}
             className='footer-play-btn'
           />
-          <button className='next-song-btn' onClick={moveToNextSong}>
+          <button
+            className='next-song-btn'
+            onClick={(e) => onMoveToNextSong(e)}
+          >
             <svg
               xmlns='http://www.w3.org/2000/svg'
               data-encore-id='icon'
@@ -212,7 +233,7 @@ export function AppFooter({ playerRef }) {
         {isMute ? (
           // muted volume icon
           <svg
-            onClick={onMuteVolume}
+            onClick={(e) => onMuteVolume(e)}
             data-encore-id='icon'
             role='presentation'
             aria-label='Volume off'
@@ -227,7 +248,7 @@ export function AppFooter({ playerRef }) {
         ) : (
           // unmuted volume icon
           <svg
-            onClick={onMuteVolume}
+            onClick={(e) => onMuteVolume(e)}
             data-encore-id='icon'
             role='presentation'
             aria-label='Volume medium'
