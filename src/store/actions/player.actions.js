@@ -63,8 +63,9 @@ export async function playerSongEndedEvent() {
 
   const nextIndex = (songIdx + 1) % currSongsQueue.length
   const nextSong = currSongsQueue[nextIndex]
+  const currStation = store.getState().stationModule.station
 
-  setCurrentlyPlaying(nextsong.yt_id)
+  setCurrentlyPlaying(currStation, nextSong.yt_id)
   setIsPlaying(true)
 }
 
@@ -72,14 +73,16 @@ export function moveToNextSong() {
   const songs = store.getState().stationModule.songsQueue
   const currentSong = store.getState().playerModule.currentlyPlaying
   if (!songs || songs.length === 0) return
-  if (currentSong && currentsong.yt_id) {
+  if (currentSong && currentSong.yt_id) {
     const currentIndex = songs.findIndex(
-      (song) => song.yt_id === currentsong.yt_id
+      (song) => song.yt_id === currentSong.yt_id
     )
 
     const nextIndex = (currentIndex + 1) % songs.length
     const nextSong = songs[nextIndex]
-    setCurrentlyPlaying(nextsong.yt_id)
+    const currStation = store.getState().stationModule.station
+
+    setCurrentlyPlaying(currStation, nextSong.yt_id)
   } else {
     setCurrentlyPlaying(songs[0]._id)
   }
@@ -91,10 +94,11 @@ export function moveToPreviousSong() {
   const currentSong = store.getState().playerModule.currentlyPlaying
 
   const currentIndex = songs.findIndex(
-    (song) => song.yt_id === currentsong.yt_id
+    (song) => song.yt_id === currentSong.yt_id
   )
   const prevIndex = currentIndex === 0 ? songs.length - 1 : currentIndex - 1
   const prevSong = songs[prevIndex]
+  const currStation = store.getState().stationModule.station
 
-  setCurrentlyPlaying(prevsong.yt_id)
+  setCurrentlyPlaying(currStation, prevSong.yt_id)
 }
