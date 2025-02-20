@@ -5,6 +5,7 @@ import { debounce } from '../services/util.service.js'
 import { setCurrentlyPlaying } from '../store/actions/player.actions.js'
 import {
   addStationSong,
+  loadStation,
   updateStation,
 } from '../store/actions/station.actions.js'
 import { useState, useEffect, useRef } from 'react'
@@ -15,7 +16,6 @@ import { songService } from '../services/song'
 
 export function StationDetailsSearch({ station }) {
   const [searchTerm, setSearchTerm] = useState('')
-
   const [searchedSongs, setSearchedSongs] = useState(null)
 
   const getSearchedSongsDebounce = useRef(
@@ -23,18 +23,20 @@ export function StationDetailsSearch({ station }) {
   )
 
   useEffect(() => {
+    if (searchTerm.trim() === '') return
     getSearchedSongsDebounce.current(searchTerm)
   }, [searchTerm])
 
   async function addSongAndPlayIt(songId, artistId) {
-    console.log('addSongAndPlayIt songId', songId)
+    try {
+      const song = await ytService.getSong(songId)
+      if (!song) return
+      const newSong = await addSongToStation(song?.yt_id, artistId)
 
-    const song = await ytService.getSong(songId)
-    if (!song) return
-    console.log('addSongAndPlayIt song', song)
-    await addSongToStation(song.yt_id, artistId)
-
-    setCurrentlyPlaying(station, song.yt_id)
+      setCurrentlyPlaying(station, newSong?.yt_id)
+    } catch (err) {
+      console.error('Cannot add song and play it', err)
+    }
   }
 
   async function getSearchedSongs(term) {
@@ -62,7 +64,12 @@ export function StationDetailsSearch({ station }) {
       const readySong = await songService.addSongFromYT(ytSong, artist)
       if (!readySong) return
 
-      await addStationSong(station._id, readySong)
+      const resultOfaddStationSong = await addStationSong(
+        station._id,
+        readySong
+      )
+
+      await loadStation(station._id)
     } catch (err) {
       console.error('Unable to search for songs', err)
     }
@@ -78,7 +85,10 @@ export function StationDetailsSearch({ station }) {
       <div className='station-details-search-header'>
         <h1>Let&#39;s find something for your playlist</h1>
 
-        <form className='searchbar-container-form'>
+        <form
+          className='searchbar-container-form'
+          onSubmit={(ev) => ev.preventDefault()}
+        >
           <span className='search-icon'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
@@ -136,8 +146,10 @@ export function StationDetailsSearch({ station }) {
                     alt='album image'
                   />
                   <div className='song-title-artist'>
-                    <div className='song-title'>{song.songTitle}</div>
-                    <div className='artist'>{song.artistTitle}</div>
+                    <div className='song-title'>
+                      {song?.songTitle || song?.title}
+                    </div>
+                    <div className='artist'>{song?.artistTitle}</div>
                   </div>
                 </div>
                 <div className='song-album'>
@@ -158,7 +170,9 @@ export function StationDetailsSearch({ station }) {
           ))
         ) : (
           <div>
-            {searchTerm?.trim() === '' ? (
+            {searchTerm.trim() === '' ? (
+              ''
+            ) : (
               <div className='no-results-display'>
                 <h1>
                   No results found for &quot;{searchTerm.toString()}&quot;
@@ -168,8 +182,6 @@ export function StationDetailsSearch({ station }) {
                   fewer or different keywords.
                 </p>
               </div>
-            ) : (
-              ''
             )}
           </div>
         )}
