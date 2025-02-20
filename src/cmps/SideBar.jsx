@@ -38,7 +38,8 @@ export function SideBar() {
     return () => {
       document.removeEventListener('click', handleClick)
     }
-  }, [stations])
+  }, [])
+  // Removed dependency [stations] because it triggers a render loop
 
   function toggleHiddenClass() {
     PLAYLIST_CONTAINER.current.classList.toggle('hidden')
