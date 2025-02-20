@@ -17,7 +17,7 @@ $itemBgc: rgb(40, 42, 43, 0.4);
 
   .recent-station-item {
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: auto 1fr auto;
     gap: 1em;
 
     border-radius: em(4px);
@@ -26,6 +26,10 @@ $itemBgc: rgb(40, 42, 43, 0.4);
     transition: background-color 0.3s ease;
     &:hover {
       background-color: lighten($itemBgc, 20%);
+    }
+
+    &:hover .btn-play-recent-station {
+      opacity: 1;
     }
   }
 
