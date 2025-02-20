@@ -13,7 +13,7 @@ import { toggleLikeSong } from '../store/actions/user.actions.js'
 export function StationDetailsList({ station }) {
   const selectedStationId = useSelector((s) => s.stationModule.station?._id)
   const isPlaying = useSelector((s) => s.playerModule.isPlaying)
-  const likedSongs = useSelector((s) => s.userModule.user?.likedSongIds)
+  const likedSongs = useSelector((s) => s.stationModule.likedSongs?.songs)
   const songs = station?.songs
 
   // Function to handle the drop result
@@ -32,7 +32,7 @@ export function StationDetailsList({ station }) {
   }
 
   const isLikedSong = (songId) => {
-    return likedSongs?.includes(songId)
+    return likedSongs?.find((s) => s.yt_id === songId)
   }
 
   const isSelectedStation = () => selectedStationId === station?._id
@@ -41,7 +41,6 @@ export function StationDetailsList({ station }) {
     setStation(station)
     setCurrentlyPlaying(station, ytSongId)
   }
-
   return (
     <section className='station-details-list'>
       {station?.songs?.length > 0 && (

@@ -12,6 +12,7 @@ export const userService = {
   update,
   getLoggedinUser,
   saveLoggedinUser,
+  likeSong,
 }
 
 function getUsers() {
@@ -71,4 +72,8 @@ function saveLoggedinUser(user) {
   }
   sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
   return user
+}
+
+async function likeSong(stationId, songId) {
+  return await httpService.post(`station/${stationId}/${songId}/like`)
 }

@@ -90,7 +90,7 @@ export function stationReducer(state = initialState, action) {
     case SET_LIKED_SONGS:
       newState = {
         ...state,
-        likedSongs: action.likedSongs,
+        likedSongs: action.station,
       }
       break
 
