@@ -1,19 +1,15 @@
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import PropTypes from 'prop-types'
 
 import { StationPreview } from './StationPreview'
 import { ScrollBtn } from './ScrollBtn'
 import { useNavigate } from 'react-router-dom'
 
-export function StationList({ stations, stationHeader, onMount }) {
+export function StationList({ stations, stationHeader }) {
   const scrollRef = useRef()
   const containerRef = useRef()
 
   const navigate = useNavigate()
-
-  useEffect(() => {
-    onMount()
-  })
 
   const onNavigate = (stationId) => {
     navigate('/station/' + stationId)
