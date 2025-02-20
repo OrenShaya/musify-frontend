@@ -149,8 +149,7 @@ export function AppFooter({ playerRef }) {
       <div className='song-details-container'>
         <div className='song-details'>
           <img
-            height='70px'
-            width='70px'
+            className='song-details-img'
             src={currentlyPlaying?.imgUrl || emblem2}
             alt='song-cover'
           />
