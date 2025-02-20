@@ -2,6 +2,7 @@
 export const SET_STATIONS = 'SET_STATIONS'
 export const SET_STATION = 'SET_STATION'
 export const REMOVE_STATION = 'REMOVE_STATION'
+export const REMOVE_LIKED_SONG = 'REMOVE_LIKED_SONG'
 export const ADD_STATION = 'ADD_STATION'
 export const ADD_LIKED_SONG = 'ADD_LIKED_SONG'
 export const SET_SONGS_QUEUE = 'SET_SONGS_QUEUE'
@@ -55,6 +56,18 @@ export function stationReducer(state = initialState, action) {
         likedSongs: {
           ...state.likedSongs,
           songs: [...state.likedSongs.songs, action.song],
+        },
+      }
+      break
+
+    case REMOVE_LIKED_SONG:
+      newState = {
+        ...state,
+        likedSongs: {
+          ...state.likedSongs,
+          songs: state.likedSongs.songs.filter(
+            (s) => s.yt_id !== action.songId
+          ),
         },
       }
       break
