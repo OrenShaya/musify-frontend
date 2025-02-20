@@ -43,7 +43,7 @@ async function addStationSong(stationId, song) {
     throw new Error('Not valid stationId or song in addStationSong')
   }
 
-  return await httpService.put(`station/${stationId}/song`, song)
+  return await httpService.post(`station/${stationId}/song`, song)
 }
 
 function getLikedSongsStation() {
