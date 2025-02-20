@@ -1,4 +1,4 @@
-$itemBgc: #17191a;
+$itemBgc: rgb(40, 42, 43, 0.4);
 
 .recent-stations-list {
   display: grid;
@@ -21,9 +21,11 @@ $itemBgc: #17191a;
     gap: 1em;
 
     border-radius: em(4px);
+    background-color: $itemBgc;
 
+    transition: background-color 0.3s ease;
     &:hover {
-      background-color: lighten($itemBgc, 10%);
+      background-color: lighten($itemBgc, 20%);
     }
   }
 
