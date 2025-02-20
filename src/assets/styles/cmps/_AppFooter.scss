@@ -282,7 +282,7 @@
     .song-details-spans {
       @include flex(
         $justify-content: center,
-        $align-items: center,
+        $align-items: start,
         $flex-direction: column,
         $gap: 8px
       );

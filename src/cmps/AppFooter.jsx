@@ -155,7 +155,7 @@ export function AppFooter({ playerRef }) {
               {currentlyPlaying?.title}
             </span>
             <span className='song-artist-span capitalise'>
-              {currentlyPlaying?.addedby?.fullname}
+              {currentlyPlaying?.addedBy?.fullname}
             </span>
           </div>
         </div>
