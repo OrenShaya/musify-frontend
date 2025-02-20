@@ -10,6 +10,7 @@ import {
   SET_USERS,
   SET_WATCHED_USER,
 } from '../reducers/user.reducer'
+import { ADD_LIKED_SONG, REMOVE_LIKED_SONG } from '../reducers/station.reducer'
 
 export async function loadUsers() {
   try {
@@ -87,13 +88,25 @@ export async function loadUser(userId) {
   }
 }
 
-export async function toggleLikeSong(songId, setLikedTo) {
-  const user = userService.getLoggedinUser()
+const getSong = (station, songId) => {
+  return station.songs.find((s) => s.yt_id === songId)
+}
+
+export async function toggleLikeSong(songId, setToLiked) {
   try {
-    let updatedUser
-    if (setLikedTo) updatedUser = await userService.likeSong(user._id, songId)
-    else updatedUser = await userService.removeLikedSongId(user._id, songId)
-    store.dispatch({ type: SET_USER, user: updatedUser })
+    const station = store.getState().stationModule.station
+    if (setToLiked) {
+      const result = await userService.likeSong(station._id, songId)
+      if (result?.modifiedCount === 1) {
+        const song = getSong(station, songId)
+        store.dispatch({ type: ADD_LIKED_SONG, song })
+      }
+    } else {
+      const result = await userService.unlikeSong(station._id, songId)
+      if (result.modifiedCount === 1) {
+        store.dispatch({ type: REMOVE_LIKED_SONG, songId })
+      }
+    }
   } catch (err) {
     console.warn('Cannot like song', err)
     throw err

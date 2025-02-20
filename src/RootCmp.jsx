@@ -21,6 +21,7 @@ import {} from './services/station'
 import {} from './services/song'
 import {} from './services/youtube-api.service.js'
 import { login } from './store/actions/user.actions.js'
+import { loadStations, setLikedSongs } from './store/actions/station.actions.js'
 
 export function RootCmp() {
   const playerRef = useRef(null)
@@ -33,6 +34,14 @@ export function RootCmp() {
   useEffect(() => {
     // Connect default guest
     login({ username: 'guest', password: 'guest' })
+  }, [])
+
+  useEffect(() => {
+    // Create Liked Songs playlist
+    ;(async () => {
+      await loadStations()
+      setLikedSongs()
+    })()
   }, [])
 
   // useEffect(() => {

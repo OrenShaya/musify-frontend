@@ -18,7 +18,7 @@ export function AppHeader() {
   const navigate = useNavigate()
   const [showUserMenu, setShowUserMenu] = useState(false)
 
-  function onUserClick(ev) {
+  function onUserClick() {
     setShowUserMenu(!showUserMenu)
   }
 

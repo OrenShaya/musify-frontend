@@ -1,4 +1,6 @@
+import { store } from '../../store/store'
 import { httpService } from '../http.service'
+import { userService } from '../user'
 
 export const stationService = {
   query,
@@ -6,6 +8,7 @@ export const stationService = {
   save,
   remove,
   addStationSong,
+  getLikedSongsStation,
 }
 
 async function query(filterBy = { name: '', tags: [] }) {
@@ -40,4 +43,20 @@ async function addStationSong(stationId, song) {
   }
 
   return await httpService.put(`station/${stationId}/song`, song)
+}
+
+function getLikedSongsStation() {
+  const userId = store.getState().userModule.user._id
+  const stations = store.getState().stationModule.stations
+  const likedSongsStation = { songs: [] }
+
+  stations.forEach((station) => {
+    station.songs.forEach((song) => {
+      if (song.likedByUsers.includes(userId)) {
+        likedSongsStation.songs.push(song)
+      }
+    })
+  })
+
+  return likedSongsStation
 }
