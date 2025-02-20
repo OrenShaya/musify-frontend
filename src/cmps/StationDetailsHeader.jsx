@@ -141,16 +141,13 @@ export function StationDetailsHeader({
         <div className='user-verified'>
           <h2 className='artist-title'>
             {' '}
-            <span className='station-creator-name'>
-              {' '}
-              {createdBy?.fullname}{' '}
-            </span>
+            <span className='station-creator-name'> {createdBy?.fullname}</span>
             <span className='verified-icon'>
               <img className='verified-icon-img' src={blueTick} />
             </span>
             {station?.songs?.length > 0 && (
               <span className='station-total-length'>
-                •{' '}
+                <span className='station-total-length-dot'>•</span>
                 {station?.songs &&
                   station?.songs.length +
                     ' song' +
