@@ -12,7 +12,7 @@ export function RecentlyPlayedStations() {
   const selectedStationId = useSelector((s) => s.stationModule.station?._id)
   const isPlaying = useSelector((s) => s.playerModule.isPlaying)
   const likedSongsStation = useSelector(
-    (s) => s.userModule.user.likedSongsStation
+    (s) => s.userModule.user?.likedSongsStation
   )
   const isSelectedStation = (station) => selectedStationId === station?._id
 
@@ -23,7 +23,8 @@ export function RecentlyPlayedStations() {
   }
 
   const _getRecentStations = () => {
-    if (!likedSongsStation) return []
+    if (!likedSongsStation && !stations) return []
+    else if (!likedSongsStation && stations) return stations.slice(0, 8)
     return [likedSongsStation].concat(stations?.slice(0, 7))
   }
 
