@@ -17,9 +17,14 @@ export function RecentlyPlayedStations() {
   const isSelectedStation = (station) => selectedStationId === station?._id
 
   const navigate = useNavigate()
-  const recentStations = [likedSongsStation].concat(stations?.slice(0, 7))
+
   const onNav = (sid) => {
     navigate(`/station/${sid}`)
+  }
+
+  const _getRecentStations = () => {
+    if (!likedSongsStation) return []
+    return [likedSongsStation].concat(stations?.slice(0, 7))
   }
 
   const isCurrentlyPlaying = (station) => {
@@ -37,6 +42,8 @@ export function RecentlyPlayedStations() {
       setIsPlaying(!isPlaying)
     }
   }
+
+  const recentStations = _getRecentStations()
 
   return (
     <>
