@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import ColorThief from '../../node_modules/colorthief/dist/color-thief.mjs'
@@ -5,6 +6,7 @@ import ColorThief from '../../node_modules/colorthief/dist/color-thief.mjs'
 import { formatTimeFromSeconds } from '../services/util.service.js'
 import blueTick from '../assets/icons/blue-tick.svg'
 import stationDefaultUrl from '../assets/icons/station-default-sidebar-img.svg'
+import stationDefaultUrl2 from '../assets/icons/station-default-img.svg'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { useRef } from 'react'
@@ -124,11 +126,15 @@ export function StationDetailsHeader({
           ref={heroImgRef}
           src={heroImgUrl}
           className={`station-img ${
-            heroImgUrl === stationDefaultUrl ? 'station-default-img' : ''
+            heroImgUrl === stationDefaultUrl ||
+            heroImgUrl === stationDefaultUrl2
+              ? 'station-default-img'
+              : ''
           }`}
           alt='playlist img'
           style={{
-            ...(heroImgUrl === stationDefaultUrl && { padding: '80px' }),
+            ...((heroImgUrl === stationDefaultUrl ||
+              heroImgUrl === stationDefaultUrl2) && { padding: '80px' }),
           }}
         />
       </div>
@@ -138,6 +144,7 @@ export function StationDetailsHeader({
         <div className='station-name' onClick={openEditModal}>
           {station?.name}
         </div>
+
         <div className='user-verified'>
           <h2 className='artist-title'>
             {' '}
