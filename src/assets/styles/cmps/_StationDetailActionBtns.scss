@@ -10,11 +10,11 @@ $play-button-circle-size: 56px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: em(24px);
   border-radius: 50%;
   height: $play-button-circle-size;
   width: $play-button-circle-size;
   background-color: $green-button-color;
   border: none;
-  padding: 14px;
+  margin: 0;
+  padding: 16px;
 }
