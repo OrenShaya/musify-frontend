@@ -235,7 +235,7 @@ function _getPlaylistInfo(video) {
   const createdAt = new Date(publishedAt).getTime()
 
   return {
-    id,
+    yt_id: id,
     playlistName,
     playlistOwnerId,
     createdAt,
