@@ -5,7 +5,11 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
-import { loadStation, addStationMsg } from '../store/actions/station.actions'
+import {
+  loadStation,
+  addStationMsg,
+  setStationLikedSongs,
+} from '../store/actions/station.actions'
 import { StationDetailsHeader } from '../cmps/StationDetailsHeader'
 import { StationDetailsList } from '../cmps/StationDetailsList'
 import { StationDetailsSearch } from '../cmps/StationDetailsSearch'
@@ -25,7 +29,9 @@ export function StationDetails() {
   }, [station])
 
   useEffect(() => {
-    loadStation(stationId)
+    const LIKED = '67b83d0e7d86f6d63dbee073'
+    if (stationId !== LIKED) loadStation(stationId)
+    else setStationLikedSongs()
   }, [stationId])
 
   return (

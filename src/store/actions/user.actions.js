@@ -96,11 +96,8 @@ export async function toggleLikeSong(songId, setToLiked) {
   try {
     const station = store.getState().stationModule.station
     if (setToLiked) {
-      const result = await userService.likeSong(station._id, songId)
-      if (result?.modifiedCount === 1) {
-        const song = getSong(station, songId)
-        store.dispatch({ type: ADD_LIKED_SONG, song })
-      }
+      const song = await userService.likeSong(station._id, songId)
+      store.dispatch({ type: ADD_LIKED_SONG, song })
     } else {
       const result = await userService.unlikeSong(station._id, songId)
       if (result.modifiedCount === 1) {

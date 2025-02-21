@@ -70,6 +70,7 @@ function saveLoggedinUser(user) {
     imgUrl: user.imgUrl,
     stationGroups: user.stationGroups,
     isAdmin: user.isAdmin,
+    likedSongsStation: user.likedSongsStation,
   }
   sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
   return user

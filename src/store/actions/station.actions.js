@@ -33,6 +33,17 @@ export async function loadStation(stationId) {
   }
 }
 
+export function setStationLikedSongs() {
+  try {
+    const station = store.getState().userModule.user.likedSongsStation
+    store.dispatch(getCmdSetStation(station))
+    store.dispatch(getCmdSetSongsQueue(station.songs))
+  } catch (err) {
+    console.warn('Cannot load station', err)
+    throw err
+  }
+}
+
 export async function loadSongsQueue(station) {
   try {
     store.dispatch(getCmdSetSongsQueue(station.songs))

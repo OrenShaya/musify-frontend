@@ -3,7 +3,7 @@ import axios from 'axios'
 import { saveToStorage, loadFromStorage } from '../util.service'
 import { songService } from '../song/song.service.remote'
 import { stationService } from '../station/station.service.remote'
-import { storageService } from '../async-storage.service'
+import { uploadService } from '../upload.service'
 
 const YT_API_KEY = import.meta.env.VITE_YOUTUBE_API
 
@@ -83,7 +83,7 @@ export async function getSong(songID) {
   }
 
   const { data } = await axios.get(_setSongURL(songID))
-  const newSong = _getSongInfo(data.items[0])
+  const newSong = await _getSongInfo(data.items[0])
 
   const artistId = newSong.artistId
   const artist = await getArtist(artistId)
@@ -96,7 +96,7 @@ export async function getSong(songID) {
   return readySong
 }
 
-function _getSongInfo(video) {
+async function _getSongInfo(video) {
   const { id, snippet } = video
   const { channelId, channelTitle, publishedAt, title, thumbnails } = snippet
   const { high, medium } = thumbnails
@@ -104,7 +104,7 @@ function _getSongInfo(video) {
   const songId = id
   const songUrl = _getSongURL(songId)
 
-  const imgUrl = high.url
+  const imgUrl = await uploadService.uploadImageUrl(high.url)
   const songTitle = title
   const artistTitle = channelTitle
   const artistId = channelId
@@ -137,21 +137,25 @@ export async function getArtist(artistID) {
   if (gArtists[artistID]) {
     return Promise.resolve(gArtists[artistID])
   }
-
-  const { data } = await axios.get(_setArtistURL(artistID))
-  gArtists[artistID] = _getArtistInfo(data.items[0])
-  saveToStorage(YT_ARTIST_STORAGE_KEY, gArtists)
-  return gArtists[artistID]
+  try {
+    const { data } = await axios.get(_setArtistURL(artistID))
+    gArtists[artistID] = await _getArtistInfo(data.items[0])
+    saveToStorage(YT_ARTIST_STORAGE_KEY, gArtists)
+    return gArtists[artistID]
+  } catch (error) {
+    console.error('Cannot get artist', error)
+  }
 }
 
-function _getArtistInfo(video) {
+async function _getArtistInfo(video) {
   const { id, snippet, statistics } = video
   const { publishedAt, title, thumbnails } = snippet
   const { high } = thumbnails
   const { videoCount, viewCount } = statistics
 
   const artistId = id
-  const imgUrl = high.url
+  const imgUrl = await uploadService.uploadImageUrl(high.url)
+
   const artistTitle = title
   const createdAt = new Date(publishedAt).getTime()
 
@@ -195,10 +199,12 @@ export async function getPlaylist(
 
     const artist = await getArtist(createdById)
 
+    const imgUrl = artist?.imgUrl || ''
+
     station.createdBy = {
-      yt_id: createdById,
+      yt_id: artist.yt_id,
       fullname: artist.artistTitle || 'Mupify',
-      imgUrl: artist.imgUrl || '',
+      imgUrl,
       createdAt: artist.createdAt || Date.now(),
       updatedAt: Date.now(),
     }
@@ -210,8 +216,7 @@ export async function getPlaylist(
     const readyStaion = await stationService.save(station)
     gPlaylists[playlistID] = readyStaion
     saveToStorage(YT_PLAYLIST_STORAGE_KEY, gPlaylists)
-    //await addStationManualy(station)
-    //const finalSongs = await storageService.query('song_db')
+
     return readyStaion
   } catch {
     return (err) => {
@@ -235,7 +240,7 @@ function _getPlaylistInfo(video) {
   const createdAt = new Date(publishedAt).getTime()
 
   return {
-    id,
+    yt_id: id,
     playlistName,
     playlistOwnerId,
     createdAt,
@@ -259,7 +264,7 @@ async function _getSongInfoFromPlaylist(videos) {
       const songUrl = _getSongURL(songId)
       const songTitle = title
 
-      const imgUrl = high.url
+      const imgUrl = await uploadService.uploadImageUrl(high.url)
       const artistTitle = channelTitle
       const artistId = channelId
       const createdAt = new Date(publishedAt).getTime()
