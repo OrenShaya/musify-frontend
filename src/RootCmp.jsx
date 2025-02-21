@@ -19,6 +19,10 @@ import { StationExplore } from './pages/StationExplore.jsx'
 
 import { login } from './store/actions/user.actions.js'
 import { loadStations, setLikedSongs } from './store/actions/station.actions.js'
+import {
+  SOCKET_EVENT_ADD_SONG,
+  socketService,
+} from './services/socket.service.js'
 
 export function RootCmp() {
   const playerRef = useRef(null)
@@ -30,7 +34,14 @@ export function RootCmp() {
 
   useEffect(() => {
     // Connect default guest
-    login({ username: 'guest', password: 'guest' })
+    ;async () => {
+      const user = login({ username: 'guest', password: 'guest' })
+      socketService.login(user._id)
+      socketService.on(SOCKET_EVENT_ADD_SONG, (res) => {
+        // TODO: make sure it's receiving
+        console.log('res:', res)
+      })
+    }
   }, [])
 
   useEffect(() => {
