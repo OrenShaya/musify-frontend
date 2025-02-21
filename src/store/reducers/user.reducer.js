@@ -11,6 +11,7 @@ const initialState = {
   users: [],
   watchedUser: null,
   stationGroups: [],
+  likedSongsStation: null,
 }
 
 export function userReducer(state = initialState, action) {
