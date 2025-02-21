@@ -32,7 +32,11 @@ export function QueueIndex({ setIsQueueOpen }) {
       )}
       <div className='queue-list-container'>
         <h2 className='queue-list-header'>Next up</h2>
-        <QueueList currQueue={currQueue} currPlaying={currPlaying} />
+        {!currQueue ? (
+          <QueueList currQueue={currQueue} currPlaying={currPlaying} />
+        ) : (
+          <div>No songs in queue</div>
+        )}
       </div>
     </section>
   )
