@@ -13,6 +13,7 @@
 }
 
 .station-table {
+  margin: 32px 0 0 10px;
   font-size: 14px;
   padding-bottom: 0.5em;
 }
@@ -21,12 +22,11 @@
   font-size: em(14px);
   justify-content: center;
   align-items: center;
-  margin-top: 0em;
-  margin-bottom: 0em;
+  margin-block: 0em;
+  margin: 0 0 4px 6px;
 
   border-radius: 0.5em;
-  padding-top: 0.3em;
-  padding-bottom: 0.3em;
+  padding-block: 0.3em;
   padding-left: 1em;
 
   &:hover {
@@ -75,7 +75,7 @@
 hr {
   border: none;
   height: 1px;
-  margin: 0 1em 1em 1em;
+  margin: 0 1em 1em 0.87em;
 
   background-color: $hr-color;
 }
@@ -85,11 +85,12 @@ hr {
 }
 
 .song-number {
-  margin: auto;
+  //margin: auto;
+  margin-inline-start: em(15px);
 }
 
 .song-name {
-  padding-left: 0.3em;
+  margin-inline-start: 15px;
 }
 
 .song-title:hover,

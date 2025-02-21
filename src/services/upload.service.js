@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 export const uploadService = {
   uploadImg,
+  uploadImageUrl,
 }
 
 async function uploadImg(ev) {
@@ -24,3 +25,26 @@ async function uploadImg(ev) {
     throw err
   }
 }
+
+async function uploadImageUrl(imageUrl) {
+  const CLOUD_NAME =
+    import.meta.env.VITE_CLOUD_NAME || process.env.VITE_CLOUD_NAME
+  const UPLOAD_PRESET = 'musify_preset'
+  const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`
+
+  const formData = new FormData()
+  formData.append('file', imageUrl) // Provide  direct URL of image
+  formData.append('upload_preset', UPLOAD_PRESET)
+
+  try {
+    const res = await fetch(UPLOAD_URL, { method: 'POST', body: formData })
+    const imgData = await res.json()
+    return imgData.secure_url // Return the uploaded image's Cloudinary URL
+  } catch (err) {
+    console.error('Image URL upload failed:', err)
+    throw err
+  }
+}
+
+// for DBUGGINg
+//window.urltest = uploadService
