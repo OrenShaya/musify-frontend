@@ -37,10 +37,6 @@ export function RootCmp() {
     ;async () => {
       const user = login({ username: 'guest', password: 'guest' })
       socketService.login(user._id)
-      socketService.on(SOCKET_EVENT_ADD_SONG, (res) => {
-        // TODO: make sure it's receiving
-        console.log('res:', res)
-      })
     }
   }, [])
 

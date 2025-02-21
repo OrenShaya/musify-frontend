@@ -5,14 +5,19 @@ import { debounce } from '../services/util.service.js'
 import { setCurrentlyPlaying } from '../store/actions/player.actions.js'
 import {
   addStationSong,
+  getCmdAddStationSong,
   loadStation,
-  updateStation,
 } from '../store/actions/station.actions.js'
 import { useState, useEffect, useRef } from 'react'
 import { ytService } from '../services/youtube-api/youtube-api.service.remote.js'
 import resetUrl from '../assets/img/x.svg'
 
 import { songService } from '../services/song'
+import {
+  SOCKET_EVENT_ADD_SONG,
+  socketService,
+} from '../services/socket.service.js'
+import { store } from '../store/store.js'
 
 export function StationDetailsSearch({ station }) {
   const [searchTerm, setSearchTerm] = useState('')
@@ -21,6 +26,18 @@ export function StationDetailsSearch({ station }) {
   const getSearchedSongsDebounce = useRef(
     debounce((term) => getSearchedSongs(term), 500)
   )
+
+  useEffect(() => {
+    const _addSong = ({ song, stationId }) => {
+      console.log('res:', song, stationId)
+      store.dispatch(getCmdAddStationSong(song, stationId))
+    }
+    socketService.on(SOCKET_EVENT_ADD_SONG, _addSong)
+
+    return () => {
+      socketService.off(SOCKET_EVENT_ADD_SONG, _addSong)
+    }
+  })
 
   useEffect(() => {
     if (searchTerm.trim() === '') return

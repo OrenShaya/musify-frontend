@@ -92,10 +92,20 @@ export function stationReducer(state = initialState, action) {
     case ADD_STATION_SONG:
       newState = {
         ...state,
-        station: {
-          ...state.station,
-          songs: [...(state.station?.songs || []), action.song],
-        },
+        stations: state.stations.map((s) => {
+          if (s._id !== action.stationId) return s
+          s.songs.push(action.song)
+          return s
+        }),
+      }
+      if (state.station._id === action.stationId) {
+        newState = {
+          ...newState,
+          station: {
+            ...state.station,
+            songs: [...(state.station?.songs || []), action.song],
+          },
+        }
       }
       break
 

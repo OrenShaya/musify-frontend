@@ -11,6 +11,10 @@ import {
   SET_SONGS_QUEUE,
   SET_LIKED_SONGS,
 } from '../reducers/station.reducer'
+import {
+  SOCKET_EMIT_ADD_SONG,
+  socketService,
+} from '../../services/socket.service'
 
 export async function loadStations(filterBy) {
   try {
@@ -104,7 +108,8 @@ export async function addStationMsg(stationId, txt) {
 export async function addStationSong(stationId, song) {
   try {
     const savedSong = await stationService.addStationSong(stationId, song)
-    store.dispatch(getCmdAddStationSong(savedSong))
+    socketService.emit(SOCKET_EMIT_ADD_SONG, { song: savedSong, stationId })
+    store.dispatch(getCmdAddStationSong(savedSong, stationId))
     return savedSong
   } catch (err) {
     console.warn('Cannot add station song', err)
@@ -175,6 +180,6 @@ function getCmdAddStationMsg(msg) {
   }
 }
 
-function getCmdAddStationSong(song) {
-  return { type: ADD_STATION_SONG, song }
+export function getCmdAddStationSong(song, stationId) {
+  return { type: ADD_STATION_SONG, song, stationId }
 }
