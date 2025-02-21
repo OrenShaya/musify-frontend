@@ -1,4 +1,5 @@
-import { useEffect, useRef } from 'react'
+/* eslint-disable no-extra-semi */
+import { useEffect, useRef, useState } from 'react'
 import { Routes, Route } from 'react-router'
 
 import { AboutUs, AboutTeam, AboutVision } from './pages/AboutUs'
@@ -23,10 +24,12 @@ import {
   SOCKET_EVENT_ADD_SONG,
   socketService,
 } from './services/socket.service.js'
+import { QueueIndex } from './cmps/QueueIndex.jsx'
 
 export function RootCmp() {
   const playerRef = useRef(null)
   const mainRef = useRef(null)
+  const [isQueueOpen, setIsQueueOpen] = useState(false)
 
   const handleSongEnded = () => {
     playerSongEndedEvent()
@@ -60,7 +63,9 @@ export function RootCmp() {
   // }, [mainRef.current?.scrollHeight])
 
   return (
-    <div className='main-container main-layout'>
+    <div
+      className={`main-container main-layout ${isQueueOpen && 'queue-open'}`}
+    >
       <AppHeader />
       <UserMsg />
       <main style={{ overflowY: 'scroll' }} ref={mainRef}>
@@ -80,8 +85,13 @@ export function RootCmp() {
         </Routes>
       </main>
       <SideBar />
+      {isQueueOpen && <QueueIndex setIsQueueOpen={setIsQueueOpen} />}
       <HiddenReactPlayer ref={playerRef} onEnded={handleSongEnded} />
-      <AppFooter playerRef={playerRef} />
+      <AppFooter
+        playerRef={playerRef}
+        isQueueOpen={isQueueOpen}
+        setIsQueueOpen={setIsQueueOpen}
+      />
     </div>
   )
 }
