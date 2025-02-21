@@ -14,7 +14,9 @@ export function SideBar() {
   const [filterTerm, setFilterTerm] = useState()
   const PLAYLIST_CONTAINER = useRef(null)
   const [isSearchExpanded, setIsSearchExpanded] = useState(false)
-
+  const likedSongsStation = useSelector(
+    (s) => s.userModule.user?.likedSongsStation
+  )
   useEffect(() => {
     stationService.query({ name: filterTerm }).then((stations) => {
       setStations(stations)
@@ -168,7 +170,11 @@ export function SideBar() {
             />
           </div>
         </div>
-        <div className='pinned-stations'></div>
+        <div className='pinned-stations'>
+          {likedSongsStation && (
+            <SideBarStationPreview station={likedSongsStation} />
+          )}
+        </div>
         <div className='regular-stations'>
           {stations
             .slice()
