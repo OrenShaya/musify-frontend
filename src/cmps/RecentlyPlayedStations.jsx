@@ -11,12 +11,13 @@ export function RecentlyPlayedStations() {
   const stations = useSelector((s) => s.stationModule.stations)
   const selectedStationId = useSelector((s) => s.stationModule.station?._id)
   const isPlaying = useSelector((s) => s.playerModule.isPlaying)
-
+  const likedSongsStation = useSelector(
+    (s) => s.userModule.user.likedSongsStation
+  )
   const isSelectedStation = (station) => selectedStationId === station?._id
 
   const navigate = useNavigate()
-  const recentStations = stations?.slice(0, 8)
-
+  const recentStations = [likedSongsStation].concat(stations?.slice(0, 7))
   const onNav = (sid) => {
     navigate(`/station/${sid}`)
   }
