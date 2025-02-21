@@ -1,25 +1,21 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-extra-semi */
 /* eslint-disable react/prop-types */
-import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
 import { debounce } from '../services/util.service.js'
 import { setCurrentlyPlaying } from '../store/actions/player.actions.js'
 import {
   addStationSong,
+  loadStation,
   updateStation,
 } from '../store/actions/station.actions.js'
 import { useState, useEffect, useRef } from 'react'
-import {
-  getArtist,
-  getSong,
-  getSongs,
-} from '../services/youtube-api.service.js'
+import { ytService } from '../services/youtube-api/youtube-api.service.remote.js'
 import resetUrl from '../assets/img/x.svg'
 
-import { addSongFromYT } from '../services/song/song.service.local.js'
+import { songService } from '../services/song'
 
 export function StationDetailsSearch({ station }) {
   const [searchTerm, setSearchTerm] = useState('')
-
   const [searchedSongs, setSearchedSongs] = useState(null)
 
   const getSearchedSongsDebounce = useRef(
@@ -27,20 +23,26 @@ export function StationDetailsSearch({ station }) {
   )
 
   useEffect(() => {
+    if (searchTerm.trim() === '') return
     getSearchedSongsDebounce.current(searchTerm)
   }, [searchTerm])
 
-  async function addSongAndPlayIt(songId) {
-    const song = await getSong(songId)
-    if (!song) return
+  async function addSongAndPlayIt(songId, artistId) {
+    try {
+      const song = await ytService.getSong(songId)
+      if (!song) return
+      const newSong = await addSongToStation(song?.yt_id, artistId)
 
-    setCurrentlyPlaying(station, song.yt_id)
+      setCurrentlyPlaying(station, newSong?.yt_id)
+    } catch (err) {
+      console.error('Cannot add song and play it', err)
+    }
   }
 
   async function getSearchedSongs(term) {
     if (!term || term === '') return
     try {
-      const songs = await getSongs(term)
+      const songs = await ytService.getSongs(term)
       if (!songs) return
 
       setSearchedSongs(songs)
@@ -48,32 +50,29 @@ export function StationDetailsSearch({ station }) {
       console.error('Unable to search for songs', err)
     }
   }
+
   async function addSongToStation(songId, artistId) {
     if (!songId || !artistId) return
+
     try {
-      const ytSong = await getSong(songId)
+      const ytSong = await ytService.getSong(songId)
       if (!ytSong) return
 
-      const artist = await getArtist(artistId)
+      const artist = await ytService.getArtist(artistId)
       if (!artist) return
-      const readySong = await addSongFromYT(ytSong, artist)
+
+      const readySong = await songService.addSongFromYT(ytSong, artist)
       if (!readySong) return
 
-      await addStationSong(station._id, readySong)
+      const resultOfaddStationSong = await addStationSong(
+        station._id,
+        readySong
+      )
+
+      await loadStation(station._id)
     } catch (err) {
       console.error('Unable to search for songs', err)
     }
-  }
-
-  // Function to handle the drop result
-  const handleOnDragEnd = (result) => {
-    if (!result.destination) return // Exit if dropped outside the list
-
-    const reorderedItems = Array.from(station?.songs)
-    const [movedItem] = reorderedItems.splice(result.source.index, 1)
-    reorderedItems.splice(result.destination.index, 0, movedItem)
-
-    updateStation({ ...station, songs: reorderedItems })
   }
 
   function resetSearchInput() {
@@ -86,7 +85,10 @@ export function StationDetailsSearch({ station }) {
       <div className='station-details-search-header'>
         <h1>Let&#39;s find something for your playlist</h1>
 
-        <form className='searchbar-container-form'>
+        <form
+          className='searchbar-container-form'
+          onSubmit={(ev) => ev.preventDefault()}
+        >
           <span className='search-icon'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
@@ -114,89 +116,76 @@ export function StationDetailsSearch({ station }) {
         </form>
       </div>
 
-      <DragDropContext onDragEnd={handleOnDragEnd}>
-        <Droppable droppableId='droppable'>
-          {(provided) => (
-            <div
-              className='search-result-grid'
-              {...provided.droppableProps}
-              ref={provided.innerRef}
-            >
-              {searchedSongs?.length > 0 ? (
-                searchedSongs.map((song, idx) => (
-                  <Draggable key={song.id} draggableId={song.id} index={idx}>
-                    {(provided) => (
-                      <div
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                      >
-                        <div className='song-row'>
-                          <div
-                            className='hover-song-play'
-                            onClick={() => addSongAndPlayIt(song?.id)}
-                            style={{ cursor: 'pointer' }}
-                          >
-                            <svg
-                              data-encore-id='icon'
-                              role='img'
-                              aria-hidden='true'
-                              className='Svg-sc-ytk21e-0 bneLcE e-9541-icon zOsKPnD_9x3KJqQCSmAq'
-                              viewBox='0 0 24 24'
-                            >
-                              <path d='m7.05 3.606 13.49 7.788a.7.7 0 0 1 0 1.212L7.05 20.394A.7.7 0 0 1 6 19.788V4.212a.7.7 0 0 1 1.05-.606z'></path>
-                            </svg>
-                          </div>
-                          <div className='album-song-artist'>
-                            <img
-                              className='album-img'
-                              src={song?.imgUrl}
-                              alt='album image'
-                            />
-                            <div className='song-title-artist'>
-                              <div className='song-title'>{song.songTitle}</div>
-                              <div className='artist'>{song.artistTitle}</div>
-                            </div>
-                          </div>
-                          <div className='song-album'>
-                            {/* {song.album} needed here */ 'Album Name'}
-                          </div>
-
-                          <button
-                            className='add-song-to-station-btn'
-                            onClick={() =>
-                              addSongToStation(song?.id, song?.artistId)
-                            }
-                          >
-                            Add
-                          </button>
-                        </div>
-                      </div>
-                    )}
-                  </Draggable>
-                ))
-              ) : (
-                <div>
-                  {searchTerm !== '' || searchTerm !== ' ' ? (
-                    <div className='no-results-display'>
-                      <h1>
-                        No results found for &quot;{searchTerm.toString()}&quot;
-                      </h1>
-                      <p>
-                        Please make sure your words are spelled correctly, or
-                        use fewer or different keywords.
-                      </p>
-                    </div>
-                  ) : (
-                    ''
-                  )}
+      <div className='search-result-grid'>
+        {searchedSongs?.length > 0 ? (
+          searchedSongs.map((song) => (
+            <article key={song?.yt_id + 'article'}>
+              <div className='song-row' key={song?.yt_id}>
+                <div
+                  className='hover-song-play'
+                  onClick={(ev) => {
+                    ev.stopPropagation()
+                    addSongAndPlayIt(song?.yt_id, song?.artistId)
+                  }}
+                  style={{ cursor: 'pointer' }}
+                >
+                  <svg
+                    data-encore-id='icon'
+                    role='img'
+                    aria-hidden='true'
+                    className='Svg-sc-ytk21e-0 bneLcE e-9541-icon zOsKPnD_9x3KJqQCSmAq'
+                    viewBox='0 0 24 24'
+                  >
+                    <path d='m7.05 3.606 13.49 7.788a.7.7 0 0 1 0 1.212L7.05 20.394A.7.7 0 0 1 6 19.788V4.212a.7.7 0 0 1 1.05-.606z'></path>
+                  </svg>
                 </div>
-              )}
-              {provided.placeholder}
-            </div>
-          )}
-        </Droppable>
-      </DragDropContext>
+                <div className='album-song-artist'>
+                  <img
+                    className='album-img'
+                    src={song?.imgUrl}
+                    alt='album image'
+                  />
+                  <div className='song-title-artist'>
+                    <div className='song-title'>
+                      {song?.songTitle || song?.title}
+                    </div>
+                    <div className='artist'>{song?.artistTitle}</div>
+                  </div>
+                </div>
+                <div className='song-album'>
+                  {/* {song.album} needed here */ 'Album Name'}
+                </div>
+
+                <button
+                  className='add-song-to-station-btn'
+                  onClick={(ev) => {
+                    ev.stopPropagation()
+                    addSongToStation(song?.yt_id, song?.artistId)
+                  }}
+                >
+                  Add
+                </button>
+              </div>
+            </article>
+          ))
+        ) : (
+          <div>
+            {searchTerm.trim() === '' ? (
+              ''
+            ) : (
+              <div className='no-results-display'>
+                <h1>
+                  No results found for &quot;{searchTerm.toString()}&quot;
+                </h1>
+                <p>
+                  Please make sure your words are spelled correctly, or use
+                  fewer or different keywords.
+                </p>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
     </section>
   )
 }

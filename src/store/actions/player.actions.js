@@ -17,6 +17,10 @@ export async function setIsPlaying(itNeedsToPlay = false) {
 
 export async function setCurrentlyPlaying(station, songId) {
   const song = station.songs.find((s) => s.yt_id === songId)
+  if (!song) {
+    console.warn('song undefined entered id', songId)
+    return
+  }
   store.dispatch({ type: SET_CURRENTLY_PLAYING, currentlyPlaying: song })
 }
 

@@ -1,6 +1,6 @@
 import { store } from '../../store/store'
 import { httpService } from '../http.service'
-import { userService } from '../user'
+//import { userService } from '../user'
 
 export const stationService = {
   query,
@@ -8,6 +8,7 @@ export const stationService = {
   save,
   remove,
   addStationSong,
+  removeStationSong,
   getLikedSongsStation,
 }
 
@@ -44,6 +45,14 @@ async function addStationSong(stationId, song) {
   }
 
   return await httpService.post(`station/${stationId}/song`, song)
+}
+
+async function removeStationSong(stationId, songId) {
+  if (!stationId || !songId) {
+    throw new Error('Not valid stationId or song in addStationSong')
+  }
+
+  return await httpService.delete(`station/${stationId}/${songId}`)
 }
 
 function getLikedSongsStation() {

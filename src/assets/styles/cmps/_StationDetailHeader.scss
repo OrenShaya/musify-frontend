@@ -80,6 +80,11 @@ h2.artist-title {
   align-self: center;
   font-size: 14px;
   color: $station-table-header-font-color;
+
+  span.station-total-length-dot {
+    margin-inline-end: 8px;
+    margin-inline-start: -6px;
+  }
 }
 
 .verified-icon-img {

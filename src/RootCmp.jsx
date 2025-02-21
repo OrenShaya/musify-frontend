@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { Routes, Route } from 'react-router'
 
 import { AboutUs, AboutTeam, AboutVision } from './pages/AboutUs'
@@ -17,10 +17,6 @@ import { StationDetails } from './pages/StationDetails.jsx'
 import { StationExplore } from './pages/StationExplore.jsx'
 // import { StationSearch } from './pages/StationSearch.jsx'
 
-// Init db
-import {} from './services/station'
-import {} from './services/song'
-import {} from './services/youtube-api.service.js'
 import { login } from './store/actions/user.actions.js'
 import { loadStations, setLikedSongs } from './store/actions/station.actions.js'
 

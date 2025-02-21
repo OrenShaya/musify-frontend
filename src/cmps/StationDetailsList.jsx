@@ -67,7 +67,8 @@ export function StationDetailsList({ station }) {
       <DragDropContext onDragEnd={handleOnDragEnd}>
         <Droppable droppableId='droppable'>
           {(provided) => (
-            <div key={station?._id}
+            <div
+              key={station?._id}
               className='station-details-table'
               {...provided.droppableProps}
               ref={provided.innerRef}
@@ -75,8 +76,8 @@ export function StationDetailsList({ station }) {
               {station?.songs?.length > 0 &&
                 station?.songs.map((song, idx) => (
                   <Draggable
-                    key={song.yt_id}
-                    draggableId={song.yt_id}
+                    key={song?.yt_id}
+                    draggableId={song?.yt_id}
                     index={idx}
                   >
                     {(provided) => (
@@ -89,7 +90,7 @@ export function StationDetailsList({ station }) {
                           <div className='song-index'>{idx + 1}</div>
                           <div
                             className='hover-song-play'
-                            onClick={() => onTogglePlay(song.yt_id)}
+                            onClick={() => onTogglePlay(song?.yt_id)}
                             style={{ cursor: 'pointer' }}
                           >
                             <svg
@@ -111,7 +112,7 @@ export function StationDetailsList({ station }) {
                             <div className='song-title-artist'>
                               <div className='song-title'>{song.title}</div>
                               <div className='artist'>
-                                {song.addedBy.fullname}
+                                {song?.addedBy?.fullname}
                               </div>
                             </div>
                           </div>
@@ -119,10 +120,10 @@ export function StationDetailsList({ station }) {
                             {/* {song.album} needed here */ 'Album Name'}
                           </div>
                           <div className='date-added'>
-                            {formatDate(song.addedAt || song.updatedAt)}
+                            {formatDate(song?.addedAt || song?.updatedAt)}
                             <LikeBtn
                               song={song}
-                              isLiked={isLikedSong(song.yt_id)}
+                              isLiked={isLikedSong(song?.yt_id)}
                               onLikeSong={onLikeSong}
                             />
                           </div>
@@ -156,7 +157,7 @@ function LikeBtn({ song, isLiked, onLikeSong }) {
   return (
     <button
       className='clean-btn'
-      onClick={() => onLikeSong(song.yt_id, !isLiked)}
+      onClick={() => onLikeSong(song?.yt_id, !isLiked)}
     >
       <img className={getClasses()} src={imgUrl} />
     </button>
