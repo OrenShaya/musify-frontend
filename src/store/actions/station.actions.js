@@ -117,8 +117,12 @@ export async function setQueue(songs) {
 }
 
 export async function setLikedSongs() {
-  const station = await stationService.getLikedSongsStation()
-  store.dispatch({ type: SET_LIKED_SONGS, station })
+  try {
+    const station = await stationService.getLikedSongsStation()
+    store.dispatch({ type: SET_LIKED_SONGS, station })
+  } catch (err) {
+    console.log('station actions -> setLikedSongs:', err)
+  }
 }
 
 // Command Creators:
