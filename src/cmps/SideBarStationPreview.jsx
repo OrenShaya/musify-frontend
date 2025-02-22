@@ -4,13 +4,14 @@ import {
   setIsPlaying,
 } from '../store/actions/player.actions'
 import stationDefaultUrl from '../assets/icons/station-default-sidebar-img.svg'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
 
 export function SideBarStationPreview({ station }) {
   const selectedStationId = useSelector((s) => s.stationModule.station?._id)
   const isPlaying = useSelector((s) => s.playerModule.isPlaying)
+  const navigate = useNavigate()
 
   if (!station) {
     return <div>Loading</div>
@@ -28,25 +29,34 @@ export function SideBarStationPreview({ station }) {
     } else {
       setIsPlaying(!isPlaying)
     }
+    onNav()
+  }
+
+  const onNav = () => {
+    if (station.yt_id !== 'THE-CAKE-IS-A-LIE')
+      navigate(`/station/${station._id}`)
+    else navigate('collection/tracks')
   }
 
   return (
-    <Link to={`/station/${station._id}`}>
-      <div
-        onClick={() => handleClick(station)}
-        data-station-id={station._id}
-        className={`side-bar-station-preview ${
-          station.createdBy.fullname === 'Artist' ? 'artist' : 'playlist'
-        }`}
-      >
-        <img className='sidebar-station-img' src={station.createdBy?.imgUrl || stationDefaultUrl} alt='img' />
+    <div
+      onClick={() => handleClick(station)}
+      data-station-id={station._id}
+      className={`side-bar-station-preview ${
+        station.createdBy.fullname === 'Artist' ? 'artist' : 'playlist'
+      }`}
+    >
+      <img
+        className='sidebar-station-img'
+        src={station.createdBy?.imgUrl || stationDefaultUrl}
+        alt='img'
+      />
 
-        <div className='side-bar-station-preview-info'>
-          <h3>{station.name}</h3>
-          <h4>{station.createdBy.fullname}</h4>
-        </div>
+      <div className='side-bar-station-preview-info'>
+        <h3>{station.name}</h3>
+        <h4>{station.createdBy.fullname}</h4>
       </div>
-    </Link>
+    </div>
   )
 }
 

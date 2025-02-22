@@ -48,6 +48,7 @@ export function RootCmp() {
           </Route>
 
           <Route path='station/:stationId' element={<StationDetails />} />
+          <Route path='collection/tracks' element={<StationDetails />} />
           <Route path='explore' element={<StationExplore />} />
           {/* <Route path='search/:searchText' element={<StationSearch />} /> */}
 

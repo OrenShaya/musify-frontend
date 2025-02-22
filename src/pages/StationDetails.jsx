@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useRef, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
@@ -21,6 +21,7 @@ import { StationDetailsMobile } from './StationDetailsMobile'
 
 export function StationDetails() {
   const { stationId } = useParams()
+  const location = useLocation()
   const station = useSelector((storeState) => storeState.stationModule.station)
   const user = useSelector((storeState) => storeState.userModule.user)
   const [gradientColor, setGradientColor] = useState([0, 0, 0])
@@ -43,10 +44,13 @@ export function StationDetails() {
   }, [station])
 
   useEffect(() => {
-    const LIKED = '67b83d0e7d86f6d63dbee073' // the cake is a lie
-    if (stationId !== LIKED) loadStation(stationId)
-    else setStationLikedSongs()
-  }, [stationId])
+    const regex = new RegExp('^/station.*')
+    if (regex.test(location.pathname)) {
+      loadStation(stationId)
+    } else {
+      setStationLikedSongs()
+    }
+  }, [location.pathname, stationId])
 
   return (
     <section
