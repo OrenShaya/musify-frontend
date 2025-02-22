@@ -108,6 +108,7 @@ export function StationDetailsSearch({ station }) {
             placeholder='Search for songs or episodes'
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
+            autoComplete='off'
           />
           <button type='reset' className='reset-btn' onClick={resetSearchInput}>
             <img className='reset-icon' src={resetUrl} />
