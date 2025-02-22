@@ -26,6 +26,7 @@ export function RootCmp() {
   const playerRef = useRef(null)
   const mainRef = useRef(null)
   const [isQueueOpen, setIsQueueOpen] = useState(false)
+  const [isSideBarOpen, setIsSideBarOpen] = useState(false)
 
   const handleSongEnded = () => {
     playerSongEndedEvent()
@@ -41,7 +42,9 @@ export function RootCmp() {
 
   return (
     <div
-      className={`main-container main-layout ${isQueueOpen && 'queue-open'}`}
+      className={`main-container main-layout ${isQueueOpen && 'queue-open'} ${
+        isSideBarOpen && 'sidebar-open'
+      }`}
     >
       <AppHeader />
       <UserMsg />
@@ -62,7 +65,10 @@ export function RootCmp() {
           <Route path='login' element={<Login />} />
         </Routes>
       </main>
-      <SideBar />
+      <SideBar
+        isSideBarOpen={isSideBarOpen}
+        setIsSideBarOpen={setIsSideBarOpen}
+      />
       {isQueueOpen && <QueueIndex setIsQueueOpen={setIsQueueOpen} />}
       <HiddenReactPlayer ref={playerRef} onEnded={handleSongEnded} />
       <AppFooter
