@@ -1,5 +1,18 @@
 section.queue-list {
   display: grid;
-  grid-auto-flow: rows;
-  grid-auto-columns: 266px;
+  grid-template-columns: 1fr;
+  overflow-y: scroll !important;
+  overflow-x: hidden;
+  height: auto;
+  margin: 0;
+
+  .queue-songs-list {
+    display: grid;
+    grid-auto-flow: rows;
+    grid-auto-columns: 266px;
+
+    li.queue-list-item {
+      width: 100%;
+    }
+  }
 }
