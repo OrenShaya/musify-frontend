@@ -1,3 +1,72 @@
 section.queue-index {
   background-color: #121212;
+  padding: 0.5em;
+
+  .queue-index-header {
+    @include flex($justify-content: space-between);
+    padding-block-end: 2em;
+
+    .queue-heading {
+      font-weight: 700;
+      font-size: 1rem;
+      -webkit-tap-highlight-color: transparent;
+      margin: 0;
+      padding-inline-start: 0.5em;
+    }
+
+    .close-queue-btn {
+      background-color: #121212;
+      @include flex();
+      padding: 0.4em;
+      width: 2em;
+      height: 2em;
+      border-radius: 50%;
+      img.close-queue-btn-icon {
+        width: 1em;
+        height: 1em;
+      }
+
+      &:hover {
+        background-color: rgba(179, 179, 179, 0.1);
+        scale: 1.04;
+
+        img.close-queue-btn-icon {
+          fill: white;
+          color: white;
+        }
+      }
+    }
+  }
+
+  .currently-playing-container {
+    h3 {
+      color: #3be477;
+    }
+
+    .currently-playing-header {
+      font-weight: 700;
+      font-size: 1rem;
+      //padding-block-end: 1em;
+      padding-inline-start: 0.5em;
+    }
+
+    .currently-playing-container-empty {
+      padding-inline-start: 0.5em;
+      color: rgba(179, 179, 179, 0.9);
+    }
+  }
+
+  .queue-list-container {
+    .queue-list-header {
+      font-weight: 700;
+      font-size: 1rem;
+      padding-block-start: 1em;
+      padding-inline-start: 0.5em;
+    }
+
+    .queue-list-container-empty {
+      padding-inline-start: 0.5em;
+      color: rgba(179, 179, 179, 0.9);
+    }
+  }
 }
