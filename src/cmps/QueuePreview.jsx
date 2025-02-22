@@ -2,6 +2,7 @@
 
 import { useSelector } from 'react-redux'
 import { setCurrentlyPlaying } from '../store/actions/player.actions'
+import btnPlayIcon from '../assets/img/play-btn-white.svg'
 
 /* eslint-disable react/prop-types */
 export function QueuePreview({ currSong }) {
@@ -18,12 +19,25 @@ export function QueuePreview({ currSong }) {
         <article className='queue-preview-article' key={songId}>
           <div
             className='image-container'
-            onClick={setCurrentlyPlaying(station, songId)}
+            onClick={() => setCurrentlyPlaying(station, songId)}
           >
-            <img src={songImgUrl} alt={`img of ${songName}`} />{' '}
+            <img
+              className='queue-song-img'
+              src={songImgUrl}
+              alt={`img of ${songName}`}
+            />
+            <img
+              className='queue-song-play-icon'
+              src={btnPlayIcon}
+              alt={`play-icon`}
+            />
           </div>
-          <h3 className='queue-song-title'>{songName}</h3>
-          <span className='queue-song-artist'>{artistName}</span>
+          <div className='queue-song-title-marquee'>
+            <h3 className='queue-song-title marquee-inner'>{songName}</h3>
+          </div>
+          <div className='queue-song-artist-marquee'>
+            <span className='queue-song-artist '>{artistName}</span>
+          </div>
         </article>
       )}
     </section>
