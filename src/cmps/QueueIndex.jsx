@@ -8,8 +8,8 @@ export function QueueIndex({ setIsQueueOpen }) {
   const currPlaying = useSelector(
     (storeState) => storeState.playerModule.currentlyPlaying
   )
-  const currQueue = useSelector(
-    (storeState) => storeState.stationModule.songsQueue
+  const currStation = useSelector(
+    (storeState) => storeState.stationModule.station
   )
 
   return (
@@ -24,18 +24,24 @@ export function QueueIndex({ setIsQueueOpen }) {
           />
         </button>
       </div>
-      {currPlaying && (
-        <div className='currently-playing-container'>
-          <h2 className='currently-playing-header'>Now playing</h2>
+
+      <div className='currently-playing-container'>
+        <h2 className='currently-playing-header'>Now playing</h2>
+        {currPlaying ? (
           <QueuePreview currSong={currPlaying} />
-        </div>
-      )}
+        ) : (
+          <div className='currently-playing-container-empty'>
+            No song is playing
+          </div>
+        )}
+      </div>
+
       <div className='queue-list-container'>
         <h2 className='queue-list-header'>Next up</h2>
-        {!currQueue ? (
-          <QueueList currQueue={currQueue} currPlaying={currPlaying} />
+        {currStation && currStation?.songs?.length > 0 ? (
+          <QueueList currQueue={currStation.songs} currPlaying={currPlaying} />
         ) : (
-          <div>No songs in queue</div>
+          <div className='queue-list-container-empty'>No songs in queue</div>
         )}
       </div>
     </section>
