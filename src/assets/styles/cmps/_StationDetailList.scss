@@ -1,162 +1,164 @@
-.station-table,
-.song-row {
-  display: grid;
-  grid-auto-flow: column;
-  grid-template-columns:
-    2em
-    minmax(120px, 5fr)
-    minmax(120px, 3.3fr)
-    minmax(120px, 3.2fr)
-    minmax(100px, 0.8fr);
-  margin: 1em 1.5em 0 1.5em;
-  color: $station-table-header-font-color;
-}
+@include for-narrow-layout {
+  .station-table,
+  .song-row {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns:
+      2em
+      minmax(120px, 5fr)
+      minmax(120px, 3.3fr)
+      minmax(120px, 3.2fr)
+      minmax(100px, 0.8fr);
+    margin: 1em 1.5em 0 1.5em;
+    color: $station-table-header-font-color;
+  }
 
-.station-table {
-  margin: 32px 0 0 10px;
-  font-size: 14px;
-  padding-bottom: 0.5em;
-}
+  .station-table {
+    margin: 32px 0 0 10px;
+    font-size: 14px;
+    padding-bottom: 0.5em;
+  }
 
-.song-row {
-  font-size: em(14px);
-  justify-content: center;
-  align-items: center;
-  margin-block: 0em;
-  margin: 0 0 4px 6px;
+  .song-row {
+    font-size: em(14px);
+    justify-content: center;
+    align-items: center;
+    margin-block: 0em;
+    margin: 0 0 4px 6px;
 
-  border-radius: 0.5em;
-  padding-block: 0.3em;
-  padding-left: 1em;
+    border-radius: 0.5em;
+    padding-block: 0.3em;
+    padding-left: 1em;
 
-  &:hover {
-    background-color: $station-hover-color;
+    &:hover {
+      background-color: $station-hover-color;
 
-    &:hover .date-added img {
-      display: flex;
+      &:hover .date-added img {
+        display: flex;
+      }
+
+      & .song-index {
+        display: none;
+      }
+
+      & .hover-song-play {
+        display: inline;
+        fill: $clr6;
+        height: em(16px);
+        width: em(16px);
+      }
     }
 
-    & .song-index {
+    .hover-song-play {
       display: none;
     }
+  }
 
-    & .hover-song-play {
-      display: inline;
-      fill: $clr6;
-      height: em(16px);
-      width: em(16px);
+  .song-index,
+  .hover-song-play,
+  .album-song-artist,
+  .song-album,
+  .album-img,
+  .song-length {
+    display: flex;
+    align-items: center;
+    line-height: inherit;
+  }
+
+  .song-album {
+    margin-left: -0.5em;
+  }
+
+  .song-length {
+    margin-left: -0.5em;
+  }
+
+  hr {
+    border: none;
+    height: 1px;
+    margin: 0 1em 1em 0.87em;
+
+    background-color: $hr-color;
+  }
+
+  .song-title-artist {
+    margin-left: 1em;
+  }
+
+  .song-number {
+    //margin: auto;
+    margin-inline-start: em(15px);
+  }
+
+  .song-name {
+    margin-inline-start: 15px;
+  }
+
+  .song-title:hover,
+  .artist:hover,
+  .song-album:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  $song-length-size: em(16px);
+  .song-length-icon {
+    height: $song-length-size;
+    width: $song-length-size;
+    fill: $station-img-default-fill-color;
+  }
+
+  .song-index {
+    font-size: rem(16px);
+  }
+
+  $album-img-size: rem(40px);
+  .album-img {
+    height: $album-img-size;
+    width: $album-img-size;
+    border-radius: 0.5em;
+  }
+
+  .song-title {
+    font-weight: 400;
+    font-size: rem(16px);
+    font-family: 'Spotifymix-Regular';
+    color: #f0f0f0;
+
+    line-height: normal;
+    text-overflow: ellipsis;
+    text-transform: none;
+    text-wrap-mode: wrap;
+    vertical-align: baseline;
+  }
+
+  .date-added {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & img {
+      display: none;
+      align-items: center;
+      margin-right: 3em;
     }
   }
 
-  .hover-song-play {
+  .add-to-liked {
     display: none;
+    align-self: center;
+    height: 16px;
+    width: 16px;
+
+    &.add {
+      filter: invert(80%) sepia(0%) saturate(0%) hue-rotate(346deg)
+        brightness(91%) contrast(88%);
+    }
   }
-}
 
-.song-index,
-.hover-song-play,
-.album-song-artist,
-.song-album,
-.album-img,
-.song-length {
-  display: flex;
-  align-items: center;
-  line-height: inherit;
-}
-
-.song-album {
-  margin-left: -0.5em;
-}
-
-.song-length {
-  margin-left: -0.5em;
-}
-
-hr {
-  border: none;
-  height: 1px;
-  margin: 0 1em 1em 0.87em;
-
-  background-color: $hr-color;
-}
-
-.song-title-artist {
-  margin-left: 1em;
-}
-
-.song-number {
-  //margin: auto;
-  margin-inline-start: em(15px);
-}
-
-.song-name {
-  margin-inline-start: 15px;
-}
-
-.song-title:hover,
-.artist:hover,
-.song-album:hover {
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-$song-length-size: em(16px);
-.song-length-icon {
-  height: $song-length-size;
-  width: $song-length-size;
-  fill: $station-img-default-fill-color;
-}
-
-.song-index {
-  font-size: rem(16px);
-}
-
-$album-img-size: rem(40px);
-.album-img {
-  height: $album-img-size;
-  width: $album-img-size;
-  border-radius: 0.5em;
-}
-
-.song-title {
-  font-weight: 400;
-  font-size: rem(16px);
-  font-family: 'Spotifymix-Regular';
-  color: #f0f0f0;
-
-  line-height: normal;
-  text-overflow: ellipsis;
-  text-transform: none;
-  text-wrap-mode: wrap;
-  vertical-align: baseline;
-}
-
-.date-added {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  & img {
-    display: none;
-    align-items: center;
-    margin-right: 3em;
+  .artist {
+    font-weight: 400;
+    font-size: rem(14px);
+    font-family: 'Spotifymix-Regular';
   }
-}
-
-.add-to-liked {
-  display: none;
-  align-self: center;
-  height: 16px;
-  width: 16px;
-
-  &.add {
-    filter: invert(80%) sepia(0%) saturate(0%) hue-rotate(346deg)
-      brightness(91%) contrast(88%);
-  }
-}
-
-.artist {
-  font-weight: 400;
-  font-size: rem(14px);
-  font-family: 'Spotifymix-Regular';
 }

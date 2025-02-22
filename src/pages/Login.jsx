@@ -16,7 +16,7 @@ export function Login() {
     document.querySelector('main').classList.add('full-page')
 
     return () => {
-      document.querySelector('main').classList.remove('full-page')
+      document.querySelector('main')?.classList.remove('full-page')
     }
   }, [])
 
@@ -66,7 +66,7 @@ export function Login() {
           <a className='forgot-password-link'>Forgot your password?</a>
           <span className='subdue signup'>
             Don&#39;t have an account?
-            <a>Sign up for Musify</a>
+            <a href='signup'>Sign up for Musify</a>
           </span>
         </>
       </div>

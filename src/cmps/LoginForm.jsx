@@ -34,19 +34,17 @@ export function LoginForm() {
           return errors
         }}
         onSubmit={(values, { setSubmitting, setErrors }) => {
-          setTimeout(() => {
-            setSubmitting(false)
-            // in case its a username
-            // which is very likely with us
-            values.username = values.email         
-            login(values)
-              .then((user) => {
-                navigate('/')
-              })
-              .catch((err) => {
-                setErrors({ email: 'Invalid username or password', password: 'Invalid username or password' })
-              })
-          }, 300)
+          setSubmitting(false)
+          // in case its a username
+          // which is very likely with us
+          values.username = values.email         
+          login(values)
+            .then((user) => {
+              navigate('/')
+            })
+            .catch((err) => {
+              setErrors({ email: 'Invalid username or password', password: 'Invalid username or password' })
+            })
         }}
       >
         {({ isSubmitting }) => (

@@ -29,6 +29,7 @@ export function AppHeader() {
       navigate('/')
     } catch (err) {
       showErrorMsg('Cannot logout')
+      console.log(err)      
     }
   }
 

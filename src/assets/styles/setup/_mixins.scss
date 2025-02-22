@@ -522,3 +522,121 @@ $desktop-width: 954px;
 
   transition: $transitions;
 }
+
+@mixin marquee-text(
+  $duration: 8s,
+  $background-color: transparent,
+  $gradient-width: 2rem,
+  $isAutoStart: true
+) {
+  overflow: hidden;
+  position: relative;
+  white-space: nowrap;
+
+  // fade at the left and right edges
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: $gradient-width;
+    height: 100%;
+    z-index: 2;
+  }
+
+  &::before {
+    left: 0;
+    background: linear-gradient(
+      to right,
+      $background-color 0%,
+      rgba($background-color, 0) 100%
+    );
+  }
+
+  &::after {
+    right: 0;
+    background: linear-gradient(
+      to left,
+      $background-color 0%,
+      rgba($background-color, 0) 100%
+    );
+  }
+  @if $isAutoStart {
+    &:hover .marquee-inner {
+      animation: scroll-text $duration linear infinite;
+    }
+  } @else {
+    .marquee-inner {
+      animation: scroll-text $duration linear infinite;
+    }
+  }
+
+  // The inner text that actually does the scrolling
+  .marquee-inner {
+    display: inline-block;
+    position: relative;
+    transition: opacity 1ms ease-in-out;
+    // Keyframe animation
+    //animation: scroll-text-ltr $duration linear infinite;
+  }
+
+  // move from right (100%) to left (-100%)
+  @keyframes scroll-text {
+    0% {
+      transform: translateX(90%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  @keyframes scroll-text-ltr {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes marquee-loop {
+    0%,
+    10% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    40% {
+      transform: translateX(-100%);
+    }
+    44% {
+      opacity: 1;
+    }
+    45% {
+      opacity: 0;
+    }
+    60% {
+      transform: translateX(100%);
+    }
+
+    64% {
+      opacity: 0;
+    }
+    65% {
+      opacity: 1;
+    }
+
+    80% {
+      transform: translateX(0);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
+
+@mixin text-overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

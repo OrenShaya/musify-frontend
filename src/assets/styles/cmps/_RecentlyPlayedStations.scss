@@ -6,11 +6,23 @@ $itemBgc: rgb(40, 42, 43, 0.4);
   @include for-extra-wide-layout {
     grid-template-columns: repeat(4, 1fr);
   }
-  gap: em(12px);
-  padding-inline-end: em(30px);
+  @include for-mobile-layout {
+    padding-block-start: 1em;
+    gap: em(8px);
+    width: calc(100vw - 20px);
+    margin-inline: 10px;
+  }
+  @include for-narrow-layout {
+    padding-inline-end: em(30px);
+    gap: em(12px);
+  }
 
   .recent-image {
     height: 64px;
+    @include for-mobile-layout {
+      height: 48px;
+      min-width: 48px;
+    }
 
     border-radius: em(4px) 0 0 em(4px);
   }
@@ -18,6 +30,9 @@ $itemBgc: rgb(40, 42, 43, 0.4);
   .recent-station-item {
     display: grid;
     grid-template-columns: auto 1fr auto;
+    @include for-mobile-layout {
+      grid-template-columns: auto 1fr;
+    }
     gap: 1em;
 
     border-radius: em(4px);

@@ -12,6 +12,8 @@ $subdueClr: #b3b3b3;
   span {
     color: white;
   }
+  background-color: $bgClr;
+  height: 100vh;
 
   .spotify-logo {
     height: functions.rem(36px);
@@ -50,7 +52,6 @@ $subdueClr: #b3b3b3;
     display: grid;
     justify-items: center;
     background-color: $bgClr;
-
     max-width: 734px;
     width: 100%;
     margin: auto;

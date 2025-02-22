@@ -3,16 +3,20 @@ import {
   setCurrentlyPlaying,
   setIsPlaying,
 } from '../store/actions/player.actions'
-import stationDefaultUrl from '../assets/icons/station-default-img.svg'
-import { Link } from 'react-router-dom'
+import stationDefaultUrl from '../assets/icons/station-default-sidebar-img.svg'
+import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
+import pinUrl from '../assets/img/pin.svg'
 
 export function SideBarStationPreview({ station }) {
   const selectedStationId = useSelector((s) => s.stationModule.station?._id)
   const isPlaying = useSelector((s) => s.playerModule.isPlaying)
+  const likedSongsCount = useSelector(
+    (s) => s.userModule.user?.likedSongsStation?.songs.length
+  )
+  const navigate = useNavigate()
 
-  // if (!station || !station.songs || station.songs.length === 0) {
   if (!station) {
     return <div>Loading</div>
   }
@@ -29,28 +33,45 @@ export function SideBarStationPreview({ station }) {
     } else {
       setIsPlaying(!isPlaying)
     }
+    onNav()
   }
 
-  const STATION_IMG_SRC = station.createdBy?.imgUrl ?? stationDefaultUrl
+  const isLikedSongs = () => station.yt_id === 'THE-CAKE-IS-A-LIE'
 
+  const onNav = () => {
+    if (!isLikedSongs()) navigate(`/station/${station._id}`)
+    else navigate('collection/tracks')
+  }
+  console.log('isLikedSongs():', isLikedSongs())
   return (
-    <Link to={`/station/${station._id}`}>
-      <div
-        onClick={() => handleClick(station)}
-        data-station-id={station._id}
-        className={`side-bar-station-preview ${
-          station.createdBy.fullname === 'Artist' ? 'artist' : 'playlist'
-        }`}
-      >
-        {/* <img src={STATION_IMG_SRC} alt='img' /> */}
-        <img src={station.createdBy?.imgUrl} alt='img' />
+    <div
+      onClick={() => handleClick(station)}
+      data-station-id={station._id}
+      className={`side-bar-station-preview ${
+        station.createdBy.fullname === 'Artist' ? 'artist' : 'playlist'
+      }`}
+    >
+      <img
+        className='sidebar-station-img'
+        src={station.createdBy?.imgUrl || stationDefaultUrl}
+        alt='img'
+      />
 
-        <div className='side-bar-station-preview-info'>
-          <h3>{station.name}</h3>
+      <div className='side-bar-station-preview-info'>
+        <h3>{station.name}</h3>
+        {isLikedSongs() ? (
+          <h4 className='count-line'>
+            <span className='liked'>
+              <img className='pin-icon' src={pinUrl} alt='' />
+              Playlist • {likedSongsCount} song
+              {likedSongsCount !== 1 ? 's' : ''}
+            </span>
+          </h4>
+        ) : (
           <h4>{station.createdBy.fullname}</h4>
-        </div>
+        )}
       </div>
-    </Link>
+    </div>
   )
 }
 
@@ -61,7 +82,7 @@ SideBarStationPreview.propTypes = {
     name: PropTypes.string.isRequired,
     artists: PropTypes.arrayOf(PropTypes.string),
     createdBy: PropTypes.shape({
-      imgUrl: PropTypes.string.isRequired,
+      imgUrl: PropTypes.string,
       fullname: PropTypes.string,
     }),
     songs: PropTypes.arrayOf(

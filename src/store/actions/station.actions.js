@@ -9,7 +9,6 @@ import {
   ADD_STATION_MSG,
   ADD_STATION_SONG,
   SET_SONGS_QUEUE,
-  SET_LIKED_SONGS,
 } from '../reducers/station.reducer'
 import {
   SOCKET_EMIT_ADD_SONG,
@@ -119,15 +118,6 @@ export async function addStationSong(stationId, song) {
 
 export async function setQueue(songs) {
   store.dispatch(getCmdSetSongsQueue(songs))
-}
-
-export async function setLikedSongs() {
-  try {
-    const station = await stationService.getLikedSongsStation()
-    store.dispatch({ type: SET_LIKED_SONGS, station })
-  } catch (err) {
-    console.log('station actions -> setLikedSongs:', err)
-  }
 }
 
 // Command Creators:

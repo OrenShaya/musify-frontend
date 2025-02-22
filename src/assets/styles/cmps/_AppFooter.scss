@@ -66,6 +66,7 @@
 
 .song-progress-bar {
   -webkit-appearance: none;
+  appearance: none;
 
   height: 4px;
   border-radius: 2px;
@@ -130,13 +131,14 @@
 
   .volume-icon,
   .volume-mute-icon {
-    height: 14px;
-    width: 14px;
+    height: 16px;
+    width: 16px;
     fill: white;
   }
 
   .volume-slider {
     -webkit-appearance: none;
+    appearance: none;
 
     height: 4px;
     border-radius: 2px;
@@ -191,6 +193,37 @@
 
     &:hover::-moz-range-thumb {
       opacity: 1;
+    }
+  }
+
+  .queue-btn {
+    position: relative;
+    background-color: $clr-neutral-black;
+    margin: 0;
+    padding: 0;
+    @include flex();
+
+    img.queue-icon {
+      height: em(18px);
+      width: em(18px);
+      flex-shrink: 0;
+      display: block;
+    }
+    img.queue-icon-dot {
+      position: absolute;
+      height: em(8px);
+      width: em(8px);
+      border-radius: 50%;
+      flex-shrink: 0;
+      top: 120%;
+      left: 50%;
+      transform: translateX(-50%);
+      inline-size: 8px !important;
+      display: block;
+    }
+
+    &:hover {
+      scale: 1.05;
     }
   }
 }

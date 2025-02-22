@@ -343,7 +343,10 @@ $whiteFilter: invert(100%) sepia(100%) saturate(46%) hue-rotate(89deg)
       display: none;
     }
   }
+}
 
-  @include mobile {
+@include for-mobile-layout {
+  .app-header {
+    display: none;
   }
 }

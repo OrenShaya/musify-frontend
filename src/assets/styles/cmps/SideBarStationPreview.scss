@@ -1,7 +1,7 @@
 .side-bar-station-preview {
   display: flex;
   align-items: center;
-  gap: 1em;
+  gap: em(12px);
   padding: 0.5em;
   border-radius: 0.6em;
 
@@ -17,8 +17,9 @@
   }
 
   h4 {
-    font-size: 0.8em;
-    color: #666;
+    font-size: em(14px);
+    color: #ababab;
+    font-weight: normal;
   }
 
   &:hover {
@@ -27,11 +28,11 @@
   }
 }
 .side-bar-station-preview.playlist {
-  img {
-    border-radius: 0.6em;
+  .sidebar-station-img {
+    border-radius: 4px;
     background-color: #282828;
   }
-  img[src$='.svg'] {
+  .sidebar-station-img[src$='.svg'] {
     padding: 0.8em;
   }
 }
@@ -44,4 +45,32 @@
 
 a:hover {
   text-decoration: none;
+}
+
+.pin-icon {
+  background-color: transparent;
+  font-size: 4px;
+  margin-inline-end: 4px;
+}
+
+.side-bar-station-preview-info {
+  .count-line {
+    display: grid;
+    grid-auto-flow: column;
+
+    .liked {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.1em;
+    }
+  }
+
+  h3 {
+    font-weight: normal;
+    font-size: 16px;
+  }
+
+  h4 {
+    font-size: 14px;
+  }
 }

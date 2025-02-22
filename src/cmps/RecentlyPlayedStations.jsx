@@ -14,12 +14,15 @@ export function RecentlyPlayedStations() {
   const likedSongsStation = useSelector(
     (s) => s.userModule.user?.likedSongsStation
   )
+  const isMobile = document.documentElement.clientWidth <= 480
   const isSelectedStation = (station) => selectedStationId === station?._id
 
   const navigate = useNavigate()
 
-  const onNav = (sid) => {
-    navigate(`/station/${sid}`)
+  const onNav = (station) => {
+    if (station.yt_id !== 'THE-CAKE-IS-A-LIE')
+      navigate(`/station/${station._id}`)
+    else navigate('collection/tracks')
   }
 
   const _getRecentStations = () => {
@@ -54,7 +57,7 @@ export function RecentlyPlayedStations() {
             <li
               key={station._id}
               className='recent-station-item'
-              onClick={() => onNav(station._id)}
+              onClick={() => onNav(station)}
             >
               <img
                 className='recent-image'
@@ -63,11 +66,13 @@ export function RecentlyPlayedStations() {
               />
               <span className='recent-station-name'>{station.name}</span>
 
-              <PlayButton
-                className='btn-play-recent-station'
-                togglePlay={() => onTogglePlay(station)}
-                isPlaying={isCurrentlyPlaying(station)}
-              />
+              {!isMobile && (
+                <PlayButton
+                  className='btn-play-recent-station'
+                  togglePlay={() => onTogglePlay(station)}
+                  isPlaying={isCurrentlyPlaying(station)}
+                />
+              )}
             </li>
           ))}
       </ul>

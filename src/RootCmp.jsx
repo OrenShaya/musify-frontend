@@ -1,4 +1,5 @@
-import { useEffect, useRef } from 'react'
+/* eslint-disable no-extra-semi */
+import { useEffect, useRef, useState } from 'react'
 import { Routes, Route } from 'react-router'
 
 import { AboutUs, AboutTeam, AboutVision } from './pages/AboutUs'
@@ -12,51 +13,40 @@ import HiddenReactPlayer from './cmps/HiddenReactPlayer'
 import { playerSongEndedEvent } from './store/actions/player.actions.js'
 
 import { Login } from './pages/Login.jsx'
+import { Signup } from './pages/Signup.jsx'
 import { StationIndex } from './pages/StationIndex.jsx'
 import { StationDetails } from './pages/StationDetails.jsx'
 import { StationExplore } from './pages/StationExplore.jsx'
-// import { StationSearch } from './pages/StationSearch.jsx'
 
 import { login } from './store/actions/user.actions.js'
-import { loadStations, setLikedSongs } from './store/actions/station.actions.js'
-import {
-  SOCKET_EVENT_ADD_SONG,
-  socketService,
-} from './services/socket.service.js'
+import { loadStations } from './store/actions/station.actions.js'
+
+import { QueueIndex } from './cmps/QueueIndex.jsx'
 
 export function RootCmp() {
   const playerRef = useRef(null)
   const mainRef = useRef(null)
+  const [isQueueOpen, setIsQueueOpen] = useState(false)
+  const [isSideBarOpen, setIsSideBarOpen] = useState(false)
 
   const handleSongEnded = () => {
     playerSongEndedEvent()
   }
 
   useEffect(() => {
-    // Connect default guest
-    ;async () => {
-      const user = login({ username: 'guest', password: 'guest' })
-      socketService.login(user._id)
-    }
+    login({ username: 'guest', password: 'guest' })
   }, [])
 
   useEffect(() => {
-    // Create Liked Songs playlist
-    ;(async () => {
-      await loadStations()
-      setLikedSongs()
-    })()
+    loadStations()
   }, [])
 
-  // useEffect(() => {
-  //   if (mainRef.current) {
-  //     const mainScrollHeight = mainRef.current.scrollHeight
-  //     mainRef.current.style.height = `${mainScrollHeight}px`
-  //   }
-  // }, [mainRef.current?.scrollHeight])
-
   return (
-    <div className='main-container main-layout'>
+    <div
+      className={`main-container main-layout ${isQueueOpen && 'queue-open'} ${
+        isSideBarOpen && 'sidebar-open'
+      }`}
+    >
       <AppHeader />
       <UserMsg />
       <main style={{ overflowY: 'scroll' }} ref={mainRef}>
@@ -68,16 +58,26 @@ export function RootCmp() {
           </Route>
 
           <Route path='station/:stationId' element={<StationDetails />} />
+          <Route path='collection/tracks' element={<StationDetails />} />
           <Route path='explore' element={<StationExplore />} />
           {/* <Route path='search/:searchText' element={<StationSearch />} /> */}
 
           <Route path='admin' element={<AdminIndex />} />
           <Route path='login' element={<Login />} />
+          <Route path='signup' element={<Signup />} />
         </Routes>
       </main>
-      <SideBar />
+      <SideBar
+        isSideBarOpen={isSideBarOpen}
+        setIsSideBarOpen={setIsSideBarOpen}
+      />
+      {isQueueOpen && <QueueIndex setIsQueueOpen={setIsQueueOpen} />}
       <HiddenReactPlayer ref={playerRef} onEnded={handleSongEnded} />
-      <AppFooter playerRef={playerRef} />
+      <AppFooter
+        playerRef={playerRef}
+        isQueueOpen={isQueueOpen}
+        setIsQueueOpen={setIsQueueOpen}
+      />
     </div>
   )
 }

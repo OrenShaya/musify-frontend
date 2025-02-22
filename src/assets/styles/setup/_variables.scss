@@ -59,7 +59,9 @@ $font-weight: (
 );
 
 // Sidebar
-$sidebar-width: 420px;
+$sidebar-width-full: 420px;
+$sidebar-width-half: 282px;
+$sidebar-width-closed: 68px;
 
 // Colors //
 $colors: (
@@ -203,21 +205,6 @@ $clr-neutral-gray-5: map.get($colors, neutral, 'gray-5');
 $clr-neutral-gray-6: map.get($colors, neutral, 'gray-6');
 
 $clr-neutral-white: map.get($colors, neutral, 'white');
-
-// // COLOR
-// $clr1: $clr-secondary-green2;
-// $clr2: $clr-secondary-pink-2;
-
-// $clr3: $clr-neutral-white;
-// $clr4: $clr-neutral-gray-4;
-// $clr5: $clr-secondary-darkblue;
-
-// // Background;
-// $bg-clr-primary: $clr-secondary-yellow2;
-// $bg-clr-primary-1: $clr-secondary-yellow2;
-
-// $bg-clr-secondary: $clr-primary-blue;
-// $bg-clr-secondary-1: $clr-secondary-green2;
 
 // LAYOUT
 $layoutPadding: 12px;

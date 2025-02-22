@@ -1,0 +1,43 @@
+.station-details-row-mobile {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  width: 100vw;
+  padding: 12px;
+  .station-details-row-mobile-img {
+    height: 48px;
+    width: 48px;
+    margin-inline-end: 8px;
+  }
+
+  .station-details-row-mobile-song-details {
+    display: grid;
+    align-items: center;
+    & span {
+      @include text-overflow;
+    }
+
+    .artist-name {
+      color: #b3b3b3;
+      font-size: 13px;
+      margin-block-start: -0.5em;
+    }
+  }
+
+  .right-icon-group {
+    display: grid;
+    grid-auto-flow: column;
+    place-content: center;
+    gap: 0.5em;
+
+    .station-details-row-mobile-song-options-icon {
+      margin: auto;
+      width: 24px;
+      height: 24px;
+    }
+    .station-details-row-mobile-song-heart-icon {
+      margin: auto;
+      width: 1em;
+      height: 1em;
+    }
+  }
+}
