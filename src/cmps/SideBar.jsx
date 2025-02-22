@@ -6,8 +6,9 @@ import { useNavigate } from 'react-router'
 import { Value } from 'sass'
 import { useDebounce } from '../customHooks/useDebounce'
 import { useSelector } from 'react-redux'
+import libraryOpenIcon from '../assets/img/library.svg'
 
-export function SideBar() {
+export function SideBar({ isSideBarOpen, setIsSideBarOpen }) {
   const addStationRef = useRef()
   const navigate = useNavigate()
   const [stations, setStations] = useState([])
@@ -69,22 +70,34 @@ export function SideBar() {
   return (
     <aside className='side-bar'>
       <div className='side-bar-header-container'>
-        <div className='side-bar-header-container-left'>
-          <svg
-            className='library-icon'
-            xmlns='http://www.w3.org/2000/svg'
-            data-encore-id='icon'
-            role='img'
-            aria-hidden='true'
-            viewBox='0 0 24 24'
-            height='24px'
-            width='24px'
-            fill='#b3b3b3'
-          >
-            <path d='M3 22a1 1 0 0 1-1-1V3a1 1 0 0 1 2 0v18a1 1 0 0 1-1 1zM15.5 2.134A1 1 0 0 0 14 3v18a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V6.464a1 1 0 0 0-.5-.866l-6-3.464zM9 2a1 1 0 0 0-1 1v18a1 1 0 1 0 2 0V3a1 1 0 0 0-1-1z' />
-          </svg>
+        <div
+          className='side-bar-header-container-left'
+          onClick={() => setIsSideBarOpen(!isSideBarOpen)}
+        >
+          {!isSideBarOpen ? (
+            <svg
+              className='library-icon'
+              xmlns='http://www.w3.org/2000/svg'
+              data-encore-id='icon'
+              role='img'
+              aria-hidden='true'
+              viewBox='0 0 24 24'
+              height='24px'
+              width='24px'
+              fill='#b3b3b3'
+            >
+              <path d='M3 22a1 1 0 0 1-1-1V3a1 1 0 0 1 2 0v18a1 1 0 0 1-1 1zM15.5 2.134A1 1 0 0 0 14 3v18a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V6.464a1 1 0 0 0-.5-.866l-6-3.464zM9 2a1 1 0 0 0-1 1v18a1 1 0 1 0 2 0V3a1 1 0 0 0-1-1z' />
+            </svg>
+          ) : (
+            <img
+              className='library-open-icon'
+              src={libraryOpenIcon}
+              alt='Library Open Icon'
+            />
+          )}
           <h3 className='side-bar-header'>Your Library</h3>
         </div>
+
         <span
           ref={addStationRef}
           name='Create new playlist'
