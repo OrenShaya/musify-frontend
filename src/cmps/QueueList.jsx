@@ -1,10 +1,14 @@
+import { useEffect } from 'react'
 import { QueuePreview } from './QueuePreview'
 
 /* eslint-disable react/prop-types */
 export function QueueList({ currQueue, currPlaying }) {
+  useEffect(() => {
+    console.log('currQueue', currQueue)
+  })
   return (
     <section className='queue-list'>
-      {currQueue && (
+      {currQueue?.length > 0 && (
         <ul className='queue-songs-list'>
           {currQueue
             .filter((song) => {
@@ -12,8 +16,8 @@ export function QueueList({ currQueue, currPlaying }) {
             })
             .map((song) => {
               return (
-                <li className='queue-list-item' key={song.yt_id}>
-                  <QueuePreview song={song} />
+                <li className='queue-list-item' key={song?.yt_id}>
+                  <QueuePreview currSong={song} />
                 </li>
               )
             })}
