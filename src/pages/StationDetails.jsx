@@ -9,6 +9,7 @@ import {
   loadStation,
   addStationMsg,
   setStationLikedSongs,
+  getCmdAddStationSong,
 } from '../store/actions/station.actions'
 import { StationDetailsHeader } from '../cmps/StationDetailsHeader'
 import { StationDetailsList } from '../cmps/StationDetailsList'
@@ -18,6 +19,11 @@ import { useToggle } from '../customHooks/useToggle'
 import { EditStationModal } from '../cmps/EditStationModal'
 import { useClientSize } from '../customHooks/useClientSize'
 import { StationDetailsMobile } from './StationDetailsMobile'
+import { store } from '../store/store'
+import {
+  SOCKET_EVENT_ADD_SONG,
+  socketService,
+} from '../services/socket.service'
 
 export function StationDetails() {
   const { stationId } = useParams()
@@ -38,6 +44,18 @@ export function StationDetails() {
       setIsMobile(false)
     }
   }, [width])
+
+  useEffect(() => {
+    const _addSong = ({ song, stationId }) => {
+      console.log('res:', song, stationId)
+      store.dispatch(getCmdAddStationSong(song, stationId))
+    }
+    socketService.on(SOCKET_EVENT_ADD_SONG, _addSong)
+
+    return () => {
+      socketService.off(SOCKET_EVENT_ADD_SONG, _addSong)
+    }
+  })
 
   useEffect(() => {
     if (station) document.title = station.name + ' | Musify'

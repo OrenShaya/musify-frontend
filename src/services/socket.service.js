@@ -30,7 +30,7 @@ function createSocketService() {
   var socket = null
   const socketService = {
     setup() {
-      if (!socket) socket = io(baseUrl)
+      socket = io(baseUrl)
       const user = userService.getLoggedinUser()
       if (user) this.login(user._id)
     },
@@ -50,9 +50,6 @@ function createSocketService() {
     },
     logout() {
       socket.emit(SOCKET_EMIT_LOGOUT)
-    },
-    addSong(stationId, songId) {
-      socket.emit(SOCKET_EMIT_ADD_SONG, stationId, songId)
     },
     terminate() {
       socket = null

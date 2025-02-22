@@ -12,10 +12,6 @@ import {
   SET_USERS,
   SET_WATCHED_USER,
 } from '../reducers/user.reducer'
-import {
-  SOCKET_EMIT_ADD_SONG,
-  socketService,
-} from '../../services/socket.service'
 
 export async function loadUsers() {
   try {
@@ -103,11 +99,6 @@ export async function toggleLikeSong(songId, setToLiked) {
     if (setToLiked) {
       const song = await userService.likeSong(station._id, songId)
       store.dispatch({ type: ADD_LIKED_SONG, song })
-      // NOTE: emitted event received on server. tested. delete this line
-      socketService.emit(SOCKET_EMIT_ADD_SONG, {
-        stationId: station._id,
-        songId,
-      })
     } else {
       const result = await userService.unlikeSong(station._id, songId)
       if (result.modifiedCount === 1) {
