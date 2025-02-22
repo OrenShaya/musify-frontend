@@ -67,7 +67,7 @@ SideBarStationPreview.propTypes = {
     name: PropTypes.string.isRequired,
     artists: PropTypes.arrayOf(PropTypes.string),
     createdBy: PropTypes.shape({
-      imgUrl: PropTypes.string.isRequired,
+      imgUrl: PropTypes.string,
       fullname: PropTypes.string,
     }),
     songs: PropTypes.arrayOf(

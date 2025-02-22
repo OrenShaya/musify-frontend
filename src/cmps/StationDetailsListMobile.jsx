@@ -5,8 +5,8 @@ export function StationDetailsListMobile({ station }) {
     <div className='station-details-list-mobile'>
       <ul>
         {station?.songs &&
-          station.songs.map((song) => (
-            <li>
+          station.songs.map((song, idx) => (
+            <li key={idx}>
               <StationDetailsRowMobile song={song} />
             </li>
           ))}
