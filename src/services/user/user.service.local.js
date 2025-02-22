@@ -123,7 +123,8 @@ export async function addUserManualy(userCred) {
 function saveLoggedinUser(user) {
   user = {
     _id: user._id,
-    fullname: user.fullname,
+    fullname: user?.fullname,
+    email: user?.email,
     imgUrl: user.imgUrl,
     likedStationIds: user.likedStationIds,
     likedSongIds: user.likedSongIds,
