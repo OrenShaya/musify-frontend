@@ -11,7 +11,7 @@ import browseUrl from '../assets/img/browse.svg'
 import browseFilledUrl from '../assets/img/browse-filled.svg'
 import spotifyLogoUrl from '../assets/icons/spotify-logo.svg'
 import resetUrl from '../assets/img/x.svg'
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 
 export function AppHeader() {
   const user = useSelector((storeState) => storeState.userModule.user)
@@ -78,7 +78,7 @@ const Profile = ({ user, showUserMenu, onLogout, onUserClick }) => {
           </div>
         )}
         <div onClick={onUserClick} className='user-info btn-header-profile'>
-          {user.imgUrl && <img src={user.imgUrl} />}
+          {user?.imgUrl && <img src={user?.imgUrl} />}
         </div>
       </div>
     </>
