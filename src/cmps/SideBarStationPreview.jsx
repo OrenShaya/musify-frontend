@@ -3,7 +3,7 @@ import {
   setCurrentlyPlaying,
   setIsPlaying,
 } from '../store/actions/player.actions'
-import stationDefaultUrl from '../assets/icons/station-default-img.svg'
+import stationDefaultUrl from '../assets/icons/station-default-sidebar-img.svg'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
@@ -12,7 +12,6 @@ export function SideBarStationPreview({ station }) {
   const selectedStationId = useSelector((s) => s.stationModule.station?._id)
   const isPlaying = useSelector((s) => s.playerModule.isPlaying)
 
-  // if (!station || !station.songs || station.songs.length === 0) {
   if (!station) {
     return <div>Loading</div>
   }
@@ -31,8 +30,6 @@ export function SideBarStationPreview({ station }) {
     }
   }
 
-  const STATION_IMG_SRC = station.createdBy?.imgUrl ?? stationDefaultUrl
-
   return (
     <Link to={`/station/${station._id}`}>
       <div
@@ -42,8 +39,7 @@ export function SideBarStationPreview({ station }) {
           station.createdBy.fullname === 'Artist' ? 'artist' : 'playlist'
         }`}
       >
-        {/* <img src={STATION_IMG_SRC} alt='img' /> */}
-        <img src={station.createdBy?.imgUrl} alt='img' />
+        <img className='sidebar-station-img' src={station.createdBy?.imgUrl || stationDefaultUrl} alt='img' />
 
         <div className='side-bar-station-preview-info'>
           <h3>{station.name}</h3>
