@@ -18,11 +18,7 @@ import { StationDetails } from './pages/StationDetails.jsx'
 import { StationExplore } from './pages/StationExplore.jsx'
 
 import { login } from './store/actions/user.actions.js'
-import { loadStations, setLikedSongs } from './store/actions/station.actions.js'
-import {
-  SOCKET_EVENT_ADD_SONG,
-  socketService,
-} from './services/socket.service.js'
+import { loadStations } from './store/actions/station.actions.js'
 
 import { QueueIndex } from './cmps/QueueIndex.jsx'
 
