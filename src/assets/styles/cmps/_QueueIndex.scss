@@ -1,6 +1,8 @@
 section.queue-index {
   background-color: #121212;
   padding: 0.5em;
+  height: 100%;
+  overflow: auto;
 
   .queue-index-header {
     @include flex($justify-content: space-between);
