@@ -1,11 +1,7 @@
-import { useEffect } from 'react'
 import { QueuePreview } from './QueuePreview'
 
 /* eslint-disable react/prop-types */
 export function QueueList({ currQueue, currPlaying }) {
-  useEffect(() => {
-    console.log('currQueue', currQueue)
-  })
   return (
     <section className='queue-list'>
       {currQueue?.length > 0 && (
