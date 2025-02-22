@@ -172,3 +172,9 @@
     display: none;
   }
 }
+
+@include for-mobile-layout {
+  .side-bar {
+    display: none;
+  }
+}

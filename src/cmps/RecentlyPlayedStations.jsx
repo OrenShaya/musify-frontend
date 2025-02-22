@@ -18,8 +18,10 @@ export function RecentlyPlayedStations() {
 
   const navigate = useNavigate()
 
-  const onNav = (sid) => {
-    navigate(`/station/${sid}`)
+  const onNav = (station) => {
+    if (station.yt_id !== 'THE-CAKE-IS-A-LIE')
+      navigate(`/station/${station._id}`)
+    else navigate('collection/tracks')
   }
 
   const _getRecentStations = () => {
@@ -54,7 +56,7 @@ export function RecentlyPlayedStations() {
             <li
               key={station._id}
               className='recent-station-item'
-              onClick={() => onNav(station._id)}
+              onClick={() => onNav(station)}
             >
               <img
                 className='recent-image'

@@ -1,9 +1,6 @@
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
 import { formatDate, formatTimeFromSeconds } from '../services/util.service.js'
-import {
-  setCurrentlyPlaying,
-  setIsPlaying,
-} from '../store/actions/player.actions.js'
+import { setCurrentlyPlaying } from '../store/actions/player.actions.js'
 import { useSelector } from 'react-redux'
 import { setStation, updateStation } from '../store/actions/station.actions.js'
 import greenTickUrl from '../assets/icons/green-tick.svg'
@@ -12,8 +9,9 @@ import { toggleLikeSong } from '../store/actions/user.actions.js'
 
 export function StationDetailsList({ station }) {
   const selectedStationId = useSelector((s) => s.stationModule.station?._id)
-  const isPlaying = useSelector((s) => s.playerModule.isPlaying)
-  const likedSongs = useSelector((s) => s.stationModule.likedSongs?.songs)
+  const likedSongs = useSelector(
+    (s) => s.userModule.user.likedSongsStation?.songs
+  )
   const songs = station?.songs
 
   // Function to handle the drop result
