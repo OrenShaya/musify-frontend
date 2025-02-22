@@ -522,3 +522,9 @@ $desktop-width: 954px;
 
   transition: $transitions;
 }
+
+@mixin text-overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
