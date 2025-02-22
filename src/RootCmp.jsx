@@ -27,8 +27,8 @@ import { AppFooterMobile } from './cmps/AppFooterMobile.jsx'
 export function RootCmp() {
   const playerRef = useRef(null)
   const mainRef = useRef(null)
-  const [isQueueOpen, setIsQueueOpen] = useState(false)
   const isMobile = document.documentElement.clientWidth <= 480
+  const [isQueueOpen, setIsQueueOpen] = useState(false)
   const [isSideBarOpen, setIsSideBarOpen] = useState(false)
 
   const handleSongEnded = () => {
@@ -37,9 +37,6 @@ export function RootCmp() {
 
   useEffect(() => {
     login({ username: 'guest', password: 'guest' })
-  }, [])
-
-  useEffect(() => {
     loadStations()
   }, [])
 
