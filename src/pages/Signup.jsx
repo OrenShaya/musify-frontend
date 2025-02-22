@@ -4,7 +4,7 @@ import { SignupForm } from '../cmps/SignupForm'
 import { useNavigate } from 'react-router'
 
 export function Signup() {
-  const navigate = useNavigate()
+//   const navigate = useNavigate()
 
   useEffect(() => {
     document.title = 'Sign up - Musify'
@@ -15,12 +15,6 @@ export function Signup() {
       document.querySelector('main').classList.remove('full-page')
     }
   }, [])
-
-
-  const onNavigate = () => {
-    signup({ username: 'guest', email: '', password: 'guest' })
-    navigate('/')
-  }
 
   return (
     <div className='login-page'>

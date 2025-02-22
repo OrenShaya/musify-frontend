@@ -16,7 +16,7 @@ export function Login() {
     document.querySelector('main').classList.add('full-page')
 
     return () => {
-      document.querySelector('main').classList.remove('full-page')
+      document.querySelector('main')?.classList.remove('full-page')
     }
   }, [])
 
