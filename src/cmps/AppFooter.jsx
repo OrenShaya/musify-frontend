@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useSelector } from 'react-redux'
 import { useState, useEffect, useRef } from 'react'
 import emblem2 from '../assets/demo-songs/emblem2.png'
@@ -9,8 +10,11 @@ import {
 } from '../store/actions/player.actions'
 import { formatTimeFromSeconds } from '../services/util.service'
 import { PlayButton } from './PlayButton'
+import greenDot from '../assets/img/dot_green.svg'
+import whiteQueue from '../assets/img/queue_white.svg'
+import greenQueue from '../assets/img/queue_green.svg'
 
-export function AppFooter({ playerRef }) {
+export function AppFooter({ playerRef, isQueueOpen, setIsQueueOpen }) {
   const isPlaying = useSelector(
     (storeState) => storeState.playerModule.isPlaying
   )
@@ -225,6 +229,22 @@ export function AppFooter({ playerRef }) {
         </div>
       </div>
       <div className='volume-control'>
+        <button
+          className='queue-btn'
+          onClick={(ev) => {
+            ev.stopPropagation()
+            setIsQueueOpen(!isQueueOpen)
+          }}
+        >
+          {!isQueueOpen ? (
+            <img className='queue-icon' src={whiteQueue} alt='Queue icon' />
+          ) : (
+            <>
+              <img className='queue-icon' src={greenQueue} alt='Queue icon' />{' '}
+              <img className='queue-icon-dot' src={greenDot} alt='Queue icon' />
+            </>
+          )}
+        </button>
         {isMute ? (
           // muted volume icon
           <svg

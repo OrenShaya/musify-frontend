@@ -1,0 +1,93 @@
+section.queue-preview {
+  width: 100%;
+
+  &:hover {
+    article.queue-preview-article .image-container img.queue-song-play-icon {
+      display: grid;
+    }
+  }
+
+  article.queue-preview-article {
+    padding: 0.5em;
+    font-size: 1rem;
+    $queue-grid-area: 'img header' 'img artist';
+
+    @include grid-templte-area($areas: $queue-grid-area);
+    grid-template-columns: em(60px) auto;
+
+    &:hover {
+      background-color: rgba(#1f1f1f, 0.9);
+      border-radius: 0.5em;
+    }
+
+    .image-container {
+      position: relative;
+      grid-area: img;
+      width: em(48px);
+      height: em(48px);
+
+      padding: 0;
+      @include flex();
+      border-radius: 0.25em;
+
+      .queue-song-img {
+        width: em(48px);
+        height: 48px;
+
+        border-radius: 0.25em;
+        //object-fit: cover;
+      }
+
+      .queue-song-play-icon {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+        width: 3em;
+        height: 3em;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 0.7em;
+      }
+    }
+
+    .queue-song-title-marquee {
+      position: relative;
+      grid-area: header;
+      width: 100%;
+
+      @include marquee-text(
+        $duration: 10s,
+        $background-color: transparent,
+        $gradient-width: 2rem
+      );
+
+      h3.queue-song-title {
+        font-family: Spotifymix-Light, Spotifymix-Medium, Spotifymix-Regular,
+          sans-serif;
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 0;
+      }
+    }
+
+    .queue-song-artist-marquee {
+      grid-area: artist;
+      width: 100%;
+      text-align: start;
+      @include marquee-text(
+        $duration: 8s,
+        $background-color: transparent,
+        $gradient-width: 2rem
+      );
+
+      span.queue-song-artist {
+        font-size: 0.8125rem;
+        font-weight: 400;
+        color: #9d9d9d;
+      }
+    }
+  }
+}
