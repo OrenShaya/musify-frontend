@@ -68,7 +68,9 @@
 }
 
 main {
-  @include rounded-container;
+  @include for-narrow-layout {
+    @include rounded-container;
+  }
   // margin-block-end: 6em;
   position: relative;
 }
