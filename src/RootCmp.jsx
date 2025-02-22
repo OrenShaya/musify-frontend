@@ -13,6 +13,7 @@ import HiddenReactPlayer from './cmps/HiddenReactPlayer'
 import { playerSongEndedEvent } from './store/actions/player.actions.js'
 
 import { Login } from './pages/Login.jsx'
+import { Signup } from './pages/Signup.jsx'
 import { StationIndex } from './pages/StationIndex.jsx'
 import { StationDetails } from './pages/StationDetails.jsx'
 import { StationExplore } from './pages/StationExplore.jsx'
@@ -60,6 +61,7 @@ export function RootCmp() {
 
           <Route path='admin' element={<AdminIndex />} />
           <Route path='login' element={<Login />} />
+          <Route path='signup' element={<Signup />} />
         </Routes>
       </main>
       <SideBar />

@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-
+import { signup } from '../store/actions/user.actions'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { useNavigate } from 'react-router'
 import errorUrl from '../assets/img/error.svg'
@@ -14,42 +14,66 @@ const PasswordField = (props) => {
   return <input {...props} ref={props.myref} type='password' />
 }
 
-export function LoginForm() {
+export function SignupForm() {
   const emailFieldRef = useRef()
+  const usernameFieldRef = useRef()
   const navigate = useNavigate()
 
   return (
     <div>
       <Formik
-        initialValues={{ email: '', password: '' }}
+        initialValues={{ username: '', email: '', password: '' }}
         validate={(values) => {
           const errors = {}
           if (!values.email) {
             errors.email =
-              'Please enter your Musify username or email address.'
+              'Please choose a valid Musify email address.'
             emailFieldRef.current.classList.add('error')
           } else {
             emailFieldRef.current.classList.remove('error')
           }
+          if (!values.username) {
+            errors.username =
+              'Please choose a valid Musify username.'
+            usernameFieldRef.current.classList.add('error')
+          } else {
+            usernameFieldRef.current.classList.remove('error')
+          }
           return errors
         }}
         onSubmit={(values, { setSubmitting, setErrors }) => {
-          setSubmitting(false)
-          // in case its a username
-          // which is very likely with us
-          values.username = values.email         
-          login(values)
-            .then((user) => {
-              navigate('/')
-            })
-            .catch((err) => {
-              setErrors({ email: 'Invalid username or password', password: 'Invalid username or password' })
-            })
+            setSubmitting(false)        
+            signup(values)
+                .then((user) => {
+                    navigate('/')
+                })
+                .catch((err) => {
+                    setErrors({ email: 'Invalid email address', password: 'Invalid password' })
+                    console.log(err)                    
+                })
         }}
       >
         {({ isSubmitting }) => (
           <Form className='login-form'>
-            <label>Email or Username</label>
+            <label>Username</label>
+            <Field
+              myref={usernameFieldRef}
+              as={TextField}
+              type='text'
+              name='username'
+              placeholder='username'
+              className='login-input'
+            />
+            <ErrorMessage
+              name='username'
+              render={(msg) => (
+                <div className='error-message'>
+                  <img src={errorUrl} alt='' className='error-icon' />
+                  <span>{msg}</span>
+                </div>
+              )}
+            />
+            <label>Email</label>
             <Field
               myref={emailFieldRef}
               as={TextField}
@@ -86,7 +110,7 @@ export function LoginForm() {
             <div></div>
 
             <button className='btn-login' type='submit' disabled={isSubmitting}>
-              Log In
+              Sign up
             </button>
           </Form>
         )}

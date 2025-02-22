@@ -1,4 +1,5 @@
 import { httpService } from '../http.service'
+import gUserPic from '../../assets/img/G-user.png'
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 
@@ -46,10 +47,7 @@ async function login(userCred) {
 
 async function signup(userCred) {
   if (!userCred.imgUrl)
-    userCred.imgUrl =
-      'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
-  userCred.score = 10000
-
+    userCred.imgUrl = gUserPic
   const user = await httpService.post('auth/signup', userCred)
   return saveLoggedinUser(user)
 }
@@ -66,7 +64,8 @@ function getLoggedinUser() {
 function saveLoggedinUser(user) {
   user = {
     _id: user._id,
-    fullname: user.fullname,
+    email: user.email,
+    username: user.username,
     imgUrl: user.imgUrl,
     stationGroups: user.stationGroups,
     isAdmin: user.isAdmin,
