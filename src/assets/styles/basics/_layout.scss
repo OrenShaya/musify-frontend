@@ -8,7 +8,9 @@
   grid-template-columns: $sidebar-width 1fr;
   grid-template-rows: auto 1fr auto;
   gap: em(8px);
-  padding: em(8px);
+  @include for-narrow-layout {
+    padding: em(8px);
+  }
 
   .main {
     grid-column: 2 / 5;

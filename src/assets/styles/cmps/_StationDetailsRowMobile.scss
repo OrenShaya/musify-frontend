@@ -1,0 +1,17 @@
+.station-details-row-mobile {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  width: 100vw;
+  .station-details-row-mobile-img {
+    height: 48px;
+  }
+
+  .station-details-row-mobile-song-details {
+    display: grid;
+  }
+
+  .station-details-row-mobile-song-options-icon {
+    width: 30px;
+    height: 30px;
+  }
+}
