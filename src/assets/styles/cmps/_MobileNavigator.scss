@@ -1,0 +1,20 @@
+.mobile-navigator-list {
+  font-family: 'Spotifymix-Regular';
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  place-content: center;
+  justify-content: space-around;
+  width: 100vw;
+  margin-block-end: 0.8em;
+
+  .mobile-navigator-item {
+    display: grid;
+    justify-items: center;
+    justify-content: center;
+  }
+
+  .mobile-navigator-item-span {
+    margin-block-start: 0.2em;
+    font-size: 11px;
+  }
+}
