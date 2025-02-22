@@ -13,10 +13,10 @@ export function Login() {
   useEffect(() => {
     document.title = 'Log in - Musify'
 
-    document.querySelector('main').classList.add('full-page')
+    document.querySelector('main')?.classList.add('full-page')
 
     return () => {
-      document.querySelector('main').classList.remove('full-page')
+      document.querySelector('main')?.classList.remove('full-page')
     }
   }, [])
 

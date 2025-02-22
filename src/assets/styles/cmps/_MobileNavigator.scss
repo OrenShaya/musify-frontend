@@ -1,7 +1,7 @@
 .mobile-navigator-list {
   font-family: 'Spotifymix-Regular';
   display: grid;
-  grid-auto-flow: column;
+  grid-template-columns: repeat(3, 1fr);
   place-content: center;
   justify-content: space-around;
   width: 100vw;
@@ -10,6 +10,7 @@
   .mobile-navigator-item {
     display: grid;
     justify-items: center;
+    justify-content: center;
   }
 
   .mobile-navigator-item-span {

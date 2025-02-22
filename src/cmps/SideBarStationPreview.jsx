@@ -13,7 +13,7 @@ export function SideBarStationPreview({ station }) {
   const selectedStationId = useSelector((s) => s.stationModule.station?._id)
   const isPlaying = useSelector((s) => s.playerModule.isPlaying)
   const likedSongsCount = useSelector(
-    (s) => s.userModule.user.likedSongsStation.songs.length
+    (s) => s.userModule.user?.likedSongsStation.songs.length
   )
   const navigate = useNavigate()
 
@@ -42,7 +42,7 @@ export function SideBarStationPreview({ station }) {
     if (!isLikedSongs()) navigate(`/station/${station._id}`)
     else navigate('collection/tracks')
   }
-  console.log('isLikedSongs():', isLikedSongs())
+
   return (
     <div
       onClick={() => handleClick(station)}
