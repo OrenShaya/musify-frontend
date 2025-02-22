@@ -14,6 +14,7 @@ export function RecentlyPlayedStations() {
   const likedSongsStation = useSelector(
     (s) => s.userModule.user?.likedSongsStation
   )
+  const isMobile = document.documentElement.clientWidth <= 480
   const isSelectedStation = (station) => selectedStationId === station?._id
 
   const navigate = useNavigate()
@@ -65,11 +66,13 @@ export function RecentlyPlayedStations() {
               />
               <span className='recent-station-name'>{station.name}</span>
 
-              <PlayButton
-                className='btn-play-recent-station'
-                togglePlay={() => onTogglePlay(station)}
-                isPlaying={isCurrentlyPlaying(station)}
-              />
+              {!isMobile && (
+                <PlayButton
+                  className='btn-play-recent-station'
+                  togglePlay={() => onTogglePlay(station)}
+                  isPlaying={isCurrentlyPlaying(station)}
+                />
+              )}
             </li>
           ))}
       </ul>
