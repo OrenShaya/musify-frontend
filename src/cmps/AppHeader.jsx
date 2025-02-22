@@ -29,7 +29,7 @@ export function AppHeader() {
       navigate('/')
     } catch (err) {
       showErrorMsg('Cannot logout')
-      console.log(err)      
+      console.log(err)
     }
   }
 
@@ -77,7 +77,7 @@ const Profile = ({ user, showUserMenu, onLogout, onUserClick }) => {
             <button onClick={onLogout}>Logout</button>
           </div>
         )}
-        <div onClick={onUserClick} className='user-info btn-header-profile' >
+        <div onClick={onUserClick} className='user-info btn-header-profile'>
           {user.imgUrl && <img src={user.imgUrl} />}
         </div>
       </div>
@@ -87,16 +87,14 @@ const Profile = ({ user, showUserMenu, onLogout, onUserClick }) => {
 
 const NavlinkGroup = () => {
   const location = useLocation()
-  const searchbarRef = useRef(null)
+  const [searchTerm, setSearchTerm] = useState('')
 
   const homeIconUrl = location.pathname === '/' ? homeFilledUrl : homeUrl
   const browserIconUrl =
     location.pathname === '/explore' ? browseFilledUrl : browseUrl
 
   function resetSearchBar() {
-    if (searchbarRef.current) {
-      searchbarRef.current.value = ''
-    }
+    setSearchTerm('')
   }
 
   return (
@@ -122,8 +120,10 @@ const NavlinkGroup = () => {
         <input
           className='search-bar'
           type='search'
-          ref={searchbarRef}
           placeholder='What do you want to play?'
+          autoComplete='off'
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
 
         <NavLink to='/explore' className='browser-btn'>
