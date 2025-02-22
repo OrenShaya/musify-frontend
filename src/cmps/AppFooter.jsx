@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useSelector } from 'react-redux'
 import { useState, useEffect, useRef } from 'react'
-import emblem2 from '../assets/demo-songs/emblem2.png'
 import {
   setCurrentlyPlaying,
   moveToPreviousSong,
@@ -154,11 +153,13 @@ export function AppFooter({ playerRef, isQueueOpen, setIsQueueOpen }) {
     <footer className='app-footer full'>
       <div className='song-details-container'>
         <div className='song-details'>
-          <img
-            className='song-details-img'
-            src={currentlyPlaying?.imgUrl || emblem2}
-            alt='song-cover'
-          />
+          {currentlyPlaying?.imgUrl && (
+            <img
+              className='song-details-img'
+              src={currentlyPlaying?.imgUrl}
+              alt='song-cover'
+            />
+          )}
           <div className='song-details-spans'>
             <span className='song-name-span capitalise'>
               {currentlyPlaying?.title}
