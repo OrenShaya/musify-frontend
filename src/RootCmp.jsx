@@ -22,11 +22,13 @@ import { login } from './store/actions/user.actions.js'
 import { loadStations } from './store/actions/station.actions.js'
 
 import { QueueIndex } from './cmps/QueueIndex.jsx'
+import { AppFooterMobile } from './cmps/AppFooterMobile.jsx'
 
 export function RootCmp() {
   const playerRef = useRef(null)
   const mainRef = useRef(null)
   const [isQueueOpen, setIsQueueOpen] = useState(false)
+  const isMobile = document.documentElement.clientWidth <= 480
   const [isSideBarOpen, setIsSideBarOpen] = useState(false)
 
   const handleSongEnded = () => {
@@ -73,11 +75,15 @@ export function RootCmp() {
       />
       {isQueueOpen && <QueueIndex setIsQueueOpen={setIsQueueOpen} />}
       <HiddenReactPlayer ref={playerRef} onEnded={handleSongEnded} />
-      <AppFooter
-        playerRef={playerRef}
-        isQueueOpen={isQueueOpen}
-        setIsQueueOpen={setIsQueueOpen}
-      />
+      {isMobile ? (
+        <AppFooterMobile />
+      ) : (
+        <AppFooter
+          playerRef={playerRef}
+          isQueueOpen={isQueueOpen}
+          setIsQueueOpen={setIsQueueOpen}
+        />
+      )}
     </div>
   )
 }

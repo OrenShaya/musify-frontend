@@ -23,7 +23,8 @@
     background-color: $itemBgc;
   }
 
-  .app-footer {
+  .app-footer,
+  .app-footer-mobile {
     grid-column: 1 / -1;
     grid-row: 3;
   }
@@ -68,7 +69,9 @@
 }
 
 main {
-  @include rounded-container;
+  @include for-narrow-layout {
+    @include rounded-container;
+  }
   // margin-block-end: 6em;
   position: relative;
 }

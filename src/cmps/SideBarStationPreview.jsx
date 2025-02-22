@@ -42,7 +42,7 @@ export function SideBarStationPreview({ station }) {
     if (!isLikedSongs()) navigate(`/station/${station._id}`)
     else navigate('collection/tracks')
   }
-  console.log('isLikedSongs():', isLikedSongs())
+
   return (
     <div
       onClick={() => handleClick(station)}
