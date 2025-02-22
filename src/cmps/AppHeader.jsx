@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router'
 import { useSelector } from 'react-redux'
 import { showErrorMsg } from '../services/event-bus.service'
 import { logout } from '../store/actions/user.actions'
+import { useState } from 'react'
 
 import profileUrl from '../assets/img/profile-avatar.svg'
 import homeUrl from '../assets/img/home.svg'
@@ -11,7 +12,7 @@ import browseUrl from '../assets/img/browse.svg'
 import browseFilledUrl from '../assets/img/browse-filled.svg'
 import spotifyLogoUrl from '../assets/icons/spotify-logo.svg'
 import resetUrl from '../assets/img/x.svg'
-import { useState } from 'react'
+import { setSearchTerm, clearSearchTerm } from '../store/actions/system.actions'
 
 export function AppHeader() {
   const user = useSelector((storeState) => storeState.userModule.user)
@@ -87,14 +88,26 @@ const Profile = ({ user, showUserMenu, onLogout, onUserClick }) => {
 
 const NavlinkGroup = () => {
   const location = useLocation()
-  const [searchTerm, setSearchTerm] = useState('')
+  const navigate = useNavigate()
 
   const homeIconUrl = location.pathname === '/' ? homeFilledUrl : homeUrl
   const browserIconUrl =
     location.pathname === '/explore' ? browseFilledUrl : browseUrl
 
-  function resetSearchBar() {
-    setSearchTerm('')
+  const searchTerm = useSelector(
+    (storeState) => storeState.systemModule.searchTerm
+  )
+
+  async function resetSearchBar() {
+    clearSearchTerm()
+  }
+
+  const handleSearchChange = (e) => {
+    const newTerm = e.target.value
+    setSearchTerm(newTerm)
+    if (location.pathname !== '/explore') {
+      navigate('/explore')
+    }
   }
 
   return (
@@ -123,7 +136,7 @@ const NavlinkGroup = () => {
           placeholder='What do you want to play?'
           autoComplete='off'
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={(e) => handleSearchChange(e)}
         />
 
         <NavLink to='/explore' className='browser-btn'>
