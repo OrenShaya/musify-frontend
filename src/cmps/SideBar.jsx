@@ -7,6 +7,7 @@ import { Value } from 'sass'
 import { useDebounce } from '../customHooks/useDebounce'
 import { useSelector } from 'react-redux'
 import libraryOpenIcon from '../assets/img/library.svg'
+import { stationService } from '../services/station'
 
 export function SideBar({ isSideBarOpen, setIsSideBarOpen }) {
   const addStationRef = useRef()
