@@ -7,6 +7,7 @@ import PropTypes from 'prop-types'
 
 const scrollBtnsWidth = 27 * 2
 const PADDING = 8
+const scrollByPx = 600
 
 export function ScrollBtn({ scrollRef, containerRef, isRight = false }) {
   const btnRef = useRef()
@@ -43,7 +44,10 @@ export function ScrollBtn({ scrollRef, containerRef, isRight = false }) {
 
   const onClick = () => {
     const direction = isRight ? 1 : -1
-    scrollRef.current.scrollBy({ left: 600 * direction, behavior: 'smooth' })
+    scrollRef.current.scrollBy({
+      left: scrollByPx * direction,
+      behavior: 'smooth',
+    })
   }
 
   function _toggleRender() {
