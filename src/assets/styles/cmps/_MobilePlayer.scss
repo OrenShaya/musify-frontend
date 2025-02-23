@@ -39,6 +39,12 @@ $whiteFilter: invert(100%) sepia(100%) saturate(0%) hue-rotate(132deg)
     height: 2px;
     width: 100%;
     background-color: #6b6b6b;
+
+    .progressed {
+      width: 0;
+      height: 2px;
+      background-color: white;
+    }
   }
 
   .footer-play-btn {

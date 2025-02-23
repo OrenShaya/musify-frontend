@@ -5,7 +5,7 @@ import { setIsPlaying } from '../store/actions/player.actions'
 import PropTypes from 'prop-types'
 import { LikeButton } from './LikeButton'
 import { toggleLikeSong } from '../store/actions/user.actions'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export function AppFooterMobile({ playerRef }) {
   return (
@@ -18,6 +18,9 @@ export function AppFooterMobile({ playerRef }) {
 }
 
 function MobilePlayer({ playerRef }) {
+  const [progress, setProgress] = useState(0)
+  const progressRef = useRef()
+
   const currentlyPlaying = useSelector(
     (storeState) => storeState.playerModule.currentlyPlaying
   )
@@ -27,23 +30,27 @@ function MobilePlayer({ playerRef }) {
   const likedSongs = useSelector(
     (s) => s.userModule.user.likedSongsStation?.songs
   )
-  // const currentStation = useSelector((s) => s.stationModule.station)
-  // const [currentTime, setCurrentTime] = useState(0)
 
-  // useEffect(() => {
-  //   if (currentStation) setCurrentlyPlaying(currentStation, 'FGBhQbmPwH8')
-  //   // songProgressRef.current.style.setProperty('--song-time', 0)
-  // }, [])
+  useEffect(() => {
+    let interval
+    if (isPlaying) {
+      interval = setInterval(() => {
+        setProgress((prevProgress) => prevProgress + 1)
+      }, 1000)
+    } else {
+      clearInterval(interval)
+    }
 
-  // useEffect(() => {
-  //   // poll the player's current time every second
-  //   const interval = setInterval(() => {
-  //     if (playerRef.current && isPlaying) {
-  //       setCurrentTime(playerRef.current.getCurrentTime())
-  //     }
-  //   }, 1000)
-  //   return () => clearInterval(interval)
-  // }, [isPlaying, playerRef])
+    return () => {
+      clearInterval(interval)
+    }
+  }, [isPlaying])
+
+  useEffect(() => {
+    if (!progressRef.current) return
+    let progressPercentage = (progress / playerRef.current.getDuration()) * 100
+    progressRef.current.style.width = `${progressPercentage}px`
+  }, [progress])
 
   useEffect(() => {
     if (currentlyPlaying && currentlyPlaying.url && playerRef.current) {
@@ -51,10 +58,6 @@ function MobilePlayer({ playerRef }) {
         currentlyPlaying?.url || 'https://www.youtube.com/embed/4fDfbMt6icw'
       )
       setIsPlaying(true)
-      // setCurrentTime(0)
-      // if (songProgressRef.current) {
-      //   playerRef.current.slideTo(0)
-      // }
     }
   }, [currentlyPlaying])
 
@@ -120,7 +123,9 @@ function MobilePlayer({ playerRef }) {
       </div>
 
       {/* Progress bar */}
-      <div className='mobile-progress-bar'></div>
+      <div className='mobile-progress-bar'>
+        <div ref={progressRef} className='progressed'></div>
+      </div>
     </section>
   )
 }
