@@ -9,7 +9,6 @@ const scrollBtnsWidth = 27 * 2
 const PADDING = 8
 
 export function ScrollBtn({ scrollRef, containerRef, isRight = false }) {
-  // TODO: pass left button to right (and vise verse) to add display condition
   const btnRef = useRef()
   const isHovered = useHover(containerRef)
   const [isDisplayed, setIsDisplayed] = useState(false)
