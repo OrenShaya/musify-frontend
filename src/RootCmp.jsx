@@ -42,9 +42,9 @@ export function RootCmp() {
 
   return (
     <div
-      className={`main-container main-layout ${isQueueOpen && 'queue-open'} ${
-        isSideBarOpen && 'sidebar-open'
-      }`}
+      className={`main-container main-layout ${
+        isQueueOpen ? 'queue-open' : ''
+      } ${isSideBarOpen ? 'sidebar-open' : ''}`}
     >
       <AppHeader />
       <UserMsg />
