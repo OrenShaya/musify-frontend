@@ -1,0 +1,25 @@
+.mobile-player-cmp {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0 8px;
+  width: 100vw;
+
+  background-color: #2b2b2b;
+
+  .song-details {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    margin-block-start: 1ch;
+  }
+
+  .mobile-progress-bar {
+    grid-column: 1 / -1;
+    height: 2px;
+    background-color: #6b6b6b;
+  }
+}
+.mobile-player-image-container {
+  margin: auto;
+  width: 40px;
+  height: 40px;
+}
