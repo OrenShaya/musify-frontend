@@ -82,8 +82,18 @@
     .sort-item {
       font-size: 0.9em;
       background-color: #2a2a2a;
-      padding: 0.5em 0.8em;
+      padding: 0.35em 0.8em;
       border-radius: 2em;
+      transition: background-color 200ms, color 200ms;
+
+      &:hover {
+        background-color: #333;
+      }
+
+      &:active,
+      &:focus {
+        background-color: #454545;
+      }
     }
 
     .side-bar-sort-container::-webkit-scrollbar {
