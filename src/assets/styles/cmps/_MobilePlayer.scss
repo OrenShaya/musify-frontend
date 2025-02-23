@@ -67,6 +67,5 @@ $whiteFilter: invert(100%) sepia(100%) saturate(0%) hue-rotate(132deg)
 }
 
 .mobile-footer-icon.add {
-  filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(333deg)
-    brightness(103%) contrast(102%);
+  filter: $whiteFilter;
 }
