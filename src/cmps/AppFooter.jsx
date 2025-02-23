@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useSelector } from 'react-redux'
 import { useState, useEffect, useRef } from 'react'
@@ -12,6 +13,11 @@ import { PlayButton } from './PlayButton'
 import greenDot from '../assets/img/dot_green.svg'
 import whiteQueue from '../assets/img/queue_white.svg'
 import greenQueue from '../assets/img/queue_green.svg'
+import repeatOffIcon from '../assets/img/repeat-white.svg'
+import repeatOnIcon from '../assets/img/repeat-green.svg'
+import repeatOneIcon from '../assets/img/repeat-green-one.svg'
+import shuffleOffIcon from '../assets/img/shuffle.svg'
+import shuffleOnIcon from '../assets/img/shuffle-green.svg'
 
 export function AppFooter({ playerRef, isQueueOpen, setIsQueueOpen }) {
   const isPlaying = useSelector(
@@ -25,9 +31,16 @@ export function AppFooter({ playerRef, isQueueOpen, setIsQueueOpen }) {
   const [volume, setVolume] = useState(1)
   const songProgressRef = useRef(null)
   const volumeSliderRef = useRef(null)
-
   const [isMute, setIsMute] = useState(false)
   const [lastVolume, setLastVolume] = useState(volume)
+
+  const [isRepeat, setIsRepeat] = useState(false)
+  const [shuffleState, setShuffleState] = useState(0)
+
+  function toggleShuffleState() {
+    if (shuffleState + 1 === 3) setShuffleState(0)
+    else setShuffleState(shuffleState + 1)
+  }
 
   const togglePlay = () => {
     if (!playerRef.current) return
@@ -173,6 +186,27 @@ export function AppFooter({ playerRef, isQueueOpen, setIsQueueOpen }) {
       <div className='song-controls'>
         <div className='song-btns'>
           <button
+            className='shuffle-btn'
+            onClick={() => setIsRepeat(!isRepeat)}
+          >
+            {!isRepeat ? (
+              <img
+                src={shuffleOffIcon}
+                alt='Shuffle OFF button'
+                className='shuffle-off-icon'
+              />
+            ) : (
+              <>
+                <img
+                  src={shuffleOnIcon}
+                  alt='Shuffle ON button'
+                  className='shuffle-on-icon'
+                />
+                <img src={greenDot} className='shuffle-on-dot-icon' />
+              </>
+            )}
+          </button>
+          <button
             className='previous-song-btn'
             onClick={(e) => onMoveToPrevSong(e)}
           >
@@ -207,6 +241,31 @@ export function AppFooter({ playerRef, isQueueOpen, setIsQueueOpen }) {
             >
               <path d='M12.7 1a.7.7 0 0 0-.7.7v5.15L2.05 1.107A.7.7 0 0 0 1 1.712v12.575a.7.7 0 0 0 1.05.607L12 9.149V14.3a.7.7 0 0 0 .7.7h1.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7h-1.6z' />
             </svg>
+          </button>
+          <button className='repeat-btn' onClick={toggleShuffleState}>
+            {shuffleState === 0 ? (
+              <img
+                src={repeatOffIcon}
+                alt='Repeat OFF button'
+                className='repeat-off-icon'
+              />
+            ) : shuffleState === 1 ? (
+              <img
+                src={repeatOnIcon}
+                alt='Repeat ON button'
+                className='repeat-on-icon'
+              />
+            ) : (
+              <img
+                src={repeatOneIcon}
+                alt='Repeat ONE button'
+                className='repeat-one-icon'
+              />
+            )}
+
+            {shuffleState > 0 && (
+              <img src={greenDot} className='repeat-on-dot-icon' />
+            )}
           </button>
         </div>
         <div className='song-position-bar'>
@@ -254,7 +313,7 @@ export function AppFooter({ playerRef, isQueueOpen, setIsQueueOpen }) {
             role='presentation'
             aria-label='Volume off'
             aria-hidden='false'
-            className='volume-mute-icon'
+            className='volume-repeat-icon'
             id='volume-icon'
             viewBox='0 0 16 16'
           >
