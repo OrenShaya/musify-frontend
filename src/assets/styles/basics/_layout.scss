@@ -147,6 +147,7 @@ main {
     }
 
     .pinned-stations {
+      overflow-x: hidden;
       width: 64px;
       h3 {
         display: none;
