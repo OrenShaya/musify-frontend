@@ -1,10 +1,22 @@
+import { useSelector } from 'react-redux'
 import optionUrl from '../assets/img/dotdotdot.svg'
-import greenTickUrl from '../assets/icons/green-tick.svg'
+import { LikeButton } from './LikeButton'
+import { toggleLikeSong } from '../store/actions/user.actions'
 
 export function StationDetailsRowMobile({ song }) {
+  const likedSongs = useSelector(
+    (s) => s.userModule.user.likedSongsStation?.songs
+  )
   const getArtistsDisplay = (song) => {
     return song.artists?.join(', ') ?? 'Artist'
   }
+  const isLikedSong = (songId) => {
+    return likedSongs?.find((s) => s.yt_id === songId)
+  }
+  const onLikeSong = (songId, setLikedTo) => {
+    toggleLikeSong(songId, setLikedTo)
+  }
+
   return (
     <div className='station-details-row-mobile'>
       {/* Image */}
@@ -23,10 +35,11 @@ export function StationDetailsRowMobile({ song }) {
 
       {/* Options (three dots) */}
       <div className='right-icon-group'>
-        <img
-          className='station-details-row-mobile-song-heart-icon'
-          src={greenTickUrl}
-          alt=''
+        <LikeButton
+          song={song}
+          isLiked={isLikedSong(song?.yt_id)}
+          onLikeSong={onLikeSong}
+          classNames={['mobile-footer-icon']}
         />
         <img
           className='station-details-row-mobile-song-options-icon'
