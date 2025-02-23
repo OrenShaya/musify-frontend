@@ -24,6 +24,8 @@ $whiteFilter: invert(100%) sepia(100%) saturate(0%) hue-rotate(132deg)
     font-size: 13px;
     .song-name {
       font-weight: 700;
+
+      @include elipsis;
     }
 
     .artist-name {
