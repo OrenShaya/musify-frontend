@@ -212,6 +212,7 @@ export async function getPlaylist(
     station.msgs = []
     station.likedByUsers = []
     station.tags = []
+    station.isArtist = true
 
     const readyStaion = await stationService.save(station)
     gPlaylists[playlistID] = readyStaion
