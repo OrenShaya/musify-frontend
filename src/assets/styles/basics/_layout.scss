@@ -17,6 +17,10 @@
     padding: em(8px);
   }
 
+  @include for-wide-layout {
+    grid-template-columns: 300px 1fr;
+  }
+
   .main {
     grid-column: 2 / 5;
     grid-row: 2 / 5;
@@ -202,4 +206,18 @@ main {
   grid-template-rows: auto 1fr auto;
   gap: em(8px);
   padding: em(8px);
+
+  .side-bar {
+    width: 100%;
+  }
+}
+
+@include for-mobile-layout {
+  main {
+    width: 100vw;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 }
