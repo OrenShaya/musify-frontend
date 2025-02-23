@@ -38,6 +38,7 @@ $itemBgc: rgb(40, 42, 43, 0.4);
       grid-template-columns: auto 1fr;
     }
     gap: 1em;
+    cursor: pointer;
 
     border-radius: em(4px);
     background-color: $itemBgc;
