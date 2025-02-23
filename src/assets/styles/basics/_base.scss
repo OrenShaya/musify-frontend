@@ -27,7 +27,9 @@ body {
   font-family: Spotifymix-Regular, Roboto, Ubuntu, 'Helvetica Neue', Helvetica,
     sans-serif;
 
-  background-color: $clr-neutral-black;
+  @include for-narrow-layout {
+    background-color: $clr-neutral-black;
+  }
   color: $clr-neutral-white;
 }
 
@@ -143,4 +145,8 @@ mark {
 
 .btn-pill {
   border-radius: 100vh;
+}
+
+main {
+  background-color: $bgc;
 }

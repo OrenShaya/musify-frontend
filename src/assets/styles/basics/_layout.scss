@@ -6,9 +6,13 @@
   height: 100vh;
   display: grid;
   grid-template-columns: $sidebar-width-full 1fr;
-  grid-template-rows: auto 1fr auto;
+
+  @include for-mobile-layout {
+    grid-template-rows: auto 1fr;
+  }
 
   @include for-narrow-layout {
+    grid-template-rows: auto 1fr auto;
     gap: em(8px);
     padding: em(8px);
   }
