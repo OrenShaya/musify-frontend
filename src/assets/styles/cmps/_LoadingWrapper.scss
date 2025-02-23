@@ -1,0 +1,8 @@
+.loading-wrapper {
+  @include flex($flex-direction: column, $gap: 1em);
+
+  width: 100%;
+  min-height: 6em;
+  padding: 0.5em;
+  background-color: transparent;
+}
