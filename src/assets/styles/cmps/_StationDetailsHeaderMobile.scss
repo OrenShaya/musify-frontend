@@ -32,4 +32,26 @@
 }
 
 .created-by-name-mobile {
+  font-size: em(13px);
+  font-family: 'Spotifymix-Regular';
+  font-weight: 400;
+}
+
+$play-button-circle-size: 56px;
+.station-detail-play-button-mobile {
+  height: $play-button-circle-size;
+  width: $play-button-circle-size;
+  border-radius: 50%;
+  background-color: $green-button-color;
+  padding: 16px;
+}
+
+.three-dots-vertical {
+}
+
+.station-detail-buttons-row-mobile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0.5em 1.7em;
 }

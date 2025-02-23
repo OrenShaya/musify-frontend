@@ -1,6 +1,7 @@
 import defaultImg from '../assets/icons/station-default-sidebar-img.svg'
 import defaultUserImg from '../assets/img/profile-avatar.svg'
 import { useNavigate } from 'react-router'
+import { PlayButton } from './PlayButton'
 
 export function StationDetailsHeaderMobile({ station }) {
     const navigate = useNavigate()
@@ -19,11 +20,17 @@ export function StationDetailsHeaderMobile({ station }) {
             </div>
             <div className='station-header-created-by-mobile'>
                 <div className='station-created-by-image-mobile'>
-                    <img src={defaultUserImg} alt='User image' />
+                    <img src={station?.createdBy.imgUrl || defaultUserImg} alt='User image' />
                 </div>
                 <div className='created-by-name-mobile'>
                     {station?.createdBy.fullname}
                 </div>
+            </div>
+            <div className='station-detail-buttons-row-mobile'>
+                <PlayButton className='station-detail-play-button-mobile'/>
+                <svg data-encore-id='icon' fill='white' width={'24px'} height={'24px'} role='img' aria-hidden='true' className='three-dots-vertical' viewBox='0 0 24 24'>
+                    <path d='M10.5 4.5a1.5 1.5 0 1 0 3 0 1.5 1.5 0 0 0-3 0zm0 15a1.5 1.5 0 1 0 3 0 1.5 1.5 0 0 0-3 0zm0-7.5a1.5 1.5 0 1 0 3 0 1.5 1.5 0 0 0-3 0z'></path>
+                </svg>
             </div>
         </div>
     )
