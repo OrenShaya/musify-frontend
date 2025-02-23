@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux'
 
+import { StationDetailsHeaderMobile } from '../cmps/StationDetailsHeaderMobile'
 import { StationDetailsListMobile } from '../cmps/StationDetailsListMobile'
 
 export function StationDetailsMobile() {
@@ -7,6 +8,7 @@ export function StationDetailsMobile() {
 
   return (
     <div className='station-details-mobile'>
+      <StationDetailsHeaderMobile station={station} />
       <StationDetailsListMobile station={station} />
     </div>
   )

@@ -1,0 +1,57 @@
+.back-arrow {
+  margin-top: 1.7em;
+  margin-left: 1.7em;
+  fill: white;
+}
+
+.station-header-img-mobile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: em(27px) 0 em(15px) 0;
+
+  img {
+    width: em(165.9px);
+  }
+}
+
+.station-header-name-mobile {
+  margin: 0px 0 0px em(20px);
+  font-size: em(24px);
+  font-family: 'Spotifymix-Bold';
+}
+
+.station-header-created-by-mobile {
+  display: flex;
+  margin: 0 0 0 em(20px + 12px);
+  gap: 10px;
+
+  img {
+    width: 24px;
+  }
+}
+
+.created-by-name-mobile {
+  font-size: em(13px);
+  font-family: 'Spotifymix-Regular';
+  font-weight: 400;
+}
+
+$play-button-circle-size: 56px;
+.station-detail-play-button-mobile {
+  height: $play-button-circle-size;
+  width: $play-button-circle-size;
+  border-radius: 50%;
+  background-color: $green-button-color;
+  padding: 16px;
+}
+
+.three-dots-vertical {
+}
+
+.station-detail-buttons-row-mobile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0.5em 1.7em;
+}

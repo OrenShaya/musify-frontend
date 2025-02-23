@@ -641,3 +641,9 @@ $desktop-width: 954px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+@mixin elipsis {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

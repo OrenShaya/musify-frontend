@@ -23,7 +23,7 @@ export function StationIndex() {
   }
 
   useEffect(() => {
-    document.title = 'Musify'
+    document.title = 'Musify - Web Player: Music for everyone'
   })
 
   const stationHeaders = [

@@ -1,9 +1,13 @@
 .app-footer-mobile {
   display: grid;
+  position: sticky;
+  bottom: 0px;
   grid-template-rows: auto 1fr;
   row-gap: 1em;
 
   .icon {
     width: 24px;
   }
+
+  background-color: rgb(0, 0, 0);
 }
