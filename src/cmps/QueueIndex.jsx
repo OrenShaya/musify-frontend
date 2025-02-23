@@ -5,6 +5,7 @@ import { QueueList } from './QueueList'
 import exitBtnIcon from '../assets/img/x.svg'
 import { updateStation } from '../store/actions/station.actions'
 import { useEffect, useRef } from 'react'
+import { LoadingWrapper } from './LoadingWrapper'
 
 export function QueueIndex({ setIsQueueOpen }) {
   const currPlaying = useSelector(
@@ -66,6 +67,7 @@ export function QueueIndex({ setIsQueueOpen }) {
 
       <div className='queue-list-container'>
         <h2 className='queue-list-header'>Next up</h2>
+        <LoadingWrapper />
         {currStation && currStation?.songs?.length > 0 ? (
           <QueueList
             currQueue={currStation.songs}

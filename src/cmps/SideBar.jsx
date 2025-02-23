@@ -7,6 +7,8 @@ import { Value } from 'sass'
 import { useDebounce } from '../customHooks/useDebounce'
 import { useSelector } from 'react-redux'
 import libraryOpenIcon from '../assets/img/library.svg'
+import { LoadingWrapper } from './LoadingWrapper'
+import { stationService } from '../services/station'
 
 export function SideBar({ isSideBarOpen, setIsSideBarOpen }) {
   const addStationRef = useRef()
@@ -18,6 +20,8 @@ export function SideBar({ isSideBarOpen, setIsSideBarOpen }) {
   const likedSongsStation = useSelector(
     (s) => s.userModule.user?.likedSongsStation
   )
+  const isLoading = useSelector((s) => s.systemModule.isLoading)
+
   useEffect(() => {
     stationService.query({ name: filterTerm }).then((stations) => {
       setStations(stations)
@@ -184,10 +188,11 @@ export function SideBar({ isSideBarOpen, setIsSideBarOpen }) {
           </div>
         </div>
         <div className='pinned-stations'>
-          {likedSongsStation && (
+          {!isLoading && likedSongsStation && (
             <SideBarStationPreview station={likedSongsStation} />
           )}
         </div>
+        <LoadingWrapper />
         <div className='regular-stations'>
           {stations
             .slice()
