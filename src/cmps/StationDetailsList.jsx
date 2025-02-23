@@ -3,9 +3,8 @@ import { formatDate, formatTimeFromSeconds } from '../services/util.service.js'
 import { setCurrentlyPlaying } from '../store/actions/player.actions.js'
 import { useSelector } from 'react-redux'
 import { setStation, updateStation } from '../store/actions/station.actions.js'
-import greenTickUrl from '../assets/icons/green-tick.svg'
-import addLikedSongUrl from '../assets/img/add-liked-song.svg'
 import { toggleLikeSong } from '../store/actions/user.actions.js'
+import { LikeButton } from './LikeButton.jsx'
 
 export function StationDetailsList({ station }) {
   const selectedStationId = useSelector((s) => s.stationModule.station?._id)
@@ -119,7 +118,7 @@ export function StationDetailsList({ station }) {
                           </div>
                           <div className='date-added'>
                             {formatDate(song?.addedAt || song?.updatedAt)}
-                            <LikeBtn
+                            <LikeButton
                               song={song}
                               isLiked={isLikedSong(song?.yt_id)}
                               onLikeSong={onLikeSong}
@@ -139,25 +138,5 @@ export function StationDetailsList({ station }) {
         </Droppable>
       </DragDropContext>
     </section>
-  )
-}
-
-function LikeBtn({ song, isLiked, onLikeSong }) {
-  const getClasses = () => {
-    const classes = ['add-to-liked']
-    if (!isLiked) classes.push('add')
-
-    return classes.join(' ')
-  }
-
-  const imgUrl = isLiked ? greenTickUrl : addLikedSongUrl
-
-  return (
-    <button
-      className='clean-btn'
-      onClick={() => onLikeSong(song?.yt_id, !isLiked)}
-    >
-      <img className={getClasses()} src={imgUrl} />
-    </button>
   )
 }

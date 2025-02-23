@@ -1,15 +1,28 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
 
-import scrollRightUrl from '../assets/img/scroll-right.svg'
-import scrollLeftUrl from '../assets/img/scroll-left.svg'
-import { useHover } from '../customHooks/useHover'
-import PropTypes from 'prop-types'
+import { StationPreview } from './StationPreview'
 
-const scrollBtnsWidth = 27 * 2
-const PADDING = 8
-const scrollByPx = 600
+function StationList({ stations }) {
+  const scrollRef = useRef()
+  const containerRef = useRef()
 
-export function ScrollBtn({ scrollRef, containerRef, isRight = false }) {
+  return (
+      <div className='station-list-container'>
+        <ScrollBtn scrollRef={scrollRef} containerRef={containerRef}/>
+        <ScrollBtn scrollRef={scrollRef} containerRef={containerRef} />
+
+        <ul>
+          {stations.map((station) => (
+            <li>
+              <StationPreview station={station} />
+            </li>
+          ))}
+        </ul>
+      </div>
+  )
+}
+
+function ScrollBtn({ scrollRef, containerRef) {
   const btnRef = useRef()
   const isHovered = useHover(containerRef)
   const [isDisplayed, setIsDisplayed] = useState(false)
@@ -43,11 +56,7 @@ export function ScrollBtn({ scrollRef, containerRef, isRight = false }) {
   }
 
   const onClick = () => {
-    const direction = isRight ? 1 : -1
-    scrollRef.current.scrollBy({
-      left: scrollByPx * direction,
-      behavior: 'smooth',
-    })
+    scrollRef.current.scrollBy({left: scrollByPx})
   }
 
   function _toggleRender() {
@@ -63,11 +72,6 @@ export function ScrollBtn({ scrollRef, containerRef, isRight = false }) {
 
     // Is scroll to the end?
     let isHidden = elScroll.scrollLeft <= PADDING
-    if (isRight) {
-      isHidden =
-        elScroll.clientWidth + elScroll.scrollLeft >= elScroll.scrollWidth - 5
-    }
-
     if (isHidden || !isHovered) {
       shouldDisplay = false
     }
@@ -75,17 +79,11 @@ export function ScrollBtn({ scrollRef, containerRef, isRight = false }) {
     setIsDisplayed(shouldDisplay)
   }
 
-  const btnClassName = isRight ? 'btn-scroll-right' : 'btn-scroll-left'
-  const scrollUrl = isRight ? scrollRightUrl : scrollLeftUrl
   return (
-    <button className={'btn-scroll ' + btnClassName} ref={btnRef}>
+    <button className={'btn-scroll' + btnClassName} ref={btnRef}>
       <img className='scroll-icon' src={scrollUrl} alt='' />
     </button>
   )
 }
 
-ScrollBtn.propTypes = {
-  scrollRef: PropTypes.object,
-  containerRef: PropTypes.object,
-  isRight: PropTypes.bool,
-}
+StationList

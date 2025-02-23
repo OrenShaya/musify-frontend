@@ -1,5 +1,7 @@
 .app-footer-mobile {
-  background-color: black;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  row-gap: 1em;
 
   .icon {
     width: 24px;

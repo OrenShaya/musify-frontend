@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux'
 import { QueuePreview } from './QueuePreview'
 import { QueueList } from './QueueList'
 import exitBtnIcon from '../assets/img/x.svg'
+import { updateStation } from '../store/actions/station.actions'
+import { useEffect, useRef } from 'react'
 
 export function QueueIndex({ setIsQueueOpen }) {
   const currPlaying = useSelector(
@@ -11,6 +13,32 @@ export function QueueIndex({ setIsQueueOpen }) {
   const currStation = useSelector(
     (storeState) => storeState.stationModule.station
   )
+
+  const originalSongsQueueRef = useRef({})
+
+  useEffect(() => {
+    if (currStation && currStation?.songs) {
+      const stationId = currStation?._id
+      if (!originalSongsQueueRef.current[stationId]) {
+        originalSongsQueueRef.current[stationId] = currStation.songs
+      }
+    }
+    return () => {
+      if (!originalSongsQueueRef.current[currStation?._id]) {
+        handleReorderQueue(originalSongsQueueRef?.current[currStation?._id])
+      }
+    }
+  }, [currStation])
+
+  const handleReorderQueue = async (newOrder) => {
+    if (!currStation) return
+    const updatedStation = { ...currStation, songs: newOrder }
+    try {
+      await updateStation(updatedStation)
+    } catch (err) {
+      console.error('error updating station songs order', err)
+    }
+  }
 
   return (
     <section className='queue-index'>
@@ -39,7 +67,11 @@ export function QueueIndex({ setIsQueueOpen }) {
       <div className='queue-list-container'>
         <h2 className='queue-list-header'>Next up</h2>
         {currStation && currStation?.songs?.length > 0 ? (
-          <QueueList currQueue={currStation.songs} currPlaying={currPlaying} />
+          <QueueList
+            currQueue={currStation.songs}
+            currPlaying={currPlaying}
+            onReorderQueue={handleReorderQueue}
+          />
         ) : (
           <div className='queue-list-container-empty'>No songs in queue</div>
         )}

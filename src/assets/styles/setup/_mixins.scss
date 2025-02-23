@@ -523,6 +523,7 @@ $desktop-width: 954px;
   transition: $transitions;
 }
 
+// DEFINITION: A banner on a web page displaying text that scrolls horizontally.
 @mixin marquee-text(
   $duration: 8s,
   $background-color: transparent,

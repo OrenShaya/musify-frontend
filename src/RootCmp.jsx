@@ -42,9 +42,9 @@ export function RootCmp() {
 
   return (
     <div
-      className={`main-container main-layout ${isQueueOpen && 'queue-open'} ${
-        isSideBarOpen && 'sidebar-open'
-      }`}
+      className={`main-container main-layout ${
+        isQueueOpen ? 'queue-open' : ''
+      } ${isSideBarOpen ? 'sidebar-open' : ''}`}
     >
       <AppHeader />
       <UserMsg />
@@ -73,7 +73,7 @@ export function RootCmp() {
       {isQueueOpen && <QueueIndex setIsQueueOpen={setIsQueueOpen} />}
       <HiddenReactPlayer ref={playerRef} onEnded={handleSongEnded} />
       {isMobile ? (
-        <AppFooterMobile />
+        <AppFooterMobile playerRef={playerRef} />
       ) : (
         <AppFooter
           playerRef={playerRef}

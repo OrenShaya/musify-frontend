@@ -1,0 +1,68 @@
+$artistDescClr: #ababab;
+$bgc: #2b2b2b;
+$whiteFilter: invert(100%) sepia(100%) saturate(0%) hue-rotate(132deg)
+  brightness(103%) contrast(103%);
+
+.mobile-player-cmp {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0 8px;
+
+  $marginSize: 10px;
+  margin-inline: $marginSize;
+  width: calc(100vw - 2 * $marginSize);
+
+  background-color: $bgc;
+
+  .song-details {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    margin-block-start: 1ch;
+
+    font-size: 13px;
+    .song-name {
+      font-weight: 700;
+    }
+
+    .artist-name {
+      margin-block-start: -0.3em;
+
+      color: $artistDescClr;
+    }
+  }
+
+  .mobile-progress-bar {
+    grid-column: 1 / -1;
+    height: 2px;
+    background-color: #6b6b6b;
+  }
+
+  .footer-play-btn {
+    background-color: $bgc;
+    border-radius: 50%;
+    $size: 36px;
+    height: $size;
+    width: $size;
+    padding-inline: 6px;
+    margin: 0;
+
+    img {
+      filter: $whiteFilter;
+    }
+  }
+
+  .btn-group {
+    gap: 1em;
+  }
+}
+.mobile-player-image-container {
+  margin: auto;
+  width: 40px;
+  height: 40px;
+}
+
+.mobile-footer-icon {
+  width: 24px;
+  height: 24px;
+  filter: $whiteFilter;
+}
