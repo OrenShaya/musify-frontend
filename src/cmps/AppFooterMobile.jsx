@@ -93,27 +93,31 @@ function MobilePlayer({ playerRef }) {
       />
 
       <div className='song-details'>
-        <div>
+        <div className='song-name'>
           {/* Song name */}
           <span>{currentlyPlaying.title}</span>
-          {/* Artist name */}
-          <span>• {getArtistsDisplay()}</span>
         </div>
-        <div></div>
+        <div className='artist-name'>
+          {/* Artist name */}
+          <span>{getArtistsDisplay()}</span>
+        </div>
       </div>
 
-      {/* Like button */}
-      <LikeButton
-        song={currentlyPlaying}
-        isLiked={isLikedSong(currentlyPlaying?.yt_id)}
-        onLikeSong={onLikeSong}
-      />
-      {/* Play button */}
-      <PlayButton
-        togglePlay={togglePlay}
-        isPlaying={isPlaying}
-        className='footer-play-btn'
-      />
+      <div className='btn-group center-content'>
+        {/* Like button */}
+        <LikeButton
+          song={currentlyPlaying}
+          isLiked={isLikedSong(currentlyPlaying?.yt_id)}
+          onLikeSong={onLikeSong}
+          classNames={['mobile-footer-icon']}
+        />
+        {/* Play button */}
+        <PlayButton
+          togglePlay={togglePlay}
+          isPlaying={isPlaying}
+          className='footer-play-btn'
+        />
+      </div>
 
       {/* Progress bar */}
       <div className='mobile-progress-bar'></div>

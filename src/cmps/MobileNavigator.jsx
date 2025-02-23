@@ -31,7 +31,7 @@ export function MobileNavigator() {
   }
 
   return (
-    <section>
+    <section className='cmp-mobile-navigator'>
       <ul className='mobile-navigator-list'>
         {icons.map((icon, i) => (
           <li

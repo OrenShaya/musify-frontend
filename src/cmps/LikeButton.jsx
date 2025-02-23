@@ -2,12 +2,16 @@ import PropTypes from 'prop-types'
 import greenTickUrl from '../assets/icons/green-tick.svg'
 import addLikedSongUrl from '../assets/img/add-liked-song.svg'
 
-export function LikeButton({ song, isLiked, onLikeSong }) {
+export function LikeButton({
+  song,
+  isLiked,
+  onLikeSong,
+  classNames = ['add-to-liked'],
+}) {
   const getClasses = () => {
-    const classes = ['add-to-liked']
-    if (!isLiked) classes.push('add')
+    if (!isLiked) classNames.push('add')
 
-    return classes.join(' ')
+    return classNames.join(' ')
   }
 
   const imgUrl = isLiked ? greenTickUrl : addLikedSongUrl
@@ -26,4 +30,5 @@ LikeButton.propTypes = {
   song: PropTypes.object,
   isLiked: PropTypes.bool,
   onLikeSong: PropTypes.func,
+  classNames: PropTypes.array,
 }
