@@ -175,3 +175,12 @@
   cursor: pointer;
   outline: inherit;
 }
+
+.center-content {
+  display: grid;
+  grid-auto-flow: column;
+  place-content: center;
+  * {
+    margin: auto;
+  }
+}

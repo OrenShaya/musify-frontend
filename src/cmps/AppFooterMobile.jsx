@@ -1,61 +1,134 @@
-import homeUrl from '../assets/img/home.svg'
-import homeFilledUrl from '../assets/img/home-filled.svg'
-import searchUrl from '../assets/img/search.svg'
-import searchFilledUrl from '../assets/img/search-filled.svg'
-import libraryUrl from '../assets/img/library.svg'
-import libraryFilledUrl from '../assets/img/library-filled.svg'
-import { useNavigate } from 'react-router'
-import { useState } from 'react'
+import { useSelector } from 'react-redux'
+import { MobileNavigator } from './MobileNavigator'
+import { PlayButton } from './PlayButton'
+import { setIsPlaying } from '../store/actions/player.actions'
+import PropTypes from 'prop-types'
+import { LikeButton } from './LikeButton'
+import { toggleLikeSong } from '../store/actions/user.actions'
+import { useEffect, useState } from 'react'
 
-export function AppFooterMobile() {
+export function AppFooterMobile({ playerRef }) {
   return (
     <div className='app-footer-mobile'>
-      <section>Playing</section>
+      <MobilePlayer playerRef={playerRef} />
 
       <MobileNavigator />
     </div>
   )
 }
 
-function MobileNavigator() {
-  const navigate = useNavigate()
-  const [page, setPage] = useState('/')
+function MobilePlayer({ playerRef }) {
+  const currentlyPlaying = useSelector(
+    (storeState) => storeState.playerModule.currentlyPlaying
+  )
+  const isPlaying = useSelector(
+    (storeState) => storeState.playerModule.isPlaying
+  )
+  const likedSongs = useSelector(
+    (s) => s.userModule.user.likedSongsStation?.songs
+  )
+  // const currentStation = useSelector((s) => s.stationModule.station)
+  // const [currentTime, setCurrentTime] = useState(0)
 
-  const icons = [
-    { name: 'Home', url: page === '/' ? homeFilledUrl : homeUrl, page: '/' },
-    {
-      name: 'Search',
-      url: page === '/search' ? searchFilledUrl : searchUrl,
-      page: '/search',
-    },
-    {
-      name: 'Your Library',
-      url: page === '/library' ? libraryFilledUrl : libraryUrl,
-      page: '/library',
-    },
-  ]
+  // useEffect(() => {
+  //   if (currentStation) setCurrentlyPlaying(currentStation, 'FGBhQbmPwH8')
+  //   // songProgressRef.current.style.setProperty('--song-time', 0)
+  // }, [])
 
-  const onNavigate = (icon) => {
-    setPage(icon.page)
-    navigate(icon.page)
+  // useEffect(() => {
+  //   // poll the player's current time every second
+  //   const interval = setInterval(() => {
+  //     if (playerRef.current && isPlaying) {
+  //       setCurrentTime(playerRef.current.getCurrentTime())
+  //     }
+  //   }, 1000)
+  //   return () => clearInterval(interval)
+  // }, [isPlaying, playerRef])
+
+  useEffect(() => {
+    if (currentlyPlaying && currentlyPlaying.url && playerRef.current) {
+      playerRef.current.setSource(
+        currentlyPlaying?.url || 'https://www.youtube.com/embed/4fDfbMt6icw'
+      )
+      setIsPlaying(true)
+      // setCurrentTime(0)
+      // if (songProgressRef.current) {
+      //   playerRef.current.slideTo(0)
+      // }
+    }
+  }, [currentlyPlaying])
+
+  const togglePlay = () => {
+    if (!playerRef.current) return
+
+    if (isPlaying) {
+      playerRef.current.pause()
+      setIsPlaying(false)
+    } else {
+      playerRef.current.play()
+      setIsPlaying(true)
+    }
   }
 
+  const getArtistsDisplay = () => {
+    return currentlyPlaying.artists?.join(', ') ?? 'Artist'
+  }
+
+  const isLikedSong = (songId) => {
+    return likedSongs?.find((s) => s.yt_id === songId)
+  }
+
+  const onLikeSong = (songId, setLikedTo) => {
+    toggleLikeSong(songId, setLikedTo)
+  }
+
+  if (!currentlyPlaying) return <></>
   return (
-    <section>
-      <ul className='mobile-navigator-list'>
-        {icons.map((icon, i) => (
-          <li
-            key={i}
-            className='mobile-navigator-item'
-            onClick={() => onNavigate(icon)}
-          >
-            <div className='icon'>
-              <img src={icon.url} alt='' />
-            </div>
-            <span className='mobile-navigator-item-span'>{icon.name}</span>
-          </li>
-        ))}
-      </ul>
+    <section className='mobile-player-cmp'>
+      {/* Image */}
+      <img
+        className='mobile-player-image-container'
+        src={currentlyPlaying.imgUrl}
+        alt=''
+      />
+
+      <div className='song-details'>
+        <div className='song-name'>
+          {/* Song name */}
+          <span>{currentlyPlaying.title}</span>
+        </div>
+        <div className='artist-name'>
+          {/* Artist name */}
+          <span>{getArtistsDisplay()}</span>
+        </div>
+      </div>
+
+      <div className='btn-group center-content'>
+        {/* Like button */}
+        <LikeButton
+          song={currentlyPlaying}
+          isLiked={isLikedSong(currentlyPlaying?.yt_id)}
+          onLikeSong={onLikeSong}
+          classNames={['mobile-footer-icon']}
+        />
+        {/* Play button */}
+        <PlayButton
+          togglePlay={togglePlay}
+          isPlaying={isPlaying}
+          className='footer-play-btn'
+        />
+      </div>
+
+      {/* Progress bar */}
+      <div className='mobile-progress-bar'></div>
     </section>
   )
+}
+
+AppFooterMobile.propTypes = {
+  playerRef: PropTypes.object,
+}
+
+MobilePlayer.propTypes = {
+  playerRef: PropTypes.object,
 }

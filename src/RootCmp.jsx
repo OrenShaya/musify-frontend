@@ -73,7 +73,7 @@ export function RootCmp() {
       {isQueueOpen && <QueueIndex setIsQueueOpen={setIsQueueOpen} />}
       <HiddenReactPlayer ref={playerRef} onEnded={handleSongEnded} />
       {isMobile ? (
-        <AppFooterMobile />
+        <AppFooterMobile playerRef={playerRef} />
       ) : (
         <AppFooter
           playerRef={playerRef}
