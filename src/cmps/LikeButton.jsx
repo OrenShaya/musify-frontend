@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import greenTickUrl from '../assets/icons/green-tick.svg'
 import addLikedSongUrl from '../assets/img/add-liked-song.svg'
 
@@ -19,4 +20,10 @@ export function LikeButton({ song, isLiked, onLikeSong }) {
       <img className={getClasses()} src={imgUrl} />
     </button>
   )
+}
+
+LikeButton.propTypes = {
+  song: PropTypes.object,
+  isLiked: PropTypes.bool,
+  onLikeSong: PropTypes.func,
 }

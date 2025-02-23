@@ -61,6 +61,10 @@ StationPreview.propTypes = {
     createdBy: PropTypes.shape({
       imgUrl: PropTypes.string.isRequired,
     }),
-    songs: PropTypes.arrayOf(PropTypes.shape({})),
+    songs: PropTypes.arrayOf(
+      PropTypes.shape({
+        yt_id: PropTypes.string,
+      })
+    ),
   }).isRequired,
 }
