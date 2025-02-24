@@ -43,15 +43,7 @@ export function AppFooter({ playerRef, isQueueOpen, setIsQueueOpen }) {
   }
 
   const togglePlay = () => {
-    if (!playerRef.current) return
-
-    if (isPlaying) {
-      playerRef.current.pause()
-      setIsPlaying(false)
-    } else {
-      playerRef.current.play()
-      setIsPlaying(true)
-    }
+    setIsPlaying(!isPlaying)
   }
 
   useEffect(() => {
