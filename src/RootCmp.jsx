@@ -23,6 +23,7 @@ import { loadStations } from './store/actions/station.actions.js'
 
 import { QueueIndex } from './cmps/QueueIndex.jsx'
 import { AppFooterMobile } from './cmps/AppFooterMobile.jsx'
+import { Library } from './pages/Library.jsx'
 
 export function RootCmp() {
   const playerRef = useRef(null)
@@ -59,6 +60,7 @@ export function RootCmp() {
           <Route path='station/:stationId' element={<StationDetails />} />
           <Route path='collection/tracks' element={<StationDetails />} />
           <Route path='explore' element={<StationExplore />} />
+          <Route path='library' element={<Library />} />
           {/* <Route path='search/:searchText' element={<StationSearch />} /> */}
 
           <Route path='admin' element={<AdminIndex />} />
