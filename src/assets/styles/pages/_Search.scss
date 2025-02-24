@@ -1,0 +1,16 @@
+.search-page-cmp {
+}
+.search-form {
+  display: grid;
+  margin: 1em;
+
+  .search-input {
+    background: url('/src/assets/img/search.svg') no-repeat 0.5em center;
+    background-size: 18px;
+    padding-inline-start: 2.5em;
+    padding-block: 0.5em;
+    border-radius: 2px;
+    background-color: white;
+    font-family: 'Spotifymix-Bold';
+  }
+}
