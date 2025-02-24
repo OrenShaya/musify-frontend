@@ -6,6 +6,9 @@ import { StationPreviewFiltered } from '../cmps/StationPreviewFiltered'
 import { stationService, tagsObj } from '../services/station'
 import { useSelector } from 'react-redux'
 import { debounce } from '../services/util.service'
+import { LoadingWrapper } from '../cmps/LoadingWrapper'
+import { store } from '../store/store'
+import { LOADING_DONE, LOADING_START } from '../store/reducers/system.reducer'
 
 // eslint-disable-next-line react/prop-types
 export function StationExplore({ searchBarInput }) {
@@ -30,6 +33,7 @@ export function StationExplore({ searchBarInput }) {
   }, [searchTerm, filteredTerm])
 
   async function getFilteredStations() {
+    store.dispatch({ type: LOADING_START })
     try {
       const query = {}
       if (searchTerm) query.name = searchTerm
@@ -40,6 +44,8 @@ export function StationExplore({ searchBarInput }) {
       setFilteredStations(stations)
     } catch (err) {
       console.error('Cannot get filtered stations', err)
+    } finally {
+      store.dispatch({ type: LOADING_DONE })
     }
   }
 
@@ -62,6 +68,7 @@ export function StationExplore({ searchBarInput }) {
         <div className='filtered-stations-section'>
           <h2>{heading}</h2>
           <ul className='station-list-grid'>
+            <LoadingWrapper />
             {filteredStations.map((station) => (
               <li
                 key={station._id}

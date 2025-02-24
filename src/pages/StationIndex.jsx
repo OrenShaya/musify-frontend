@@ -3,10 +3,12 @@ import { StationList } from '../cmps/StationList'
 import { useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { RecentlyPlayedStations } from '../cmps/RecentlyPlayedStations'
+import { LoadingWrapper } from '../cmps/LoadingWrapper'
 
 export function StationIndex() {
   const indexRef = useRef()
   const stations = useSelector((s) => s.stationModule.stations)
+  const isLoading = useSelector((s) => s.systemModule.isLoading)
 
   const getAllStations = () => {
     const allStations = Array(5)
@@ -35,18 +37,21 @@ export function StationIndex() {
   return (
     <>
       <div className='station-index' ref={indexRef}>
-        <RecentlyPlayedStations />
+        {!isLoading && <RecentlyPlayedStations />}
         <div className='station-index-main'>
-          <ul>
-            {getAllStations().map((stations, i) => (
-              <li className='station-index-item' key={stationHeaders[i]}>
-                <StationList
-                  stations={stations}
-                  stationHeader={stationHeaders[i]}
-                />
-              </li>
-            ))}
-          </ul>
+          <LoadingWrapper />
+          {!isLoading && (
+            <ul>
+              {getAllStations().map((stations, i) => (
+                <li className='station-index-item' key={stationHeaders[i]}>
+                  <StationList
+                    stations={stations}
+                    stationHeader={stationHeaders[i]}
+                  />
+                </li>
+              ))}
+            </ul>
+          )}
           <div className='shadow'></div>
         </div>
       </div>

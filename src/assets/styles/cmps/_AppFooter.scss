@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 .app-footer {
   bottom: 0;
   width: 100%;
@@ -38,30 +40,138 @@
   align-items: center;
   justify-content: center;
   gap: 1.5em;
-}
 
-.footer-play-btn {
-  border-radius: 50%;
-  // 12x14 : 32x32
-  $size: 32px;
-  height: $size;
-  width: $size;
-  padding-inline: 6px;
-  margin: 0;
-}
+  .footer-play-btn {
+    border-radius: 50%;
+    // 12x14 : 32x32
+    $size: 32px;
+    height: $size;
+    width: $size;
+    padding-inline: 6px;
+    margin: 0;
+    transition: all 0.22 ease-in-out;
 
-.next-song-btn {
-  fill: #b3b3b3;
-  background-color: transparent;
-  margin: 0;
-  padding: 0;
-}
+    &:hover {
+      scale: 1.04;
+    }
+  }
 
-.previous-song-btn {
-  fill: #b3b3b3;
-  background-color: transparent;
-  margin: 0;
-  padding: 0;
+  .next-song-btn {
+    fill: #b3b3b3;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    transition: all 0.22 ease-in-out;
+
+    &:hover {
+      fill: $clr-neutral-white;
+    }
+  }
+
+  .previous-song-btn {
+    fill: #b3b3b3;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    transition: all 0.22 ease-in-out;
+
+    &:hover {
+      fill: $clr-neutral-white;
+    }
+  }
+
+  .shuffle-btn {
+    position: relative;
+    background-color: transparent;
+    padding: 0;
+    padding-block-end: 3px;
+
+    transition: all 0.22s ease-in-out;
+
+    &:hover {
+      scale: 1.04;
+    }
+
+    .shuffle-off-icon,
+    .shuffle-on-icon {
+      width: 16px;
+      height: 16px;
+
+      transition: all 0.22s ease-in-out;
+    }
+    .shuffle-off-icon {
+      fill: #b3b3b3;
+
+      &:hover {
+        fill: $clr-neutral-white;
+      }
+    }
+
+    .shuffle-on-icon {
+      fill: #1ed760;
+      transition: all 0.22s ease-in-out;
+
+      &:hover {
+        fill: color.adjust(#1ed760, $lightness: -10%);
+      }
+    }
+
+    .shuffle-on-dot-icon {
+      position: absolute;
+      top: 100%;
+      right: 50%;
+      transform: translateX(40%);
+
+      width: 6px;
+      height: 6px;
+    }
+  }
+
+  .repeat-btn {
+    position: relative;
+    background-color: transparent;
+    padding: 0;
+    padding-block-end: 3px;
+
+    transition: all 0.22s ease-in-out;
+
+    &:hover {
+      scale: 1.04;
+    }
+
+    .repeat-off-icon,
+    .repeat-on-icon,
+    .repeat-one-icon {
+      width: 16px;
+      height: 16px;
+    }
+    .repeat-off-icon {
+      fill: #b3b3b3;
+
+      &:hover {
+        fill: $clr-neutral-white;
+      }
+    }
+
+    .repeat-on-icon,
+    .repeat-one-icon {
+      fill: #1ed760;
+      transition: all 0.22s ease-in-out;
+
+      &:hover {
+        fill: color.adjust(#1ed760, $lightness: -10%);
+      }
+    }
+    .repeat-on-dot-icon {
+      position: absolute;
+      top: 100%;
+      right: 50%;
+      transform: translateX(40%);
+
+      width: 6px;
+      height: 6px;
+    }
+  }
 }
 
 .song-progress-bar {

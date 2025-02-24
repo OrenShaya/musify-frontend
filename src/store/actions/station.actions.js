@@ -14,18 +14,23 @@ import {
   SOCKET_EMIT_ADD_SONG,
   socketService,
 } from '../../services/socket.service'
+import { LOADING_DONE, LOADING_START } from '../reducers/system.reducer'
 
 export async function loadStations(filterBy) {
+  store.dispatch({ type: LOADING_START })
   try {
     const stations = await stationService.query(filterBy)
     store.dispatch(getCmdSetStations(stations))
   } catch (err) {
     console.warn('Cannot load stations', err)
     throw err
+  } finally {
+    store.dispatch({ type: LOADING_DONE })
   }
 }
 
 export async function loadStation(stationId) {
+  store.dispatch({ type: LOADING_START })
   try {
     const station = await stationService.getById(stationId)
     store.dispatch(getCmdSetStation(station))
@@ -33,6 +38,8 @@ export async function loadStation(stationId) {
   } catch (err) {
     console.warn('Cannot load station', err)
     throw err
+  } finally {
+    store.dispatch({ type: LOADING_DONE })
   }
 }
 
@@ -89,8 +96,12 @@ export async function updateStation(station) {
 }
 
 export async function setStation(station) {
-  store.dispatch(getCmdSetStation(station))
-  setQueue(station.songs)
+  try {
+    store.dispatch(getCmdSetStation(station))
+    setQueue(station.songs)
+  } catch (err) {
+    console.warn('Error setting staion', err)
+  }
 }
 
 export async function addStationMsg(stationId, txt) {
