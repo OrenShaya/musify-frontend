@@ -57,6 +57,7 @@ export function AppFooter({ playerRef, isQueueOpen, setIsQueueOpen }) {
   useEffect(() => {
     if (currentStation) setCurrentlyPlaying(currentStation, 'FGBhQbmPwH8')
     songProgressRef.current.style.setProperty('--song-time', 0)
+    setIsPlaying(false)
   }, [])
 
   useEffect(() => {
