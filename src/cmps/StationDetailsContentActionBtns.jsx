@@ -9,10 +9,12 @@ import {
 import PropTypes from 'prop-types'
 
 export function StationDetailsActionBtns({ station }) {
-  const selectedStationId = useSelector((s) => s.stationModule.station?._id)
   const isPlaying = useSelector((s) => s.playerModule.isPlaying)
+  const playingSong = useSelector((s) => s.playerModule.currentlyPlaying)
 
-  const isSelectedStation = () => selectedStationId === station?._id
+  const isSelectedStation = () => {
+    return station.songs?.map((s) => s.yt_id).includes(playingSong.yt_id)
+  }
 
   const onTogglePlay = () => {
     if (!isSelectedStation()) {

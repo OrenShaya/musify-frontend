@@ -77,15 +77,14 @@ export function AppFooter({ playerRef, isQueueOpen, setIsQueueOpen }) {
   }, [playerRef, volume])
 
   useEffect(() => {
-    if (currentlyPlaying && currentlyPlaying.url && playerRef.current) {
-      playerRef.current.setSource(
-        currentlyPlaying?.url || 'https://www.youtube.com/embed/4fDfbMt6icw'
-      )
-      setCurrentTime(0)
-      setIsPlaying(true)
-      if (songProgressRef.current) {
-        playerRef.current.slideTo(0)
-      }
+    if (!currentlyPlaying || !currentlyPlaying.url || !playerRef.current) return
+    playerRef.current.setSource(
+      currentlyPlaying?.url || 'https://www.youtube.com/embed/4fDfbMt6icw'
+    )
+    setCurrentTime(0)
+    setIsPlaying(true)
+    if (songProgressRef.current) {
+      playerRef.current.slideTo(0)
     }
   }, [currentlyPlaying])
 
