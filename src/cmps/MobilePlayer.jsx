@@ -67,7 +67,7 @@ export function MobilePlayer({ playerRef }) {
   }
 
   const isLikedSong = (songId) => {
-    return likedSongs?.find((s) => s.yt_id === songId)
+    return likedSongs?.some((s) => s.yt_id === songId)
   }
 
   const onLikeSong = (songId, setLikedTo) => {

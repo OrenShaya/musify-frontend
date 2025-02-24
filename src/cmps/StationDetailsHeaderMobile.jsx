@@ -16,10 +16,9 @@ export function StationDetailsHeaderMobile({ station }) {
     return station?.songs?.map((s) => s.yt_id).includes(playingSong?.yt_id)
   }
   const isPlaying = useSelector((s) => s.playerModule.isPlaying)
-
+  const isCurrentlyPlaying = !!(isPlaying && isSelectedStation())
 
   const onTogglePlay = () => {
-    // debugger
     if (!isSelectedStation()) {
       setStation(station)
       setCurrentlyPlaying(station, station.songs[0].yt_id)
@@ -63,6 +62,7 @@ export function StationDetailsHeaderMobile({ station }) {
         <PlayButton 
         className='station-detail-play-button-mobile'
         togglePlay={onTogglePlay}
+        isPlaying={isCurrentlyPlaying}
         />
         <svg
           data-encore-id='icon'

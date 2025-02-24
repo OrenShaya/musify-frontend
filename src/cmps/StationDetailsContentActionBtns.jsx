@@ -27,8 +27,8 @@ export function StationDetailsActionBtns({ station }) {
     }
   }
 
-  const isCurrentlyPlaying = isPlaying && isSelectedStation()
-
+  const isCurrentlyPlaying = !!(isPlaying && isSelectedStation())
+  
   return (
     <section className='station-details-action-btns'>
       <PlayButton
