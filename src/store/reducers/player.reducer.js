@@ -5,7 +5,7 @@ export const CLEAR_CURRENTLY_PLAYING = 'CLEAR_CURRENTLY_PLAYING'
 
 const initialState = {
   currentlyPlaying: null,
-  isPlaying: true,
+  isPlaying: false,
 }
 
 export function playerReducer(state = initialState, action = {}) {

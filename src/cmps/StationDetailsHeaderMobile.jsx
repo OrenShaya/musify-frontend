@@ -22,7 +22,6 @@ export function StationDetailsHeaderMobile({ station }) {
     if (!isSelectedStation()) {
       setStation(station)
       setCurrentlyPlaying(station, station.songs[0].yt_id)
-
       setIsPlaying(true)
     } else {
       setIsPlaying(!isPlaying)
@@ -59,10 +58,10 @@ export function StationDetailsHeaderMobile({ station }) {
         </div>
       </div>
       <div className='station-detail-buttons-row-mobile'>
-        <PlayButton 
-        className='station-detail-play-button-mobile'
-        togglePlay={onTogglePlay}
-        isPlaying={isCurrentlyPlaying}
+        <PlayButton
+          className='station-detail-play-button-mobile'
+          togglePlay={onTogglePlay}
+          isPlaying={isCurrentlyPlaying}
         />
         <svg
           data-encore-id='icon'
