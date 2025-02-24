@@ -12,6 +12,11 @@ export function StationDetailsRowMobile({ song }) {
     (s) => s.userModule.user.likedSongsStation?.songs
   )
   const selectedStation = useSelector((s) => s.stationModule.station)
+  const currentlyPlaying = useSelector((s) => s.playerModule.currentlyPlaying)
+
+  const _isCurrentSongPlaying = () => {
+    return currentlyPlaying?.yt_id === song.yt_id
+  }
 
   const getArtistsDisplay = (song) => {
     return song.artists?.join(', ') ?? 'Artist'
@@ -31,6 +36,7 @@ export function StationDetailsRowMobile({ song }) {
     setIsPlaying((prevIsPlaying) => !prevIsPlaying)
   }
 
+  const songClasses = _isCurrentSongPlaying() ? 'spotify-green-clr' : ''
   return (
     <div className='station-details-row-mobile' onClick={onTogglePlay}>
       {/* Image */}
@@ -42,7 +48,7 @@ export function StationDetailsRowMobile({ song }) {
 
       <div className='station-details-row-mobile-song-details'>
         {/* Song title */}
-        <span>{song.title}</span>
+        <span className={songClasses}>{song.title}</span>
         {/* Artist Name */}
         <span className='artist-name'>{getArtistsDisplay(song)}</span>
       </div>
