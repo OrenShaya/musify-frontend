@@ -313,8 +313,8 @@ export function AppFooter({ playerRef, isQueueOpen, setIsQueueOpen }) {
             role='presentation'
             aria-label='Volume off'
             aria-hidden='false'
-            className='volume-repeat-icon'
-            id='volume-icon'
+            className='volume-mute-icon'
+            id='volume-mute-icon'
             viewBox='0 0 16 16'
           >
             <path d='M13.86 5.47a.75.75 0 0 0-1.061 0l-1.47 1.47-1.47-1.47A.75.75 0 0 0 8.8 6.53L10.269 8l-1.47 1.47a.75.75 0 1 0 1.06 1.06l1.47-1.47 1.47 1.47a.75.75 0 0 0 1.06-1.06L12.39 8l1.47-1.47a.75.75 0 0 0 0-1.06z'></path>

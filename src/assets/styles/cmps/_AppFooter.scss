@@ -198,6 +198,7 @@
       $input-background-color var(--song-time),
       $input-background-color 100%
     );
+    cursor: pointer;
   }
 
   &::-webkit-slider-thumb {
@@ -214,6 +215,7 @@
 
   &:hover::-webkit-slider-thumb {
     opacity: 1;
+    cursor: pointer;
   }
 
   &::-moz-range-thumb {
@@ -229,6 +231,7 @@
 
   &:hover::-moz-range-thumb {
     opacity: 1;
+    cursor: pointer;
   }
 }
 
@@ -271,6 +274,7 @@
         $input-background-color var(--volume-percentage),
         $input-background-color 100%
       );
+      cursor: pointer;
     }
 
     &::-webkit-slider-thumb {
@@ -287,6 +291,7 @@
 
     &:hover::-webkit-slider-thumb {
       opacity: 1;
+      cursor: pointer;
     }
 
     // for firfox users
@@ -303,6 +308,7 @@
 
     &:hover::-moz-range-thumb {
       opacity: 1;
+      cursor: pointer;
     }
   }
 
