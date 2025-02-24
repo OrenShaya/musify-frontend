@@ -17,7 +17,7 @@ export function MobilePlayer({ playerRef }) {
     (storeState) => storeState.playerModule.isPlaying
   )
   const likedSongs = useSelector(
-    (s) => s.userModule.user.likedSongsStation?.songs
+    (s) => s.userModule.user?.likedSongsStation?.songs
   )
 
   useEffect(() => {
