@@ -9,16 +9,17 @@ import {
 import PropTypes from 'prop-types'
 
 export function StationDetailsActionBtns({ station }) {
-  const selectedStationId = useSelector((s) => s.stationModule.station?._id)
   const isPlaying = useSelector((s) => s.playerModule.isPlaying)
+  const playingSong = useSelector((s) => s.playerModule.currentlyPlaying)
 
-  const isSelectedStation = () => selectedStationId === station?._id
+  const isSelectedStation = () => {
+    return station?.songs?.map((s) => s.yt_id).includes(playingSong?.yt_id)
+  }
 
   const onTogglePlay = () => {
     if (!isSelectedStation()) {
       setStation(station)
-      // TODO: continue playlist, instead of set to first song
-      setCurrentlyPlaying(station.songs[0].yt_id)
+      setCurrentlyPlaying(station, station.songs[0].yt_id)
 
       setIsPlaying(true)
     } else {
@@ -26,8 +27,8 @@ export function StationDetailsActionBtns({ station }) {
     }
   }
 
-  const isCurrentlyPlaying = isPlaying && isSelectedStation()
-
+  const isCurrentlyPlaying = !!(isPlaying && isSelectedStation())
+  
   return (
     <section className='station-details-action-btns'>
       <PlayButton

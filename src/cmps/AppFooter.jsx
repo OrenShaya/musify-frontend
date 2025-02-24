@@ -43,15 +43,7 @@ export function AppFooter({ playerRef, isQueueOpen, setIsQueueOpen }) {
   }
 
   const togglePlay = () => {
-    if (!playerRef.current) return
-
-    if (isPlaying) {
-      playerRef.current.pause()
-      setIsPlaying(false)
-    } else {
-      playerRef.current.play()
-      setIsPlaying(true)
-    }
+    setIsPlaying(!isPlaying)
   }
 
   useEffect(() => {
@@ -77,15 +69,14 @@ export function AppFooter({ playerRef, isQueueOpen, setIsQueueOpen }) {
   }, [playerRef, volume])
 
   useEffect(() => {
-    if (currentlyPlaying && currentlyPlaying.url && playerRef.current) {
-      playerRef.current.setSource(
-        currentlyPlaying?.url || 'https://www.youtube.com/embed/4fDfbMt6icw'
-      )
-      setCurrentTime(0)
-      setIsPlaying(true)
-      if (songProgressRef.current) {
-        playerRef.current.slideTo(0)
-      }
+    if (!currentlyPlaying || !currentlyPlaying.url || !playerRef.current) return
+    playerRef.current.setSource(
+      currentlyPlaying?.url || 'https://www.youtube.com/embed/4fDfbMt6icw'
+    )
+    setCurrentTime(0)
+    setIsPlaying(true)
+    if (songProgressRef.current) {
+      playerRef.current.slideTo(0)
     }
   }, [currentlyPlaying])
 
@@ -111,7 +102,8 @@ export function AppFooter({ playerRef, isQueueOpen, setIsQueueOpen }) {
     const slider = songProgressRef.current
     if (slider) {
       let timeInPrecetage =
-        (currentTime / playerRef.current.getDuration()) * 100
+        (playerRef.current.getCurrentTime() / playerRef.current.getDuration()) *
+        100
       if (isNaN(timeInPrecetage)) timeInPrecetage = 0
       slider.style.setProperty('--song-time', `${timeInPrecetage}%`)
     }

@@ -1,10 +1,32 @@
 import defaultImg from '../assets/icons/station-default-sidebar-img.svg'
 import defaultUserImg from '../assets/img/profile-avatar.svg'
+import { setStation } from '../store/actions/station.actions'
 import { useNavigate } from 'react-router'
+import { useSelector } from 'react-redux'
 import { PlayButton } from './PlayButton'
+import {
+  setCurrentlyPlaying,
+  setIsPlaying,
+} from '../store/actions/player.actions'
 
 export function StationDetailsHeaderMobile({ station }) {
   const navigate = useNavigate()
+  const playingSong = useSelector((s) => s.playerModule.currentlyPlaying)
+  const isSelectedStation = () => {
+    return station?.songs?.map((s) => s.yt_id).includes(playingSong?.yt_id)
+  }
+  const isPlaying = useSelector((s) => s.playerModule.isPlaying)
+  const isCurrentlyPlaying = !!(isPlaying && isSelectedStation())
+
+  const onTogglePlay = () => {
+    if (!isSelectedStation()) {
+      setStation(station)
+      setCurrentlyPlaying(station, station.songs[0].yt_id)
+      setIsPlaying(true)
+    } else {
+      setIsPlaying(!isPlaying)
+    }
+  }
 
   return (
     <div className='station-header-mobile'>
@@ -36,7 +58,11 @@ export function StationDetailsHeaderMobile({ station }) {
         </div>
       </div>
       <div className='station-detail-buttons-row-mobile'>
-        <PlayButton className='station-detail-play-button-mobile' />
+        <PlayButton
+          className='station-detail-play-button-mobile'
+          togglePlay={onTogglePlay}
+          isPlaying={isCurrentlyPlaying}
+        />
         <svg
           data-encore-id='icon'
           fill='white'

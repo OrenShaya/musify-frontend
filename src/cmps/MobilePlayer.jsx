@@ -5,6 +5,7 @@ import { LikeButton } from './LikeButton'
 import { toggleLikeSong } from '../store/actions/user.actions'
 import { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
+import { useEffectUpdate } from '../customHooks/useEffectUpdate'
 
 export function MobilePlayer({ playerRef }) {
   const [progress, setProgress] = useState(0)
@@ -46,28 +47,30 @@ export function MobilePlayer({ playerRef }) {
       playerRef.current.setSource(
         currentlyPlaying?.url || 'https://www.youtube.com/embed/4fDfbMt6icw'
       )
-      setIsPlaying(true)
+      setIsPlaying(isPlaying)
     }
   }, [currentlyPlaying])
 
   const togglePlay = () => {
+    setIsPlaying(!isPlaying)
+  }
+
+  useEffectUpdate(() => {
     if (!playerRef.current) return
 
     if (isPlaying) {
-      playerRef.current.pause()
-      setIsPlaying(false)
-    } else {
       playerRef.current.play()
-      setIsPlaying(true)
+    } else {
+      playerRef.current.pause()
     }
-  }
+  }, [isPlaying])
 
   const getArtistsDisplay = () => {
     return currentlyPlaying.artists?.join(', ') ?? 'Artist'
   }
 
   const isLikedSong = (songId) => {
-    return likedSongs?.find((s) => s.yt_id === songId)
+    return likedSongs?.some((s) => s.yt_id === songId)
   }
 
   const onLikeSong = (songId, setLikedTo) => {
