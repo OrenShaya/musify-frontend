@@ -19,7 +19,6 @@ export function StationDetailsActionBtns({ station }) {
   const onTogglePlay = () => {
     if (!isSelectedStation()) {
       setStation(station)
-      // TODO: continue playlist, instead of set to first song
       setCurrentlyPlaying(station.songs[0].yt_id)
 
       setIsPlaying(true)
