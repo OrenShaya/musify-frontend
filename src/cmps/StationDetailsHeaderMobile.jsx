@@ -19,7 +19,6 @@ export function StationDetailsHeaderMobile({ station }) {
 
 
   const onTogglePlay = () => {
-    // debugger
     if (!isSelectedStation()) {
       setStation(station)
       setCurrentlyPlaying(station, station.songs[0].yt_id)
