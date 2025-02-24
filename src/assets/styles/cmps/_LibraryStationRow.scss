@@ -1,2 +1,28 @@
 .library-station-row-cmp {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1em;
+  align-items: center;
+
+  .image {
+    width: 100px;
+    img {
+      padding: 5px;
+      border-radius: 6px;
+    }
+  }
+
+  .spans {
+    display: grid;
+    gap: 0.3em;
+    height: fit-content;
+    :nth-child(1) {
+      font-weight: bold;
+    }
+    :nth-child(2) {
+      font-size: 13px;
+
+      color: $artistGrey;
+    }
+  }
 }

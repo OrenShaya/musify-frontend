@@ -102,7 +102,8 @@ export function AppFooter({ playerRef, isQueueOpen, setIsQueueOpen }) {
     const slider = songProgressRef.current
     if (slider) {
       let timeInPrecetage =
-        (currentTime / playerRef.current.getDuration()) * 100
+        (playerRef.current.getCurrentTime() / playerRef.current.getDuration()) *
+        100
       if (isNaN(timeInPrecetage)) timeInPrecetage = 0
       slider.style.setProperty('--song-time', `${timeInPrecetage}%`)
     }
