@@ -13,7 +13,7 @@ export function StationDetailsActionBtns({ station }) {
   const playingSong = useSelector((s) => s.playerModule.currentlyPlaying)
 
   const isSelectedStation = () => {
-    return station.songs?.map((s) => s.yt_id).includes(playingSong.yt_id)
+    return station?.songs?.map((s) => s.yt_id).includes(playingSong.yt_id)
   }
 
   const onTogglePlay = () => {
