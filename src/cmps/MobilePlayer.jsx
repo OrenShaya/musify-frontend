@@ -85,9 +85,9 @@ export function MobilePlayer({ playerRef }) {
       />
 
       <div className='song-details'>
-        <div className='song-name'>
+        <div className='song-name song-name-marquee'>
           {/* Song name */}
-          <span>{currentlyPlaying.title}</span>
+          <span className='marquee-inner'>{currentlyPlaying.title}</span>
         </div>
         <div className='artist-name'>
           {/* Artist name */}
