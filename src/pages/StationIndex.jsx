@@ -19,7 +19,7 @@ export function StationIndex() {
       allStations[i] = stations.slice(from, to)
     }
 
-    return allStations
+    return [...allStations, stations]
   }
 
   useEffect(() => {
@@ -32,6 +32,7 @@ export function StationIndex() {
     'Recommended for today',
     'New releases for you',
     'Albums featuring songs you like',
+    'Everything for you',
   ]
 
   return (
