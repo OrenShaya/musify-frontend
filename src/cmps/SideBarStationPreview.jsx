@@ -26,10 +26,6 @@ export function SideBarStationPreview({ station }) {
   const handleClick = (station) => {
     if (!isSelectedStation()) {
       setStation(station)
-      // TODO: continue playlist, instead of set to first song
-      setCurrentlyPlaying(station, station.songs[0].yt_id)
-
-      setIsPlaying(true)
     } else {
       setIsPlaying(!isPlaying)
     }
