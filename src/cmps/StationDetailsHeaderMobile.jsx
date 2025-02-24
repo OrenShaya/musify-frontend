@@ -11,16 +11,18 @@ import {
 
 export function StationDetailsHeaderMobile({ station }) {
   const navigate = useNavigate()
-  const selectedStationId = useSelector((s) => s.stationModule.station?._id)
-  const isSelectedStation = () => selectedStationId === station?._id
+  const playingSong = useSelector((s) => s.playerModule.currentlyPlaying)
+  const isSelectedStation = () => {
+    return station?.songs?.map((s) => s.yt_id).includes(playingSong?.yt_id)
+  }
   const isPlaying = useSelector((s) => s.playerModule.isPlaying)
 
 
   const onTogglePlay = () => {
-    debugger
+    // debugger
     if (!isSelectedStation()) {
       setStation(station)
-      setCurrentlyPlaying(station.songs[0].yt_id)
+      setCurrentlyPlaying(station, station.songs[0].yt_id)
 
       setIsPlaying(true)
     } else {
