@@ -2,6 +2,12 @@
   overflow: hidden;
 }
 
+.main-container,
+.main-layout,
+.sidebar-open {
+  background-color: black;
+}
+
 .main-container {
   height: 100vh;
   display: grid;
