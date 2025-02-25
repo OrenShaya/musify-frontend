@@ -1,23 +1,15 @@
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
-import { PlayButton } from './PlayButton'
-import { setStation } from '../store/actions/station.actions'
-import {
-  setCurrentlyPlaying,
-  setIsPlaying,
-} from '../store/actions/player.actions'
+import { useRef } from 'react'
+import { RecentStationItem } from './RecentStationItem'
 
 export function RecentlyPlayedStations() {
   const stations = useSelector((s) => s.stationModule.stations)
-  const selectedStationId = useSelector((s) => s.stationModule.station?._id)
-  const isPlaying = useSelector((s) => s.playerModule.isPlaying)
   const likedSongsStation = useSelector(
     (s) => s.userModule.user?.likedSongsStation
   )
-  const isMobile = document.documentElement.clientWidth <= 480
-  const isSelectedStation = (station) => selectedStationId === station?._id
-
   const navigate = useNavigate()
+  const stationsRef = useRef()
 
   const onNav = (station) => {
     if (station.yt_id !== 'THE-CAKE-IS-A-LIE')
@@ -31,27 +23,11 @@ export function RecentlyPlayedStations() {
     return [likedSongsStation].concat(stations?.slice(0, 7))
   }
 
-  const isCurrentlyPlaying = (station) => {
-    return isPlaying && isSelectedStation(station)
-  }
-
-  const onTogglePlay = (station) => {
-    if (!isSelectedStation(station)) {
-      setStation(station)
-      // TODO: continue playlist, instead of set to first song
-      setCurrentlyPlaying(station, station.songs[0].yt_id)
-
-      setIsPlaying(true)
-    } else {
-      setIsPlaying(!isPlaying)
-    }
-  }
-
   const recentStations = _getRecentStations()
 
   return (
     <>
-      <ul className='recent-stations-list'>
+      <ul className='recent-stations-list' ref={stationsRef}>
         {!!recentStations.length &&
           recentStations.map((station) => (
             <li
@@ -59,20 +35,7 @@ export function RecentlyPlayedStations() {
               className='recent-station-item'
               onClick={() => onNav(station)}
             >
-              <img
-                className='recent-image'
-                src={station.createdBy.imgUrl}
-                alt=''
-              />
-              <span className='recent-station-name'>{station.name}</span>
-
-              {!isMobile && (
-                <PlayButton
-                  className='btn-play-recent-station'
-                  togglePlay={() => onTogglePlay(station)}
-                  isPlaying={isCurrentlyPlaying(station)}
-                />
-              )}
+              <RecentStationItem station={station} />
             </li>
           ))}
       </ul>
