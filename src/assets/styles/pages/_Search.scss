@@ -1,8 +1,10 @@
 .search-page-cmp {
+  width: 100%;
 }
 .search-form {
   display: grid;
   margin: 1em;
+  position: relative;
 
   .search-input {
     background: url('/src/assets/img/search.svg') no-repeat 0.5em center;
@@ -12,5 +14,21 @@
     border-radius: 2px;
     background-color: white;
     font-family: 'Spotifymix-Bold';
+  }
+
+  .search-reset-btn {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    right: 3%;
+    top: 18%;
+    translate: -18% -3%;
+    background-color: transparent;
+
+    .search-reset-icon {
+      width: 16px;
+      height: 16px;
+      fill: black;
+    }
   }
 }

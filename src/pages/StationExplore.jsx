@@ -11,7 +11,7 @@ import { store } from '../store/store'
 import { LOADING_DONE, LOADING_START } from '../store/reducers/system.reducer'
 
 // eslint-disable-next-line react/prop-types
-export function StationExplore({ searchBarInput }) {
+export function StationExplore() {
   const [filteredStations, setFilteredStations] = useState(null)
   const [filteredTerm, setFilteredTerm] = useState(null)
   const navigate = useNavigate()
