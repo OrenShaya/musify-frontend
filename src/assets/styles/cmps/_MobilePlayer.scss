@@ -9,6 +9,7 @@ $whiteFilter: invert(100%) sepia(100%) saturate(0%) hue-rotate(132deg)
   gap: 0 8px;
   border-radius: 6px;
   position: relative;
+  padding-inline: 8px;
 
   $marginSize: 10px;
   margin-inline: $marginSize;
@@ -77,6 +78,7 @@ $whiteFilter: invert(100%) sepia(100%) saturate(0%) hue-rotate(132deg)
   margin: auto;
   width: 40px;
   height: 40px;
+  border-radius: 4px;
 }
 
 .mobile-footer-icon {

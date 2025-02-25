@@ -1,7 +1,10 @@
+@use 'sass:color';
+
 .back-arrow {
   margin-top: 1.7em;
   margin-left: 1.7em;
   fill: white;
+  cursor: pointer;
 }
 
 .station-header-img-mobile {
@@ -9,9 +12,11 @@
   justify-content: center;
   align-items: center;
   margin: em(27px) 0 em(15px) 0;
+  border-radius: 4px;
 
   img {
     width: em(165.9px);
+    border-radius: 4px;
   }
 }
 
@@ -44,9 +49,23 @@ $play-button-circle-size: 56px;
   border-radius: 50%;
   background-color: $green-button-color;
   padding: 16px;
+
+  transition: all 0.22s ease-in-out;
+  &:hover {
+    scale: 1.04;
+    background-color: color.adjust(
+      $color: $green-button-color,
+      $lightness: 15%
+    );
+  }
 }
 
 .three-dots-vertical {
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+  }
 }
 
 .station-detail-buttons-row-mobile {

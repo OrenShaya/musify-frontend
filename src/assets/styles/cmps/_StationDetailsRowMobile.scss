@@ -12,6 +12,8 @@
     height: 48px;
     width: 48px;
     margin-inline-end: 8px;
+    border-radius: 4px;
+    cursor: pointer;
   }
 
   .station-details-row-mobile-song-details {
@@ -38,7 +40,9 @@
       margin: auto;
       width: 24px;
       height: 24px;
+      cursor: pointer;
     }
+
     .station-details-row-mobile-song-heart-icon {
       margin: auto;
       width: 1em;
