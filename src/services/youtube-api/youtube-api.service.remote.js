@@ -193,7 +193,7 @@ export async function getPlaylist(
 
     const station = {}
     station.songs = playListSongs
-    station.yt_id = playlistInfo.id
+    station.yt_id = playlistInfo.yt_id
     station.name = playlistInfo.playlistName
     const createdById = playlistInfo.playlistOwnerId
 
@@ -235,13 +235,12 @@ function _getPlaylistInfo(video) {
     publishedAt,
   } = snippet
 
-  const id = playlistId
   const playlistName = videoOwnerChannelTitle
   const playlistOwnerId = videoOwnerChannelId
   const createdAt = new Date(publishedAt).getTime()
 
   return {
-    yt_id: id,
+    yt_id: playlistId,
     playlistName,
     playlistOwnerId,
     createdAt,
