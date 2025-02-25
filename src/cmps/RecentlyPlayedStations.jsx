@@ -25,8 +25,8 @@ export function RecentlyPlayedStations({ indexRef, headerRef }) {
   const recentStations = _getRecentStations()
 
   const onSetGradientColor = ([r, g, b]) => {
-    headerRef.current.style.backgroundColor = `rgb(${r}, ${g}, ${b})`
-    indexRef.current.style.backgroundImage = `linear-gradient(180deg, rgb(${r}, ${g}, ${b}) 10%, #121212 20%)`
+    // headerRef.current.style.backgroundColor = `rgb(${r}, ${g}, ${b})`
+    // indexRef.current.style.backgroundImage = `linear-gradient(180deg, rgb(${r}, ${g}, ${b}) 10%, #121212 20%)`
   }
   return (
     <>
