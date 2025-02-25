@@ -45,7 +45,7 @@ article.station-preview {
 .station-item {
   display: grid;
   justify-content: space-between;
-  background-color: $itemBgc;
+  // background-color: $itemBgc;
   width: 182px;
   height: em(250px);
   scroll-snap-align: start;

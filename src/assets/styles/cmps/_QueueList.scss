@@ -1,7 +1,7 @@
 section.queue-list {
   display: grid;
   grid-template-columns: 1fr;
-  overflow-y: scroll !important;
+  overflow-y: auto !important;
   overflow-x: hidden;
   height: auto;
   margin: 0;

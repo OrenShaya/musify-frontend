@@ -5,7 +5,7 @@ import { StationPreview } from './StationPreview'
 import { ScrollBtn } from './ScrollBtn'
 import { useNavigate } from 'react-router-dom'
 
-export function StationList({ stations, stationHeader }) {
+export function StationList({ stations, stationHeader, shadowRef }) {
   const scrollRef = useRef()
   const containerRef = useRef()
 
@@ -27,8 +27,13 @@ export function StationList({ stations, stationHeader }) {
           isRight={true}
           scrollRef={scrollRef}
           containerRef={containerRef}
+          shadowRef={shadowRef}
         />
-        <ScrollBtn scrollRef={scrollRef} containerRef={containerRef} />
+        <ScrollBtn
+          scrollRef={scrollRef}
+          containerRef={containerRef}
+          shadowRef={shadowRef}
+        />
         <ul ref={scrollRef} className='station-list'>
           {stations.map((station) => (
             <li
@@ -55,6 +60,7 @@ StationList.propTypes = {
       }),
     }).isRequired
   ),
+  shadowRef: PropTypes.object,
   stationHeader: PropTypes.string,
   onMount: PropTypes.func,
 }

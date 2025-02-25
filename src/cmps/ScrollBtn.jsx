@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 import scrollRightUrl from '../assets/img/scroll-right.svg'
 import scrollLeftUrl from '../assets/img/scroll-left.svg'
@@ -9,15 +9,25 @@ const scrollBtnsWidth = 27 * 2
 const PADDING = 8
 const scrollByPx = 600
 
-export function ScrollBtn({ scrollRef, containerRef, isRight = false }) {
+export function ScrollBtn({
+  scrollRef,
+  containerRef,
+  isRight = false,
+  shadowRef,
+}) {
   const btnRef = useRef()
   const isHovered = useHover(containerRef)
   const [isDisplayed, setIsDisplayed] = useState(false)
 
   useEffect(() => {
     const elBtn = btnRef.current
-    if (isDisplayed) elBtn.classList.add('display')
-    else elBtn.classList.remove('display')
+    if (isDisplayed) {
+      elBtn.classList.add('display')
+      if (shadowRef?.current) shadowRef.current.style.opacity = 1
+    } else {
+      elBtn.classList.remove('display')
+      if (shadowRef?.current) shadowRef.current.style.opacity = 0
+    }
   }, [isDisplayed])
 
   useEffect(() => {
@@ -38,17 +48,17 @@ export function ScrollBtn({ scrollRef, containerRef, isRight = false }) {
     }
   }, [isHovered])
 
-  const onScroll = () => {
+  const onScroll = useCallback(() => {
     _toggleRender()
-  }
+  }, [])
 
-  const onClick = () => {
+  const onClick = useCallback(() => {
     const direction = isRight ? 1 : -1
     scrollRef.current.scrollBy({
       left: scrollByPx * direction,
       behavior: 'smooth',
     })
-  }
+  }, [])
 
   function _toggleRender() {
     const elScroll = scrollRef.current
@@ -88,4 +98,5 @@ ScrollBtn.propTypes = {
   scrollRef: PropTypes.object,
   containerRef: PropTypes.object,
   isRight: PropTypes.bool,
+  shadowRef: PropTypes.object,
 }
