@@ -17,7 +17,7 @@ export function StationDetailsHeaderMobile({ station }) {
   }
   const isPlaying = useSelector((s) => s.playerModule.isPlaying)
   const isCurrentlyPlaying = !!(isPlaying && isSelectedStation())
-
+  const profilePicture = useSelector((s) => s.userModule.user.imgUrl)
   const onTogglePlay = () => {
     if (!isSelectedStation()) {
       setStation(station)
@@ -48,10 +48,7 @@ export function StationDetailsHeaderMobile({ station }) {
       <div className='station-header-name-mobile'>{station?.name}</div>
       <div className='station-header-created-by-mobile'>
         <div className='station-created-by-image-mobile'>
-          <img
-            src={station?.createdBy.imgUrl || defaultUserImg}
-            alt='User image'
-          />
+          <img src={profilePicture || defaultUserImg} alt='User image' />
         </div>
         <div className='created-by-name-mobile'>
           {station?.createdBy.fullname}

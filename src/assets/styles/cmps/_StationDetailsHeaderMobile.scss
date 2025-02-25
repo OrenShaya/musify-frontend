@@ -49,7 +49,7 @@ $play-button-circle-size: 56px;
   border-radius: 50%;
   background-color: $green-button-color;
   padding: 16px;
-
+  margin: 0px;
   transition: all 0.22s ease-in-out;
   &:hover {
     scale: 1.04;
@@ -72,7 +72,6 @@ $play-button-circle-size: 56px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0.5em 1.7em;
+  margin: 0.5em 1em;
   flex-direction: row-reverse;
-  margin-inline-end: 0.5em;
 }

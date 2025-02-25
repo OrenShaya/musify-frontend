@@ -35,6 +35,7 @@
     grid-auto-flow: column;
     place-content: center;
     gap: 0.5em;
+    justify-self: end;
 
     .station-details-row-mobile-song-options-icon {
       margin: auto;
