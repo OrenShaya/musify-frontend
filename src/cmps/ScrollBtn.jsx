@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 import scrollRightUrl from '../assets/img/scroll-right.svg'
 import scrollLeftUrl from '../assets/img/scroll-left.svg'
@@ -38,17 +38,17 @@ export function ScrollBtn({ scrollRef, containerRef, isRight = false }) {
     }
   }, [isHovered])
 
-  const onScroll = () => {
+  const onScroll = useCallback(() => {
     _toggleRender()
-  }
+  }, [])
 
-  const onClick = () => {
+  const onClick = useCallback(() => {
     const direction = isRight ? 1 : -1
     scrollRef.current.scrollBy({
       left: scrollByPx * direction,
       behavior: 'smooth',
     })
-  }
+  }, [])
 
   function _toggleRender() {
     const elScroll = scrollRef.current
