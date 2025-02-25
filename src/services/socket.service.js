@@ -9,11 +9,15 @@ export const SOCKET_EVENT_USER_UPDATED = 'user-updated'
 export const SOCKET_EVENT_REVIEW_ADDED = 'review-added'
 export const SOCKET_EVENT_REVIEW_REMOVED = 'review-removed'
 export const SOCKET_EVENT_REVIEW_ABOUT_YOU = 'review-about-you'
+
 export const SOCKET_EMIT_ADD_SONG = 'add-song'
 export const SOCKET_EVENT_ADD_SONG = 'song-added'
 
 const SOCKET_EMIT_LOGIN = 'set-user-socket'
 const SOCKET_EMIT_LOGOUT = 'unset-user-socket'
+
+export const SOCKET_EMIT_UPDATE_STATION = 'update-station'
+export const SOCKET_EVENT_UPDATE_STATION = 'station-updated'
 
 const baseUrl = process.env.NODE_ENV === 'production' ? '' : '//localhost:3030'
 // const baseUrl =

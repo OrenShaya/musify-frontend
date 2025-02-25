@@ -9,6 +9,7 @@
 html,
 body {
   overflow: hidden; // Prevents scrolling on the entire page
+  background-color: black;
   ::-webkit-scrollbar {
     color: #5a5a5a;
     width: 0.5em;

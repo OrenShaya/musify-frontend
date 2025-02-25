@@ -5,6 +5,10 @@ import { useSelector } from 'react-redux'
 import { setStation, updateStation } from '../store/actions/station.actions.js'
 import { toggleLikeSong } from '../store/actions/user.actions.js'
 import { LikeButton } from './LikeButton.jsx'
+import {
+  SOCKET_EMIT_UPDATE_STATION,
+  socketService,
+} from '../services/socket.service.js'
 
 export function StationDetailsList({ station }) {
   const selectedStationId = useSelector((s) => s.stationModule.station?._id)
@@ -21,7 +25,10 @@ export function StationDetailsList({ station }) {
     const [movedItem] = reorderedItems.splice(result.source.index, 1)
     reorderedItems.splice(result.destination.index, 0, movedItem)
 
-    updateStation({ ...station, songs: reorderedItems })
+    const newStation = { ...station, songs: reorderedItems }
+    socketService.emit(SOCKET_EMIT_UPDATE_STATION, newStation)
+
+    updateStation(newStation)
   }
 
   const onLikeSong = (songId, setLikedTo) => {

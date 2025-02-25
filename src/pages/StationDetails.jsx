@@ -47,7 +47,6 @@ export function StationDetails() {
 
   useEffect(() => {
     const _addSong = ({ song, stationId }) => {
-      console.log('res:', song, stationId)
       store.dispatch(getCmdAddStationSong(song, stationId))
     }
     socketService.on(SOCKET_EVENT_ADD_SONG, _addSong)

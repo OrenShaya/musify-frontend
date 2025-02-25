@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 import { PlayButton } from './PlayButton'
 import { setStation } from '../store/actions/station.actions'
+import { getRandomIntInclusive } from '../services/util.service'
 import {
   setCurrentlyPlaying,
   setIsPlaying,
@@ -27,8 +28,15 @@ export function RecentlyPlayedStations() {
 
   const _getRecentStations = () => {
     if (!likedSongsStation && !stations) return []
-    else if (!likedSongsStation && stations) return stations.slice(0, 8)
-    return [likedSongsStation].concat(stations?.slice(0, 7))
+    else if (!likedSongsStation && stations) {
+      return _getRandomElementsFromArray(stations, 8)
+    }
+    return [likedSongsStation].concat(_getRandomElementsFromArray(stations, 7))
+  }
+
+  function _getRandomElementsFromArray(arr, size) {
+    const shuffled = arr.slice().sort(() => 0.5 - Math.random())
+    return shuffled.slice(0, size)
   }
 
   const isCurrentlyPlaying = (station) => {
