@@ -9,15 +9,25 @@ const scrollBtnsWidth = 27 * 2
 const PADDING = 8
 const scrollByPx = 600
 
-export function ScrollBtn({ scrollRef, containerRef, isRight = false }) {
+export function ScrollBtn({
+  scrollRef,
+  containerRef,
+  isRight = false,
+  shadowRef,
+}) {
   const btnRef = useRef()
   const isHovered = useHover(containerRef)
   const [isDisplayed, setIsDisplayed] = useState(false)
 
   useEffect(() => {
     const elBtn = btnRef.current
-    if (isDisplayed) elBtn.classList.add('display')
-    else elBtn.classList.remove('display')
+    if (isDisplayed) {
+      elBtn.classList.add('display')
+      if (shadowRef?.current) shadowRef.current.style.opacity = 1
+    } else {
+      elBtn.classList.remove('display')
+      if (shadowRef?.current) shadowRef.current.style.opacity = 0
+    }
   }, [isDisplayed])
 
   useEffect(() => {
@@ -88,4 +98,5 @@ ScrollBtn.propTypes = {
   scrollRef: PropTypes.object,
   containerRef: PropTypes.object,
   isRight: PropTypes.bool,
+  shadowRef: PropTypes.object,
 }

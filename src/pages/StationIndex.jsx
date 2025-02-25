@@ -8,6 +8,7 @@ import { LoadingWrapper } from '../cmps/LoadingWrapper'
 export function StationIndex() {
   const indexRef = useRef()
   const headerRef = useRef()
+  const shadowRef = useRef()
 
   const stations = useSelector((s) => s.stationModule.stations)
   const isLoading = useSelector((s) => s.systemModule.isLoading)
@@ -53,12 +54,13 @@ export function StationIndex() {
                   <StationList
                     stations={stations}
                     stationHeader={stationHeaders[i]}
+                    shadowRef={shadowRef}
                   />
                 </li>
               ))}
             </ul>
           )}
-          <div className='shadow'></div>
+          <div ref={shadowRef} className='shadow'></div>
         </div>
       </div>
     </>
