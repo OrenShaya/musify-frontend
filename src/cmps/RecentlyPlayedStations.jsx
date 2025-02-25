@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux'
 import { useRef } from 'react'
 import { RecentStationItem } from './RecentStationItem'
 
-export function RecentlyPlayedStations({ indexRef }) {
+export function RecentlyPlayedStations({ indexRef, headerRef }) {
   const stations = useSelector((s) => s.stationModule.stations)
   const likedSongsStation = useSelector(
     (s) => s.userModule.user?.likedSongsStation
@@ -25,8 +25,8 @@ export function RecentlyPlayedStations({ indexRef }) {
   const recentStations = _getRecentStations()
 
   const onSetGradientColor = ([r, g, b]) => {
-    indexRef.current.style.backgroundColor = `rgb(${r}, ${g}, ${b})`
-    indexRef.current.style.backgroundImage = `linear-gradient(rgb(${r}, ${g}, ${b}) 10%, #121212 20%)`
+    headerRef.current.style.backgroundColor = `rgb(${r}, ${g}, ${b})`
+    indexRef.current.style.backgroundImage = `linear-gradient(180deg, rgb(${r}, ${g}, ${b}) 10%, #121212 20%)`
   }
   return (
     <>
