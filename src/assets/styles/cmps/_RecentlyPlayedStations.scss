@@ -22,10 +22,12 @@ $itemBgc: rgb(40, 42, 43, 0.4);
     @include for-mobile-layout {
       height: 48px;
       min-width: 48px;
+      max-width: 48px;
     }
     @include for-narrow-layout {
       height: 64px;
       min-width: 64px;
+      max-width: 64px;
     }
 
     border-radius: em(4px) 0 0 em(4px);

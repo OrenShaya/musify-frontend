@@ -31,7 +31,7 @@ export function StationDetailsHeader({
       if (img && img.complete && !img.src.includes('station-default-img')) {
         const [r, g, b] = await colorThief.getColor(img)
         setGradientColor(
-          `linear-gradient(180deg, rgb(${r}, ${g}, ${b}) 10%, #121212 70%)`
+          `linear-gradient(180deg, rgb(${r}, ${g}, ${b}) 10%, #121212 450px)`
         )
         setHeaderColor(`transparent`)
       }
