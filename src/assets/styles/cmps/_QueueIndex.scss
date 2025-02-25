@@ -41,8 +41,25 @@ section.queue-index {
   }
 
   .currently-playing-container {
-    h3 {
-      color: #3be477;
+    .queue-song-title-marquee {
+      position: relative;
+      grid-area: header;
+      width: 100%;
+
+      @include marquee-text(
+        $duration: 8s,
+        $background-color: #3be477,
+        $isAutoStart: false
+      );
+
+      h3 {
+        font-family: Spotifymix-Light, Spotifymix-Medium, Spotifymix-Regular,
+          sans-serif;
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 0;
+        color: #3be477;
+      }
     }
 
     .currently-playing-header {

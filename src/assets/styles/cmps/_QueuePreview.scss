@@ -59,7 +59,7 @@ section.queue-preview {
       width: 100%;
 
       @include marquee-text(
-        $duration: 10s,
+        $duration: 8s,
         $background-color: transparent,
         $gradient-width: 2rem
       );
