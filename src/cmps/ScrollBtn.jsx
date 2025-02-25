@@ -48,17 +48,17 @@ export function ScrollBtn({
     }
   }, [isHovered])
 
-  const onScroll = useCallback(() => {
+  const onScroll = () => {
     _toggleRender()
-  }, [])
+  }
 
-  const onClick = useCallback(() => {
+  const onClick = () => {
     const direction = isRight ? 1 : -1
     scrollRef.current.scrollBy({
       left: scrollByPx * direction,
       behavior: 'smooth',
     })
-  }, [])
+  }
 
   function _toggleRender() {
     const elScroll = scrollRef.current
