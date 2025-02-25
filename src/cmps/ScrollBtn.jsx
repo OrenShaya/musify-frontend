@@ -48,9 +48,9 @@ export function ScrollBtn({
     }
   }, [isHovered])
 
-  const onScroll = useCallback(() => {
+  const onScroll = () => {
     _toggleRender()
-  }, [])
+  }
 
   const onClick = useCallback(() => {
     const direction = isRight ? 1 : -1
