@@ -49,7 +49,7 @@
     width: $size;
     padding-inline: 6px;
     margin: 0;
-    transition: all 0.22 ease-in-out;
+    transition: all 0.22s ease-in-out;
 
     &:hover {
       scale: 1.04;
@@ -61,7 +61,7 @@
     background-color: transparent;
     margin: 0;
     padding: 0;
-    transition: all 0.22 ease-in-out;
+    transition: all 0.22s ease-in-out;
 
     &:hover {
       fill: $clr-neutral-white;
@@ -73,7 +73,7 @@
     background-color: transparent;
     margin: 0;
     padding: 0;
-    transition: all 0.22 ease-in-out;
+    transition: all 0.22s ease-in-out;
 
     &:hover {
       fill: $clr-neutral-white;
