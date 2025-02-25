@@ -47,4 +47,4 @@ async function uploadImageUrl(imageUrl) {
 }
 
 // for DBUGGINg
-//window.urltest = uploadService
+window.urltest = uploadService
