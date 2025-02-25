@@ -25,8 +25,8 @@ html {
 }
 
 body {
-  font-family: Spotifymix-Regular, Roboto, Ubuntu, 'Helvetica Neue', Helvetica,
-    sans-serif;
+  font-family: Spotifymix-Regular, CircularSp-Hebr-Regular, Roboto, Ubuntu,
+    'Helvetica Neue', Helvetica, sans-serif;
 
   @include for-narrow-layout {
     background-color: $clr-neutral-black;
