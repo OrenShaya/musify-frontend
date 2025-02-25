@@ -10,8 +10,10 @@
     }
   }
   @include for-narrow-layout {
-    background: linear-gradient(180deg, #793636 -30%, #121212 20%);
+    background: linear-gradient(#793636 -30%, #121212 20%);
   }
+
+  transition: 1.22s ease-in-out;
 
   .station-index-item {
     margin-block: 2em;

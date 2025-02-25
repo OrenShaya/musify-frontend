@@ -1,21 +1,13 @@
 import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router'
 import { useRef } from 'react'
 import { RecentStationItem } from './RecentStationItem'
 
-export function RecentlyPlayedStations() {
+export function RecentlyPlayedStations({ indexRef }) {
   const stations = useSelector((s) => s.stationModule.stations)
   const likedSongsStation = useSelector(
     (s) => s.userModule.user?.likedSongsStation
   )
-  const navigate = useNavigate()
   const stationsRef = useRef()
-
-  const onNav = (station) => {
-    if (station.yt_id !== 'THE-CAKE-IS-A-LIE')
-      navigate(`/station/${station._id}`)
-    else navigate('collection/tracks')
-  }
 
   const _getRecentStations = () => {
     if (!likedSongsStation && !stations) return []
@@ -32,18 +24,20 @@ export function RecentlyPlayedStations() {
 
   const recentStations = _getRecentStations()
 
+  const onSetGradientColor = ([r, g, b]) => {
+    indexRef.current.style.backgroundColor = `rgb(${r}, ${g}, ${b})`
+    indexRef.current.style.backgroundImage = `linear-gradient(rgb(${r}, ${g}, ${b}) 10%, #121212 20%)`
+  }
   return (
     <>
       <ul className='recent-stations-list' ref={stationsRef}>
         {!!recentStations.length &&
           recentStations.map((station) => (
-            <li
+            <RecentStationItem
               key={station._id}
-              className='recent-station-item'
-              onClick={() => onNav(station)}
-            >
-              <RecentStationItem station={station} />
-            </li>
+              station={station}
+              setGradientColor={onSetGradientColor}
+            />
           ))}
       </ul>
     </>

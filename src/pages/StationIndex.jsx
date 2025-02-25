@@ -38,7 +38,7 @@ export function StationIndex() {
   return (
     <>
       <div className='station-index' ref={indexRef}>
-        {!isLoading && <RecentlyPlayedStations />}
+        {!isLoading && <RecentlyPlayedStations indexRef={indexRef} />}
         <div className='station-index-main'>
           <LoadingWrapper />
           {!isLoading && (
