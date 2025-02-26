@@ -9,7 +9,7 @@ import {
 
 export function StationDetailsRowMobile({ song }) {
   const likedSongs = useSelector(
-    (s) => s.userModule.user.likedSongsStation?.songs
+    (s) => s.userModule.user?.likedSongsStation?.songs
   )
   const selectedStation = useSelector((s) => s.stationModule.station)
   const currentlyPlaying = useSelector((s) => s.playerModule.currentlyPlaying)

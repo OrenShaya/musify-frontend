@@ -13,7 +13,7 @@ import {
 export function StationDetailsList({ station }) {
   const selectedStationId = useSelector((s) => s.stationModule.station?._id)
   const likedSongs = useSelector(
-    (s) => s.userModule.user.likedSongsStation?.songs
+    (s) => s.userModule.user?.likedSongsStation?.songs
   )
   const songs = station?.songs
 
