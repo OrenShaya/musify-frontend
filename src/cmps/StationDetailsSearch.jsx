@@ -11,7 +11,7 @@ import { useState, useEffect, useRef } from 'react'
 import { ytService } from '../services/youtube-api/youtube-api.service.remote.js'
 import resetUrl from '../assets/img/x.svg'
 
-import { songService } from '../services/song'
+import { stationService } from '../services/station/index.js'
 
 export function StationDetailsSearch({ station }) {
   const [searchTerm, setSearchTerm] = useState('')
@@ -30,7 +30,7 @@ export function StationDetailsSearch({ station }) {
     try {
       const song = await ytService.getSong(songId)
       if (!song) return
-      const newSong = await addSongToStation(song?.yt_id, artistId)
+      const newSong = await addSongToStationLocally(song?.yt_id, artistId)
 
       setCurrentlyPlaying(station, newSong?.yt_id)
     } catch (err) {
@@ -41,7 +41,7 @@ export function StationDetailsSearch({ station }) {
   async function getSearchedSongs(term) {
     if (!term || term === '') return
     try {
-      const songs = await ytService.getSongs(term)
+      const songs = await ytService.searchSongs(term)
       if (!songs) return
 
       setSearchedSongs(songs)
@@ -50,24 +50,14 @@ export function StationDetailsSearch({ station }) {
     }
   }
 
-  async function addSongToStation(songId, artistId) {
-    if (!songId || !artistId) return
-
+  async function addSongToStationLocally(songId, artistId) {
     try {
-      const ytSong = await ytService.getSong(songId)
-      if (!ytSong) return
-
-      const artist = await ytService.getArtist(artistId)
-      if (!artist) return
-
-      const readySong = await songService.addSongFromYT(ytSong, artist)
-      if (!readySong) return
-
-      const resultOfaddStationSong = await addStationSong(
-        station._id,
-        readySong
+      await stationService.addSongToStationLocally(
+        songId,
+        artistId,
+        station._id
       )
-
+      // Update store
       await loadStation(station._id)
     } catch (err) {
       console.error('Unable to search for songs', err)
@@ -160,7 +150,7 @@ export function StationDetailsSearch({ station }) {
                   className='add-song-to-station-btn'
                   onClick={(ev) => {
                     ev.stopPropagation()
-                    addSongToStation(song?.yt_id, song?.artistId)
+                    addSongToStationLocally(song?.yt_id, song?.artistId)
                   }}
                 >
                   Add

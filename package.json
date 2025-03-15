@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "start": "npm run dev:remote:mac",
     "dev": "vite",
     "dev:remote": "npm run dev",
     "dev:remote:mac": "npm run dev",

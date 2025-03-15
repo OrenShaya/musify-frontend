@@ -24,6 +24,7 @@ import {
   SOCKET_EVENT_ADD_SONG,
   socketService,
 } from '../services/socket.service'
+import { StationGenerate } from './StationGenerate'
 
 export function StationDetails() {
   const { stationId } = useParams()
@@ -95,6 +96,7 @@ export function StationDetails() {
               setIsModalShow={setIsModalShow}
             />
           )}
+          <StationGenerate />
         </>
       )}
     </section>
