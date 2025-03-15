@@ -300,6 +300,7 @@ async function _getSongInfoFromPlaylist(videos) {
 
 /************************************** Station **************************************/
 async function getSongList(songNames) {
+  // NOTE: Comment out return to enable using YT API (instead of dummy data)
   return [
     {
       yt_id: '4tVriTuoll8',
