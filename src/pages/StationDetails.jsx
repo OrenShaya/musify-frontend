@@ -88,7 +88,10 @@ export function StationDetails() {
           <StationDetailsActionBtns station={station} />
           <StationDetailsList station={station} />
           {user && user?._id === station?.createdBy?._id && (
-            <StationDetailsSearch station={station} />
+            <>
+              <StationDetailsSearch station={station} />
+              <StationGenerate />
+            </>
           )}
           {user && isModalShow && (
             <EditStationModal
@@ -96,7 +99,6 @@ export function StationDetails() {
               setIsModalShow={setIsModalShow}
             />
           )}
-          <StationGenerate />
         </>
       )}
     </section>

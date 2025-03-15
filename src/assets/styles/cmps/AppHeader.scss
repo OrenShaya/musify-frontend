@@ -316,32 +316,34 @@ $whiteFilter: invert(100%) sepia(100%) saturate(46%) hue-rotate(89deg)
     position: absolute;
     right: 4em;
     top: 54px;
+  }
+}
+.user-menu {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5em;
+  background-color: #282828;
+  box-shadow: 0 16px 24px rgba(0, 0, 0, 0.3), 0 6px 8px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+
+  button {
+    background-color: inherit;
+    font-size: 0.9em;
+    border-radius: 1em;
+    padding: 1em;
+    margin: 0;
     display: flex;
-    flex-direction: column;
-    border-radius: 0.5em;
-    background-color: #282828;
-    box-shadow: 0 16px 24px rgba(0, 0, 0, 0.3), 0 6px 8px rgba(0, 0, 0, 0.2);
-    z-index: 2;
+    align-items: center;
+    color: white;
+    cursor: pointer;
+  }
 
-    button {
-      background-color: inherit;
-      font-size: 0.9em;
-      border-radius: 1em;
-      padding: 1em;
-      margin: 0;
-      display: flex;
-      align-items: center;
-      color: white;
-      cursor: pointer;
-    }
+  button:hover {
+    background-color: #3e3e3e;
+  }
 
-    button:hover {
-      background-color: #3e3e3e;
-    }
-
-    .hidden {
-      display: none;
-    }
+  .hidden {
+    display: none;
   }
 }
 

@@ -1,0 +1,11 @@
+.station-generate-form {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 1em;
+  flex-wrap: nowrap;
+
+  padding-inline: 1em;
+  padding-block-end: 1.5em;
+}

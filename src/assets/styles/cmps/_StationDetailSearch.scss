@@ -28,106 +28,6 @@
       font-weight: 700;
       -webkit-tap-highlight-color: transparent;
     }
-
-    .searchbar-container-form {
-      @include flex(
-        $justify-content: flex-start,
-        $align-items: center,
-        $gap: 0
-      );
-
-      min-height: em(40px);
-      background-color: rgba(255, 255, 255, 0.1);
-      border: 0;
-      border-radius: 4px;
-      color: hsla(0, 0%, 100%, 0.7);
-      height: 40px;
-      opacity: 1;
-      padding: 8px;
-      text-overflow: ellipsis;
-      transition-duration: 0.3s;
-      width: 100%;
-      max-width: em(400px);
-      font-size: 0.875rem;
-
-      .search-icon {
-        margin-inline-end: 8px;
-        height: 24px;
-        width: 24px;
-      }
-
-      input#song-search {
-        color: #b3b3b3;
-        background-color: transparent;
-        outline: none;
-        border: none;
-        text-transform: none;
-        inline-size: 100%;
-        text-overflow: ellipsis;
-        cursor: text;
-
-        &::-webkit-search-decoration,
-        &::-webkit-search-cancel-button,
-        &::-webkit-search-results-button,
-        &::-webkit-search-results-decoration {
-          display: none;
-        }
-
-        &::placeholder {
-          color: #b3b3b3;
-          inline-size: 100%;
-        }
-
-        &:focus,
-        &:focus-within {
-          background-color: transparent;
-        }
-
-        &:not(:placeholder-shown) {
-          background-color: transparent !important;
-
-          ~ button.reset-btn {
-            display: grid;
-          }
-        }
-      }
-
-      button.reset-btn {
-        display: none;
-        padding-inline: 12px 4px;
-        margin-inline-end: 4px;
-
-        place-content: center;
-        width: 24px;
-        height: 24px;
-        background-color: transparent;
-        flex-shrink: 0;
-        cursor: pointer;
-        text-align: center;
-
-        img.reset-icon {
-          color: $clr-neutral-white;
-
-          display: block;
-          background-color: transparent;
-
-          transition: fill 0.4s ease;
-          fill: currentcolor;
-          width: 16px;
-          height: 16px;
-          min-width: 16px;
-          min-height: 16px;
-
-          overflow: hidden;
-
-          &:hover {
-            fill: $clr-neutral-white;
-            scale: 1.04;
-            cursor: pointer;
-          }
-        }
-      }
-    }
   }
 
   .search-result-grid {
@@ -263,6 +163,102 @@
       p {
         font-size: 0.875rem;
         color: inherit;
+      }
+    }
+  }
+}
+
+button.reset-btn {
+  display: none;
+  padding-inline: 12px 4px;
+  margin-inline-end: 4px;
+
+  place-content: center;
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  flex-shrink: 0;
+  cursor: pointer;
+  text-align: center;
+
+  img.reset-icon {
+    color: $clr-neutral-white;
+
+    display: block;
+    background-color: transparent;
+
+    transition: fill 0.4s ease;
+    fill: currentcolor;
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    min-height: 16px;
+
+    overflow: hidden;
+
+    &:hover {
+      fill: $clr-neutral-white;
+      scale: 1.04;
+      cursor: pointer;
+    }
+  }
+}
+
+.searchbar-container-form {
+  @include flex($justify-content: flex-start, $align-items: center, $gap: 0);
+
+  min-height: em(40px);
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 0;
+  border-radius: 4px;
+  color: hsla(0, 0%, 100%, 0.7);
+  height: 40px;
+  opacity: 1;
+  padding: 8px;
+  text-overflow: ellipsis;
+  transition-duration: 0.3s;
+  width: 100%;
+  max-width: em(400px);
+  font-size: 0.875rem;
+
+  .search-icon {
+    margin-inline-end: 8px;
+    height: 24px;
+    width: 24px;
+  }
+
+  input#song-search {
+    color: #b3b3b3;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    text-transform: none;
+    inline-size: 100%;
+    text-overflow: ellipsis;
+    cursor: text;
+
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-results-button,
+    &::-webkit-search-results-decoration {
+      display: none;
+    }
+
+    &::placeholder {
+      color: #b3b3b3;
+      inline-size: 100%;
+    }
+
+    &:focus,
+    &:focus-within {
+      background-color: transparent;
+    }
+
+    &:not(:placeholder-shown) {
+      background-color: transparent !important;
+
+      ~ button.reset-btn {
+        display: grid;
       }
     }
   }
