@@ -14,7 +14,14 @@
   grid-template-columns: $sidebar-width-full 1fr;
 
   @include for-mobile-layout {
-    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr; // no hidden 282-px column
+    grid-template-rows: auto 1fr auto;
+    height: 100dvh;
+
+    main {
+      overflow-y: auto; // enable inertial scroll
+      -webkit-overflow-scrolling: touch;
+    }
   }
 
   @include for-narrow-layout {
@@ -56,25 +63,6 @@
     z-index: 100;
     padding-block-end: 0;
   }
-
-  // @include for-narrow-layout {
-  //     grid-template-columns:
-  //         minmax(20px, 1fr)
-  //         minmax(auto, $mobile-breakpoint)
-  //         minmax(20px, 1fr);
-  // }
-  // @include for-normal-layout {
-  //     grid-template-columns:
-  //         minmax(20px, 1fr)
-  //         minmax(auto, $narrow-breakpoint)
-  //         minmax(20px, 1fr);
-  // }
-  // @include for-wide-layout {
-  //     grid-template-columns:
-  //         minmax(20px, 1fr)
-  //         minmax(auto, $normal-breakpoint)
-  //         minmax(20px, 1fr);
-  // }
 }
 
 .card-grid {
